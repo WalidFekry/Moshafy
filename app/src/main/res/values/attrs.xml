@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="bg" format="color" />
+    <attr name="cardViewBackground" format="color" />
+    <attr name="primaryTextColor" format="color" />
+    <attr name="SecondaryTextColor" format="color" />
+    <attr name="btn_bg" format="color" />
+    <attr name="mainItemsColor" format="color" />
+</resources>

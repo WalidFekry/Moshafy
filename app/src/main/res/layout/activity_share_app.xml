@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ShareApp">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/around_line3"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layoutDirection="ltr">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/around_line3"
+            app:layout_collapseMode="pin"
+            app:titleTextAppearance="@style/TitleToolBarApppearance"
+            app:popupTheme="@style/TextAppearance.AppCompat">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_gravity="end">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الدال على الخير كفاعله"
+                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
+                    android:gravity="end"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/back_button"
+                android:onClick="onBackClicked"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_back_button" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/about1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/namessaya"
+                    style="@style/TextAppearance.AllTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:autoLink="web"
+                    android:fontFamily="@font/jazeera"
+                    android:padding="6dp"
+                    android:textColor="#000000"
+                    android:text="😍 صدقه جاريه 💚"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/about1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/nameaya"
+                    style="@style/TextAppearance.AllTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:fontFamily="@font/jazeera"
+                    android:padding="6dp"
+                    android:textColor="#000000"
+                    android:text="@string/about1"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/shareappsss"
+                style="@style/TextAppearance.AllTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:background="@drawable/about1"
+                android:onClick="obkla"
+                android:text="مشاركه التطبيق" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

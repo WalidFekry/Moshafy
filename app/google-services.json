@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1029435012857",
+    "firebase_url": "https://appquran-93e72.firebaseio.com",
+    "project_id": "appquran-93e72",
+    "storage_bucket": "appquran-93e72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029435012857:android:b105788aa476cf18",
+        "android_client_info": {
+          "package_name": "com.appwalied.quran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029435012857-b60naudit8fprc362nivv1llb5l176a5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appwalied.quran",
+            "certificate_hash": "d02cd448951e7a70bdcffec6d82100f3c49988cf"
+          }
+        },
+        {
+          "client_id": "1029435012857-onr6evbk0lvif298mqaee8r8244m7p5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB43X-28JVL7ZzskZPzt7CdLJYAoaF-Mfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029435012857-onr6evbk0lvif298mqaee8r8244m7p5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

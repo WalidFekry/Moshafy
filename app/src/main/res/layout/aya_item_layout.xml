@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:id="@+id/aya_text_view"
+    android:text="بسم الله"
+    android:gravity="center"
+    android:fontFamily="@font/uthmanii"
+    android:textSize="22sp"
+    android:layout_height="wrap_content"/>

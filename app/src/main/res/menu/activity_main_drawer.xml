@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/appsug"
+            android:icon="@drawable/ic_5_stars"
+            android:title="مكتبتي بلس" />
+        <item
+            android:id="@+id/facepage"
+            android:icon="@drawable/social"
+            android:title="صفحتنا علي الفسبيوك" />
+        <item
+            android:id="@+id/facegroup"
+            android:icon="@drawable/ic_group"
+            android:title="جروبنا علي الفيسبوك" />
+
+        <item
+            android:id="@+id/telee"
+            android:icon="@drawable/tele"
+            android:title="جروبنا على التليجرام" />
+        <item
+            android:id="@+id/apprate"
+            android:icon="@drawable/ic_star"
+            android:title="تقييم التطبيق" />
+        <item
+        android:id="@+id/appshare"
+        android:icon="@drawable/ic_share"
+        android:title="مشاركه التطبيق" />
+        <item
+            android:id="@+id/appshare2"
+            android:icon="@drawable/ic_walid"
+            android:title="مشاركه التطبيق على الفيسبوك" />
+        <item
+            android:id="@+id/site"
+            android:icon="@drawable/ic_call_black_24dp"
+            android:title="تواصل مع مطور التطبيق" />
+        <item
+            android:id="@+id/appabout"
+            android:icon="@drawable/ic_about"
+            android:title="عن التطبيق" />
+        <item
+            android:id="@+id/policy"
+            android:icon="@drawable/ic_policy"
+            android:title="Privacy Policy" />
+
+        <item
+            android:id="@+id/moreapp"
+            android:icon="@drawable/ic_moreapp"
+            android:title="المزيد من التطبيقات المجانية" />
+    </group>
+
+
+</menu>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="right"
+    android:background="@color/bookPageColor"
+    android:id="@+id/row_ayat">
+
+    <RelativeLayout
+        android:id="@+id/paraView"
+        android:gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="10dp"
+            android:gravity="right"
+            android:textColor="@color/tools_items_color"
+            android:id="@+id/arabicView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="بسم الله"
+            android:textSize="25sp"/>
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/paraAndPageNoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/paraAndPageNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="30/610"
+            android:textSize="14sp"
+            android:textColor="@color/intro_description_color"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/bookmark"
+            android:visibility="gone"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last read !"
+            android:textSize="23sp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="reportContentText">
+        <item name="android:fontFamily">@font/flat5</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_below">@id/drawer_layout</item>
+    </style>
+
+    <style name="TextAppearance.AllTextView" parent="android:TextAppearance">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TitleToolBarApppearance" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/ffon1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_gravity">end</item>
+    </style>
+
+    <style name="TextAppearance.MyApp.Title.QiblahActivity" parent="android:TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/lmonada</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TitleBarTextAppearance" parent="android:TextAppearance">
+        <item name="android:title">القرآن</item>
+        <item name="android:fontFamily">@font/jazeera</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

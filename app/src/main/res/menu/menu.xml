@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/privacy"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_people_black_24dp"
+        android:title="Privacy Policy" />
+
+    <item android:id="@+id/aboutme"
+
+        android:icon="@drawable/person"
+        app:showAsAction="always"
+        android:title="aboutme"/>
+
+    <item android:id="@+id/menu"
+
+        android:icon="@drawable/menu"
+        app:showAsAction="always"
+        android:title="القائمه"/>
+
+
+</menu>

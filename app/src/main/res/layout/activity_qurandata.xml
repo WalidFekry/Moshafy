@@ -1,0 +1,2196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Qurandata">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/a1"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textStyle="bold"
+                        android:textColor="#01446D"
+                        android:text="1-سُوۡرَةُ الفَاتِحَة"
+
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a2"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:textColor="#02314D"
+                        android:text="2-سُوۡرَةُ البَقَرَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a3"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textColor="#02314D"
+                        android:text="3-سُوۡرَةُ آل عِمرَان" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a4"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="4-سُوۡرَةُ النِّسَاء" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a5"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:layout_weight="1"
+                        android:text="5-سُوۡرَةُ المَائدة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a6"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="6-سُوۡرَةُ الاٴنعَام" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a7"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="7-سُوۡرَةُ الاٴعرَاف" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a8"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="8-سُوۡرَةُ الاٴنفَال" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a9"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="9-سُوۡرَةُ التّوبَة " />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a10"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="10-سُوۡرَةُ یُونس" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a11"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="11-سُوۡرَةُ هُود"
+                        android:layout_height="60dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a12"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="12-سُوۡرَةُ یُوسُف" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a13"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="13-سُوۡرَةُ الرّعد" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a14"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="14-سُوۡرَةُ إبراهیم" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a15"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:textSize="19sp"
+                        android:layout_weight="1"
+                        android:layout_height="60dp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="15-سُوۡرَةُ الحِجر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a16"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="16-سُوۡرَةُ النّحل" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a17"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="17-سُوۡرَةُ  الإسرَاء" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a18"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:drawableStart="@drawable/f13"
+                        android:textColor="#02314D"
+                        android:text="18-سُوۡرَةُ الکهف" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a19"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:layout_height="60dp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="19-سُوۡرَةُ مَریَم" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a20"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="20-سُوۡرَةُ طٰه" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a21"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="21-سُوۡرَةُ الاٴنبیَاء" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a22"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="22-سُوۡرَةُ الحَجّ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a23"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="23-سُوۡرَةُ المؤمنون" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a24"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="24-سُوۡرَةُ النُّور" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a25"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="25-سُوۡرَةُ الفُرقان" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a26"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="26-سُوۡرَةُ الشُّعَرَاء" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a27"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="27-سُوۡرَةُ النَّمل" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a28"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="28-سُوۡرَةُ القَصَص" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a29"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="29-سُوۡرَةُ العَنکبوت" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a30"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="30-سُوۡرَةُ الرُّوم" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a31"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="31-سُوۡرَةُ لقمَان" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a32"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="32-سُوۡرَةُ السَّجدَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a33"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="33-سُوۡرَةُ الاٴحزَاب" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a34"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="34-سُوۡرَةُ سَبَإ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a35"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="35-سُوۡرَةُ فَاطِر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a36"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="36-سُوۡرَةُ یسٓ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a37"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="37-سُوۡرَةُ الصَّافات" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a38"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="38-سُوۡرَةُ صٓ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a39"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="39-سُوۡرَةُ الزُّمَر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a40"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="40-سُوۡرَةُ غَافر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a41"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="41-سُوۡرَةُ  فُصّلَت" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a42"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="42-سُوۡرَةُ الشّوریٰ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a43"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="43-سُوۡرَةُ الزّخرُف" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a44"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="44-سُوۡرَةُ الدّخان" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a45"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="45-سُوۡرَةُ الجَاثیَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a46"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="46-سُوۡرَةُ الاٴحقاف" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a47"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="47-سُوۡرَةُ محَمَّد" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a48"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="48-سُوۡرَةُ الفَتْح" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a49"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="49-سُوۡرَةُ الحُجرَات" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a50"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="50-سُوۡرَةُ قٓ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a51"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="51-سُوۡرَةُ الذّاریَات" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a52"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="52-سُوۡرَةُ الطُّور" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a53"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="53-سُوۡرَةُ النّجْم" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a54"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="54-سُوۡرَةُ القَمَر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a55"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="55-سُوۡرَةُ الرَّحمٰن" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a56"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="56-سُوۡرَةُ الواقِعَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a57"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="57-سُوۡرَةُ الحَدید" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a58"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="58-سُوۡرَةُ المجَادلة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a59"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="59-سُوۡرَةُ الحَشر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a60"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="60-سُوۡرَةُ المُمتَحنَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a61"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="61-سُوۡرَةُ الصَّف" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a62"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="62-سُوۡرَةُ الجُمُعَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a63"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="63-سُوۡرَةُ المنَافِقون" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a64"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="64-سُوۡرَةُ التّغَابُن" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a65"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="65-سُوۡرَةُ الطّلاَق" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a66"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="66-سُوۡرَةُ التّحْریم" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a67"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="67-سُوۡرَةُ المُلک" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a68"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="68-سُوۡرَةُ القَلَم" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a69"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="69-سُوۡرَةُ الحَاقَّة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a70"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="70-سُوۡرَةُ المعَارج" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a71"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="71-سُوۡرَةُ نُوح" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a72"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="72-سُوۡرَةُ الجنّ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a73"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="73-سُوۡرَةُ المُزمّل" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a74"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="74-سُوۡرَةُ المدَّثِّر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a75"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="75-سُوۡرَةُ القِیَامَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a76"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="76-سُوۡرَةُ الإنسَان" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a77"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="77-سُوۡرَةُ المُرسَلات" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a78"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="78-سُوۡرَةُ النّبَإِ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a79"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="79-سُوۡرَةُ النَّازعَات" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a80"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="80-سُوۡرَةُ عَبَسَ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a81"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="81-سُوۡرَةُ التّکویر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a82"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="82-سُوۡرَةُ الانفِطار" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a83"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="83-سُوۡرَةُ المطفّفِین" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a84"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="84-سُوۡرَةُ الانشقاق" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a85"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="85-سُوۡرَةُ البُرُوج" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a86"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="86-سُوۡرَةُ الطّارق" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a87"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="87-سُوۡرَةُ الاٴعلی" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a88"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="88-سُوۡرَةُ الغَاشِیَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a89"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="89-سُوۡرَةُ الفَجر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a90"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="90-سُوۡرَةُ البَلَد" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a91"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="91-سُوۡرَةُ الشّمس" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a92"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="92-سُوۡرَةُ اللیْل" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a93"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="93-سُوۡرَةُ الِضُّحىٰ" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a94"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="94-سُوۡرَةُ الشَّرح" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a95"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="95-سُوۡرَةُ التِّین" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a96"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="96-سُوۡرَةُ العَلق" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a97"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="97-سُوۡرَةُ القَدر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a98"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="98-سُوۡرَةُ البَیّنَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a99"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="99-سُوۡرَةُ الزّلزَلة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a100"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="100-سُوۡرَةُ العَادیَات" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a101"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="101-سُوۡرَةُ القَارعَة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a102"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="102-سُوۡرَةُ التّکاثُر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a103"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="103-سُوۡرَةُ العَصر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a104"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="104-سُوۡرَةُ الهُمَزة" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a105"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="104-سُوۡرَةُ الفِیل" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a106"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="106-سُوۡرَةُ قُرَیش" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a107"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="107-سُوۡرَةُ المَاعون" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a108"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="108-سُوۡرَةُ الکَوثَر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a109"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="109-سُوۡرَةُ الکافِرون" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a110"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="110-سُوۡرَةُ النّصر" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a111"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="111-سُوۡرَةُ المَسَد" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a112"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="112-سُوۡرَةُ الإخلاص" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a113"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="113-سُوۡرَةُ الفَلَق" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/a114"
+                        android:onClick="ooo10o"
+                        android:background="@drawable/bu_000des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/ba0"
+                        android:drawableStart="@drawable/baoss2"
+                        android:textColor="#02314D"
+                        android:text="114-سُوۡرَةُ النَّاس" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".azkar.Azkar">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="#F5F3F3"
+            android:layout_height="50dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/faceabout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:materialIcon="star"
+                        app:materialIconColor="#512DA8"
+                        app:materialIconSize="40dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="اذكار المسلم"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/flat5"
+                        android:textStyle="bold"
+                        android:textColor="#004F79" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/faceabodut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:materialIcon="read"
+                        app:materialIconColor="#512DA8"
+                        app:materialIconSize="40dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="3"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/bird" />
+
+
+            <LinearLayout
+                android:onClick="move1"
+                android:id="@+id/linearquran"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/buoo"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/flat5"
+                    android:onClick="move1"
+                    android:text="أذكار الصباح"
+                    android:textColor="#252020"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:onClick="move1"
+                    android:id="@+id/textqooo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/mornig" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:onClick="move2"
+                android:background="@drawable/buoo"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/flat5"
+                    android:onClick="move2"
+                    android:text="أذكار المساء"
+                    android:textColor="#252020"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:onClick="move2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/msaa" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:onClick="move3"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/buoo"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/flat5"
+                    android:onClick="move3"
+                    android:text="أذكار رمضانيه"
+                    android:textColor="#252020"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="move3"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/rmadan" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:onClick="move4"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/buoo"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/flat5"
+                    android:onClick="move4"
+                    android:text="أذكار النوم"
+                    android:textColor="#252020"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:onClick="move4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/sleep" />
+            </LinearLayout>
+            <LinearLayout
+                android:onClick="move5"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/buoo"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/flat5"
+                    android:onClick="move5"
+                    android:text="أذكار الاستيقاظ"
+                    android:textColor="#252020"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:onClick="move5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/bell" />
+            </LinearLayout>
+            <LinearLayout
+                android:onClick="move6"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/buoo"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/flat5"
+                    android:onClick="move6"
+                    android:text="أدعية عامه"
+                    android:textColor="#252020"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:onClick="move6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/adia" />
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
