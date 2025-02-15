@@ -44,7 +44,6 @@ import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.ldoublem.loadingviewlib.view.LVPlayBall;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -62,7 +61,6 @@ public class MainActivity extends BaseActivity
     TextView dd;
     ShimmerTextView shmer;
     Shimmer shimmer;
-    LVPlayBall lvPlayBall;
     String[] permission = new String[]{
             Manifest.permission.POST_NOTIFICATIONS
     };
@@ -84,12 +82,6 @@ public class MainActivity extends BaseActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
-        lvPlayBall = findViewById(R.id.ooio);
-        lvPlayBall.startAnim();
-        lvPlayBall.setBallColor(R.color.b1);
-
-
         dd = findViewById(R.id.bb);
         shmer = findViewById(R.id.shmer);
         shimmer = new Shimmer();

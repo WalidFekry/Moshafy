@@ -46,9 +46,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 public class QoutesActivity extends BaseActivity implements Adaptersada.OnMessengerClick {
     public static final int PERMISSION_CODE = 6458;
@@ -70,7 +68,6 @@ public class QoutesActivity extends BaseActivity implements Adaptersada.OnMessen
         setContentView(R.layout.activity_qoutes);
         back = findViewById(R.id.back_button);
         back.setOnClickListener((v) -> finish());
-        setUnBinder(ButterKnife.bind(this));
         setUpAds();
         getHandler().postDelayed(this::LoadAds, 4000);
         boolean connected = false;
@@ -165,10 +162,7 @@ public class QoutesActivity extends BaseActivity implements Adaptersada.OnMessen
         }
     }
 
-    @OnClick(R.id.back_button)
-    void onBackButtonClick() {
-        onBackPressed();
-    }
+
 
     @Override
     public void onMessengerItemClick(new_item_post item) {

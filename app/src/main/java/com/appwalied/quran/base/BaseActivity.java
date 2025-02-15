@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.appwalied.quran.R;
 
-import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
@@ -19,9 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     private static final String TAG = "BaseActivity";
     private CompositeDisposable p1;
-    private Unbinder xl1;
     private Dialog loadingDialog;
-    private Unbinder unbinder;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -29,12 +26,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public Handler xoi() {
         return handler;
     }
-
-    public void spo(Unbinder unbinder) {
-        this.xl1 = unbinder;
-    }
-
-
 
     public CompositeDisposable cxs() {
         return p1;
@@ -66,9 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
 
-    public void setUnBinder(Unbinder unbinder) {
-        this.unbinder = unbinder;
-    }
+
 
     @Override
     public void showMessage(int resId) {
@@ -97,9 +86,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     protected void onDestroy() {
         handler.removeCallbacksAndMessages(null);
-        if (xl1 != null) {
-            xl1.unbind();
-        }
         cxs().dispose();
         super.onDestroy();
     }

@@ -24,13 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.ldoublem.loadingviewlib.view.LVGears;
 
 import java.util.ArrayList;
 
 public class QuranicMessage extends AppCompatActivity {
 
-    LVGears lvgears;
     DatabaseReference reference;
     RecyclerView recyclerView;
     ArrayList<QuranMsg> list;
@@ -57,9 +55,7 @@ public class QuranicMessage extends AppCompatActivity {
             alert.showDialog(this);
         }
 
-        lvgears=(LVGears)findViewById(R.id.QuLvb);
-        lvgears.startAnim();
-        lvgears.setViewColor(R.color.white);
+
 
 
         recyclerView = (RecyclerView) findViewById(R.id.quranicmessage_recyclerview);
@@ -84,7 +80,6 @@ public class QuranicMessage extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
 
                 //Activity Splash When No Internet.
-                lvgears.setVisibility(View.GONE);
 
             }
 
