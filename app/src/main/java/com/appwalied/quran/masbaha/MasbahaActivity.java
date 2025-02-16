@@ -1,18 +1,19 @@
 package com.appwalied.quran.masbaha;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,8 +25,8 @@ public class MasbahaActivity extends BaseActivity {
     TextView tv_title, tv_desc;
     FloatingActionButton view1, view2, view3, view4, view5;
     FloatingActionButton iv_reset;
+    AppCompatImageButton back;
     private int selection = 1;
-
 
 
     @Override
@@ -33,19 +34,17 @@ public class MasbahaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_masbaha);
 
-
-
         if (!SharedHelper.getBoolean(this, SharedPrefsConstants.MASBAHA_FIRST_TIME)) {
             SharedHelper.putBoolean(this, SharedPrefsConstants.MASBAHA_FIRST_TIME, true);
             CustomDialogClass.Options options = new CustomDialogClass.Options();
             options.title = "ملاحظة هامة ";
-            options.message = "يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت :)";
+            options.message = "يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت 💙";
             CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
             customDialogClass.show();
         }
 
-
         sharedPreferences = getSharedPreferences("masbaha", MODE_PRIVATE);
+        back = findViewById(R.id.back_button);
         recycler_masbaha = findViewById(R.id.recycler_masbaha);
         recycler_masbaha.setEnabled(false);
         tv_title = findViewById(R.id.tv_title);
@@ -56,66 +55,44 @@ public class MasbahaActivity extends BaseActivity {
         view4 = findViewById(R.id.iv_4);
         view5 = findViewById(R.id.iv_5);
         iv_reset = findViewById(R.id.iv_reset);
-        iv_reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sharedPreferences.edit().putInt("index" + selection, 0).apply();
-                setadapter(selection);
+        iv_reset.setOnClickListener(v -> {
+            sharedPreferences.edit().putInt("index" + selection, 0).apply();
+            setadapter(selection);
 
-            }
         });
-        view1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selection = 1;
-                setadapter(1);
-            }
+        view1.setOnClickListener(v -> {
+            selection = 1;
+            setadapter(1);
         });
-        view2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selection = 2;
-                setadapter(2);
-            }
+        view2.setOnClickListener(v -> {
+            selection = 2;
+            setadapter(2);
         });
-        view3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selection = 3;
-                setadapter(3);
-            }
+        view3.setOnClickListener(v -> {
+            selection = 3;
+            setadapter(3);
         });
-        view4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selection = 4;
-                setadapter(4);
-            }
+        view4.setOnClickListener(v -> {
+            selection = 4;
+            setadapter(4);
         });
-        view5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selection = 5;
-                setadapter(5);
-            }
+        view5.setOnClickListener(v -> {
+            selection = 5;
+            setadapter(5);
         });
         setadapter(1);
 
         view = findViewById(R.id.view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selection == 5 && recycler_masbaha.getCurrentItem() < 999)
-                    recycler_masbaha.setCurrentItem(recycler_masbaha.getCurrentItem() + 1, true);
-                else if (recycler_masbaha.getCurrentItem() < 99)
-                    recycler_masbaha.setCurrentItem(recycler_masbaha.getCurrentItem() + 1, true);
+        view.setOnClickListener(v -> {
+            if (selection == 5 && recycler_masbaha.getCurrentItem() < 999)
+                recycler_masbaha.setCurrentItem(recycler_masbaha.getCurrentItem() + 1, true);
+            else if (recycler_masbaha.getCurrentItem() < 99)
+                recycler_masbaha.setCurrentItem(recycler_masbaha.getCurrentItem() + 1, true);
 
-                else
-                    recycler_masbaha.setCurrentItem(0, true);
-                sharedPreferences.edit().putInt("index" + selection, recycler_masbaha.getCurrentItem()).apply();
-            }
+            else recycler_masbaha.setCurrentItem(0, true);
+            sharedPreferences.edit().putInt("index" + selection, recycler_masbaha.getCurrentItem()).apply();
         });
-
+      back.setOnClickListener(v -> finish());
     }
 
     private void setadapter(final int i) {
@@ -129,8 +106,7 @@ public class MasbahaActivity extends BaseActivity {
 
             @Override
             public int getCount() {
-                if (i == 5)
-                    return 1000;
+                if (i == 5) return 1000;
                 return 100;
             }
         });
@@ -154,10 +130,5 @@ public class MasbahaActivity extends BaseActivity {
             tv_title.setText("سبحان الله وبحمده");
             tv_desc.setText("فضلها : قال رسول الله صلى الله عليه وسلم (مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ)");
         }
-    }
-
-    public void onBackClicked(View view) {
-
-        onBackPressed();
     }
 }

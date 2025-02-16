@@ -159,6 +159,9 @@ public class MainActivity extends BaseActivity
         binding.main.contentMain.quranReading.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, QuranRead.class));
         });
+        binding.main.contentMain.masbaha.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MasbahaActivity.class));
+        });
     }
 
     private void cheakNotificationPermission() {
@@ -367,9 +370,6 @@ public class MainActivity extends BaseActivity
     }
 
 
-    public void masbahaclick(View view) {
-        startActivity(new Intent(this, MasbahaActivity.class));
-    }
 
     public void moshafmolem(View view) {
 

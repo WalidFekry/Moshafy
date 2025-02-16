@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/around_line3"
+        android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:layoutDirection="ltr"
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/around_line3"
@@ -46,7 +46,6 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/back_button"
-                android:onClick="onBackClicked"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
                 android:background="@drawable/ic_back_button" />
@@ -63,7 +62,7 @@
         android:gravity="center"
         android:fontFamily="@font/jazeera"
         android:padding="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:text="سبحان الله"
         android:textColor="#FFF"
         android:textSize="22sp"

@@ -21,6 +21,9 @@ import com.appwalied.quran.notifications_messages.adapter.NotificationAdapter;
 import com.appwalied.quran.notifications_messages.model.NotificationModel;
 import com.appwalied.quran.notifications_messages.model.NotificationResponse;
 import com.appwalied.quran.notifications_messages.repository.NotificationRepository;
+import com.appwalied.quran.utils.shared_helper.SharedHelper;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
+import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 
 import java.util.List;
 
@@ -38,6 +41,15 @@ public class NotificationsMessagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications_messages);
+
+        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.NOTIFICATIONS_MESSAGES_FIRST_TIME)) {
+            SharedHelper.putBoolean(this, SharedPrefsConstants.NOTIFICATIONS_MESSAGES_FIRST_TIME, true);
+            CustomDialogClass.Options options = new CustomDialogClass.Options();
+            options.title = "ملاحظة هامة";
+            options.message = "في هذا القسم، ستجد اقتباسات عشوائية تلهمك وتضيف لمسة من الحكمة إلى يومك 💙";            CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
+            customDialogClass.show();
+        }
+
         initViews();
         setupRecyclerView();
         showLoading();
