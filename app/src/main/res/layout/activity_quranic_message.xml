@@ -7,12 +7,6 @@
     android:background="#B3015585"
     tools:context=".QuranicMessage">
 
-    <com.ldoublem.loadingviewlib.view.LVGears
-        android:id="@+id/QuLvb"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/quranicmessage_recyclerview"

@@ -16,6 +16,7 @@
     <application
         android:allowBackup="true"
         android:exported="false"
+        android:name=".utils.MyApp"
         android:icon="@mipmap/ico_app"
         android:roundIcon="@mipmap/ico_app"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -47,7 +48,7 @@
 
         <!-- Quran & Islamic Features -->
         <activity android:name=".quranread.newquran.QuranRead" android:exported="false" />
-        <activity android:name=".qoutes.QoutesActivity" android:exported="true">
+        <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="true">
             <intent-filter>
                 <action android:name="MainActivity" />
                 <category android:name="android.intent.category.DEFAULT" />

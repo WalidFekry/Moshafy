@@ -37,31 +37,11 @@
     <color name="new_one">#34495e</color>
 
 
-
     <item name="darkred1" type="color">#FF007F</item>
     <item name="darkred2" type="color">#FF0000</item>
     <item name="darkred3" type="color">#007FFF</item>
     <item name="darkred4" type="color">#7F00FF</item>
     <item name="darkred5" type="color">#FF00FF</item>
 
-
-    <array name="image">
-        <item>@color/blue</item>
-        <item>@color/purple</item>
-        <item>@color/green</item>
-        <item>@color/orange</item>
-        <item>@color/red</item>
-        <item>@color/darkblue</item>
-        <item>@color/darkpurple</item>
-        <item>@color/darkgreen</item>
-        <item>@color/darkorange</item>
-        <item>@color/darkred</item>
-        <item>@color/darkred1</item>
-        <item>@color/darkred2</item>
-        <item>@color/darkred3</item>
-        <item>@color/darkred4</item>
-        <item>@color/darkred5</item>
-
-    </array>
-
+    <color name="dark_gray">#FF616161</color>
 </resources>

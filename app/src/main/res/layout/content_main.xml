@@ -9,19 +9,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="2dp"
-        android:layout_height="match_parent">
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="2dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
                 <LinearLayout
@@ -118,511 +111,559 @@
                         android:textSize="18sp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:onClick="qoutes"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:layout_margin="10dp"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:onClick="qoutes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="اقتباسات عشوائية"
-                            android:textSize="21sp"
-                            android:fontFamily="@font/flat5"
-                            android:textStyle="bold"
-                            android:textColor="#252020" />
-
-                        <ImageView
-                            android:onClick="qoutes"
-                            android:layout_width="50dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/qoutes" />
-                    </LinearLayout>
 
 
                     <LinearLayout
-                        android:onClick="moshafmolem"
                         android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:layout_margin="10dp"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="10dp">
 
-                        <TextView
-                            android:onClick="moshafmolem"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="المصحف المعلم"
-                            android:textSize="21sp"
-                            android:fontFamily="@font/flat5"
-                            android:textStyle="bold"
-                            android:textColor="#252020" />
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+                            android:layout_marginBottom="10dp">
 
-                        <ImageView
-                            android:onClick="moshafmolem"
-                            android:layout_width="50dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/ic_quran_images" />
+                            <LinearLayout
+                                android:id="@+id/notifications_messages"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/qoutes"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="اقتباسات عشوائية"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:onClick="moshafmolem"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_quran_images"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="المصحف المعلم"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:onClick="quranphotos"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_opportunities"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="المصحف الشريف"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:onClick="masbahaclick"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/masbaha"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="المسبحة"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:onClick="soundmp3Quran"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/wwww2019"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="القرآن الكريم استماع"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:onClick="intentoo"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/quq"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="القرآن الكريم قراءة"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:onClick="intentaz"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/mus"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="أذكار المسلم"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:onClick="intentdiff"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/kaaba"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="منوعات إسلامية"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:onClick="quranicmsg"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/qumsg"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="رسائل قرآنية"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:onClick="intentislamicstory"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/book1"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="قصص إسلامية"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:onClick="intentsahaba"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/book3"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="قصص الصحابة"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:onClick="intentahades"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/book2"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="أحاديث قصيرة"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:onClick="intentsonan"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/book4"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="سنن مهجورة"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/khfa"
+                                android:onClick="quranonclick"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ww2019"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="سورة الكهف"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:id="@+id/molk"
+                                android:onClick="quranonclick"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/www2019"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="سورة الملك"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:onClick="intentayakor"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buoo"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="8dp"
+                                android:layout_marginStart="10dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/kor"
+                                    android:contentDescription="@string/app_name"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="آية الكرسي"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/flat5"
+                                    android:textStyle="bold"
+                                    android:textColor="#252020"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="quranphotos"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:onClick="quranphotos"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:text="المصحف الشريف"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="quranphotos"
-                            android:layout_width="50dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/ic_opportunities" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:onClick="masbahaclick"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:layout_margin="10dp"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:onClick="masbahaclick"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="المسبحة"
-                            android:textSize="21sp"
-                            android:fontFamily="@font/flat5"
-                            android:textStyle="bold"
-                            android:textColor="#252020" />
-
-                        <ImageView
-                            android:onClick="masbahaclick"
-                            android:layout_width="50dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/masbaha" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="soundmp3Quran"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="soundmp3Quran"
-                            android:text="القرآن الكريم استماع"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:onClick="soundmp3Quran"
-                            android:src="@drawable/wwww2019" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearquran"
-                        android:layout_margin="10dp"
-                        android:onClick="intentoo"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentoo"
-                            android:text="القرآن الكريم قراءة"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentoo"
-                            android:id="@+id/textqooo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/quq" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:onClick="intentaz"
-                        android:layout_margin="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentaz"
-                            android:text="أذكار المسلم "
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentaz"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/mus" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:onClick="intentdiff"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:layout_margin="10dp"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentdiff"
-                            android:text="منوعات إسلامية "
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentdiff"
-                            android:layout_width="50dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/kaaba" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/quranicmsg"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="quranicmsg"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="quranicmsg"
-                            android:text="رسائل قرآنيةً"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/textqumsg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/app_name"
-                            android:onClick="quranicmsg"
-                            android:src="@drawable/qumsg" />
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:id="@+id/islamicstory"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="intentislamicstory"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentislamicstory"
-                            android:text="قصص إسلامية"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentislamicstory"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/book1" />
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:id="@+id/sahaba"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="intentsahaba"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentsahaba"
-                            android:text="قصص الصحابة"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentsahaba"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/book3" />
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:id="@+id/ahades"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="intentahades"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentahades"
-                            android:text="أحاديث قصيرة"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentahades"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/book2" />
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:id="@+id/sonan"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="intentsonan"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentsonan"
-                            android:text="سنن مهجورة"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentsonan"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/book4" />
-                    </LinearLayout>
-
-
-
-
-                    <LinearLayout
-                        android:id="@+id/khfa"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="quranonclick"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:text="سورة الكهف"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/ww2019" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/molk"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="quranonclick"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:text="سورة الملك"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/www2019" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ayakor"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/buoo"
-                        android:clickable="true"
-                        android:descendantFocusability="blocksDescendants"
-                        android:gravity="center"
-                        android:onClick="intentayakor"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:onClick="intentayakor"
-                            android:text="آية الكرسي"
-                            android:textColor="#252020"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:onClick="intentayakor"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/kor" />
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:onClick="quran_fnish"
@@ -654,7 +695,6 @@
                             android:src="@drawable/quran_fnish" />
                     </LinearLayout>
 
-                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -738,13 +778,7 @@
                             app:materialIconSize="40dp" />
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
-
-
-
-
-    </LinearLayout>
-
-
 </LinearLayout>

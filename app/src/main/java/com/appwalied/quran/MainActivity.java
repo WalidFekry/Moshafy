@@ -32,17 +32,17 @@ import com.appwalied.quran.ahades.ActivityAhdes;
 import com.appwalied.quran.ayakor.Ayakor;
 import com.appwalied.quran.azkar.Azkar;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityMainBinding;
 import com.appwalied.quran.islamicstory.Mainnewstory;
 import com.appwalied.quran.masbaha.MasbahaActivity;
 import com.appwalied.quran.monw3at.Diffrentis;
-import com.appwalied.quran.qoutes.QoutesActivity;
+import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
 import com.appwalied.quran.quranread.Quran_list;
 import com.appwalied.quran.quranread.newquran.QuranRead;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
@@ -75,13 +75,18 @@ public class MainActivity extends BaseActivity
                 }
             });
 
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+
+        // Init view binding
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setOnClickListeners();
+
         dd = findViewById(R.id.bb);
         shmer = findViewById(R.id.shmer);
         shimmer = new Shimmer();
@@ -144,6 +149,12 @@ public class MainActivity extends BaseActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             cheakNotificationPermission();
         }
+    }
+
+    private void setOnClickListeners() {
+        binding.main.contentMain.notificationsMessages.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class));
+        });
     }
 
     private void cheakNotificationPermission() {
@@ -400,10 +411,5 @@ public class MainActivity extends BaseActivity
 
     public void shareapp(View view) {
         startActivity(new Intent(MainActivity.this, ShareApp.class));
-    }
-
-    public void qoutes(View view) {
-        Intent qoutes = new Intent(this, QoutesActivity.class);
-        startActivity(qoutes);
     }
 }

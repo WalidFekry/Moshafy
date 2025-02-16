@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:background="#FFF"
     android:orientation="vertical"
-    tools:context=".qoutes.QoutesActivity">
+    tools:context=".notifications_messages.NotificationsMessagesActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:background="@drawable/around_line3"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:layoutDirection="ltr"
@@ -19,7 +20,6 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/around_line3"
@@ -48,7 +48,6 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/back_button"
-                android:onClick="onBackClicked"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
                 android:background="@drawable/ic_back_button" />
@@ -60,12 +59,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="3"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rec2"
+                android:id="@+id/rec"
                 android:background="#F6F8FA"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -77,18 +76,4 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/adsContainer">
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/rsttfal"
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/Banner3">
-        </com.google.android.gms.ads.AdView>
-    </LinearLayout>
 </LinearLayout>
