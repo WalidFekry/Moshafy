@@ -1,5 +1,9 @@
 package com.appwalied.quran.quran.qouran_learning.networking;
 
+
+
+
+
 import com.appwalied.quran.quran.qouran_learning.models.ReciterResponse;
 import com.appwalied.quran.quran.qouran_learning.models.SoraDetailsResponse;
 
@@ -9,7 +13,7 @@ import retrofit2.http.Path;
 
 public interface Api {
 
-    @GET("v1/edition?language=ar&format=audio")
+    @GET("v1/edition?language=ar")
     Call<ReciterResponse> getListOfReciter();
 
     @GET("v1/surah/{soraId}}/{identifier}")

@@ -155,6 +155,9 @@ public class MainActivity extends BaseActivity
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class));
         });
+        binding.main.contentMain.quranLearning.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, QouranLearningActivity.class));
+        });
     }
 
     private void cheakNotificationPermission() {

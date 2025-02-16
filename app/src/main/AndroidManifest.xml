@@ -47,6 +47,8 @@
         <activity android:name=".About" android:configChanges="orientation" android:screenOrientation="portrait" />
 
         <!-- Quran & Islamic Features -->
+        <activity android:name=".quran.qouran_learning.QouranLearningActivity" android:exported="false" />
+        <activity android:name=".quran.qouran_learning.LearningActivity" android:exported="false" />
         <activity android:name=".quranread.newquran.QuranRead" android:exported="false" />
         <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="true">
             <intent-filter>

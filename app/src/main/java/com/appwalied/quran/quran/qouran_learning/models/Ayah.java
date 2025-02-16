@@ -7,11 +7,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 @Keep
-public class Ayah implements Serializable
-{
+public class Ayah implements Serializable {
 
+    private static final long serialVersionUID = 4563856514646903511L;
     @SerializedName("number")
     @Expose
     private Integer number;
@@ -20,7 +21,7 @@ public class Ayah implements Serializable
     private String audio;
     @SerializedName("audioSecondary")
     @Expose
-    private List<String> audioSecondary = null;
+    private List<String> audioSecondary;
     @SerializedName("text")
     @Expose
     private String text;
@@ -44,12 +45,15 @@ public class Ayah implements Serializable
     private Integer hizbQuarter;
     @SerializedName("sajda")
     @Expose
-    private Boolean sajda;
-    private final static long serialVersionUID = 4563856514646903511L;
+    private Object sajda; // قد يكون Boolean أو Object (Map)
+    private Boolean sajdaBoolean;
+    private SajdaDetails sajdaObject;
 
     public Ayah() {
+        // Constructor فارغ
     }
 
+    // 🟢 Getter & Setter Methods
     public Integer getNumber() {
         return number;
     }
@@ -130,12 +134,36 @@ public class Ayah implements Serializable
         this.hizbQuarter = hizbQuarter;
     }
 
-    public Boolean getSajda() {
+    public Object getSajda() {
         return sajda;
     }
 
-    public void setSajda(Boolean sajda) {
+    public void setSajda(Object sajda) {
         this.sajda = sajda;
+
+        if (sajda instanceof Boolean) {
+            this.sajdaBoolean = (Boolean) sajda;
+            this.sajdaObject = null; // تأكد من عدم وجود قيمة قديمة
+        } else if (sajda instanceof Map) {
+            try {
+                @SuppressWarnings("unchecked") // لتجنب التحذير
+                Map<String, Object> sajdaMap = (Map<String, Object>) sajda;
+                this.sajdaObject = new SajdaDetails(sajdaMap);
+                this.sajdaBoolean = null; // تأكد من عدم وجود قيمة قديمة
+            } catch (ClassCastException e) {
+                this.sajdaObject = null; // في حالة خطأ التحويل
+            }
+        } else {
+            this.sajdaBoolean = null;
+            this.sajdaObject = null;
+        }
     }
 
+    public Boolean isSajdaBoolean() {
+        return sajdaBoolean;
+    }
+
+    public SajdaDetails getSajdaObject() {
+        return sajdaObject;
+    }
 }

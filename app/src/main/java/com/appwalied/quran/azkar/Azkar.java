@@ -11,8 +11,8 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.features.SharedHelper;
-import com.appwalied.quran.features.views.CustomDialogClass;
+import com.appwalied.quran.utils.shared_helper.SharedHelper;
+import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 import com.appwalied.quran.listing.Constants;
 
 import guy4444.smartrate.SmartRate;

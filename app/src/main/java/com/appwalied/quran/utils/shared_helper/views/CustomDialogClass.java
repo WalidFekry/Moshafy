@@ -1,4 +1,4 @@
-package com.appwalied.quran.features.views;
+package com.appwalied.quran.utils.shared_helper.views;
 
 import android.app.Activity;
 import android.app.Dialog;

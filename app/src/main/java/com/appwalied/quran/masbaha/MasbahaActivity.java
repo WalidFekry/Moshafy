@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.appwalied.quran.listing.Constants;
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
-import com.appwalied.quran.features.SharedHelper;
-import com.appwalied.quran.features.views.CustomDialogClass;
+import com.appwalied.quran.utils.shared_helper.SharedHelper;
+import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MasbahaActivity extends BaseActivity {

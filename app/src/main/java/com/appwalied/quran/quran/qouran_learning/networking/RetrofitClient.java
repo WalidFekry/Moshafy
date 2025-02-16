@@ -1,7 +1,5 @@
 package com.appwalied.quran.quran.qouran_learning.networking;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,12 +12,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-
     public static final String BASE_URL = "https://api.alquran.cloud/";
     public static Dispatcher dispatcher = new Dispatcher();
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
-    public static  Context context;
 
     private RetrofitClient() {
         Gson gson = new GsonBuilder()
@@ -47,17 +43,8 @@ public class RetrofitClient {
         return mInstance;
     }
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public static Dispatcher getDispatcher() {
-        return dispatcher;
-    }
-
     public Api getApi() {
         return retrofit.create(Api.class);
     }
-
 
 }
