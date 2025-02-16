@@ -13,6 +13,8 @@ import com.appwalied.quran.R;
 
 import static android.view.View.GONE;
 
+import java.util.Objects;
+
 public class CustomDialogClass extends Dialog {
 
     public Activity c;
@@ -36,23 +38,23 @@ public class CustomDialogClass extends Dialog {
         message = findViewById(R.id.message_custom_dialog);
         yes.setOnClickListener(view -> dismiss());
         initDialog();
-        this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        Objects.requireNonNull(this.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
         getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     }
 
     private void initDialog() {
 
-        if (options.message.equals("")) {
+        if (options.message.isEmpty()) {
             message.setVisibility(GONE);
         }
 
-        if (!options.title.equals("")) {
+        if (!options.title.isEmpty()) {
             title.setText(options.title);
         } else {
             title.setVisibility(GONE);
         }
 
-        if (!options.message.equals("")) {
+        if (!options.message.isEmpty()) {
             message.setText(options.message);
         } else {
             message.setVisibility(GONE);
@@ -61,13 +63,8 @@ public class CustomDialogClass extends Dialog {
     }
 
     public static class Options {
-        public String yesString = "";
-        public String noString = "";
         public String title = "";
         public String message = "";
-
-        @DrawableRes
-        public int imageID = 0;
     }
 
 }

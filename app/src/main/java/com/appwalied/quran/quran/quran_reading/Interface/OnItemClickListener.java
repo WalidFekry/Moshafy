@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.Interface;
+package com.appwalied.quran.quran.quran_reading.Interface;
 
 import android.view.View;
 

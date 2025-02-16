@@ -1,12 +1,12 @@
-package com.appwalied.quran.quranread.newquran.db;
+package com.appwalied.quran.quran.quran_reading.db;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-import com.appwalied.quran.quranread.newquran.model.Ayat;
-import com.appwalied.quran.quranread.newquran.model.Surah;
+import com.appwalied.quran.quran.quran_reading.model.Ayat;
+import com.appwalied.quran.quran.quran_reading.model.Surah;
 
 import java.util.ArrayList;
 

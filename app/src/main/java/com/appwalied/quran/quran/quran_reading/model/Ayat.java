@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.model;
+package com.appwalied.quran.quran.quran_reading.model;
 
 public class Ayat {
 

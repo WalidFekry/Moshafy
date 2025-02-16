@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.appwalied.quran.listing.Constants;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
@@ -35,8 +35,8 @@ public class MasbahaActivity extends BaseActivity {
 
 
 
-        if (!SharedHelper.getBoolean(this, Constants.MASBAHA_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, Constants.MASBAHA_FIRST_TIME, true);
+        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.MASBAHA_FIRST_TIME)) {
+            SharedHelper.putBoolean(this, SharedPrefsConstants.MASBAHA_FIRST_TIME, true);
             CustomDialogClass.Options options = new CustomDialogClass.Options();
             options.title = "ملاحظة هامة ";
             options.message = "يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت :)";

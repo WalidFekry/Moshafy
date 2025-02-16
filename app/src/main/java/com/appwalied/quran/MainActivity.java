@@ -15,8 +15,6 @@ import android.provider.Settings;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +37,7 @@ import com.appwalied.quran.monw3at.Diffrentis;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
 import com.appwalied.quran.quranread.Quran_list;
-import com.appwalied.quran.quranread.newquran.QuranRead;
+import com.appwalied.quran.quran.quran_reading.QuranRead;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
@@ -157,6 +155,9 @@ public class MainActivity extends BaseActivity
         });
         binding.main.contentMain.quranLearning.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, QouranLearningActivity.class));
+        });
+        binding.main.contentMain.quranReading.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, QuranRead.class));
         });
     }
 
@@ -378,11 +379,6 @@ public class MainActivity extends BaseActivity
             Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل المصحف المعلم 🌸", Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    public void quranphotos(View view) {
-        Intent quranphotosnew = new Intent(this, QuranRead.class);
-        startActivity(quranphotosnew);
     }
 
     private boolean isNetworkConnected() {

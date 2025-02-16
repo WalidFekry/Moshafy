@@ -1,26 +1,24 @@
-package com.appwalied.quran.quranread.newquran.fragment;
+package com.appwalied.quran.quran.quran_reading.fragment;
 
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.appwalied.quran.R;
-import com.appwalied.quran.quranread.newquran.QuranRead;
-import com.appwalied.quran.quranread.newquran.adapter.AyatAdapter;
-import com.appwalied.quran.quranread.newquran.db.GetAllSurahList;
-import com.appwalied.quran.quranread.newquran.model.Ayat;
+import com.appwalied.quran.quran.quran_reading.adapter.LastReadAdapter;
+import com.appwalied.quran.quran.quran_reading.db.GetAllSurahList;
+import com.appwalied.quran.quran.quran_reading.model.Ayat;
+import com.appwalied.quran.quran.quran_reading.utilities.LinearLayoutManagerWithSmoothScroller;
 
 import java.util.ArrayList;
 
@@ -29,23 +27,20 @@ import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScrol
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AyatFragment extends Fragment {
-
-    AyatAdapter ayatAdapter;
+public class LastReadFragment extends Fragment {
+    LastReadAdapter ayatAdapter;
     String sura_name;
-    int position = 0;
-    AppCompatImageButton back;
-    AppCompatTextView text;
     private RecyclerView ayatRecyclerView;
     private ArrayList<Ayat> ayatArrayList;
+    int position = 0;
 
-    public AyatFragment() {
+    public LastReadFragment() {
         // Required empty public constructor
     }
 
     public static Fragment newInstance() {
-        AyatFragment ayatFragment = new AyatFragment();
-        return ayatFragment;
+        LastReadFragment lastReadFragment = new LastReadFragment();
+        return lastReadFragment;
     }
 
     @Override
@@ -54,31 +49,31 @@ public class AyatFragment extends Fragment {
 
         Bundle bundle = getArguments();
         int sura_id = bundle.getInt("sura_id");
+       // position = bundle.getInt("pos");
         sura_name = bundle.getString("sura_name");
         ayatArrayList = new ArrayList<>();
         GetAllSurahList getAllSurahList = new GetAllSurahList(getContext());
         ayatArrayList = getAllSurahList.GetAyatBySurah(sura_id);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ayat, container, false);
-        back = view.findViewById(R.id.back_button);
-        text = view.findViewById(R.id.toolbar_title);
-        text.setText("سورة "+sura_name);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), QuranRead.class);
-                startActivity(i);
-            }
-        });
+        View view = inflater.inflate(R.layout.fragment_last_read, container, false);
 
 
-        ayatRecyclerView = view.findViewById(R.id.recycler_ayat);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("LASTREADAYAT", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("AYAT_ID"))
+        {
+            position = Integer.parseInt(sharedPreferences.getString("AYAT_ID",null));
+        }
+
+
+
+
+        ayatRecyclerView = view.findViewById(R.id.lastReadrecycler_ayat);
         //for fast scroll
         VerticalRecyclerViewFastScroller fastScroller = view.findViewById(R.id.fast_scroller);
 
@@ -87,15 +82,18 @@ public class AyatFragment extends Fragment {
 
         //  let the recycler scroll the scroller's handle
         ayatRecyclerView.setOnScrollListener(fastScroller.getOnScrollListener());
-        ayatAdapter = new AyatAdapter(getContext(), ayatArrayList);
+        ayatAdapter = new LastReadAdapter(getContext(), ayatArrayList);
         ayatRecyclerView.setHasFixedSize(true);
-        ayatRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        ayatRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(getContext()));
         ayatRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         ayatRecyclerView.setAdapter(ayatAdapter);
 
+        if (position == 0) {
+            ayatRecyclerView.smoothScrollToPosition(position);
+        }else {
+            ayatRecyclerView.smoothScrollToPosition(position);
+        }
         return view;
     }
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.adapter;
+package com.appwalied.quran.quran.quran_reading.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,9 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.quranread.newquran.Interface.OnItemClickListener;
-import com.appwalied.quran.quranread.newquran.model.Ayat;
-import com.appwalied.quran.quranread.newquran.utilities.Utils;
+import com.appwalied.quran.quran.quran_reading.Interface.OnItemClickListener;
+import com.appwalied.quran.quran.quran_reading.model.Ayat;
+import com.appwalied.quran.quran.quran_reading.utilities.Utils;
 
 
 import java.util.ArrayList;

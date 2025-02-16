@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.db;
+package com.appwalied.quran.quran.quran_reading.db;
 
 import android.content.Context;
 

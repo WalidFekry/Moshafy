@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.adapter;
+package com.appwalied.quran.quran.quran_reading.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.quranread.newquran.Interface.OnItemClickListener;
-import com.appwalied.quran.quranread.newquran.fragment.AyatFragment;
-import com.appwalied.quran.quranread.newquran.model.Surah;
-import com.appwalied.quran.quranread.newquran.utilities.Utils;
+import com.appwalied.quran.quran.quran_reading.Interface.OnItemClickListener;
+import com.appwalied.quran.quran.quran_reading.fragment.AyatFragment;
+import com.appwalied.quran.quran.quran_reading.model.Surah;
+import com.appwalied.quran.quran.quran_reading.utilities.Utils;
 
 import java.util.ArrayList;
 

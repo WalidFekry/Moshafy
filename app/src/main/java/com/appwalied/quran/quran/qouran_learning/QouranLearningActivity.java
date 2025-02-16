@@ -19,7 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
-import com.appwalied.quran.listing.Constants;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.R;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
@@ -31,7 +31,6 @@ import com.appwalied.quran.quran.qouran_learning.models.SoraDetails;
 import com.appwalied.quran.quran.qouran_learning.models.SoraDetailsResponse;
 import com.appwalied.quran.quran.qouran_learning.networking.QuranUtils;
 import com.appwalied.quran.quran.qouran_learning.networking.RetrofitClient;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -65,11 +64,11 @@ public class QouranLearningActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qouran_learning);
 
-        if (!SharedHelper.getBoolean(this, Constants.QOURAN_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, Constants.QOURAN_FIRST_TIME, true);
+        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.QOURAN_FIRST_TIME)) {
+            SharedHelper.putBoolean(this, SharedPrefsConstants.QOURAN_FIRST_TIME, true);
             CustomDialogClass.Options options = new CustomDialogClass.Options();
-            options.title = "ملاحظة هامة ";
-            options.message = "يحتوي هذا القسم على المصحف المعلم يمكنك اختيار اسم القارئ ثم اسم السورة وابدأ الآن 💙";
+            options.title = "ملاحظة هامة";
+            options.message = "يحتوي هذا القسم على المصحف المعلم. يمكنك اختيار اسم القارئ ثم اسم السورة والبدء الآن 💙";
             CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
             customDialogClass.show();
         }

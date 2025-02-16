@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.utilities;
+package com.appwalied.quran.quran.quran_reading.utilities;
 
 import android.content.Context;
 import android.graphics.PointF;

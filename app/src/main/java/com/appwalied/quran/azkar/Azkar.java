@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.appwalied.quran.R;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
-import com.appwalied.quran.listing.Constants;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 
 import guy4444.smartrate.SmartRate;
 
@@ -21,8 +21,8 @@ public class Azkar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (!SharedHelper.getBoolean(this, Constants.AZKAR_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, Constants.AZKAR_FIRST_TIME, true);
+        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.AZKAR_FIRST_TIME)) {
+            SharedHelper.putBoolean(this, SharedPrefsConstants.AZKAR_FIRST_TIME, true);
             CustomDialogClass.Options options = new CustomDialogClass.Options();
             options.title = "ملاحظة هامة ";
             options.message = "يحتوي هذا القسم على أذكار المسلم كاملة بدون انترنت ^_^";

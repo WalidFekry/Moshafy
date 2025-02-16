@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.utilities;
+package com.appwalied.quran.quran.quran_reading.utilities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;

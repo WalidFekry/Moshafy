@@ -1,10 +1,8 @@
-package com.appwalied.quran.quranread.newquran;
+package com.appwalied.quran.quran.quran_reading;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.quranread.newquran.fragment.SurahFragment;
+import com.appwalied.quran.quran.quran_reading.fragment.SurahFragment;
 
 public class QuranRead extends AppCompatActivity {
 

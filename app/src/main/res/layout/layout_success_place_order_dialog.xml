@@ -58,6 +58,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="20sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/flat3"
                 android:textStyle="bold"
                 android:text="" />
@@ -73,7 +74,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/accent_stock_border"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="@color/colorPrimary"
         android:gravity="center"
         android:paddingStart="16dp"
         android:paddingTop="4dp"

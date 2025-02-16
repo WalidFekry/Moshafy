@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread.newquran.fragment;
+package com.appwalied.quran.quran.quran_reading.fragment;
 
 
 import android.content.Context;
@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.quranread.newquran.adapter.SuraListAdapter;
-import com.appwalied.quran.quranread.newquran.db.GetAllSurahList;
-import com.appwalied.quran.quranread.newquran.model.Surah;
+import com.appwalied.quran.quran.quran_reading.adapter.SuraListAdapter;
+import com.appwalied.quran.quran.quran_reading.db.GetAllSurahList;
+import com.appwalied.quran.quran.quran_reading.model.Surah;
 
 
 import java.util.ArrayList;
