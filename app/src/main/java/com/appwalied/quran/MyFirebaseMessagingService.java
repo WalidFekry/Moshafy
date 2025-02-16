@@ -16,11 +16,12 @@ import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import static com.appwalied.quran.utils.Constatns.RANDOM_KEY;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final int DAILY_NOTIFICATION_CODE = 1525;
+    public static final String RANDOM_KEY = "OpenName";
+
     private static final String channel_id = "Remote_notification_fire_base_new";
 
 
