@@ -405,6 +405,9 @@
     <string name="message_num">رسالتك رقم</string>
     <string name="message_time">تاريخ الرسالة</string>
     <string name="quran_read">القرآن الكريم (قراءة)</string>
+    <string name="try_again">اعادة المحاولة 🤔</string>
+    <string name="no_internet_connection">يبدو أن اتصالك بالإنترنت غير متوفر حاليًا 😥. من فضلك تأكد من تفعيل شبكة الواي فاي أو بيانات الهاتف، ثم أعد فتح التطبيق مرة أخرى للاستمتاع بكامل الميزات 🌸.</string>
+
 
 
     <!--Ads Test-->
@@ -415,5 +418,6 @@
     <string name="Banner1">0</string>
     <string name="Banner2">0</string>
     <string name="Banner3">0</string>
+
 
 </resources>

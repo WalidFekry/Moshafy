@@ -58,6 +58,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="1"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
                         android:textColor="@color/dark_gray"
                         android:fontFamily="@font/jazeera" />
                 </androidx.cardview.widget.CardView>
@@ -95,6 +97,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/dark_gray"
                         tools:text="12:00 AM"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
                         android:fontFamily="@font/jazeera" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

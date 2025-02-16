@@ -4,15 +4,19 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.Splash;
 import com.appwalied.quran.notifications_messages.adapter.NotificationAdapter;
 import com.appwalied.quran.notifications_messages.model.NotificationModel;
 import com.appwalied.quran.notifications_messages.model.NotificationResponse;
@@ -25,6 +29,8 @@ public class NotificationsMessagesActivity extends AppCompatActivity {
     private RecyclerView rec;
     private NotificationAdapter adapter;
     private Dialog loadingDialog;
+    private LinearLayout noInternetLayout;
+    private AppCompatButton retryButton;
 
     private final NotificationRepository repository = new NotificationRepository();
 
@@ -57,7 +63,13 @@ public class NotificationsMessagesActivity extends AppCompatActivity {
     private void initViews() {
         AppCompatImageButton back = findViewById(R.id.back_button);
         rec = findViewById(R.id.rec);
+        noInternetLayout = findViewById(R.id.no_internet_layout);
+        retryButton = findViewById(R.id.retry_button);
         back.setOnClickListener(v -> finish());
+        retryButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, Splash.class));
+            finish();
+        });
     }
 
     private void setupRecyclerView() {
@@ -81,15 +93,14 @@ public class NotificationsMessagesActivity extends AppCompatActivity {
             public void onFailure(String errorMessage) {
                 hideLoading();
                 Log.e(TAG, "Error: " + errorMessage);
-                openNoInternet();
+                showNoInternet();
             }
         });
     }
 
-    private void openNoInternet() {
-//        Intent i = new Intent(this, NoInternetActivity.class);
-//        startActivity(i);
-//        finish();
+    private void showNoInternet() {
+       rec.setVisibility(View.GONE);
+       noInternetLayout.setVisibility(View.VISIBLE);
     }
 
     private void updateRecyclerView(List<NotificationModel> notifications) {

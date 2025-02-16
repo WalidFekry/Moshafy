@@ -51,7 +51,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 notification.getCreatedAt().split(" ")[0] : "2025-02-14");
 
         setClickListener(holder.shareButton, v -> shareNotification(itemContext, notification));
-        setClickListener(holder.starButton, v -> openLink(itemContext, "https://t.co/XerG0QVIvi"));
+        setClickListener(holder.starButton, v -> openLink(itemContext, "https://t.co/fkNQTMLNxn"));
         setClickListener(holder.whatsappButton, v -> shareOnWhatsApp(itemContext, notification.getTitle()));
         setClickListener(holder.copyButton, v -> copyToClipboard(itemContext, notification.getTitle()));
         setClickListener(holder.facebookButton, v -> shareOnFacebook(itemContext, notification.getTitle()));
@@ -65,7 +65,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.setPackage("com.facebook.katana");
-        intent.putExtra(Intent.EXTRA_TEXT, text + "\n" + "تم نسخ هذا النص من تطبيق المُحفظ ^_^");
+        intent.putExtra(Intent.EXTRA_TEXT, text + "\n" + "تم نسخ هذا النص من تطبيق مُصحفي ^_^");
         try {
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
@@ -77,10 +77,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private void shareNotification(Context context, NotificationModel notification) {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.setType("text/plain");
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "تطبيق (المُحفظ)");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "تطبيق (مُصحفي)");
         sendIntent.putExtra(Intent.EXTRA_TEXT, notification.getTitle() + "\n" +
-                "تم النسخ من تطبيق المٌحقظ 💙 👇 https://t.co/XerG0QVIvi \n");
-        context.startActivity(Intent.createChooser(sendIntent, "مشاركة نصوص من تطبيق المُحفظ:"));
+                "تم النسخ من تطبيق المٌحقظ 💙 👇 https://t.co/fkNQTMLNxn \n");
+        context.startActivity(Intent.createChooser(sendIntent, "مشاركة نصوص من تطبيق مُصحفي:"));
     }
 
     private void openLink(Context context, String url) {
@@ -92,7 +92,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         whatsappIntent.setType("text/plain");
         whatsappIntent.setPackage("com.whatsapp");
         whatsappIntent.putExtra(Intent.EXTRA_TEXT, text + "\n" +
-                "تم النسخ من تطبيق المٌحقظ 💙 👇 https://t.co/XerG0QVIvi \n");
+                "تم النسخ من تطبيق المٌحقظ 💙 👇 https://t.co/fkNQTMLNxn \n");
         try {
             context.startActivity(whatsappIntent);
         } catch (ActivityNotFoundException ex) {
@@ -102,7 +102,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     private void copyToClipboard(Context context, String text) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("", text + "\n" + "تم نسخ هذا النص من تطبيق المُحفظ ^_^");
+        ClipData clip = ClipData.newPlainText("", text + "\n" + "تم نسخ هذا النص من تطبيق مُصحفي ^_^");
         clipboard.setPrimaryClip(clip);
         Toast.makeText(context, "تم نسخ النص - قم بمشاركته الآن مع أصدقائك", Toast.LENGTH_LONG).show();
     }
