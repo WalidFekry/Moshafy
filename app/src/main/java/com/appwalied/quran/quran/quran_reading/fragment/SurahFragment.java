@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +21,6 @@ import com.appwalied.quran.R;
 import com.appwalied.quran.quran.quran_reading.adapter.SuraListAdapter;
 import com.appwalied.quran.quran.quran_reading.db.GetAllSurahList;
 import com.appwalied.quran.quran.quran_reading.model.Surah;
-
 
 import java.util.ArrayList;
 
@@ -33,6 +33,7 @@ public class SurahFragment extends Fragment {
     ArrayList<Surah> surahArrayList;
     SuraListAdapter adapter;
     LinearLayout lastview;
+    AppCompatImageButton back;
     int pos;
     int sura_id;
     String sura_name;
@@ -55,18 +56,17 @@ public class SurahFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_surah, container, false);
 
         sRecyclerView = view.findViewById(R.id.suraRecyclerView);
+        back = view.findViewById(R.id.back_button);
         lastview = view.findViewById(R.id.bookmark);
         adapter = new SuraListAdapter(surahArrayList, getActivity());
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("LASTREADAYAT", Context.MODE_PRIVATE);
 
-        if (sharedPreferences.contains("AYAT_ID") && sharedPreferences.contains("SURA_ID"))
-        {
+        if (sharedPreferences.contains("AYAT_ID") && sharedPreferences.contains("SURA_ID")) {
 
             pos = Integer.parseInt(sharedPreferences.getString("AYAT_ID", null));
             sura_id = Integer.parseInt(sharedPreferences.getString("SURA_ID", null));
@@ -75,22 +75,17 @@ public class SurahFragment extends Fragment {
 
         lastview.setVisibility(View.VISIBLE);
 
-        lastview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LastReadFragment lastReadFragment = new LastReadFragment();
-                Bundle bundle = new Bundle();
-                bundle.putInt("sura_id", sura_id);
-                bundle.putInt("position", pos);
-                bundle.putString("sura_name", sura_name);
-                lastReadFragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_fragment,lastReadFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
+        lastview.setOnClickListener(v -> {
+            LastReadFragment lastReadFragment = new LastReadFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("sura_id", sura_id);
+            bundle.putInt("position", pos);
+            bundle.putString("sura_name", sura_name);
+            lastReadFragment.setArguments(bundle);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, lastReadFragment).addToBackStack(null).commit();
         });
+
+        back.setOnClickListener(v -> requireActivity().finish());
 
         return view;
     }

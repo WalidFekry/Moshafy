@@ -54,18 +54,14 @@ public class SuraListAdapter extends RecyclerView.Adapter<SuraListAdapter.SurahV
         }
 
 
-        holder.SetOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                AyatFragment ayatFragment = new AyatFragment();
-                Bundle bundle = new Bundle();
-                bundle.putInt("sura_id", surah.getId());
-                bundle.putString("sura_name", surah.getName());
-                ayatFragment.setArguments(bundle);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, ayatFragment).addToBackStack(null).commit();
-
-            }
+        holder.SetOnItemClickListener(v -> {
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            AyatFragment ayatFragment = new AyatFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("sura_id", surah.getId());
+            bundle.putString("sura_name", surah.getName());
+            ayatFragment.setArguments(bundle);
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, ayatFragment).addToBackStack(null).commit();
         });
     }
 

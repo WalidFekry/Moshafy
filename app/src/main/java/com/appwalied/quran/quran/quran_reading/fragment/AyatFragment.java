@@ -32,7 +32,6 @@ public class AyatFragment extends Fragment {
 
     AyatAdapter ayatAdapter;
     String sura_name;
-    int position = 0;
     AppCompatImageButton back;
     AppCompatTextView text;
     private RecyclerView ayatRecyclerView;
@@ -68,13 +67,7 @@ public class AyatFragment extends Fragment {
         text = view.findViewById(R.id.toolbar_title);
         text.setText("سورة "+sura_name);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), QuranRead.class);
-                startActivity(i);
-            }
-        });
+        back.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
 
 
         ayatRecyclerView = view.findViewById(R.id.recycler_ayat);

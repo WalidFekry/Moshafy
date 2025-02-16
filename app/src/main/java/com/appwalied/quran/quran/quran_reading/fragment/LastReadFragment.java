@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.quran.quran_reading.adapter.LastReadAdapter;
@@ -30,17 +30,13 @@ import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScrol
 public class LastReadFragment extends Fragment {
     LastReadAdapter ayatAdapter;
     String sura_name;
+    AppCompatImageButton back;
+    int position = 0;
     private RecyclerView ayatRecyclerView;
     private ArrayList<Ayat> ayatArrayList;
-    int position = 0;
 
     public LastReadFragment() {
         // Required empty public constructor
-    }
-
-    public static Fragment newInstance() {
-        LastReadFragment lastReadFragment = new LastReadFragment();
-        return lastReadFragment;
     }
 
     @Override
@@ -49,7 +45,7 @@ public class LastReadFragment extends Fragment {
 
         Bundle bundle = getArguments();
         int sura_id = bundle.getInt("sura_id");
-       // position = bundle.getInt("pos");
+        // position = bundle.getInt("pos");
         sura_name = bundle.getString("sura_name");
         ayatArrayList = new ArrayList<>();
         GetAllSurahList getAllSurahList = new GetAllSurahList(getContext());
@@ -58,20 +54,19 @@ public class LastReadFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_last_read, container, false);
 
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("LASTREADAYAT", Context.MODE_PRIVATE);
-        if (sharedPreferences.contains("AYAT_ID"))
-        {
-            position = Integer.parseInt(sharedPreferences.getString("AYAT_ID",null));
+        if (sharedPreferences.contains("AYAT_ID")) {
+            position = Integer.parseInt(sharedPreferences.getString("AYAT_ID", null));
         }
 
 
-
+        back = view.findViewById(R.id.back_button);
+        back.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
 
         ayatRecyclerView = view.findViewById(R.id.lastReadrecycler_ayat);
         //for fast scroll
@@ -90,7 +85,7 @@ public class LastReadFragment extends Fragment {
 
         if (position == 0) {
             ayatRecyclerView.smoothScrollToPosition(position);
-        }else {
+        } else {
             ayatRecyclerView.smoothScrollToPosition(position);
         }
         return view;
