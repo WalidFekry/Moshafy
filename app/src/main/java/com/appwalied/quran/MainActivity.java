@@ -36,6 +36,7 @@ import com.appwalied.quran.masbaha.MasbahaActivity;
 import com.appwalied.quran.monw3at.Diffrentis;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
+import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.quranread.Quran_list;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
 import com.appwalied.quran.sahaba.MainStory;

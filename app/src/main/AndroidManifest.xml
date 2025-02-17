@@ -50,6 +50,12 @@
         <activity android:name=".quran.qouran_learning.QouranLearningActivity" android:exported="false" />
         <activity android:name=".quran.qouran_learning.LearningActivity" android:exported="false" />
         <activity android:name=".quran.quran_reading.QuranRead" android:exported="false" />
+        <activity android:name=".quran.quran_listening.RecitesName" android:exported="false" />
+        <activity android:name=".quran.quran_listening.AyaList" android:exported="false" />
+        <activity android:name=".quran.quran_listening.QuranListeningActivity" android:exported="false" />
+
+
+
         <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="true">
             <intent-filter>
                 <action android:name="MainActivity" />

@@ -1,55 +1,67 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/whitebackground"
     android:layoutDirection="rtl"
-    tools:context=".listing.AyaList">
+    android:orientation="vertical"
+    tools:context=".quran.quran_listening.AyaList">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/around_line3"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layoutDirection="ltr">
 
-        <LinearLayout
-            android:background="@drawable/buttonred"
-            android:orientation="horizontal"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:id="@+id/LayoutLoading">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/around_line3"
+            app:layout_collapseMode="pin"
+            app:titleTextAppearance="@style/TitleToolBarApppearance"
+            app:popupTheme="@style/TextAppearance.AppCompat">
 
-            <TextView
-                android:paddingRight="5pt"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/downlaod"
-                android:id="@+id/textView3"
-                android:layout_weight="0"
-                android:paddingTop="15dp" />
+                android:gravity="end"
+                android:layout_gravity="end">
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:id="@+id/progressBar"
-                android:layout_weight="1"
-                android:max="100" />
 
-        </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اختر السورة .."
+                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
+                    android:gravity="end"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_back_button" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
         <ListView
             android:background="@color/whitebackground"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/listView"
             android:horizontalSpacing="15dp"
-
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1" />
+            />
 
     </LinearLayout>
 
 
-</RelativeLayout>

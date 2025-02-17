@@ -1,79 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
-    android:layoutDirection="rtl"
     android:layout_height="wrap_content"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:paddingTop="2dp"
-    android:paddingBottom="5dp"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="rtl"
+    android:padding="5dp">
+
     <LinearLayout
-
-        android:paddingBottom="2pt"
-        android:paddingTop="2pt"
-        android:background="@drawable/menuback"
-        android:orientation="horizontal"
+        android:id="@+id/container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <ImageView
-        android:src="@drawable/btn_play"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_weight="0" />
-
-    <TextView
-        android:paddingTop="5pt"
-        android:gravity="right"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView1"
-        android:layout_toLeftOf="@+id/imageView"
-        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@drawable/menuback"
+        android:paddingVertical="2dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical">
 
-        android:textColor="@color/black"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_toRightOf="@+id/button"
-        android:layout_toEndOf="@+id/button"
-        android:layout_weight="1"
-        android:paddingRight="2dp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/btn_play"
+            android:layout_marginEnd="8dp" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0">
-
-            <Button
-                android:layout_width="110dp"
-                android:layout_height="35dp"
-                android:text="@string/downlaod"
-                android:background="@drawable/buttonblue"
-                android:id="@+id/button"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="سبحان الله"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:paddingEnd="8dp" />
 
             <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView2"
-            android:textAlignment="center"
-            android:textSize="9dp"
-            android:textColor="@color/black"
-            android:layout_below="@+id/button"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/textView1"
-            android:layout_toStartOf="@+id/textView1" />
-        </LinearLayout>
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:textSize="9sp"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:paddingTop="4dp" />
+
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

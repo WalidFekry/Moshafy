@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
     android:background="@drawable/menuback"
-    tools:context=".managerdb">
+    tools:context=".quran.quran_listening.QuranListeningActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,39 +16,32 @@
             android:layout_width="fill_parent"
             android:layout_height="60dip"
             android:background="@drawable/bg_player_header"
-            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:layout_weight="0">
+            android:paddingRight="5dp">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_gravity="center"
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_back_button" />
 
             <!-- Song Title -->
             <TextView
                 android:id="@+id/songTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:textColor="#2b99a8"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:paddingLeft="10dp"
                 android:textStyle="italic"
                 android:text="بدون عنوان"
                 android:layout_marginTop="10dp"/>
 
-
         </LinearLayout>
 
-        <LinearLayout
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:id="@+id/layoutads"
-            android:visibility="gone">
 
-
-
-        </LinearLayout>
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewmag"
