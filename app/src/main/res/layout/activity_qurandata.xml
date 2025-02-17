@@ -3,2192 +3,2356 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Qurandata">
+    android:orientation="vertical"
+    tools:context=".quran.quran_reading_v2.Qurandata">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/around_line3"
+        android:fitsSystemWindows="true"
+        android:layoutDirection="ltr"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/around_line3"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/TextAppearance.AppCompat"
+            app:titleTextAppearance="@style/TitleToolBarApppearance">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="end"
+                    android:text="اختر السورة .." />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_back_button" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
+
+        android:orientation="vertical"
         tools:ignore="MissingConstraints">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_margin="10dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
+
                     <Button
                         android:id="@+id/a1"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
-                        android:textStyle="bold"
-                        android:textColor="#01446D"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
                         android:text="1-سُوۡرَةُ الفَاتِحَة"
+                        android:textColor="#01446D"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
 
                         />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a2"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
-                        android:drawableEnd="@drawable/f12"
-                        android:drawableStart="@drawable/f13"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
+                        android:background="@drawable/bu_000des"
+                        android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="2-سُوۡرَةُ البَقَرَة"
                         android:textColor="#02314D"
-                        android:text="2-سُوۡرَةُ البَقَرَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a3"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="3-سُوۡرَةُ آل عِمرَان"
                         android:textAllCaps="true"
                         android:textColor="#02314D"
-                        android:text="3-سُوۡرَةُ آل عِمرَان" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a4"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="4-سُوۡرَةُ النِّسَاء"
                         android:textColor="#02314D"
-                        android:text="4-سُوۡرَةُ النِّسَاء" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a5"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
-                        android:drawableStart="@drawable/f13"
-                        android:textColor="#02314D"
                         android:layout_weight="1"
-                        android:text="5-سُوۡرَةُ المَائدة" />
+                        android:background="@drawable/bu_000des"
+                        android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="5-سُوۡرَةُ المَائدة"
+                        android:textColor="#02314D"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a6"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="6-سُوۡرَةُ الاٴنعَام"
                         android:textColor="#02314D"
-                        android:text="6-سُوۡرَةُ الاٴنعَام" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a7"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="7-سُوۡرَةُ الاٴعرَاف"
                         android:textColor="#02314D"
-                        android:text="7-سُوۡرَةُ الاٴعرَاف" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a8"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="8-سُوۡرَةُ الاٴنفَال"
                         android:textColor="#02314D"
-                        android:text="8-سُوۡرَةُ الاٴنفَال" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a9"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="9-سُوۡرَةُ التّوبَة "
                         android:textColor="#02314D"
-                        android:text="9-سُوۡرَةُ التّوبَة " />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a10"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="10-سُوۡرَةُ یُونس"
                         android:textColor="#02314D"
-                        android:text="10-سُوۡرَةُ یُونس" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a11"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
-                        android:textColor="#02314D"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
                         android:text="11-سُوۡرَةُ هُود"
-                        android:layout_height="60dp" />
+                        android:textColor="#02314D"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a12"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="12-سُوۡرَةُ یُوسُف"
                         android:textColor="#02314D"
-                        android:text="12-سُوۡرَةُ یُوسُف" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a13"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="13-سُوۡرَةُ الرّعد"
                         android:textColor="#02314D"
-                        android:text="13-سُوۡرَةُ الرّعد" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a14"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="14-سُوۡرَةُ إبراهیم"
                         android:textColor="#02314D"
-                        android:text="14-سُوۡرَةُ إبراهیم" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a15"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
-                        android:textSize="19sp"
-                        android:layout_weight="1"
                         android:layout_height="60dp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:layout_weight="1"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="15-سُوۡرَةُ الحِجر"
                         android:textColor="#02314D"
-                        android:text="15-سُوۡرَةُ الحِجر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a16"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="16-سُوۡرَةُ النّحل"
                         android:textColor="#02314D"
-                        android:text="16-سُوۡرَةُ النّحل" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a17"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="17-سُوۡرَةُ  الإسرَاء"
                         android:textColor="#02314D"
-                        android:text="17-سُوۡرَةُ  الإسرَاء" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a18"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/f12"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/f13"
+                        android:drawableEnd="@drawable/f12"
+                        android:onClick="ooo10o"
+                        android:text="18-سُوۡرَةُ الکهف"
                         android:textColor="#02314D"
-                        android:text="18-سُوۡرَةُ الکهف" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a19"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="19sp"
                         android:layout_height="60dp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:layout_weight="1"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="19-سُوۡرَةُ مَریَم"
                         android:textColor="#02314D"
-                        android:text="19-سُوۡرَةُ مَریَم" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a20"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="20-سُوۡرَةُ طٰه"
                         android:textColor="#02314D"
-                        android:text="20-سُوۡرَةُ طٰه" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a21"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="21-سُوۡرَةُ الاٴنبیَاء"
                         android:textColor="#02314D"
-                        android:text="21-سُوۡرَةُ الاٴنبیَاء" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a22"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="22-سُوۡرَةُ الحَجّ"
                         android:textColor="#02314D"
-                        android:text="22-سُوۡرَةُ الحَجّ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a23"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="23-سُوۡرَةُ المؤمنون"
                         android:textColor="#02314D"
-                        android:text="23-سُوۡرَةُ المؤمنون" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a24"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="24-سُوۡرَةُ النُّور"
                         android:textColor="#02314D"
-                        android:text="24-سُوۡرَةُ النُّور" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a25"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="25-سُوۡرَةُ الفُرقان"
                         android:textColor="#02314D"
-                        android:text="25-سُوۡرَةُ الفُرقان" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a26"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="26-سُوۡرَةُ الشُّعَرَاء"
                         android:textColor="#02314D"
-                        android:text="26-سُوۡرَةُ الشُّعَرَاء" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a27"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="27-سُوۡرَةُ النَّمل"
                         android:textColor="#02314D"
-                        android:text="27-سُوۡرَةُ النَّمل" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a28"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="28-سُوۡرَةُ القَصَص"
                         android:textColor="#02314D"
-                        android:text="28-سُوۡرَةُ القَصَص" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a29"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="29-سُوۡرَةُ العَنکبوت"
                         android:textColor="#02314D"
-                        android:text="29-سُوۡرَةُ العَنکبوت" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a30"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="30-سُوۡرَةُ الرُّوم"
                         android:textColor="#02314D"
-                        android:text="30-سُوۡرَةُ الرُّوم" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a31"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="31-سُوۡرَةُ لقمَان"
                         android:textColor="#02314D"
-                        android:text="31-سُوۡرَةُ لقمَان" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a32"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="32-سُوۡرَةُ السَّجدَة"
                         android:textColor="#02314D"
-                        android:text="32-سُوۡرَةُ السَّجدَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a33"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="33-سُوۡرَةُ الاٴحزَاب"
                         android:textColor="#02314D"
-                        android:text="33-سُوۡرَةُ الاٴحزَاب" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a34"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="34-سُوۡرَةُ سَبَإ"
                         android:textColor="#02314D"
-                        android:text="34-سُوۡرَةُ سَبَإ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a35"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="35-سُوۡرَةُ فَاطِر"
                         android:textColor="#02314D"
-                        android:text="35-سُوۡرَةُ فَاطِر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a36"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="36-سُوۡرَةُ یسٓ"
                         android:textColor="#02314D"
-                        android:text="36-سُوۡرَةُ یسٓ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a37"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="37-سُوۡرَةُ الصَّافات"
                         android:textColor="#02314D"
-                        android:text="37-سُوۡرَةُ الصَّافات" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a38"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="38-سُوۡرَةُ صٓ"
                         android:textColor="#02314D"
-                        android:text="38-سُوۡرَةُ صٓ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a39"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="39-سُوۡرَةُ الزُّمَر"
                         android:textColor="#02314D"
-                        android:text="39-سُوۡرَةُ الزُّمَر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a40"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="40-سُوۡرَةُ غَافر"
                         android:textColor="#02314D"
-                        android:text="40-سُوۡرَةُ غَافر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a41"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="41-سُوۡرَةُ  فُصّلَت"
                         android:textColor="#02314D"
-                        android:text="41-سُوۡرَةُ  فُصّلَت" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a42"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="42-سُوۡرَةُ الشّوریٰ"
                         android:textColor="#02314D"
-                        android:text="42-سُوۡرَةُ الشّوریٰ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a43"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="43-سُوۡرَةُ الزّخرُف"
                         android:textColor="#02314D"
-                        android:text="43-سُوۡرَةُ الزّخرُف" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a44"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="44-سُوۡرَةُ الدّخان"
                         android:textColor="#02314D"
-                        android:text="44-سُوۡرَةُ الدّخان" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a45"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="45-سُوۡرَةُ الجَاثیَة"
                         android:textColor="#02314D"
-                        android:text="45-سُوۡرَةُ الجَاثیَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a46"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="46-سُوۡرَةُ الاٴحقاف"
                         android:textColor="#02314D"
-                        android:text="46-سُوۡرَةُ الاٴحقاف" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a47"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="47-سُوۡرَةُ محَمَّد"
                         android:textColor="#02314D"
-                        android:text="47-سُوۡرَةُ محَمَّد" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a48"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="48-سُوۡرَةُ الفَتْح"
                         android:textColor="#02314D"
-                        android:text="48-سُوۡرَةُ الفَتْح" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a49"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="49-سُوۡرَةُ الحُجرَات"
                         android:textColor="#02314D"
-                        android:text="49-سُوۡرَةُ الحُجرَات" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a50"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="50-سُوۡرَةُ قٓ"
                         android:textColor="#02314D"
-                        android:text="50-سُوۡرَةُ قٓ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a51"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="51-سُوۡرَةُ الذّاریَات"
                         android:textColor="#02314D"
-                        android:text="51-سُوۡرَةُ الذّاریَات" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a52"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="52-سُوۡرَةُ الطُّور"
                         android:textColor="#02314D"
-                        android:text="52-سُوۡرَةُ الطُّور" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a53"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="53-سُوۡرَةُ النّجْم"
                         android:textColor="#02314D"
-                        android:text="53-سُوۡرَةُ النّجْم" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a54"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="54-سُوۡرَةُ القَمَر"
                         android:textColor="#02314D"
-                        android:text="54-سُوۡرَةُ القَمَر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a55"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="55-سُوۡرَةُ الرَّحمٰن"
                         android:textColor="#02314D"
-                        android:text="55-سُوۡرَةُ الرَّحمٰن" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a56"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="56-سُوۡرَةُ الواقِعَة"
                         android:textColor="#02314D"
-                        android:text="56-سُوۡرَةُ الواقِعَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a57"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="57-سُوۡرَةُ الحَدید"
                         android:textColor="#02314D"
-                        android:text="57-سُوۡرَةُ الحَدید" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a58"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="58-سُوۡرَةُ المجَادلة"
                         android:textColor="#02314D"
-                        android:text="58-سُوۡرَةُ المجَادلة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a59"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="59-سُوۡرَةُ الحَشر"
                         android:textColor="#02314D"
-                        android:text="59-سُوۡرَةُ الحَشر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a60"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="60-سُوۡرَةُ المُمتَحنَة"
                         android:textColor="#02314D"
-                        android:text="60-سُوۡرَةُ المُمتَحنَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a61"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="61-سُوۡرَةُ الصَّف"
                         android:textColor="#02314D"
-                        android:text="61-سُوۡرَةُ الصَّف" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a62"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="62-سُوۡرَةُ الجُمُعَة"
                         android:textColor="#02314D"
-                        android:text="62-سُوۡرَةُ الجُمُعَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a63"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="63-سُوۡرَةُ المنَافِقون"
                         android:textColor="#02314D"
-                        android:text="63-سُوۡرَةُ المنَافِقون" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a64"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="64-سُوۡرَةُ التّغَابُن"
                         android:textColor="#02314D"
-                        android:text="64-سُوۡرَةُ التّغَابُن" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a65"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="65-سُوۡرَةُ الطّلاَق"
                         android:textColor="#02314D"
-                        android:text="65-سُوۡرَةُ الطّلاَق" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a66"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="66-سُوۡرَةُ التّحْریم"
                         android:textColor="#02314D"
-                        android:text="66-سُوۡرَةُ التّحْریم" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a67"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="67-سُوۡرَةُ المُلک"
                         android:textColor="#02314D"
-                        android:text="67-سُوۡرَةُ المُلک" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a68"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="68-سُوۡرَةُ القَلَم"
                         android:textColor="#02314D"
-                        android:text="68-سُوۡرَةُ القَلَم" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a69"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="69-سُوۡرَةُ الحَاقَّة"
                         android:textColor="#02314D"
-                        android:text="69-سُوۡرَةُ الحَاقَّة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a70"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="70-سُوۡرَةُ المعَارج"
                         android:textColor="#02314D"
-                        android:text="70-سُوۡرَةُ المعَارج" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a71"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="71-سُوۡرَةُ نُوح"
                         android:textColor="#02314D"
-                        android:text="71-سُوۡرَةُ نُوح" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a72"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="72-سُوۡرَةُ الجنّ"
                         android:textColor="#02314D"
-                        android:text="72-سُوۡرَةُ الجنّ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a73"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="73-سُوۡرَةُ المُزمّل"
                         android:textColor="#02314D"
-                        android:text="73-سُوۡرَةُ المُزمّل" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a74"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="74-سُوۡرَةُ المدَّثِّر"
                         android:textColor="#02314D"
-                        android:text="74-سُوۡرَةُ المدَّثِّر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a75"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="75-سُوۡرَةُ القِیَامَة"
                         android:textColor="#02314D"
-                        android:text="75-سُوۡرَةُ القِیَامَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a76"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="76-سُوۡرَةُ الإنسَان"
                         android:textColor="#02314D"
-                        android:text="76-سُوۡرَةُ الإنسَان" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a77"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="77-سُوۡرَةُ المُرسَلات"
                         android:textColor="#02314D"
-                        android:text="77-سُوۡرَةُ المُرسَلات" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a78"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="78-سُوۡرَةُ النّبَإِ"
                         android:textColor="#02314D"
-                        android:text="78-سُوۡرَةُ النّبَإِ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a79"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="79-سُوۡرَةُ النَّازعَات"
                         android:textColor="#02314D"
-                        android:text="79-سُوۡرَةُ النَّازعَات" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a80"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="80-سُوۡرَةُ عَبَسَ"
                         android:textColor="#02314D"
-                        android:text="80-سُوۡرَةُ عَبَسَ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a81"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="81-سُوۡرَةُ التّکویر"
                         android:textColor="#02314D"
-                        android:text="81-سُوۡرَةُ التّکویر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a82"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="82-سُوۡرَةُ الانفِطار"
                         android:textColor="#02314D"
-                        android:text="82-سُوۡرَةُ الانفِطار" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a83"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="83-سُوۡرَةُ المطفّفِین"
                         android:textColor="#02314D"
-                        android:text="83-سُوۡرَةُ المطفّفِین" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a84"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="84-سُوۡرَةُ الانشقاق"
                         android:textColor="#02314D"
-                        android:text="84-سُوۡرَةُ الانشقاق" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a85"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="85-سُوۡرَةُ البُرُوج"
                         android:textColor="#02314D"
-                        android:text="85-سُوۡرَةُ البُرُوج" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a86"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="86-سُوۡرَةُ الطّارق"
                         android:textColor="#02314D"
-                        android:text="86-سُوۡرَةُ الطّارق" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a87"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="87-سُوۡرَةُ الاٴعلی"
                         android:textColor="#02314D"
-                        android:text="87-سُوۡرَةُ الاٴعلی" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a88"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="88-سُوۡرَةُ الغَاشِیَة"
                         android:textColor="#02314D"
-                        android:text="88-سُوۡرَةُ الغَاشِیَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a89"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="89-سُوۡرَةُ الفَجر"
                         android:textColor="#02314D"
-                        android:text="89-سُوۡرَةُ الفَجر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a90"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="90-سُوۡرَةُ البَلَد"
                         android:textColor="#02314D"
-                        android:text="90-سُوۡرَةُ البَلَد" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a91"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="91-سُوۡرَةُ الشّمس"
                         android:textColor="#02314D"
-                        android:text="91-سُوۡرَةُ الشّمس" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a92"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="92-سُوۡرَةُ اللیْل"
                         android:textColor="#02314D"
-                        android:text="92-سُوۡرَةُ اللیْل" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a93"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="93-سُوۡرَةُ الِضُّحىٰ"
                         android:textColor="#02314D"
-                        android:text="93-سُوۡرَةُ الِضُّحىٰ" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a94"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="94-سُوۡرَةُ الشَّرح"
                         android:textColor="#02314D"
-                        android:text="94-سُوۡرَةُ الشَّرح" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a95"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="95-سُوۡرَةُ التِّین"
                         android:textColor="#02314D"
-                        android:text="95-سُوۡرَةُ التِّین" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a96"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="96-سُوۡرَةُ العَلق"
                         android:textColor="#02314D"
-                        android:text="96-سُوۡرَةُ العَلق" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a97"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="97-سُوۡرَةُ القَدر"
                         android:textColor="#02314D"
-                        android:text="97-سُوۡرَةُ القَدر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a98"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="98-سُوۡرَةُ البَیّنَة"
                         android:textColor="#02314D"
-                        android:text="98-سُوۡرَةُ البَیّنَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a99"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="99-سُوۡرَةُ الزّلزَلة"
                         android:textColor="#02314D"
-                        android:text="99-سُوۡرَةُ الزّلزَلة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a100"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="100-سُوۡرَةُ العَادیَات"
                         android:textColor="#02314D"
-                        android:text="100-سُوۡرَةُ العَادیَات" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a101"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="101-سُوۡرَةُ القَارعَة"
                         android:textColor="#02314D"
-                        android:text="101-سُوۡرَةُ القَارعَة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a102"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="102-سُوۡرَةُ التّکاثُر"
                         android:textColor="#02314D"
-                        android:text="102-سُوۡرَةُ التّکاثُر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a103"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="103-سُوۡرَةُ العَصر"
                         android:textColor="#02314D"
-                        android:text="103-سُوۡرَةُ العَصر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a104"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="104-سُوۡرَةُ الهُمَزة"
                         android:textColor="#02314D"
-                        android:text="104-سُوۡرَةُ الهُمَزة" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a105"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="104-سُوۡرَةُ الفِیل"
                         android:textColor="#02314D"
-                        android:text="104-سُوۡرَةُ الفِیل" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a106"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="106-سُوۡرَةُ قُرَیش"
                         android:textColor="#02314D"
-                        android:text="106-سُوۡرَةُ قُرَیش" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a107"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="107-سُوۡرَةُ المَاعون"
                         android:textColor="#02314D"
-                        android:text="107-سُوۡرَةُ المَاعون" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a108"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="108-سُوۡرَةُ الکَوثَر"
                         android:textColor="#02314D"
-                        android:text="108-سُوۡرَةُ الکَوثَر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a109"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="109-سُوۡرَةُ الکافِرون"
                         android:textColor="#02314D"
-                        android:text="109-سُوۡرَةُ الکافِرون" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a110"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="110-سُوۡرَةُ النّصر"
                         android:textColor="#02314D"
-                        android:text="110-سُوۡرَةُ النّصر" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a111"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="111-سُوۡرَةُ المَسَد"
                         android:textColor="#02314D"
-                        android:text="111-سُوۡرَةُ المَسَد" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a112"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="112-سُوۡرَةُ الإخلاص"
                         android:textColor="#02314D"
-                        android:text="112-سُوۡرَةُ الإخلاص" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a113"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="113-سُوۡرَةُ الفَلَق"
                         android:textColor="#02314D"
-                        android:text="113-سُوۡرَةُ الفَلَق" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/a114"
-                        android:onClick="ooo10o"
-                        android:background="@drawable/bu_000des"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:textSize="19sp"
-                        android:textStyle="bold"
-                        android:drawableEnd="@drawable/ba0"
+                        android:background="@drawable/bu_000des"
                         android:drawableStart="@drawable/baoss2"
+                        android:drawableEnd="@drawable/ba0"
+                        android:onClick="ooo10o"
+                        android:text="114-سُوۡرَةُ النَّاس"
                         android:textColor="#02314D"
-                        android:text="114-سُوۡرَةُ النَّاس" />
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

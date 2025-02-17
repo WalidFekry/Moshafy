@@ -4,11 +4,7 @@
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -53,21 +49,17 @@
         <activity android:name=".quran.quran_listening.RecitesName" android:exported="false" />
         <activity android:name=".quran.quran_listening.AyaList" android:exported="false" />
         <activity android:name=".quran.quran_listening.QuranListeningActivity" android:exported="false" />
+        <activity android:name=".quran.quran_reading_v2.Qurandata" android:exported="false" />
+        <activity android:name=".quran.quran_reading_v2.QuranReadingActivity" android:exported="false" />
 
-
-
-        <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="true">
+        <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="false">
             <intent-filter>
                 <action android:name="MainActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".roqia.RoqiaNoIternet" android:exported="false">
-            <intent-filter>
-                <action android:name="roqia.RoqiaNoIternet" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+
+        <activity android:name=".roqia.RoqiaNoIternet" android:exported="false" />
 
         <!-- Islamic Stories -->
         <activity android:name=".islamicstory.Maintitlenewstory" android:exported="false" />

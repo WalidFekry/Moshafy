@@ -65,7 +65,6 @@ public class AdapterpagerAhdes extends PagerAdapter{
 
         inflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view=inflater.inflate(R.layout.item_pagerahdes,container,false);
-        LinearLayout linearLayout=(LinearLayout)view.findViewById(R.id.linearrr2);
         final TextView title=(TextView)view.findViewById(R.id.title);
         final TextView number=(TextView)view.findViewById(R.id.number);
         final TextView name=(TextView)view.findViewById(R.id.name);

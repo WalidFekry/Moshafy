@@ -64,7 +64,6 @@ public class pagerAya extends PagerAdapter {
 
         inflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view=inflater.inflate(R.layout.item_pageraya,container,false);
-        LinearLayout linearLayout=(LinearLayout)view.findViewById(R.id.linearrr2);
         final TextView nameaya=(TextView)view.findViewById(R.id.nameaya);
         final TextView title=(TextView)view.findViewById(R.id.title);
         final TextView num=(TextView)view.findViewById(R.id.num);

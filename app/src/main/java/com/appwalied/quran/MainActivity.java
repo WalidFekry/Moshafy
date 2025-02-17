@@ -37,8 +37,9 @@ import com.appwalied.quran.monw3at.Diffrentis;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
-import com.appwalied.quran.quranread.Quran_list;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
+import com.appwalied.quran.quran.quran_reading_v2.Qurandata;
+import com.appwalied.quran.quranread.Quran_list;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
@@ -54,25 +55,21 @@ import libs.mjn.prettydialog.PrettyDialogCallback;
 import softpro.naseemali.ShapedNavigationView;
 import softpro.naseemali.ShapedViewSettings;
 
-public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     private final String TAG = "TAG";
     TextView dd;
     ShimmerTextView shmer;
     Shimmer shimmer;
-    String[] permission = new String[]{
-            Manifest.permission.POST_NOTIFICATIONS
-    };
+    String[] permission = new String[]{Manifest.permission.POST_NOTIFICATIONS};
     boolean isPermission = false;
-    private final ActivityResultLauncher<String> requestPermissionLauncherNotification =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if (isGranted) {
-                    isPermission = true;
-                } else {
-                    isPermission = false;
-                    showPermissionDialog();
-                }
-            });
+    private final ActivityResultLauncher<String> requestPermissionLauncherNotification = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+        if (isGranted) {
+            isPermission = true;
+        } else {
+            isPermission = false;
+            showPermissionDialog();
+        }
+    });
 
     private ActivityMainBinding binding;
 
@@ -138,8 +135,7 @@ public class MainActivity extends BaseActivity
         shapedNavigationView.getSettings().setShapeType(ShapedViewSettings.ARC_CONCAVE);
         shapedNavigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -163,6 +159,18 @@ public class MainActivity extends BaseActivity
         binding.main.contentMain.masbaha.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, MasbahaActivity.class));
         });
+        binding.main.contentMain.quranListening.setOnClickListener(v -> {
+            if (isNetworkConnected()) {
+                startActivity(new Intent(getApplicationContext(), RecitesName.class));
+            } else {
+                Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل القرآن الكريم 🌸", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
     private void cheakNotificationPermission() {
@@ -182,66 +190,43 @@ public class MainActivity extends BaseActivity
     }
 
     private void showPermissionDialog() {
-        new AlertDialog.Builder(this)
-                .setMessage("من فضلك قم بالموافقة على الاشعارات لكي تصلك رسائل التفاؤل والإقتباسات من التطبيق ..")
-                .setPositiveButton("الاعدادات", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent();
-                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivity(intent);
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show();
+        new AlertDialog.Builder(this).setMessage("من فضلك قم بالموافقة على الاشعارات لكي تصلك رسائل التفاؤل والإقتباسات من التطبيق ..").setPositiveButton("الاعدادات", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                intent.setData(uri);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        }).setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).show();
     }
 
     @Override
     public void onBackPressed() {
         final PrettyDialog pDialog = new PrettyDialog(this);
         pDialog.setCanceledOnTouchOutside(false);
-        pDialog.setTitle("هل تريد الخروج من التطبيق !")
-                .setMessage("كيف نطوره ليصبح افضل.. و لا تنسى تقييم التطبيق").
-                setIcon(R.mipmap.ico_app)
-                .setAnimationEnabled(true)
-                .setMessageColor(R.color.colorPrimary)
-                .setTitleColor(R.color.colorAccent)
-                .setIconTint(R.color.white)
-                .setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL)
-                .setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf"))
-                .addButton(
-                        "خروج",
-                        R.color.white,
-                        R.color.colorPrimary,
-                        new PrettyDialogCallback() {
-                            @Override
-                            public void onClick() {
-                                finish();
-                            }
-                        }
-                )
+        pDialog.setTitle("هل تريد الخروج من التطبيق !").setMessage("كيف نطوره ليصبح افضل.. و لا تنسى تقييم التطبيق").setIcon(R.mipmap.ico_app).setAnimationEnabled(true).setMessageColor(R.color.colorPrimary).setTitleColor(R.color.colorAccent).setIconTint(R.color.white).setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL).setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf")).addButton("خروج", R.color.white, R.color.colorPrimary, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        finish();
+                    }
+                })
 
-                .addButton(
-                        "تقييم التطبيق",
-                        R.color.white,
-                        R.color.colorPrimary,
-                        new PrettyDialogCallback() {
+                .addButton("تقييم التطبيق", R.color.white, R.color.colorPrimary, new PrettyDialogCallback() {
                             @Override
                             public void onClick() {
                                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
                             }
                         }
 
-                )
-                .show();
+                ).show();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -273,9 +258,7 @@ public class MainActivity extends BaseActivity
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "\n" +
-                    "قمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \n" +
-                    "تفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "\n" + "قمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \n" + "تفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
 
@@ -334,9 +317,7 @@ public class MainActivity extends BaseActivity
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "\n" +
-                "قمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \n" +
-                "تفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "\n" + "قمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \n" + "تفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
@@ -345,10 +326,6 @@ public class MainActivity extends BaseActivity
         startActivity(new Intent(MainActivity.this, About.class));
     }
 
-
-    public void soundmp3Quran(View view) {
-        startActivity(new Intent(getApplicationContext(), RecitesName.class));
-    }
 
     public void quranonclick(View view) {
         int qurannum;
@@ -370,23 +347,6 @@ public class MainActivity extends BaseActivity
         }
     }
 
-
-
-    public void moshafmolem(View view) {
-
-        if (isNetworkConnected()) {
-            startActivity(new Intent(this, QouranLearningActivity.class));
-        } else {
-            Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل المصحف المعلم 🌸", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
-    }
 
     public void intentislamicstory(View view) {
 

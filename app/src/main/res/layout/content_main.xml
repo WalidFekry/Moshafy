@@ -259,12 +259,11 @@
                             android:weightSum="2">
 
                             <LinearLayout
-                                android:onClick="soundmp3Quran"
+                                android:id="@+id/quran_listening"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"

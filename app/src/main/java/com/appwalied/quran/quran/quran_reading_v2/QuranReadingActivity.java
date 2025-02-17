@@ -1,43 +1,43 @@
-package com.appwalied.quran;
+package com.appwalied.quran.quran.quran_reading_v2;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.cardview.widget.CardView;
 
-import net.steamcrafted.materialiconlib.MaterialIconView;
+import com.appwalied.quran.R;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class sql0title098 extends AppCompatActivity {
+public class QuranReadingActivity extends AppCompatActivity {
     TextView ts, ooo01, ooo02, ooo03;
     InputStream os;
-    String path = "";
-    int a = 0;
     int c = 18;
     boolean isScreenOn = false;
-    CardView setScreenOn,setScreenOff;
+    CardView setScreenOn, setScreenOff;
+    private AppCompatImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_sql0title098);
-        ts = (TextView) findViewById(R.id.ts);
-        ooo01 = (TextView) findViewById(R.id.ooo01);
-        ooo02 = (TextView) findViewById(R.id.ooo02);
-        ooo03 = (TextView) findViewById(R.id.ooo03);
+        setContentView(R.layout.activity_quran_reading);
+        back = findViewById(R.id.back_button);
+        ts = findViewById(R.id.ts);
+        ooo01 = findViewById(R.id.ooo01);
+        ooo02 = findViewById(R.id.ooo02);
+        ooo03 = findViewById(R.id.ooo03);
         setScreenOn = findViewById(R.id.screen_on);
         setScreenOff = findViewById(R.id.screen_off);
+        back.setOnClickListener(v -> finish());
         int id = getIntent().getIntExtra("id", 0);
         String text = "";
         try {
@@ -530,29 +530,22 @@ public class sql0title098 extends AppCompatActivity {
         }
         ts.setText(text);
         //show this
-
-
     }
 
     public void plus(View view) {
         if (c < 50) {
             c++;
         } else
-            Toast.makeText(sql0title098.this, "لايمكن تكبير الخط اكبر من ذلك", Toast.LENGTH_SHORT).show();
+            Toast.makeText(QuranReadingActivity.this, "لايمكن تكبير الخط اكبر من ذلك", Toast.LENGTH_SHORT).show();
         ts.setTextSize(c);
-
-
     }
 
     public void minus(View view) {
-
         if (c > 13) {
             c--;
         } else
-            Toast.makeText(sql0title098.this, "لايمكن تصغير الخط اصغر من ذلك", Toast.LENGTH_SHORT).show();
+            Toast.makeText(QuranReadingActivity.this, "لايمكن تصغير الخط اصغر من ذلك", Toast.LENGTH_SHORT).show();
         ts.setTextSize(c);
-
-
     }
 
     public void star(View view) {
