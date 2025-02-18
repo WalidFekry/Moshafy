@@ -20,13 +20,10 @@ public class Title1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
-        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_title1);
 
         list=new ArrayList<>();
-        rec=(RecyclerView)findViewById(R.id.rec1);
+        rec= findViewById(R.id.rec1);
         rec.setLayoutManager(new LinearLayoutManager(this));
         list.add(new itemrec(getResources().getString(R.string.t1)));
         list.add(new itemrec(getResources().getString(R.string.t2)));

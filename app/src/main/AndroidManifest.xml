@@ -10,22 +10,22 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
+        android:name=".utils.MyApp"
         android:allowBackup="true"
         android:exported="false"
-        android:name=".utils.MyApp"
         android:icon="@mipmap/ico_app"
-        android:roundIcon="@mipmap/ico_app"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true"
+        android:roundIcon="@mipmap/ico_app"
         android:supportsRtl="false"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true"
         tools:replace="android:supportsRtl">
 
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"
             android:resource="@xml/gma_ad_services_config"
-            tools:replace="android:resource"/>
+            tools:replace="android:resource" />
 
         <!-- Main Activities -->
         <activity
@@ -38,84 +38,155 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:configChanges="orientation" android:exported="false" android:screenOrientation="portrait" />
-        <activity android:name=".Quran_fnish" android:configChanges="orientation" android:screenOrientation="portrait" />
-        <activity android:name=".About" android:configChanges="orientation" android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Quran_fnish"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
 
         <!-- Quran & Islamic Features -->
-        <activity android:name=".quran.qouran_learning.QouranLearningActivity" android:exported="false" />
-        <activity android:name=".quran.qouran_learning.LearningActivity" android:exported="false" />
-        <activity android:name=".quran.quran_reading.QuranRead" android:exported="false" />
-        <activity android:name=".quran.quran_listening.RecitesName" android:exported="false" />
-        <activity android:name=".quran.quran_listening.AyaList" android:exported="false" />
-        <activity android:name=".quran.quran_listening.QuranListeningActivity" android:exported="false" />
-        <activity android:name=".quran.quran_reading_v2.Qurandata" android:exported="false" />
-        <activity android:name=".quran.quran_reading_v2.QuranReadingActivity" android:exported="false" />
+        <activity
+            android:name=".quran.qouran_learning.QouranLearningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quran.qouran_learning.LearningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quran.quran_reading.QuranRead"
+            android:exported="false" />
+        <activity
+            android:name=".quran.quran_listening.RecitesName"
+            android:exported="false" />
+        <activity
+            android:name=".quran.quran_listening.AyaList"
+            android:exported="false" />
+        <activity
+            android:name=".quran.quran_listening.QuranListeningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quran.quran_reading_v2.Qurandata"
+            android:exported="false" />
+        <activity
+            android:name=".quran.quran_reading_v2.QuranReadingActivity"
+            android:exported="false" />
 
         <!-- Azkar -->
-        <activity android:name=".azkar.Azkar" android:exported="false" />
-        <activity android:name=".azkar.Azcartitle1" android:exported="false" />
-        <activity android:name=".azkar.Azcartitle2" android:exported="false" />
-        <activity android:name=".azkar.Azcartitle3" android:exported="false" />
-        <activity android:name=".azkar.Azcartitle4" android:exported="false" />
-        <activity android:name=".azkar.Azcartitle5" android:exported="false" />
-        <activity android:name=".azkar.Azcartitle6" android:exported="false" />
-
-
+        <activity
+            android:name=".azkar.Azkar"
+            android:exported="false" />
+        <activity
+            android:name=".azkar.Azcartitle1"
+            android:exported="false" />
+        <activity
+            android:name=".azkar.Azcartitle2"
+            android:exported="false" />
+        <activity
+            android:name=".azkar.Azcartitle3"
+            android:exported="false" />
+        <activity
+            android:name=".azkar.Azcartitle4"
+            android:exported="false" />
+        <activity
+            android:name=".azkar.Azcartitle5"
+            android:exported="false" />
+        <activity
+            android:name=".azkar.Azcartitle6"
+            android:exported="false" />
 
         <!-- Monw3at -->
-        <activity android:name=".monw3at.Diffrentis" android:exported="false" />
+        <activity
+            android:name=".monw3at.Diffrentis"
+            android:exported="false" />
+        <activity
+            android:name=".monw3at.Title1"
+            android:exported="false" />
+        <activity
+            android:name=".monw3at.MainAhdes"
+            android:exported="false" />
+        <activity
+            android:name=".monw3at.Mainwsaya"
+            android:exported="false" />
+        <activity
+            android:name=".monw3at.Mainhagandomra"
+            android:exported="false" />
+        <activity
+            android:name=".roqia.RoqiaNoIternet"
+            android:exported="false" />
 
-
-
-
-
-        <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="false">
+        <activity
+            android:name=".notifications_messages.NotificationsMessagesActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="MainActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".roqia.RoqiaNoIternet" android:exported="false" />
 
         <!-- Islamic Stories -->
-        <activity android:name=".islamicstory.Maintitlenewstory" android:exported="false" />
-        <activity android:name=".islamicstory.Mainnewstory" android:exported="false" />
+        <activity
+            android:name=".islamicstory.Maintitlenewstory"
+            android:exported="false" />
+        <activity
+            android:name=".islamicstory.Mainnewstory"
+            android:exported="false" />
 
         <!-- Sahaba Stories -->
-        <activity android:name=".sahaba.Mainstorytitle" android:exported="false" />
-        <activity android:name=".sahaba.MainStory" android:exported="false" />
+        <activity
+            android:name=".sahaba.Mainstorytitle"
+            android:exported="false" />
+        <activity
+            android:name=".sahaba.MainStory"
+            android:exported="false" />
 
         <!-- Ahadith -->
-        <activity android:name=".ahades.ActivityAhdes" android:exported="false" />
-        <activity android:name=".ahades.Mainpagerahdes" android:label="أحاديث قصيرة" />
-
-        <!-- Other Features -->
-        <activity android:name=".monw3at.Mainhagandomra" android:configChanges="orientation" android:screenOrientation="portrait" />
-        <activity android:name=".monw3at.Mainwsaya" android:configChanges="orientation" android:screenOrientation="portrait" />
-        <activity android:name=".monw3at.MainAhdes" android:configChanges="orientation" android:screenOrientation="portrait" />
+        <activity
+            android:name=".ahades.ActivityAhdes"
+            android:exported="false" />
+        <activity
+            android:name=".ahades.Mainpagerahdes"
+            android:label="أحاديث قصيرة" />
 
         <!-- Floating Features -->
         <activity android:name=".masbaha.MasbahaActivity" />
 
         <!-- Receivers -->
-        <receiver android:name=".listing.ListeningStatesBroadcast" android:enabled="true" />
-        <receiver android:name=".listing.ListeningBroadCast" android:enabled="true" />
+        <receiver
+            android:name=".listing.ListeningStatesBroadcast"
+            android:enabled="true" />
+        <receiver
+            android:name=".listing.ListeningBroadCast"
+            android:enabled="true" />
 
         <!-- Firebase Messaging -->
-        <service android:name=".MyFirebaseMessagingService" android:exported="false">
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <!-- Google Ads -->
-        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-3940256099942544~3347511713" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <!-- Firebase Notification Icons -->
-        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@mipmap/ico_app" />
-        <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@mipmap/ico_app" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ico_app" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@mipmap/ico_app" />
     </application>
 
 

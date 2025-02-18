@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.ayakor.Ayakor;
@@ -26,15 +27,14 @@ public class RoqiaNoIternet extends BaseActivity {
     private static final String TAG = "TAG";
     private InterstitialAd mInterstitialAd;
 
-    public static Intent newIntent(Context context) {
-        return new Intent(context, RoqiaNoIternet.class);
-    }
+    private AppCompatImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roqia_no_iternet);
-
+        back = findViewById(R.id.back_button);
+        back.setOnClickListener(v -> finish());
         setUpAds();
         getHandler().postDelayed(this::LoadAds, 4000);
     }
@@ -72,9 +72,5 @@ public class RoqiaNoIternet extends BaseActivity {
         } else {
             Log.d("TAG", "The interstitial ad wasn't ready yet.");
         }
-    }
-
-    public void onBackClicked(View view) {
-        onBackPressed();
     }
 }
