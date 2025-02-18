@@ -1,11 +1,10 @@
-package com.appwalied.quran.listing;
+package com.appwalied.quran.quran.quran_listening.listening;
 
 /**
  * Created by hussienalrubaye on 12/26/15.
  */
 
 import com.appwalied.quran.adabters.LnaguageClass;
-import com.appwalied.quran.listing.AuthorClass;
 
 import java.io.File;
 import java.io.FilenameFilter;

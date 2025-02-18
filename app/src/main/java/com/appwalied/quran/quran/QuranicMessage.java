@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appwalied.quran.QuranMsg;
+import com.appwalied.quran.quran.model.QuranMsg;
 import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.AdapterQuranmsg;
 import com.google.firebase.database.DataSnapshot;

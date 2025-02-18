@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.roqia.RoqiaNoIternet;
+import com.appwalied.quran.monw3at.roqia.RoqiaNoIternet;
 
 public class Diffrentis extends AppCompatActivity {
     private AppCompatImageButton back;

@@ -8,7 +8,7 @@ import static com.appwalied.quran.quran.quran_listening.RecitesName.LanguageSele
 
 import android.os.Environment;
 
-import com.appwalied.quran.listing.AuthorClass;
+import com.appwalied.quran.quran.quran_listening.listening.AuthorClass;
 import com.appwalied.quran.managment;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.appwalied.quran.listing;
+package com.appwalied.quran.quran.quran_listening.listening;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

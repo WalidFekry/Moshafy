@@ -1,4 +1,4 @@
-package com.appwalied.quran;
+package com.appwalied.quran.quran.model;
 
 public class QuranMsg {
     private String title;

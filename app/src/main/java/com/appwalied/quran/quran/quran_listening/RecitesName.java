@@ -14,7 +14,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.LnaguageClass;
-import com.appwalied.quran.listing.AuthorClass;
+import com.appwalied.quran.quran.quran_listening.listening.AuthorClass;
 
 import java.util.ArrayList;
 import java.util.List;

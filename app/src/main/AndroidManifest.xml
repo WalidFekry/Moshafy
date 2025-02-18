@@ -118,7 +118,7 @@
             android:name=".monw3at.Mainhagandomra"
             android:exported="false" />
         <activity
-            android:name=".roqia.RoqiaNoIternet"
+            android:name=".monw3at.roqia.RoqiaNoIternet"
             android:exported="false" />
 
         <!-- Quranic Message -->
@@ -167,10 +167,10 @@
 
         <!-- Receivers -->
         <receiver
-            android:name=".listing.ListeningStatesBroadcast"
+            android:name=".quran.quran_listening.listening.ListeningStatesBroadcast"
             android:enabled="true" />
         <receiver
-            android:name=".listing.ListeningBroadCast"
+            android:name=".quran.quran_listening.listening.ListeningBroadCast"
             android:enabled="true" />
 
         <!-- Firebase Messaging -->

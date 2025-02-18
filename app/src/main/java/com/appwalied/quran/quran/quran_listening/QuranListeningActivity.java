@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.listing.SongsManager;
-import com.appwalied.quran.listing.Utilities;
+import com.appwalied.quran.quran.quran_listening.listening.SongsManager;
+import com.appwalied.quran.quran.quran_listening.listening.Utilities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 

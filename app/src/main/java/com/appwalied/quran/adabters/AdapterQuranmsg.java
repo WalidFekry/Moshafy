@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appwalied.quran.QuranMsg;
+import com.appwalied.quran.quran.model.QuranMsg;
 import com.appwalied.quran.R;
 
 import net.steamcrafted.materialiconlib.MaterialIconView;

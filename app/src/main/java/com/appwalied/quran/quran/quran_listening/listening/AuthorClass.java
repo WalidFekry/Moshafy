@@ -1,4 +1,4 @@
-package com.appwalied.quran.listing;
+package com.appwalied.quran.quran.quran_listening.listening;
 
 /**
  * Created by hussienalrubaye on 12/26/15.

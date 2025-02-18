@@ -1,17 +1,12 @@
-package com.appwalied.quran.roqia;
+package com.appwalied.quran.monw3at.roqia;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
-import com.appwalied.quran.ayakor.Ayakor;
 import com.appwalied.quran.base.BaseActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
