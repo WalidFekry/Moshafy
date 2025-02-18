@@ -35,6 +35,7 @@ import com.appwalied.quran.islamicstory.Mainnewstory;
 import com.appwalied.quran.masbaha.MasbahaActivity;
 import com.appwalied.quran.monw3at.Diffrentis;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
+import com.appwalied.quran.quran.QuranicMessage;
 import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
@@ -169,6 +170,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.islamicSections.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Diffrentis.class));
         });
+        binding.main.contentMain.quranMessages.setOnClickListener(v -> {
+            if (isNetworkConnected()) {
+                startActivity(new Intent(MainActivity.this, QuranicMessage.class));
+            } else {
+                Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لفتح الرسائل القرآنية 🌸", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private boolean isNetworkConnected() {
@@ -289,10 +297,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         startActivity(i);
     }
 
-    public void quranicmsg(View view) {
-        Intent qumsg = new Intent(MainActivity.this, QuranicMessage.class);
-        startActivity(qumsg);
-    }
+
 
     public void intentayakor(View view) {
         Intent intent = new Intent(MainActivity.this, Ayakor.class);

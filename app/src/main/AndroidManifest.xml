@@ -121,6 +121,13 @@
             android:name=".roqia.RoqiaNoIternet"
             android:exported="false" />
 
+        <!-- Quranic Message -->
+        <activity
+            android:name=".quran.QuranicMessage"
+            android:exported="false" />
+
+
+
         <activity
             android:name=".notifications_messages.NotificationsMessagesActivity"
             android:exported="false">

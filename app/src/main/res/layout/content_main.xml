@@ -394,7 +394,7 @@
                             android:weightSum="2">
 
                             <LinearLayout
-                                android:onClick="quranicmsg"
+                                android:id="@+id/quran_messages"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
