@@ -31,12 +31,9 @@ public class Azcartitle5 extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
-        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_azcartitle5);
 
-        final ViewPager viewPager=(ViewPager)findViewById(R.id.viewpager6);
+        final ViewPager viewPager=(ViewPager)findViewById(R.id.viewpager1);
         listpager5=new ArrayList<>();
         listpager5.add(new item_pager(getString(R.string.stkazmnelnom),""));
         Adapterpager5 adapterpager6=new Adapterpager5(Azcartitle5.this,listpager5);

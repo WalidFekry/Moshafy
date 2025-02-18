@@ -26,17 +26,9 @@ public class Azcartitle3 extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_azcartitle3);
 
-        AdView adView = (AdView) findViewById(R.id.Azcartitle3);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager3);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager1);
         listpager3 = new ArrayList<>();
         listpager3.add(new item_pager(getString(R.string.azkarrmdan1), getString(R.string.azkarrmdan2)));
         listpager3.add(new item_pager(getString(R.string.azkarrmdan3), getString(R.string.azkarrmdan4)));
@@ -57,6 +49,4 @@ public class Azcartitle3 extends BaseActivity {
         Adapterpager3 adapterpager3 = new Adapterpager3(Azcartitle3.this, listpager3);
         viewPager.setAdapter(adapterpager3);
     }
-
-
 }

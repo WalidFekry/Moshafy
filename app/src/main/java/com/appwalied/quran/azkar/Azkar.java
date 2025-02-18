@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
@@ -18,8 +19,13 @@ import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import guy4444.smartrate.SmartRate;
 
 public class Azkar extends AppCompatActivity {
+    private AppCompatImageButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_azkar);
+        back = findViewById(R.id.back_button);
+        back.setOnClickListener(v -> finish());
 
         if (!SharedHelper.getBoolean(this, SharedPrefsConstants.AZKAR_FIRST_TIME)) {
             SharedHelper.putBoolean(this, SharedPrefsConstants.AZKAR_FIRST_TIME, true);
@@ -29,42 +35,12 @@ public class Azkar extends AppCompatActivity {
             CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
             customDialogClass.show();
         }
-
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                if (this != null && !isFinishing()) {
-                    SmartRate.Rate(Azkar.this
-                            , "تقييم التطبيق"
-                            , "تقييمك للتطبيق يساعدنا علي التطوير المستمر وتقديم المزيد"
-                            , "تقييم الان"
-                            , "حسنا يمكنك تقيممنا الان علي جوجل بلاي"
-                            , "اضغط هنا"
-                            , "ليس الان"
-                            , "Thanks "
-                            , Color.parseColor("#c65164"), 2);
-
-
-                }
-            }
-        }, 15000);
-
-
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_azkar);
-
-
     }
 
     public void move1(View view) {
         Intent i = new Intent(Azkar.this, Azcartitle1.class);
         startActivity(i);
     }
-
     public void move2(View view) {
         startActivity(new Intent(Azkar.this, Azcartitle2.class));
     }

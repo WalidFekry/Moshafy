@@ -166,6 +166,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل القرآن الكريم 🌸", Toast.LENGTH_SHORT).show();
             }
         });
+        binding.main.contentMain.islamicSections.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Diffrentis.class));
+        });
     }
 
     private boolean isNetworkConnected() {
@@ -301,9 +304,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    public void intentdiff(View v) {
-        startActivity(new Intent(MainActivity.this, Diffrentis.class));
-    }
+
 
     public void quran_fnish(View v) {
         startActivity(new Intent(MainActivity.this, Quran_fnish.class));

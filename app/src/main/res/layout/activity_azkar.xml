@@ -3,75 +3,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".azkar.Azkar">
-    <LinearLayout
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:background="@drawable/around_line3"
+        android:fitsSystemWindows="true"
+        android:layoutDirection="ltr"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            app:cardBackgroundColor="#F5F3F3"
-            android:layout_height="50dp">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/around_line3"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/TextAppearance.AppCompat"
+            app:titleTextAppearance="@style/TitleToolBarApppearance">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_height="match_parent">
-                <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/faceabout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        app:materialIcon="star"
-                        app:materialIconColor="#512DA8"
-                        app:materialIconSize="40dp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="اذكار المسلم"
-                        android:textSize="21sp"
-                        android:fontFamily="@font/flat5"
-                        android:textStyle="bold"
-                        android:textColor="#004F79" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/faceabodut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        app:materialIcon="read"
-                        app:materialIconColor="#512DA8"
-                        app:materialIconSize="40dp" />
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="end"
+                    android:text="أذكار المسلم" />
+
             </LinearLayout>
 
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_back_button" />
 
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_weight="3"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"
@@ -83,16 +72,16 @@
 
 
             <LinearLayout
-                android:onClick="move1"
                 android:id="@+id/linearquran"
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/buoo"
                 android:clickable="true"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:onClick="move1"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -105,23 +94,24 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:onClick="move1"
                     android:id="@+id/textqooo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
+                    android:onClick="move1"
                     android:src="@drawable/mornig" />
             </LinearLayout>
+
             <LinearLayout
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:onClick="move2"
+                android:layout_margin="10dp"
                 android:background="@drawable/buoo"
                 android:clickable="true"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:onClick="move2"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,22 +124,23 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:onClick="move2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
+                    android:onClick="move2"
                     android:src="@drawable/msaa" />
             </LinearLayout>
+
             <LinearLayout
-                android:layout_margin="10dp"
-                android:onClick="move3"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/buoo"
                 android:clickable="true"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:onClick="move3"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,20 +155,21 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="move3"
                     android:contentDescription="@string/app_name"
+                    android:onClick="move3"
                     android:src="@drawable/rmadan" />
             </LinearLayout>
+
             <LinearLayout
-                android:layout_margin="10dp"
-                android:onClick="move4"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/buoo"
                 android:clickable="true"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:onClick="move4"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,22 +182,23 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:onClick="move4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
+                    android:onClick="move4"
                     android:src="@drawable/sleep" />
             </LinearLayout>
+
             <LinearLayout
-                android:onClick="move5"
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/buoo"
                 android:clickable="true"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:onClick="move5"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -218,22 +211,23 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:onClick="move5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
+                    android:onClick="move5"
                     android:src="@drawable/bell" />
             </LinearLayout>
+
             <LinearLayout
-                android:onClick="move6"
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/buoo"
                 android:clickable="true"
                 android:descendantFocusability="blocksDescendants"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:onClick="move6"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -246,15 +240,12 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:onClick="move6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
+                    android:onClick="move6"
                     android:src="@drawable/adia" />
             </LinearLayout>
-
-
-
 
 
         </LinearLayout>

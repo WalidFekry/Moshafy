@@ -30,32 +30,7 @@ import guy4444.smartrate.SmartRate;
 public class Diffrentis extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                if(this!=null && !isFinishing()){
-                    SmartRate.Rate(Diffrentis.this
-                            , "تقييم التطبيق"
-                            , "تقييمك للتطبيق يساعدنا علي التطوير المستمر وتقديم المزيد"
-                            , "تقييم الان"
-                            , "حسنا يمكنك تقيممنا الان علي جوجل بلاي"
-                            , "اضغط هنا"
-                            , "ليس الان"
-                            , "Thanks "
-                            , Color.parseColor("#c65164")                 , 2         );
-
-
-                }
-            }
-        }, 14000);
-
-
-
         super.onCreate(savedInstanceState);
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
-        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_diffrentis);
 
 

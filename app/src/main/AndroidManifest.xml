@@ -52,6 +52,24 @@
         <activity android:name=".quran.quran_reading_v2.Qurandata" android:exported="false" />
         <activity android:name=".quran.quran_reading_v2.QuranReadingActivity" android:exported="false" />
 
+        <!-- Azkar -->
+        <activity android:name=".azkar.Azkar" android:exported="false" />
+        <activity android:name=".azkar.Azcartitle1" android:exported="false" />
+        <activity android:name=".azkar.Azcartitle2" android:exported="false" />
+        <activity android:name=".azkar.Azcartitle3" android:exported="false" />
+        <activity android:name=".azkar.Azcartitle4" android:exported="false" />
+        <activity android:name=".azkar.Azcartitle5" android:exported="false" />
+        <activity android:name=".azkar.Azcartitle6" android:exported="false" />
+
+
+
+        <!-- Monw3at -->
+        <activity android:name=".monw3at.Diffrentis" android:exported="false" />
+
+
+
+
+
         <activity android:name=".notifications_messages.NotificationsMessagesActivity" android:exported="false">
             <intent-filter>
                 <action android:name="MainActivity" />

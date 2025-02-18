@@ -29,24 +29,14 @@ import java.util.List;
 
 public class Azcartitle1 extends BaseActivity {
     List<item_pager> listpager1;
-    MaterialIconView plus;
-    int size=18;
-    private static final String TAG = "TAG";
+    private static final String TAG = "Azcartitle1";
     private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
-        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_azcartitle1);
 
-        AdView adView = (AdView) findViewById(R.id.azkartitle1);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
-
-        final ViewPager viewPager=(ViewPager)findViewById(R.id.viewpager1);
+        final ViewPager viewPager= findViewById(R.id.viewpager1);
         listpager1=new ArrayList<>();
         listpager1.add(new item_pager(getString(R.string.shhh1),""));
         listpager1.add(new item_pager(getString(R.string.shhh2),""));
@@ -86,11 +76,6 @@ public class Azcartitle1 extends BaseActivity {
     }
 
     private  void setUpAds(){
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
         AdRequest adRequest = new AdRequest.Builder().build();
 
         InterstitialAd.load(this, getString(R.string.Biny2), adRequest,

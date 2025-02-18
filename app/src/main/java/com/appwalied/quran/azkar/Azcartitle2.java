@@ -20,19 +20,11 @@ public class Azcartitle2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
-        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
-         WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_azcartitle2);
-
-        AdView adView = (AdView) findViewById(R.id.Azcartitle2);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
 
         List<item_pager> listpager2;
         int size=18;
-        final ViewPager viewPager=(ViewPager)findViewById(R.id.viewpager2);
+        final ViewPager viewPager=(ViewPager)findViewById(R.id.viewpager1);
         listpager2=new ArrayList<>();
         listpager2.add(new item_pager(getString(R.string.msaa1),getString(R.string.msaa2)));
         listpager2.add(new item_pager(getString(R.string.msaa3),getString(R.string.msaa4)));
