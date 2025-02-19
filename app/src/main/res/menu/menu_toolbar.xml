@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/show_notifications"
+        android:icon="@drawable/notification"
+        android:title="@string/show_notifications"
+        app:showAsAction="always" />
+</menu>

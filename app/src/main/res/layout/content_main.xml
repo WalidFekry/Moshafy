@@ -287,7 +287,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:onClick="intentoo"
+                                android:id="@+id/quran_reading_v2"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
@@ -325,7 +325,7 @@
                             android:weightSum="2">
 
                             <LinearLayout
-                                android:onClick="intentaz"
+                                android:id="@+id/azkar"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
@@ -649,7 +649,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:onClick="quran_fnish"
+                        android:id="@+id/quran_fnish"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
                         android:background="@drawable/buoo"
@@ -659,7 +659,6 @@
                         android:orientation="horizontal" >
 
                         <TextView
-                            android:onClick="quran_fnish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="دعاء ختم القرآن الكريمِ"
@@ -669,7 +668,6 @@
                             android:textColor="#252020" />
 
                         <ImageView
-                            android:onClick="quran_fnish"
                             android:layout_width="50dp"
                             android:layout_marginStart="10dp"
                             android:layout_height="50dp"
@@ -706,16 +704,15 @@
                             app:materialIconSize="40dp" />
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/rate_app"
                         android:layout_margin="4dp"
                         app:cardElevation="8dp"
-                        android:onClick="oos1"
                         app:cardBackgroundColor="#0097A7"
                         android:layout_width="50dp"
                         app:cardCornerRadius="25dp"
                         android:layout_height="50dp">
                         <net.steamcrafted.materialiconlib.MaterialIconView
                             android:id="@+id/shareabout"
-                            android:onClick="oos1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -725,10 +722,10 @@
                             app:materialIconSize="40dp" />
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/share_app"
                         android:layout_width="50dp"
                         app:cardCornerRadius="25dp"
                         app:cardElevation="8dp"
-                        android:onClick="shareapp"
                         app:cardBackgroundColor="#F57C00"
                         android:layout_margin="4dp"
                         android:layout_height="50dp">
@@ -743,10 +740,10 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/about"
                         android:layout_width="50dp"
                         app:cardCornerRadius="25dp"
                         app:cardElevation="8dp"
-                        android:onClick="about"
                         app:cardBackgroundColor="#388E3C"
                         android:layout_margin="4dp"
                         android:layout_height="50dp">

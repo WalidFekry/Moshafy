@@ -1,9 +1,7 @@
 package com.appwalied.quran;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -13,15 +11,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -37,16 +35,15 @@ import com.appwalied.quran.monw3at.Diffrentis;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.QuranicMessage;
 import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
+import com.appwalied.quran.quran.quran_images.QuranList;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
 import com.appwalied.quran.quran.quran_reading_v2.Qurandata;
-import com.appwalied.quran.quran.quran_images.QuranList;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.romainpiel.shimmer.Shimmer;
-import com.romainpiel.shimmer.ShimmerTextView;
 
 import org.joda.time.DateTime;
 import org.joda.time.chrono.IslamicChronology;
@@ -57,22 +54,26 @@ import softpro.naseemali.ShapedNavigationView;
 import softpro.naseemali.ShapedViewSettings;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private final String TAG = "TAG";
-    TextView dd;
-    ShimmerTextView shmer;
+    private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1;
     Shimmer shimmer;
-    String[] permission = new String[]{Manifest.permission.POST_NOTIFICATIONS};
-    boolean isPermission = false;
-    private final ActivityResultLauncher<String> requestPermissionLauncherNotification = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-        if (isGranted) {
-            isPermission = true;
-        } else {
-            isPermission = false;
-            showPermissionDialog();
-        }
-    });
-
     private ActivityMainBinding binding;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.show_notifications) {
+            Intent i = new Intent(this, NotificationsMessagesActivity.class);
+            startActivity(i);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,68 +84,125 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(binding.getRoot());
 
         setOnClickListeners();
+        setupToolbar();
+        setupDrawer();
+        setupNavigationView();
 
-        dd = findViewById(R.id.bb);
-        shmer = findViewById(R.id.shmer);
+        setupShimmer();
+        setDate();
+
+        requestNotificationPermission();
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
+    }
+
+    private void setupShimmer() {
         shimmer = new Shimmer();
-        shimmer.start(shmer);
+        shimmer.start(binding.main.contentMain.shmer);
+    }
+
+    private void setDate() {
         DateTime dm = new DateTime();
         DateTime dh = dm.withChronology(IslamicChronology.getInstance());
         String stMonth = dh.toString("MM");
         if (stMonth.contains("10")) {
             String st = dh.plusDays(1).toString("d/ " + "من شهر شوال" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("01")) {
             String st = dh.plusDays(0).toString("d/ " + "من شهر محرم" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("02")) {
             String st = dh.plusDays(1).toString("d/ " + "من شهر صفر" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("03")) {
             String st = dh.plusDays(1).toString("d/ " + "من شهر ربيع الاول" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("04")) {
             String st = dh.plusDays(1).toString("d/ " + "من شهر ربيع الثاني" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("05")) {
             String st = dh.plusDays(1).toString("d/ " + "من شهر جمادى الاول" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("06")) {
             String st = dh.plusDays(0).toString("d/ " + "من شهر جمادى الثاني" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("07")) {
             String st = dh.plusDays(1).toString("d/ " + "من شهر رجب" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("08")) {
             String st = dh.plusDays(0).toString("d/ " + "من شهر شعبان" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("09")) {
             String st = dh.plusDays(0).toString("d/ " + "من شهر رمضان" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else if (stMonth.contains("11")) {
             String st = dh.plusDays(0).toString("d/ " + "من شهرذو القعدة" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         } else {
             String st = dh.plusDays(0).toString("d/" + "من شهر ذو الحجة" + "/yyyy" + "من الهجري");
-            dd.setText(st);
+            binding.main.contentMain.bb.setText(st);
         }
+    }
 
+    private void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {// Android 13 (API 33) or higher
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                // Request permission
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_REQUEST_CODE);
+            }
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "رائع! 🎉 الآن ستتلقى اقتباسات ورسائل تفاؤل تحفزك يوميًا! 😊", Toast.LENGTH_LONG).show();
+            } else {
+                // فحص إذا كان المستخدم اختار "Don't ask again"
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
+                    showSettingsDialog(); // عرض رسالة تنقل المستخدم للإعدادات
+                } else {
+                    Toast.makeText(this, "😔 بدون الإشعارات، قد تفوتك رسائل تحفيزية واقتباسات تمنحك الطاقة! يمكنك تفعيلها لاحقًا من الإعدادات. ⚡", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
+
+    private void showSettingsDialog() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        builder.setTitle("تفعيل الإشعارات 📢");
+        builder.setMessage("لكي تصلك اقتباسات يومية ورسائل تحفيزية، تحتاج إلى تفعيل الإشعارات من الإعدادات.");
+
+        builder.setPositiveButton("فتح الإعدادات", (dialog, which) -> {
+            dialog.dismiss();
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", getPackageName(), null);
+            intent.setData(uri);
+            startActivity(intent);
+        });
+
+        builder.setNegativeButton("لاحقًا", (dialog, which) -> dialog.dismiss());
+
+        builder.show();
+    }
+
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ShapedNavigationView shapedNavigationView = findViewById(R.id.nav_view);
-        shapedNavigationView.getSettings().setShapeType(ShapedViewSettings.ARC_CONCAVE);
-        shapedNavigationView.setNavigationItemSelectedListener(this);
+    }
 
+    private void setupDrawer() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+    }
 
-        FirebaseMessaging.getInstance().subscribeToTopic("all");
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            cheakNotificationPermission();
-        }
+    private void setupNavigationView() {
+        ShapedNavigationView shapedNavigationView = findViewById(R.id.nav_view);
+        shapedNavigationView.getSettings().setShapeType(ShapedViewSettings.ARC_CONCAVE);
+        shapedNavigationView.setNavigationItemSelectedListener(this);
     }
 
     private void setOnClickListeners() {
@@ -166,6 +224,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             } else {
                 Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل القرآن الكريم 🌸", Toast.LENGTH_SHORT).show();
             }
+        });
+        binding.main.contentMain.quranReadingV2.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), Qurandata.class));
+        });
+        binding.main.contentMain.azkar.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Azkar.class));
         });
         binding.main.contentMain.islamicSections.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Diffrentis.class));
@@ -202,6 +266,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.ayakor.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Ayakor.class));
         });
+        binding.main.contentMain.quranFnish.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Quran_fnish.class));
+        });
+        binding.main.contentMain.shareApp.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ShareApp.class));
+        });
+        binding.main.contentMain.about.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, About.class));
+        });
+        binding.main.contentMain.rateApp.setOnClickListener(v -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
+        });
     }
 
     private boolean isNetworkConnected() {
@@ -209,43 +285,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
-    private void cheakNotificationPermission() {
-        if (!isPermission) {
-            requestPermissionsNotfication();
-        } else {
-//            Toast.makeText(this, "Granted done", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void requestPermissionsNotfication() {
-        if (ContextCompat.checkSelfPermission(this, permission[0]) == PackageManager.PERMISSION_GRANTED) {
-            isPermission = true;
-        } else {
-            requestPermissionLauncherNotification.launch(permission[0]);
-        }
-    }
-
-    private void showPermissionDialog() {
-        new AlertDialog.Builder(this).setMessage("من فضلك قم بالموافقة على الاشعارات لكي تصلك رسائل التفاؤل والإقتباسات من التطبيق ..").setPositiveButton("الاعدادات", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                Uri uri = Uri.fromParts("package", getPackageName(), null);
-                intent.setData(uri);
-                startActivity(intent);
-                dialog.dismiss();
-            }
-        }).setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        }).show();
-    }
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         final PrettyDialog pDialog = new PrettyDialog(this);
         pDialog.setCanceledOnTouchOutside(false);
         pDialog.setTitle("هل تريد الخروج من التطبيق !").setMessage("كيف نطوره ليصبح افضل.. و لا تنسى تقييم التطبيق").setIcon(R.mipmap.ico_app).setAnimationEnabled(true).setMessageColor(R.color.colorPrimary).setTitleColor(R.color.colorAccent).setIconTint(R.color.white).setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL).setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf")).addButton("خروج", R.color.white, R.color.colorPrimary, new PrettyDialogCallback() {
@@ -255,12 +298,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     }
                 })
 
-                .addButton("تقييم التطبيق", R.color.white, R.color.colorPrimary, new PrettyDialogCallback() {
-                            @Override
-                            public void onClick() {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
-                            }
-                        }
+                .addButton("تقييم التطبيق", R.color.white, R.color.colorPrimary, () -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")))
 
                 ).show();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -269,7 +307,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -317,29 +355,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }
 
-    public void intentoo(View view) {
-        Intent i = new Intent(this, Qurandata.class);
-        startActivity(i);
-    }
-
-
-
-
-
-    public void intentaz(View v) {
-        startActivity(new Intent(MainActivity.this, Azkar.class));
-    }
-
-
-
-
-    public void quran_fnish(View v) {
-        startActivity(new Intent(MainActivity.this, Quran_fnish.class));
-    }
-
-    public void oos1(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
-    }
 
     public void ooh1(View view) {
         Intent sendIntent = new Intent();
@@ -348,18 +363,5 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         sendIntent.putExtra(Intent.EXTRA_TEXT, "\n" + "قمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \n" + "تفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
-    }
-
-    public void about(View view) {
-        startActivity(new Intent(MainActivity.this, About.class));
-    }
-
-
-
-
-
-
-    public void shareapp(View view) {
-        startActivity(new Intent(MainActivity.this, ShareApp.class));
     }
 }
