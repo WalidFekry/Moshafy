@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
+
 import android.os.Bundle;
 import android.view.View;
 import guy4444.smartrate.SmartRate;
@@ -11,37 +13,14 @@ import guy4444.smartrate.SmartRate;
 
 public class About extends AppCompatActivity {
 
+    private AppCompatImageButton back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-
-
-
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                if(this!=null && !isFinishing()){
-                    SmartRate.Rate(About.this
-                            , "تقييم التطبيق"
-                            , "تقييمك للتطبيق يساعدنا علي التطوير المستمر وتقديم المزيد"
-                            , "تقييم الان"
-                            , "حسنا يمكنك تقيممنا الان علي جوجل بلاي"
-                            , "اضغط هنا"
-                            , "ليس الان"
-                            , "Thanks "
-                            , Color.parseColor("#c65164")                 , 2         );
-
-
-                }
-            }
-        }, 5000);
-
-
-
-
-
+        back = findViewById(R.id.back_button);
+        back.setOnClickListener(v -> finish());
     }
     public void oos1(View view){
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
@@ -50,6 +29,7 @@ public class About extends AppCompatActivity {
     public void walid (View view){
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
     }
+
     public void ooh1(View view){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
@@ -77,10 +57,5 @@ public class About extends AppCompatActivity {
 
     public void walid99(View view) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=6257553101128037563")));
-    }
-
-
-    public void onBackClicked(View view) {
-        onBackPressed();
     }
 }

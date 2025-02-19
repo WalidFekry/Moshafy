@@ -32,25 +32,29 @@
             android:name=".Splash"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation"
             android:exported="false"
-            android:screenOrientation="portrait" />
+             />
         <activity
             android:name=".Quran_fnish"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            />
         <activity
             android:name=".About"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            />
+        <activity
+            android:name=".ShareApp"
+            android:exported="false"
+            />
 
         <!-- Quran & Islamic Features -->
         <activity
@@ -127,7 +131,6 @@
             android:exported="false" />
 
 
-
         <activity
             android:name=".notifications_messages.NotificationsMessagesActivity"
             android:exported="false">
@@ -160,7 +163,35 @@
             android:exported="false" />
         <activity
             android:name=".ahades.Mainpagerahdes"
-            android:label="أحاديث قصيرة" />
+            android:exported="false" />
+
+        <!-- Sonan -->
+        <activity
+            android:name=".sonan.MainAyaandabra"
+            android:exported="false" />
+        <activity
+            android:name=".sonan.MaintitlepagerAya"
+            android:exported="false" />
+
+        <activity
+            android:name=".quran.quran_images.QuranList"
+            android:exported="false" />
+
+        <activity
+            android:name=".ayakor.Ayakor"
+            android:exported="false" />
+
+        <activity
+            android:name=".ayakor.AyaKorPic"
+            android:exported="false" />
+
+        <activity
+            android:name=".ayakor.AyaKorListen"
+            android:exported="false" />
+
+        <activity
+            android:name=".ayakor.AyaKorText"
+            android:exported="false" />
 
         <!-- Floating Features -->
         <activity android:name=".masbaha.MasbahaActivity" />

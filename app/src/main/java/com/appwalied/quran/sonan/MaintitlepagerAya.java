@@ -1,14 +1,13 @@
 package com.appwalied.quran.sonan;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.viewpager.widget.ViewPager;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
@@ -24,43 +23,35 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import java.util.ArrayList;
 
 public class MaintitlepagerAya extends BaseActivity {
-    ViewPager pagerAya;
-    int ID;
-    ArrayList<item_Aya> ll;
     private static final String TAG = "TAG";
+    ViewPager pagerAya;
     private InterstitialAd mInterstitialAd;
-
-
-
+    private AppCompatImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintitlepager_aya);
+        back = findViewById(R.id.back_button);
+        back.setOnClickListener(v -> finish());
+        Intent intent = getIntent();
+        int ID = intent.getIntExtra("positon", 0);
+        pagerAya = findViewById(R.id.pagerAya);
+        ArrayList<item_Aya> list2 = new ArrayList<>();
 
-        Intent intent=getIntent();
-        int ID=intent.getIntExtra("positon",0);
-        pagerAya=(ViewPager)findViewById(R.id.pagerAya);
-        ArrayList<item_Aya>list2=new ArrayList<>();
-
-        DatabaseAcsessAya dp=DatabaseAcsessAya.getInstance(this);
+        DatabaseAcsessAya dp = DatabaseAcsessAya.getInstance(this);
         dp.opean();
-        list2= dp.getalldata();
+        list2 = dp.getalldata();
         dp.close();
-        pagerAya pager =new pagerAya(list2,MaintitlepagerAya.this);
+        pagerAya pager = new pagerAya(list2, MaintitlepagerAya.this);
         pagerAya.setAdapter(pager);
-        pagerAya.setCurrentItem(ID-1);
+        pagerAya.setCurrentItem(ID - 1);
 
         setUpAds();
         getHandler().postDelayed(this::LoadAds, 4000);
     }
 
-    public void onBackClicked(View view) {
-        onBackPressed();
-    }
-
-    private  void setUpAds(){
+    private void setUpAds() {
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -73,23 +64,22 @@ public class MaintitlepagerAya extends BaseActivity {
 
         adView.loadAd(adRequest);
 
-        InterstitialAd.load(this, getString(R.string.Biny1), adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        Log.i(TAG, "onAdLoaded");
-                    }
+        InterstitialAd.load(this, getString(R.string.Biny1), adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                Log.i(TAG, "onAdLoaded");
+            }
 
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.i(TAG, loadAdError.getMessage());
-                        mInterstitialAd = null;
-                    }
-                });
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i(TAG, loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
     }
 
     private void LoadAds() {

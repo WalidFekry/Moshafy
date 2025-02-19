@@ -40,7 +40,7 @@ import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
 import com.appwalied.quran.quran.quran_reading_v2.Qurandata;
-import com.appwalied.quran.quranread.Quran_list;
+import com.appwalied.quran.quran.quran_images.QuranList;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
@@ -177,6 +177,31 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لفتح الرسائل القرآنية 🌸", Toast.LENGTH_SHORT).show();
             }
         });
+        binding.main.contentMain.islamicStories.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Mainnewstory.class));
+        });
+        binding.main.contentMain.sahabaStories.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MainStory.class));
+        });
+        binding.main.contentMain.shortAhadiths.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ActivityAhdes.class));
+        });
+        binding.main.contentMain.sunnah.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MainAyaandabra.class));
+        });
+        binding.main.contentMain.khfa.setOnClickListener(v -> {
+            Intent intent = new Intent(this, QuranList.class);
+            intent.putExtra("soranum", 2);
+            startActivity(intent);
+        });
+        binding.main.contentMain.molk.setOnClickListener(v -> {
+            Intent intent = new Intent(this, QuranList.class);
+            intent.putExtra("soranum", 1);
+            startActivity(intent);
+        });
+        binding.main.contentMain.ayakor.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Ayakor.class));
+        });
     }
 
     private boolean isNetworkConnected() {
@@ -299,10 +324,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
 
-    public void intentayakor(View view) {
-        Intent intent = new Intent(MainActivity.this, Ayakor.class);
-        startActivity(intent);
-    }
+
 
     public void intentaz(View v) {
         startActivity(new Intent(MainActivity.this, Azkar.class));
@@ -333,47 +355,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    public void quranonclick(View view) {
-        int qurannum;
-        switch (view.getId()) {
-            case R.id.molk:
-                qurannum = 1;
-                Intent intent = new Intent(getApplicationContext(), Quran_list.class);
-                intent.putExtra("soranum", qurannum);
-                startActivity(intent);
-                break;
-
-            case R.id.khfa:
-                qurannum = 2;
-                Intent intent1 = new Intent(getApplicationContext(), Quran_list.class);
-                intent1.putExtra("soranum", qurannum);
-                startActivity(intent1);
-                break;
-
-        }
-    }
 
 
-    public void intentislamicstory(View view) {
 
-        Intent intent = new Intent(MainActivity.this, Mainnewstory.class);
-        startActivity(intent);
-    }
-
-    public void intentsahaba(View view) {
-        Intent intent = new Intent(MainActivity.this, MainStory.class);
-        startActivity(intent);
-    }
-
-    public void intentahades(View view) {
-        Intent intent = new Intent(MainActivity.this, ActivityAhdes.class);
-        startActivity(intent);
-    }
-
-    public void intentsonan(View view) {
-        Intent intent = new Intent(MainActivity.this, MainAyaandabra.class);
-        startActivity(intent);
-    }
 
     public void shareapp(View view) {
         startActivity(new Intent(MainActivity.this, ShareApp.class));

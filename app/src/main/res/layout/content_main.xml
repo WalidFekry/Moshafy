@@ -292,7 +292,6 @@
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -331,7 +330,6 @@
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -360,7 +358,6 @@
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -399,7 +396,6 @@
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -423,12 +419,11 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:onClick="intentislamicstory"
+                                android:id="@+id/islamic_stories"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -462,12 +457,11 @@
                             android:weightSum="2">
 
                             <LinearLayout
-                                android:onClick="intentsahaba"
+                                android:id="@+id/sahaba_stories"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -491,12 +485,11 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:onClick="intentahades"
+                                android:id="@+id/short_ahadiths"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -530,12 +523,11 @@
                             android:weightSum="2">
 
                             <LinearLayout
-                                android:onClick="intentsonan"
+                                android:id="@+id/sunnah"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -560,12 +552,10 @@
 
                             <LinearLayout
                                 android:id="@+id/khfa"
-                                android:onClick="quranonclick"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -599,12 +589,10 @@
 
                             <LinearLayout
                                 android:id="@+id/molk"
-                                android:onClick="quranonclick"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -627,12 +615,11 @@
                                     android:textColor="#252020"/>
                             </LinearLayout>
                             <LinearLayout
-                                android:onClick="intentayakor"
+                                android:id="@+id/ayakor"
                                 android:layout_width="0dp"
                                 android:layout_height="65dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/buoo"
-                                android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"
                                 android:gravity="center"
                                 android:orientation="horizontal"
@@ -666,7 +653,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
                         android:background="@drawable/buoo"
-                        android:clickable="true"
                         android:layout_margin="10dp"
                         android:descendantFocusability="blocksDescendants"
                         android:gravity="center"

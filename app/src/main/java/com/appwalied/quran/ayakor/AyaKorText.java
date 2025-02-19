@@ -2,18 +2,17 @@ package com.appwalied.quran.ayakor;
 
 import android.content.Intent;
 import android.net.Uri;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.appwalied.quran.R;
 
-public class ayakortext extends AppCompatActivity {
+public class AyaKorText extends AppCompatActivity {
 
     TextView ayakortxt;
     Button btnup, btndown, btnstar;
@@ -21,15 +20,12 @@ public class ayakortext extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ayakortext);
 
-        btnup = (Button) findViewById(R.id.btn_up);
-        btndown = (Button) findViewById(R.id.btn_down);
-        btnstar = (Button) findViewById(R.id.btn_star);
-        ayakortxt = (TextView) findViewById(R.id.ayakortxt);
+        btnup = findViewById(R.id.btn_up);
+        btndown = findViewById(R.id.btn_down);
+        btnstar = findViewById(R.id.btn_star);
+        ayakortxt = findViewById(R.id.ayakortxt);
 
 
         btnup.setOnClickListener(new View.OnClickListener() {

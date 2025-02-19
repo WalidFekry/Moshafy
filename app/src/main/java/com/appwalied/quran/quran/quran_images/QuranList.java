@@ -1,7 +1,8 @@
-package com.appwalied.quran.quranread;
+package com.appwalied.quran.quran.quran_images;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,10 +12,10 @@ import com.appwalied.quran.R;
 
 import java.util.ArrayList;
 
-public class Quran_list extends AppCompatActivity {
-    ArrayList<Quran> quranlist ;
-    RecyclerView recyclerView ;
-    Quran_Adapter quran_adapter ;
+public class QuranList extends AppCompatActivity {
+    ArrayList<Quran> quranlist;
+    RecyclerView recyclerView;
+    Quran_Adapter quran_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +23,18 @@ public class Quran_list extends AppCompatActivity {
         setContentView(R.layout.quran_list);
 
 
-        int num = getIntent().getIntExtra("soranum" , 1 );
+        int num = getIntent().getIntExtra("soranum", 1);
 
         quranlist = new ArrayList<>();
-        switch ( num)
-        {
-            case 1 :
+        switch (num) {
+            case 1:
 
                 quranlist.add(new Quran(R.drawable.s1));
                 quranlist.add(new Quran(R.drawable.s2));
                 quranlist.add(new Quran(R.drawable.s3));
                 break;
 
-            case 2 :
+            case 2:
                 quranlist.add(new Quran(R.drawable.a1));
                 quranlist.add(new Quran(R.drawable.a2));
                 quranlist.add(new Quran(R.drawable.a3));
@@ -53,12 +53,11 @@ public class Quran_list extends AppCompatActivity {
         }
 
 
-
-        recyclerView = (RecyclerView) findViewById(R.id.quranlist);
-        recyclerView.setLayoutManager(new LinearLayoutManager(Quran_list.this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView = findViewById(R.id.quranlist);
+        recyclerView.setLayoutManager(new LinearLayoutManager(QuranList.this, LinearLayoutManager.HORIZONTAL, false));
         SnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
-        quran_adapter = new Quran_Adapter(quranlist , Quran_list.this);
+        quran_adapter = new Quran_Adapter(quranlist, QuranList.this);
         recyclerView.setAdapter(quran_adapter);
         recyclerView.setRotationY(180);
     }

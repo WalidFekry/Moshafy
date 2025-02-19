@@ -1,4 +1,4 @@
-package com.appwalied.quran;
+package com.appwalied.quran.quran.quran_listening.listening;
 
 import com.appwalied.quran.adabters.ListBeginEndAya;
 

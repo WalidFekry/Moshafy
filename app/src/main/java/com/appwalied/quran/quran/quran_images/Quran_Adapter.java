@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread;
+package com.appwalied.quran.quran.quran_images;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -3,6 +3,7 @@ package com.appwalied.quran.sonan;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,18 +15,17 @@ import java.util.ArrayList;
 public class MainAyaandabra extends BaseActivity {
     RecyclerView recaya;
     ArrayList<item_Aya> listaya;
+    private AppCompatImageButton back;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ayaandabra);
-
-
-        recaya = (RecyclerView) findViewById(R.id.recaya);
+        recaya = findViewById(R.id.recaya);
+        back = findViewById(R.id.back_button);
+        back.setOnClickListener(v -> finish());
         recaya.setLayoutManager(new LinearLayoutManager(this));
-
         listaya = new ArrayList<>();
         DatabaseAcsessAya dp = DatabaseAcsessAya.getInstance(this);
         dp.opean();
@@ -35,10 +35,4 @@ public class MainAyaandabra extends BaseActivity {
         recaya.setAdapter(adapter);
 
     }
-
-    public void onBackClicked(View view) {
-        onBackPressed();
-    }
-
-
 }

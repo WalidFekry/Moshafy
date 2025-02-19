@@ -1,4 +1,4 @@
-package com.appwalied.quran.quranread;
+package com.appwalied.quran.quran.quran_images;
 
 public class Quran {
     private int imagemnum;

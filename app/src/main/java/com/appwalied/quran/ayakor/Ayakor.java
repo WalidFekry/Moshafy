@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
@@ -27,51 +28,31 @@ public class Ayakor extends BaseActivity {
 
     private static final String TAG = "TAG";
     private InterstitialAd mInterstitialAd;
+    private AppCompatImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ayakor);
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                if (this != null && !isFinishing()) {
-                    SmartRate.Rate(Ayakor.this
-                            , "تقييم التطبيق"
-                            , "تقييمك للتطبيق يساعدنا علي التطوير المستمر وتقديم المزيد"
-                            , "تقييم الان"
-                            , "حسنا يمكنك تقيممنا الان علي جوجل بلاي"
-                            , "اضغط هنا"
-                            , "ليس الان"
-                            , "Thanks "
-                            , Color.parseColor("#c65164"), 2);
-
-
-                }
-            }
-        }, 6000);
-
+        back = findViewById(R.id.back_button);
+        back.setOnClickListener(v -> finish());
         setUpAds();
         getHandler().postDelayed(this::LoadAds, 4000);
     }
 
     public void korpic1(View view) {
-        Intent i = new Intent(Ayakor.this, ayakorpic.class);
+        Intent i = new Intent(Ayakor.this, AyaKorPic.class);
         startActivity(i);
         }
 
 
     public void kortext2(View view) {
-        Intent i = new Intent(Ayakor.this, ayakortext.class);
+        Intent i = new Intent(Ayakor.this, AyaKorText.class);
         startActivity(i);
     }
 
     public void korlisten3(View view) {
-        Intent i = new Intent(Ayakor.this, ayakorlisten.class);
+        Intent i = new Intent(Ayakor.this, AyaKorListen.class);
         startActivity(i);
     }
 
