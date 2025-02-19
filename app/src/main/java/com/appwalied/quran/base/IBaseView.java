@@ -12,6 +12,7 @@ public interface IBaseView {
 
     void hideLoading();
 
-    void hideKeyboard();
+    void promptUserForRating();
 
+    void saveLastPromptData(int newCount);
 }

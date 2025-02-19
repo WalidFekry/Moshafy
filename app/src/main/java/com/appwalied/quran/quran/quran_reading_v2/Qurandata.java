@@ -9,8 +9,9 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 
-public class Qurandata extends AppCompatActivity {
+public class Qurandata extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,8 @@ public class Qurandata extends AppCompatActivity {
         setContentView(R.layout.activity_qurandata);
         AppCompatImageButton back = findViewById(R.id.back_button);
         back.setOnClickListener(v -> finish());
+
+        promptUserForRating();
     }
 
     public void ooo10o(View vi) {

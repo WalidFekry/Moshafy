@@ -32,6 +32,8 @@ public class MainStory extends BaseActivity {
         dp.close();
         Adapterstory adapter = new Adapterstory(MainStory.this, listabra);
         recstory.setAdapter(adapter);
+
+        promptUserForRating();
     }
 
 }

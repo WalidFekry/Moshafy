@@ -12,13 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 
 import guy4444.smartrate.SmartRate;
 
-public class Azkar extends AppCompatActivity {
+public class Azkar extends BaseActivity {
     private AppCompatImageButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class Azkar extends AppCompatActivity {
             CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
             customDialogClass.show();
         }
+
+        promptUserForRating();
     }
 
     public void move1(View view) {

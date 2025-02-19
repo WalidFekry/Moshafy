@@ -34,5 +34,6 @@ public class MainAyaandabra extends BaseActivity {
         AdapterRecyclerAya adapter = new AdapterRecyclerAya(MainAyaandabra.this, listaya);
         recaya.setAdapter(adapter);
 
+        promptUserForRating();
     }
 }

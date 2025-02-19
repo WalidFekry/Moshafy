@@ -38,6 +38,8 @@ public class Ayakor extends BaseActivity {
         back.setOnClickListener(v -> finish());
         setUpAds();
         getHandler().postDelayed(this::LoadAds, 4000);
+
+        promptUserForRating();
     }
 
     public void korpic1(View view) {

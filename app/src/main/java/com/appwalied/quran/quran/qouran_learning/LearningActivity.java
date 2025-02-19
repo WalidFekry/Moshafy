@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,8 +29,6 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
     private TextView reciterName;
     private RecyclerView ayasRecyclerView;
     private JcPlayerView player;
-    private final List<Ayah> selectedAyasList = new ArrayList<>();
-
     private int currentPlayIndex = 0;
     private int currentRepeatAyaIndex = 1;
     private int currentRepeatSoraIndex = 1;
@@ -48,8 +47,8 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
 
         learningData = (LearningData) getIntent().getSerializableExtra("learning_data");
         List<Ayah> selectedAyasList = new ArrayList<>();
-        for (int i=0; i < learningData.getSoraDetails().getAyahs().size(); i++){
-            if(i >= (learningData.getSelectedFrom()-1) && i <= (learningData.getSelectedTo()-1))
+        for (int i = 0; i < learningData.getSoraDetails().getAyahs().size(); i++) {
+            if (i >= (learningData.getSelectedFrom() - 1) && i <= (learningData.getSelectedTo() - 1))
                 selectedAyasList.add(learningData.getSoraDetails().getAyahs().get(i));
         }
         learningData.getSoraDetails().setAyahs(selectedAyasList);
@@ -65,23 +64,36 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
         ayasRecyclerView.setLayoutManager(new LinearLayoutManager((this)));
         reciterName.setText(learningData.getSelectedReciter().getName());
 
-
-
         ArrayList<JcAudio> jcAudios = new ArrayList<>();
-        jcAudios.add(getNextAudio(0));
-        player.initPlaylist(jcAudios, this);
+        JcAudio firstAudio = getNextAudio(0);
+
+        if (firstAudio != null) {
+            jcAudios.add(firstAudio);
+        }
+
+        if (!jcAudios.isEmpty()) {
+            player.initPlaylist(jcAudios, this);
+        } else {
+            showMessage("القائمة فارغة، لن يتم تشغيل المشغل.");
+        }
 
         player.findViewById(R.id.btnNext).setOnClickListener(view -> {
             if (currentPlayIndex == learningData.getSoraDetails().getAyahs().size() - 1) {
                 currentPlayIndex = 0;
                 currentRepeatAyaIndex = 1;
-                player.playAudio(getNextAudio(0));
+                JcAudio audioToPlay = getNextAudio(0);
+                if (audioToPlay != null) {
+                    player.playAudio(audioToPlay);
+                }
                 ayasRecyclerView.smoothScrollToPosition(0);
 
             } else {
                 currentPlayIndex += 1;
                 currentRepeatAyaIndex = 1;
-                player.playAudio(getNextAudio(currentPlayIndex));
+                JcAudio audioToPlay = getNextAudio(currentPlayIndex);
+                if (audioToPlay != null) {
+                    player.playAudio(audioToPlay);
+                }
                 ayasRecyclerView.smoothScrollToPosition(currentPlayIndex);
             }
 
@@ -92,12 +104,18 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
 
             if (currentPlayIndex == 0) {
                 currentRepeatAyaIndex = 1;
-                player.playAudio(getNextAudio(0));
+                JcAudio audioToPlay = getNextAudio(0);
+                if (audioToPlay != null) {
+                    player.playAudio(audioToPlay);
+                }
                 ayasRecyclerView.smoothScrollToPosition(0);
             } else {
                 currentPlayIndex -= 1;
                 currentRepeatAyaIndex = 1;
-                player.playAudio(getNextAudio(currentPlayIndex));
+                JcAudio audioToPlay = getNextAudio(currentPlayIndex);
+                if (audioToPlay != null) {
+                    player.playAudio(audioToPlay);
+                }
                 ayasRecyclerView.smoothScrollToPosition(currentPlayIndex);
             }
             ayasAdapter.setSelectedAyaIndex(currentPlayIndex);
@@ -107,12 +125,27 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
 
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(() -> runOnUiThread(() -> {
-            player.playAudio(getNextAudio(currentPlayIndex));
+            JcAudio audioToPlay = getNextAudio(currentPlayIndex);
+            if (audioToPlay != null) {
+                player.playAudio(audioToPlay);
+            }
         }), 500);
 
     }
 
     private JcAudio getNextAudio(int index) {
+        List<Ayah> ayahs = learningData.getSoraDetails().getAyahs();
+
+        if (ayahs == null || ayahs.isEmpty()) {
+            showMessage("خطأ: قائمة الآيات فارغة أو لا تحتوي على أي شيء.");
+            return null;
+        }
+
+        if (index < 0 || index >= ayahs.size()) {
+            showMessage("خطأ: يجب ان يكون رقم الآية بين 0 و " + ayahs.size());
+            return null;
+        }
+
         return JcAudio.createFromURL(learningData.getSoraDetails().getAyahs().get(index).getText(), learningData.getSoraDetails().getAyahs().get(index).getAudio());
     }
 
@@ -121,8 +154,10 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
     public void onAyaClicked(Ayah ayah, int position) {
         currentRepeatAyaIndex = 1;
         currentPlayIndex = position;
-        player.playAudio(getNextAudio(position));
-
+        JcAudio audioToPlay = getNextAudio(position);
+        if (audioToPlay != null) {
+            player.playAudio(audioToPlay);
+        }
     }
 
     @Override
@@ -138,7 +173,10 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
             }
 
             if (currentPlayIndex < learningData.getSoraDetails().getAyahs().size()) {
-                player.playAudio(getNextAudio(currentPlayIndex));
+                JcAudio audioToPlay = getNextAudio(currentPlayIndex);
+                if (audioToPlay != null) {
+                    player.playAudio(audioToPlay);
+                }
                 ayasRecyclerView.smoothScrollToPosition(currentPlayIndex);
                 ayasAdapter.setSelectedAyaIndex(currentPlayIndex);
             } else {
@@ -148,7 +186,10 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
                 if (currentRepeatSoraIndex < learningData.getRepeatSora()) {
                     currentRepeatSoraIndex += 1;
                     ayasAdapter.setSelectedAyaIndex(currentPlayIndex);
-                    player.playAudio(getNextAudio(currentPlayIndex));
+                    JcAudio audioToPlay = getNextAudio(currentPlayIndex);
+                    if (audioToPlay != null) {
+                        player.playAudio(audioToPlay);
+                    }
                     ayasRecyclerView.smoothScrollToPosition(currentPlayIndex);
                 } else {
                     finish();
@@ -157,6 +198,12 @@ public class LearningActivity extends AppCompatActivity implements AyasAdapter.I
             }
 
         }), 200);
+    }
+
+    private void showMessage(String message) {
+        if (message != null) {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

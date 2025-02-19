@@ -1,7 +1,9 @@
 package com.appwalied.quran.quran.qouran_learning;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
+import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.R;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
@@ -41,9 +44,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class QouranLearningActivity extends AppCompatActivity {
+public class QouranLearningActivity extends BaseActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "QouranLearningActivity";
     private final List<Sora> soraList = QuranUtils.getSoraList();
     List<Reciter> reciterList;
     SoraDetails soraDetails;
@@ -77,6 +80,8 @@ public class QouranLearningActivity extends AppCompatActivity {
         setListeners();
 
         getListOfReciters();
+
+        promptUserForRating();
     }
 
     private void setListeners() {
@@ -163,21 +168,7 @@ public class QouranLearningActivity extends AppCompatActivity {
         });
     }
 
-    private void showLoading() {
-        if (loadingDialog != null) {
-            hideLoading();
-        }
-        loadingDialog = new Dialog(this);
-        loadingDialog.setContentView(R.layout.loading_dialog);
-        loadingDialog.setCancelable(false);
-        loadingDialog.show();
-    }
 
-    private void hideLoading() {
-        if (loadingDialog != null && loadingDialog.isShowing()) {
-            loadingDialog.dismiss();
-        }
-    }
 
     private void setViewsState(boolean enable, float alpha) {
         soraTextView.setEnabled(enable);
