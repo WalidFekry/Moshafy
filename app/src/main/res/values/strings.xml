@@ -412,13 +412,13 @@
 
 
     <!--Ads Test-->
-    <string name="Biny1">0</string>
-    <string name="Biny2">0</string>
-    <string name="Biny3">0</string>
+    <string name="Biny1">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="Biny2">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="Biny3">ca-app-pub-3940256099942544/1033173712</string>
 
-    <string name="Banner1">0</string>
-    <string name="Banner2">0</string>
-    <string name="Banner3">0</string>
+    <string name="Banner1">ca-app-pub-3940256099942544/9214589741</string>
+    <string name="Banner2">ca-app-pub-3940256099942544/9214589741</string>
+    <string name="Banner3">ca-app-pub-3940256099942544/9214589741</string>
 
 
 </resources>

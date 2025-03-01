@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.monw3at.roqia.RoqiaNoIternet;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 
-public class Diffrentis extends AppCompatActivity {
+public class Diffrentis extends BaseActivity {
     private AppCompatImageButton back;
 
     @Override
@@ -20,6 +22,7 @@ public class Diffrentis extends AppCompatActivity {
         setContentView(R.layout.activity_diffrentis);
         back = findViewById(R.id.back_button);
         back.setOnClickListener(v -> finish());
+        checkAndShowDialog(SharedPrefsConstants.MONW3AT_FIRST_TIME, "في قسم منوعات إسلامية، ستجد الأذكار، الرقية الشرعية، الأحاديث، الوصايا، سنن الرسول ﷺ، وأحكام الحج والعمرة 💙");
     }
 
     public void Title1(View view) {

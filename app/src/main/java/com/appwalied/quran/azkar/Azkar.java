@@ -28,14 +28,10 @@ public class Azkar extends BaseActivity {
         back = findViewById(R.id.back_button);
         back.setOnClickListener(v -> finish());
 
-        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.AZKAR_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, SharedPrefsConstants.AZKAR_FIRST_TIME, true);
-            CustomDialogClass.Options options = new CustomDialogClass.Options();
-            options.title = "ملاحظة هامة ";
-            options.message = "يحتوي هذا القسم على أذكار المسلم كاملة بدون انترنت ^_^";
-            CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
-            customDialogClass.show();
-        }
+        checkAndShowDialog(
+                SharedPrefsConstants.AZKAR_FIRST_TIME,
+                "يحتوي هذا القسم على أذكار المسلم كاملة بدون انترنت ^_^"
+        );
 
         promptUserForRating();
     }

@@ -48,45 +48,8 @@ public class MaintitlepagerAya extends BaseActivity {
         pagerAya.setCurrentItem(ID - 1);
 
         setUpAds();
-        getHandler().postDelayed(this::LoadAds, 4000);
+        getHandler().postDelayed(this::loadAds, 4000);
     }
 
-    private void setUpAds() {
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
 
-        AdView adView = findViewById(R.id.M5);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        adView.loadAd(adRequest);
-
-        InterstitialAd.load(this, getString(R.string.Biny1), adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                // The mInterstitialAd reference will be null until
-                // an ad is loaded.
-                mInterstitialAd = interstitialAd;
-                Log.i(TAG, "onAdLoaded");
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                // Handle the error
-                Log.i(TAG, loadAdError.getMessage());
-                mInterstitialAd = null;
-            }
-        });
-    }
-
-    private void LoadAds() {
-        if (mInterstitialAd != null) {
-            mInterstitialAd.show(MaintitlepagerAya.this);
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.");
-        }
-    }
 }

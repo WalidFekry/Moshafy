@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 
 public class Qurandata extends BaseActivity {
 
@@ -19,6 +20,11 @@ public class Qurandata extends BaseActivity {
         setContentView(R.layout.activity_qurandata);
         AppCompatImageButton back = findViewById(R.id.back_button);
         back.setOnClickListener(v -> finish());
+
+        checkAndShowDialog(
+                SharedPrefsConstants.QURAN_READING_V2_FIRST_TIME,
+                "في هذا القسم، يمكنك قراءة القرآن الكريم بواجهة مريحة، مع ميزات تسهل عليك التلاوة والتدبر 📖"
+        );
 
         promptUserForRating();
     }

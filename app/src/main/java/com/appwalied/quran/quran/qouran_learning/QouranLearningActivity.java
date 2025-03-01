@@ -67,14 +67,7 @@ public class QouranLearningActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qouran_learning);
 
-        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.QURAN_LEARNING_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, SharedPrefsConstants.QURAN_LEARNING_FIRST_TIME, true);
-            CustomDialogClass.Options options = new CustomDialogClass.Options();
-            options.title = "ملاحظة هامة";
-            options.message = "يحتوي هذا القسم على المصحف المعلم. يمكنك اختيار اسم القارئ ثم اسم السورة والبدء الآن 💙";
-            CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
-            customDialogClass.show();
-        }
+        checkAndShowDialog(SharedPrefsConstants.QURAN_LEARNING_FIRST_TIME,"يحتوي هذا القسم على المصحف المعلم. يمكنك اختيار اسم القارئ ثم اسم السورة والبدء الآن 💙");
 
         initViews();
         setListeners();

@@ -3,6 +3,7 @@ package com.appwalied.quran.masbaha;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -27,6 +28,7 @@ public class MasbahaActivity extends BaseActivity {
     FloatingActionButton iv_reset;
     AppCompatImageButton back;
     private int selection = 1;
+    private FrameLayout adsContainer;
 
 
     @Override
@@ -34,19 +36,13 @@ public class MasbahaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_masbaha);
 
-        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.MASBAHA_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, SharedPrefsConstants.MASBAHA_FIRST_TIME, true);
-            CustomDialogClass.Options options = new CustomDialogClass.Options();
-            options.title = "ملاحظة هامة ";
-            options.message = "يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت 💙";
-            CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
-            customDialogClass.show();
-        }
+        checkAndShowDialog(SharedPrefsConstants.MASBAHA_FIRST_TIME,"يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت 💙");
 
         sharedPreferences = getSharedPreferences("masbaha", MODE_PRIVATE);
         back = findViewById(R.id.back_button);
         recycler_masbaha = findViewById(R.id.recycler_masbaha);
         recycler_masbaha.setEnabled(false);
+        adsContainer = findViewById(R.id.adsContainer);
         tv_title = findViewById(R.id.tv_title);
         tv_desc = findViewById(R.id.tv_desc);
         view1 = findViewById(R.id.iv_1);
@@ -93,6 +89,8 @@ public class MasbahaActivity extends BaseActivity {
             sharedPreferences.edit().putInt("index" + selection, recycler_masbaha.getCurrentItem()).apply();
         });
       back.setOnClickListener(v -> finish());
+
+      showBanner(adsContainer);
     }
 
     private void setadapter(final int i) {

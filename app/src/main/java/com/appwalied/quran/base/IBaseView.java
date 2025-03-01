@@ -1,5 +1,7 @@
 package com.appwalied.quran.base;
 
+import android.widget.FrameLayout;
+
 import androidx.annotation.StringRes;
 
 public interface IBaseView {
@@ -15,4 +17,8 @@ public interface IBaseView {
     void promptUserForRating();
 
     void saveLastPromptData(int newCount);
+
+    void setUpAds();
+    void loadAds();
+    void showBanner(FrameLayout adsContainer);
 }

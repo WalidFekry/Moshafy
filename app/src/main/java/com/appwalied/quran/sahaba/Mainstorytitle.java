@@ -69,7 +69,6 @@ public class Mainstorytitle extends BaseActivity {
 
             }
         });
-        setUpAds();
     }
 
     public void copy(View view) {
@@ -95,20 +94,5 @@ public class Mainstorytitle extends BaseActivity {
         onBackPressed();
     }
 
-    private void setUpAds() {
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-        AdView adView = findViewById(R.id.M3);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        adView.loadAd(adRequest);
-
-    }
 
 }

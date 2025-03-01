@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.Splash;
+import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.notifications_messages.adapter.NotificationAdapter;
 import com.appwalied.quran.notifications_messages.model.NotificationModel;
 import com.appwalied.quran.notifications_messages.model.NotificationResponse;
@@ -27,13 +29,14 @@ import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 
 import java.util.List;
 
-public class NotificationsMessagesActivity extends AppCompatActivity {
+public class NotificationsMessagesActivity extends BaseActivity {
     private static final String TAG = "NotificationsMessages";
     private RecyclerView rec;
     private NotificationAdapter adapter;
     private Dialog loadingDialog;
     private LinearLayout noInternetLayout;
     private AppCompatButton retryButton;
+    private FrameLayout adsContainer;
 
     private final NotificationRepository repository = new NotificationRepository();
 
@@ -42,37 +45,20 @@ public class NotificationsMessagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications_messages);
 
-        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.NOTIFICATIONS_MESSAGES_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, SharedPrefsConstants.NOTIFICATIONS_MESSAGES_FIRST_TIME, true);
-            CustomDialogClass.Options options = new CustomDialogClass.Options();
-            options.title = "ملاحظة هامة";
-            options.message = "في هذا القسم، ستجد اقتباسات عشوائية تلهمك وتضيف لمسة من الحكمة إلى يومك 💙";            CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
-            customDialogClass.show();
-        }
+        checkAndShowDialog(SharedPrefsConstants.NOTIFICATIONS_MESSAGES_FIRST_TIME,"في هذا القسم، ستجد اقتباسات عشوائية تلهمك وتضيف لمسة من الحكمة إلى يومك 💙");
 
         initViews();
         setupRecyclerView();
         showLoading();
         fetchNotificationsMessages();
-    }
 
-    private void showLoading() {
-        if (loadingDialog != null) {
-            hideLoading();
-        }
-        loadingDialog = new Dialog(this);
-        loadingDialog.setContentView(R.layout.loading_dialog);
-        loadingDialog.setCancelable(false);
-        loadingDialog.show();
-    }
-
-    private void hideLoading() {
-        if (loadingDialog != null && loadingDialog.isShowing()) {
-            loadingDialog.dismiss();
-        }
+        showBanner(adsContainer);
+        setUpAds();
+        getHandler().postDelayed(this::loadAds, 4000);
     }
 
     private void initViews() {
+        adsContainer = findViewById(R.id.adsContainer);
         AppCompatImageButton back = findViewById(R.id.back_button);
         rec = findViewById(R.id.rec);
         noInternetLayout = findViewById(R.id.no_internet_layout);

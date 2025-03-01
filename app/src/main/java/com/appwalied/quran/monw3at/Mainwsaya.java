@@ -53,41 +53,6 @@ public class Mainwsaya extends BaseActivity {
         rec3.setAdapter(adapterrec3);
 
         setUpAds();
-        getHandler().postDelayed(this::LoadAds, 4000);
-    }
-
-    private void setUpAds() {
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        InterstitialAd.load(this, getString(R.string.Biny1), adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        Log.i(TAG, "onAdLoaded");
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.i(TAG, loadAdError.getMessage());
-                        mInterstitialAd = null;
-                    }
-                });
-    }
-
-    private void LoadAds() {
-        if (mInterstitialAd != null) {
-            mInterstitialAd.show(Mainwsaya.this);
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.");
-        }
+        getHandler().postDelayed(this::loadAds, 4000);
     }
 }

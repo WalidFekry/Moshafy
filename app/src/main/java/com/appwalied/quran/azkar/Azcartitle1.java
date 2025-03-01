@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.Adapterpager1;
@@ -30,11 +31,13 @@ import java.util.List;
 public class Azcartitle1 extends BaseActivity {
     List<item_pager> listpager1;
     private static final String TAG = "Azcartitle1";
+    private FrameLayout adsContainer;
     private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_azcartitle1);
+        adsContainer = findViewById(R.id.adsContainer);
 
         final ViewPager viewPager= findViewById(R.id.viewpager1);
         listpager1=new ArrayList<>();
@@ -71,37 +74,8 @@ public class Azcartitle1 extends BaseActivity {
         Adapterpager1 adapterpager1=new Adapterpager1(Azcartitle1.this,listpager1);
         viewPager.setAdapter(adapterpager1);
 
+        showBanner(adsContainer);
         setUpAds();
-        getHandler().postDelayed(this::LoadAds, 4000);
-    }
-
-    private  void setUpAds(){
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        InterstitialAd.load(this, getString(R.string.Biny2), adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        Log.i(TAG, "onAdLoaded");
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.i(TAG, loadAdError.getMessage());
-                        mInterstitialAd = null;
-                    }
-                });
-    }
-
-    private void LoadAds() {
-        if (mInterstitialAd != null) {
-            mInterstitialAd.show(Azcartitle1.this);
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.");
-        }
+        getHandler().postDelayed(this::loadAds, 4000);
     }
 }

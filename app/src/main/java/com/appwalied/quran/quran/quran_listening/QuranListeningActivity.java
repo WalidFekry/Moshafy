@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.quran.quran_listening.listening.SongsManager;
 import com.appwalied.quran.quran.quran_listening.listening.Utilities;
 import com.google.android.gms.ads.AdRequest;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class QuranListeningActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
+public class QuranListeningActivity extends BaseActivity implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
     // Media Player
     private static MediaPlayer mp;
     String RecitesName = "";
@@ -51,8 +53,8 @@ public class QuranListeningActivity extends AppCompatActivity implements MediaPl
     private int currentSongIndex = 0;
     private boolean isShuffle = false;
     private boolean isRepeat = false;
-    private AdView mAdView;
     private AppCompatImageButton back;
+    private FrameLayout adsContainer;
     private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
     /**
      * Background Runnable thread
@@ -90,10 +92,6 @@ public class QuranListeningActivity extends AppCompatActivity implements MediaPl
         Bundle b = getIntent().getExtras();
         RecitesName = b.getString("RecitesName");
         RecitesAYA = b.getString("RecitesAYA");
-
-        mAdView = findViewById(R.id.adViewmag);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
         // All player buttons
         btnPlay = findViewById(R.id.btnPlay);
         btnForward = findViewById(R.id.btnForward);
@@ -107,8 +105,11 @@ public class QuranListeningActivity extends AppCompatActivity implements MediaPl
         songCurrentDurationLabel = findViewById(R.id.songCurrentDurationLabel);
         songTotalDurationLabel = findViewById(R.id.songTotalDurationLabel);
         back = findViewById(R.id.back_button);
+        adsContainer = findViewById(R.id.adsContainer);
 
         back.setOnClickListener(v -> finish());
+
+        showBanner(adsContainer);
 
         // Mediaplayer
 
@@ -300,6 +301,7 @@ public class QuranListeningActivity extends AppCompatActivity implements MediaPl
 
 
     }
+
 
     // @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

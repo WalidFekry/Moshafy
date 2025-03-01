@@ -19,14 +19,7 @@ public class QuranRead extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quran_read);
 
-        if (!SharedHelper.getBoolean(this, SharedPrefsConstants.QURAN_READING_FIRST_TIME)) {
-            SharedHelper.putBoolean(this, SharedPrefsConstants.QURAN_READING_FIRST_TIME, true);
-            CustomDialogClass.Options options = new CustomDialogClass.Options();
-            options.title = "ملاحظة هامة";
-            options.message = "في هذا القسم، يمكنك قراءة القرآن الكريم بسهولة مع خيارات مريحة تساعدك على التدبر والتلاوة 📖";            CustomDialogClass customDialogClass = new CustomDialogClass(this, options);
-            customDialogClass.show();
-        }
-
+        checkAndShowDialog(SharedPrefsConstants.QURAN_READING_FIRST_TIME,"في هذا القسم، يمكنك قراءة القرآن الكريم بسهولة مع خيارات مريحة تساعدك على التدبر والتلاوة 📖");
         FragmentManager fragmentManager;
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_fragment, SurahFragment.newInstance()).commit();

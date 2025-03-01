@@ -14,12 +14,14 @@ import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.LnaguageClass;
+import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.quran.quran_listening.listening.AuthorClass;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecitesName extends AppCompatActivity {
+public class RecitesName extends BaseActivity {
     public static int LanguageSelect = 1;
     private List<AuthorClass> listRecites = new ArrayList<>();
     private ListView lvRecites;
@@ -31,6 +33,11 @@ public class RecitesName extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recites_name);
+
+        checkAndShowDialog(
+                SharedPrefsConstants.QURAN_LISTENING_FIRST_TIME,
+                "في هذا القسم، يمكنك الاستماع إلى القرآن الكريم بصوت مجموعة من المشايخ، لتعيش أجواء روحانية مميزة وتطمئن به روحك 💙"
+        );
 
         lvRecites = findViewById(R.id.listView);
         back = findViewById(R.id.back_button);
