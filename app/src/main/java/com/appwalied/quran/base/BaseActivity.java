@@ -47,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private SharedPreferences sharedPreferences;
     private AdView adView;
     private boolean initialLayoutComplete = false;
+    private long currentTime;
 
 
     @Override
@@ -156,16 +157,13 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void setUpAds() {
         long lastAdTime = sharedPreferences.getLong(LAST_AD_TIME_KEY, 0);
-        long currentTime = System.currentTimeMillis();
+        currentTime = System.currentTimeMillis();
 
         // التحقق مما إذا كان قد مر 30 دقيقة منذ آخر إعلان
         if ((currentTime - lastAdTime) < AD_INTERVAL) {
             Log.d("TAG", "Not enough time has passed since the last ad. Skipping ad load.");
             return;
         }
-
-        // إذا مر الوقت الكافي، نقوم بتحديث الوقت وتحميل إعلان جديد
-        sharedPreferences.edit().putLong(LAST_AD_TIME_KEY, currentTime).apply();
 
         String[] adIds = {getString(R.string.Biny1), getString(R.string.Biny2), getString(R.string.Biny3)};
         String selectedAdId = adIds[new Random().nextInt(adIds.length)];
@@ -187,6 +185,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void loadAds() {
+        sharedPreferences.edit().putLong(LAST_AD_TIME_KEY, currentTime).apply();
         if (mInterstitialAd != null) {
             mInterstitialAd.show(BaseActivity.this);
         } else {
