@@ -30,7 +30,6 @@ public class Maintitlenewstory extends BaseActivity {
     int a = 0;
     int c = 18;
     MaterialIconView min, plus;
-    private InterstitialAd mInterstitialAd;
     private AppCompatImageButton back;
 
     @Override
@@ -74,7 +73,6 @@ public class Maintitlenewstory extends BaseActivity {
         });
 
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 
     public void copy(View view) {

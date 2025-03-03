@@ -32,7 +32,6 @@ public class Azcartitle1 extends BaseActivity {
     List<item_pager> listpager1;
     private static final String TAG = "Azcartitle1";
     private FrameLayout adsContainer;
-    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +75,5 @@ public class Azcartitle1 extends BaseActivity {
 
         showBanner(adsContainer);
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 }

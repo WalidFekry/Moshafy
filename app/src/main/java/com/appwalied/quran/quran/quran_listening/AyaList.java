@@ -32,7 +32,6 @@ public class AyaList extends BaseActivity {
     static String RecitesName = "";
     ListView listAya;
     String RecitesAYA = "";
-    private InterstitialAd mInterstitialAd;
     private AppCompatImageButton back;
 
     @Override
@@ -51,7 +50,6 @@ public class AyaList extends BaseActivity {
         listAya.setAdapter(new VivzAdapter(this, listrecitesAya));
         back.setOnClickListener(v -> finish());
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 
     private void DisplayAya() {

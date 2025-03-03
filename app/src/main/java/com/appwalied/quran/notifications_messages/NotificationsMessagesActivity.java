@@ -54,7 +54,6 @@ public class NotificationsMessagesActivity extends BaseActivity {
 
         showBanner(adsContainer);
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 
     private void initViews() {

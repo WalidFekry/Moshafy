@@ -1,8 +1,7 @@
 package com.appwalied.quran.azkar;
 
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,25 +9,21 @@ import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.Adapterpager3;
 import com.appwalied.quran.adabters.item_pager;
 import com.appwalied.quran.base.BaseActivity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-import net.steamcrafted.materialiconlib.MaterialIconView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Azcartitle3 extends BaseActivity {
     List<item_pager> listpager3;
-    MaterialIconView plus;
-    int size = 18;
+    private FrameLayout adsContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_azcartitle3);
+        adsContainer = findViewById(R.id.adsContainer);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager1);
+        final ViewPager viewPager = findViewById(R.id.viewpager1);
         listpager3 = new ArrayList<>();
         listpager3.add(new item_pager(getString(R.string.azkarrmdan1), getString(R.string.azkarrmdan2)));
         listpager3.add(new item_pager(getString(R.string.azkarrmdan3), getString(R.string.azkarrmdan4)));
@@ -48,5 +43,7 @@ public class Azcartitle3 extends BaseActivity {
 
         Adapterpager3 adapterpager3 = new Adapterpager3(Azcartitle3.this, listpager3);
         viewPager.setAdapter(adapterpager3);
+
+        showBanner(adsContainer);
     }
 }

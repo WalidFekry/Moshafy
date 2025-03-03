@@ -20,7 +20,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 public class RoqiaNoIternet extends BaseActivity {
 
     private static final String TAG = "TAG";
-    private InterstitialAd mInterstitialAd;
 
     private AppCompatImageButton back;
 
@@ -31,6 +30,5 @@ public class RoqiaNoIternet extends BaseActivity {
         back = findViewById(R.id.back_button);
         back.setOnClickListener(v -> finish());
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 }

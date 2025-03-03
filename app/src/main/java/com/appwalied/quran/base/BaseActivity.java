@@ -173,18 +173,20 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             @Override
             public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                 mInterstitialAd = interstitialAd;
+                getHandler().postDelayed(BaseActivity.this::loadAds, 4000);
             }
 
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 Log.i("TAG", "Ad Failed: " + selectedAdId + " - " + loadAdError.getMessage());
                 mInterstitialAd = null;
+                sharedPreferences.edit().putLong(LAST_AD_TIME_KEY, currentTime).apply();
             }
         });
     }
 
-    @Override
-    public void loadAds() {
+
+    private void loadAds() {
         sharedPreferences.edit().putLong(LAST_AD_TIME_KEY, currentTime).apply();
         if (mInterstitialAd != null) {
             mInterstitialAd.show(BaseActivity.this);

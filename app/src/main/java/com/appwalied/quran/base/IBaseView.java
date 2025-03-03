@@ -19,6 +19,5 @@ public interface IBaseView {
     void saveLastPromptData(int newCount);
 
     void setUpAds();
-    void loadAds();
     void showBanner(FrameLayout adsContainer);
 }

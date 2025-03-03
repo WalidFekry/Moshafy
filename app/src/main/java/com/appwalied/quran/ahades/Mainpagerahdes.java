@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class Mainpagerahdes extends BaseActivity {
     private static final String TAG = "TAG";
     ViewPager pagerahdes;
-    private InterstitialAd mInterstitialAd;
     private AppCompatImageButton back;
 
 
@@ -48,7 +47,6 @@ public class Mainpagerahdes extends BaseActivity {
         pagerahdes.setCurrentItem(ID - 1);
 
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
     public void onBackClicked(View view) {
         onBackPressed();

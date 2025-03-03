@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class MaintitlepagerAya extends BaseActivity {
     private static final String TAG = "TAG";
     ViewPager pagerAya;
-    private InterstitialAd mInterstitialAd;
     private AppCompatImageButton back;
 
     @Override
@@ -48,7 +47,6 @@ public class MaintitlepagerAya extends BaseActivity {
         pagerAya.setCurrentItem(ID - 1);
 
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 
 

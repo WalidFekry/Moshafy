@@ -27,7 +27,6 @@ import guy4444.smartrate.SmartRate;
 public class Ayakor extends BaseActivity {
 
     private static final String TAG = "TAG";
-    private InterstitialAd mInterstitialAd;
     private AppCompatImageButton back;
 
     @Override
@@ -37,7 +36,6 @@ public class Ayakor extends BaseActivity {
         back = findViewById(R.id.back_button);
         back.setOnClickListener(v -> finish());
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
 
         promptUserForRating();
     }

@@ -31,7 +31,6 @@ public class Mainwsaya extends BaseActivity {
     private static final String TAG = "TAG";
     RecyclerView rec3;
     List<itemrex3> list;
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +52,5 @@ public class Mainwsaya extends BaseActivity {
         rec3.setAdapter(adapterrec3);
 
         setUpAds();
-        getHandler().postDelayed(this::loadAds, 4000);
     }
 }
