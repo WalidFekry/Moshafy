@@ -74,8 +74,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             return PendingIntent.getActivity(getApplicationContext(), DAILY_NOTIFICATION_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
         } else {
-            return PendingIntent.getActivity(getApplicationContext(), DAILY_NOTIFICATION_CODE, intent, PendingIntent.FLAG_ONE_SHOT);
-        }
+            return PendingIntent.getActivity(
+                    getApplicationContext(),
+                    DAILY_NOTIFICATION_CODE,
+                    intent,
+                    PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE
+            );        }
     }
 
     private void sendNotification(String title, String messageBody, Class<?> name) {

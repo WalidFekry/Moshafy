@@ -60,7 +60,7 @@
             android:layout_marginTop="60dp"
             android:id="@+id/recycler_ayat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
         <xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller
             android:id="@+id/fast_scroller"
