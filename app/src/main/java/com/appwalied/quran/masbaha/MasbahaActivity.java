@@ -13,120 +13,157 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
-import com.appwalied.quran.utils.shared_helper.SharedHelper;
 import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
-import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MasbahaActivity extends BaseActivity {
 
-    ViewPager recycler_masbaha;
-    View view;
-    SharedPreferences sharedPreferences;
-    TextView tv_title, tv_desc;
-    FloatingActionButton view1, view2, view3, view4, view5;
-    FloatingActionButton iv_reset;
-    AppCompatImageButton back;
-    private int selection = 1;
+    private ViewPager recycler_masbaha;
+    private View view;
+    private SharedPreferences sharedPreferences;
+
+    private TextView tv_title, tv_desc;
+    private FloatingActionButton view1, view2, view3, view4, view5;
+    private FloatingActionButton iv_reset;
+    private AppCompatImageButton back;
     private FrameLayout adsContainer;
 
+    private int selection = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_masbaha);
 
-        checkAndShowDialog(SharedPrefsConstants.MASBAHA_FIRST_TIME,"يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت 💙");
+        checkAndShowDialog(
+                SharedPrefsConstants.MASBAHA_FIRST_TIME,
+                "يحتوي هذا القسم على المسبحة الإلكترونية تعمل بدون اتصال انترنت 💙"
+        );
 
         sharedPreferences = getSharedPreferences("masbaha", MODE_PRIVATE);
+
         back = findViewById(R.id.back_button);
         recycler_masbaha = findViewById(R.id.recycler_masbaha);
-        recycler_masbaha.setEnabled(false);
         adsContainer = findViewById(R.id.adsContainer);
+
         tv_title = findViewById(R.id.tv_title);
         tv_desc = findViewById(R.id.tv_desc);
+
         view1 = findViewById(R.id.iv_1);
         view2 = findViewById(R.id.iv_2);
         view3 = findViewById(R.id.iv_3);
         view4 = findViewById(R.id.iv_4);
         view5 = findViewById(R.id.iv_5);
         iv_reset = findViewById(R.id.iv_reset);
-        iv_reset.setOnClickListener(v -> {
-            sharedPreferences.edit().putInt("index" + selection, 0).apply();
-            setadapter(selection);
 
+        recycler_masbaha.setEnabled(false);
+
+        iv_reset.setOnClickListener(v -> {
+            sharedPreferences.edit()
+                    .putInt("index" + selection, 0)
+                    .apply();
+            setAdapter(selection);
         });
+
         view1.setOnClickListener(v -> {
             selection = 1;
-            setadapter(1);
+            setAdapter(1);
         });
+
         view2.setOnClickListener(v -> {
             selection = 2;
-            setadapter(2);
+            setAdapter(2);
         });
+
         view3.setOnClickListener(v -> {
             selection = 3;
-            setadapter(3);
+            setAdapter(3);
         });
+
         view4.setOnClickListener(v -> {
             selection = 4;
-            setadapter(4);
+            setAdapter(4);
         });
+
         view5.setOnClickListener(v -> {
             selection = 5;
-            setadapter(5);
+            setAdapter(5);
         });
-        setadapter(1);
+
+        setAdapter(1);
 
         view = findViewById(R.id.view);
         view.setOnClickListener(v -> {
-            if (selection == 5 && recycler_masbaha.getCurrentItem() < 999)
-                recycler_masbaha.setCurrentItem(recycler_masbaha.getCurrentItem() + 1, true);
-            else if (recycler_masbaha.getCurrentItem() < 99)
-                recycler_masbaha.setCurrentItem(recycler_masbaha.getCurrentItem() + 1, true);
+            int current = recycler_masbaha.getCurrentItem();
 
-            else recycler_masbaha.setCurrentItem(0, true);
-            sharedPreferences.edit().putInt("index" + selection, recycler_masbaha.getCurrentItem()).apply();
+            if (selection == 5 && current < 999)
+                recycler_masbaha.setCurrentItem(current + 1, true);
+            else if (current < 99)
+                recycler_masbaha.setCurrentItem(current + 1, true);
+            else
+                recycler_masbaha.setCurrentItem(0, true);
+
+            sharedPreferences.edit()
+                    .putInt("index" + selection, recycler_masbaha.getCurrentItem())
+                    .apply();
         });
-      back.setOnClickListener(v -> finish());
 
-      showBanner(adsContainer);
+        back.setOnClickListener(v -> finish());
+
+        showBanner(adsContainer);
     }
 
-    private void setadapter(final int i) {
-        recycler_masbaha.setAdapter(null);
-        recycler_masbaha.invalidate();
-        recycler_masbaha.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return new com.appwalied.quran.masbaha.PagerFragment(position, i);
-            }
+    private void setAdapter(final int type) {
 
-            @Override
-            public int getCount() {
-                if (i == 5) return 1000;
-                return 100;
-            }
-        });
-        recycler_masbaha.setCurrentItem(sharedPreferences.getInt("index" + i, 0), false);
+        recycler_masbaha.setAdapter(
+                new FragmentStatePagerAdapter(
+                        getSupportFragmentManager(),
+                        FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+                ) {
+                    @Override
+                    public Fragment getItem(int position) {
+                        return PagerFragment.newInstance(position, type);
+                    }
+
+                    @Override
+                    public int getCount() {
+                        return type == 5 ? 1000 : 100;
+                    }
+                }
+        );
+
+        recycler_masbaha.setCurrentItem(
+                sharedPreferences.getInt("index" + type, 0),
+                false
+        );
 
         recycler_masbaha.setOffscreenPageLimit(0);
-        recycler_masbaha.invalidate();
-        if (i == 1) {
-            tv_title.setText("لا إله إلا الله");
-            tv_desc.setText("فضلها : عن النبي صلى الله عليه وسلم أنه قال : من قال لا إله إلا الله صدقًا من قلبه دخل الجنة");
-        } else if (i == 2) {
-            tv_title.setText("أستغفر الله العظيم وأتوب إليه");
-            tv_desc.setText("فضلها : قال رسول الله ﷺ: يا أيها الناس توبوا إلى الله، فإني أتوب في اليوم إليه مائة مرة.");
-        } else if (i == 3) {
-            tv_title.setText("سُبْحَانَ اللهِ، وَالْحْمدُ لِلهِ، وَلَا إِلهَ إِلَّا اللهُ، وَاللهُ أَكْبَرُ");
-            tv_desc.setText("فضلها : قال رسول الله صلى الله عليه وسلم : سُبْحَانَ اللهِ، وَالْحْمدُ لِلهِ، وَلَا إِلهَ إِلَّا اللهُ، وَاللهُ أَكْبَرُ؛ تُغْرَسُ لَكَ بِكُلِّ وَاحِدَةٍ شَجَرَةٌ فِي الْجَنَّةِ");
-        } else if (i == 4) {
-            tv_title.setText("اللهم صلِّ على سيدنا محمد ");
-            tv_desc.setText("فضلها : قال رسول الله صلى الله عليه وسلم : (من صلى عليَّ حين يصبح عشرًا ، وحين يمسي عشرًا ، أدركته شفاعتي يوم القيامة)");
-        } else if (i == 5) {
-            tv_title.setText("سبحان الله وبحمده");
-            tv_desc.setText("فضلها : قال رسول الله صلى الله عليه وسلم (مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ)");
+
+        switch (type) {
+            case 1:
+                tv_title.setText("لا إله إلا الله");
+                tv_desc.setText("فضلها : عن النبي صلى الله عليه وسلم أنه قال : من قال لا إله إلا الله صدقًا من قلبه دخل الجنة");
+                break;
+
+            case 2:
+                tv_title.setText("أستغفر الله العظيم وأتوب إليه");
+                tv_desc.setText("فضلها : قال رسول الله ﷺ: يا أيها الناس توبوا إلى الله، فإني أتوب في اليوم إليه مائة مرة.");
+                break;
+
+            case 3:
+                tv_title.setText("سُبْحَانَ اللهِ، وَالْحْمْدُ لِلهِ، وَلَا إِلٰهَ إِلَّا اللهُ، وَاللهُ أَكْبَرُ");
+                tv_desc.setText("فضلها : تُغْرَسُ لَكَ بِكُلِّ وَاحِدَةٍ شَجَرَةٌ فِي الْجَنَّةِ");
+                break;
+
+            case 4:
+                tv_title.setText("اللهم صلِّ على سيدنا محمد");
+                tv_desc.setText("فضلها : من صلى عليَّ حين يصبح عشرًا وحين يمسي عشرًا أدركته شفاعتي يوم القيامة");
+                break;
+
+            case 5:
+                tv_title.setText("سبحان الله وبحمده");
+                tv_desc.setText("فضلها : من قالها مائة مرة حُطَّتْ خطاياه وإن كانت مثل زبد البحر");
+                break;
         }
     }
 }

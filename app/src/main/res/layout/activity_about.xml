@@ -170,7 +170,7 @@
                         android:layout_margin="10dp"
                         android:background="@drawable/around_line3"
                         android:onClick="walid"
-                        android:text="إصدار التطبيق الحالي : V 5.2"
+                        android:text="إصدار التطبيق الحالي : V 5.3"
                         android:textColor="#000731"
                         android:textSize="16sp" />
                 </LinearLayout>
