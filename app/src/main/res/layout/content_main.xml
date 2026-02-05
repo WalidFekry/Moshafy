@@ -17,6 +17,53 @@
                 android:layout_marginTop="2dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFF8E1">
+
+                    <LinearLayout
+                        android:id="@+id/ramadan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="رمضان كريم 🌙"
+                                android:textColor="#015585"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/flat5"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="تقبل الله منا ومنكم الصيام والقيام"
+                                android:textColor="#555555"
+                                android:textSize="15sp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/flat5"/>
+                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/lantern"
+                            android:layout_marginEnd="12dp"
+                            android:contentDescription="@string/app_name"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"

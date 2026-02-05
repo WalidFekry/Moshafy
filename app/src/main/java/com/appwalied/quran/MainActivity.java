@@ -278,6 +278,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.rateApp.setOnClickListener(v -> {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
         });
+        binding.main.contentMain.ramadan.setOnClickListener(v -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.walid.myapplication")));
+        });
     }
 
     private boolean isNetworkConnected() {
