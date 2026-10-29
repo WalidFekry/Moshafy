@@ -4,359 +4,317 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/bg_main"
     android:orientation="vertical"
     tools:context=".monw3at.Diffrentis">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:background="@drawable/around_line3"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layoutDirection="ltr">
+        android:background="@color/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/around_line3"
-            app:layout_collapseMode="pin"
-            app:titleTextAppearance="@style/TitleToolBarApppearance"
-            app:popupTheme="@style/TextAppearance.AppCompat">
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:layout_gravity="end">
+                android:paddingEnd="16dp">
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/back_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_back_button" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/flat5"
                     android:text="منوعات إسلامية"
-                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
-                    android:gravity="end"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="16dp"/>
-
-            </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/back_button"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:background="@drawable/ic_back_button" />
-
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.cardview.widget.CardView
-        app:cardElevation="5dp"
-        app:cardBackgroundColor="#1898AE"
-        app:cardCornerRadius="10dp"
-        app:cardUseCompatPadding="true"
-        app:cardMaxElevation="4dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-            <LinearLayout
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="120dp"
+                android:layout_marginBottom="12dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/islamic" />
 
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animationView"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/islamic" />
+            <!-- Option 1: Azkar After Prayer -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="Title1"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
-                    <androidx.cardview.widget.CardView
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:onClick="Title1"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="@string/app_name"
                         android:onClick="Title1"
-                        android:layout_width="match_parent"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="5dp"
-                        app:cardBackgroundColor="#FCF8F8"
-                        app:cardCornerRadius="10dp"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:onClick="Title1"
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@drawable/buoo1"
-                            android:clickable="true"
-                            android:layout_margin="10dp"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="center"
-                            android:orientation="horizontal" >
+                        android:src="@drawable/slaa" />
 
-                            <TextView
-                                android:onClick="Title1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="أذكار بعد السلام من الصلاة المفروضة "
-                                android:textSize="19sp"
-                                android:fontFamily="@font/flat5"
-                                android:textStyle="bold"
-                                android:textColor="#252020" />
-                            <ImageView
-                                android:onClick="Title1"
-                                android:layout_width="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_name"
-                                android:src="@drawable/slaa" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:onClick="Title1"
+                        android:text="أذكار بعد السلام من الصلاة المفروضة"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Option 2: Roqia -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="Title"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:onClick="Title"
-                    android:layout_height="match_parent">
-                    <androidx.cardview.widget.CardView
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="@string/app_name"
                         android:onClick="Title"
-                        android:layout_width="match_parent"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="5dp"
-                        app:cardBackgroundColor="#FCF8F8"
-                        app:cardCornerRadius="10dp"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@drawable/buoo1"
-                            android:clickable="true"
-                            android:onClick="Title"
-                            android:layout_margin="10dp"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="center"
-                            android:orientation="horizontal" >
+                        android:src="@drawable/rokia" />
 
-                            <TextView
-                                android:onClick="Title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="الرقيه الشرعيه"
-                                android:textSize="21sp"
-                                android:fontFamily="@font/flat5"
-                                android:textStyle="bold"
-                                android:textColor="#252020" />
-
-                            <ImageView
-                                android:onClick="Title"
-                                android:layout_width="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_name"
-                                android:src="@drawable/rokia" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:onClick="Title"
+                        android:text="الرقية الشرعية"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Option 3: Short Ahadith -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="Title3"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:onClick="Title3"
-                    android:layout_height="match_parent">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="5dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="@string/app_name"
                         android:onClick="Title3"
-                        app:cardBackgroundColor="#FCF8F8"
-                        app:cardCornerRadius="10dp"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@drawable/buoo1"
-                            android:clickable="true"
-                            android:onClick="Title3"
-                            android:layout_margin="10dp"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="center"
-                            android:orientation="horizontal" >
+                        android:src="@drawable/file" />
 
-                            <TextView
-                                android:onClick="Title3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="أحاديث شريفة قصيرة "
-                                android:textSize="21sp"
-                                android:fontFamily="@font/flat5"
-                                android:textStyle="bold"
-                                android:textColor="#252020" />
-
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_name"
-                                android:src="@drawable/file" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:onClick="Title3"
+                        android:text="أحاديث شريفة قصيرة"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Option 4: Commandments & Sunnah -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="Title4"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:onClick="Title4"
-                    android:layout_height="match_parent">
-                    <androidx.cardview.widget.CardView
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="@string/app_name"
                         android:onClick="Title4"
-                        android:layout_width="match_parent"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="5dp"
-                        app:cardBackgroundColor="#FCF8F8"
-                        app:cardCornerRadius="10dp"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:onClick="Title4"
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@drawable/buoo1"
-                            android:clickable="true"
-                            android:layout_margin="10dp"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="center"
-                            android:orientation="horizontal" >
+                        android:src="@drawable/wsaya" />
 
-                            <TextView
-                                android:onClick="Title4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="وصايا و سنن الرسول"
-                                android:textSize="21sp"
-                                android:fontFamily="@font/flat5"
-                                android:textStyle="bold"
-                                android:textColor="#252020" />
-
-                            <ImageView
-                                android:onClick="Title4"
-                                android:layout_width="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_name"
-                                android:src="@drawable/wsaya" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:onClick="Title4"
+                        android:text="وصايا وسنن الرسول"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Option 5: Hajj & Umrah -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="Title5"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:onClick="Title5"
-                    android:layout_height="match_parent">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="5dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="@string/app_name"
                         android:onClick="Title5"
-                        app:cardBackgroundColor="#FCF8F8"
-                        app:cardCornerRadius="10dp"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:onClick="Title5"
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@drawable/buoo1"
-                            android:clickable="true"
-                            android:layout_margin="10dp"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="center"
-                            android:orientation="horizontal" >
+                        android:src="@drawable/hga" />
 
-                            <TextView
-                                android:onClick="Title5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="أحكام الحج و العمرة"
-                                android:textSize="21sp"
-                                android:fontFamily="@font/flat5"
-                                android:textStyle="bold"
-                                android:textColor="#252020" />
-
-                            <ImageView
-                                android:onClick="Title5"
-                                android:layout_width="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_name"
-                                android:src="@drawable/hga" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:onClick="Title5"
+                        android:text="أحكام الحج والعمرة"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Option 6: Fasting Bag -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/Title2"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="Titlea"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:id="@+id/Title2"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:onClick="Titlea"
-                    android:layout_height="match_parent">
-                    <androidx.cardview.widget.CardView
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="@string/app_name"
                         android:onClick="Titlea"
-                        android:layout_width="match_parent"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="5dp"
-                        app:cardBackgroundColor="#FCF8F8"
-                        app:cardCornerRadius="10dp"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="@drawable/buoo1"
-                            android:clickable="true"
-                            android:onClick="Titlea"
-                            android:layout_margin="10dp"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="center"
-                            android:orientation="horizontal" >
+                        android:src="@drawable/ahdes" />
 
-                            <TextView
-                                android:onClick="Titlea"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="حقيبة الصائم في رمضان "
-                                android:textSize="21sp"
-                                android:fontFamily="@font/flat5"
-                                android:textStyle="bold"
-                                android:textColor="#252020" />
-
-                            <ImageView
-                                android:onClick="Titlea"
-                                android:layout_width="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_name"
-                                android:src="@drawable/ahdes" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:onClick="Titlea"
+                        android:text="حقيبة الصائم في رمضان"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
-        </ScrollView>
-
-
-    </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

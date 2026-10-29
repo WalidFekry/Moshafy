@@ -21,6 +21,7 @@ import androidx.window.layout.WindowMetricsCalculator;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
+import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -52,9 +53,44 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        applyAppTheme();
         super.onCreate(savedInstanceState);
         // تهيئة SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+    }
+
+    private void applyAppTheme() {
+        int mode = SharedHelper.getInt(this, SharedPrefsConstants.APP_THEME_MODE, androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode);
+    }
+
+    public void showThemeChooserDialog() {
+        String[] options = {"تلقائي (حسب إعدادات النظام)", "الوضع النهاري ☀️", "الوضع الليلي 🌙"};
+        int currentMode = SharedHelper.getInt(this, SharedPrefsConstants.APP_THEME_MODE, androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        int checkedItem = 0;
+        if (currentMode == androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO) {
+            checkedItem = 1;
+        } else if (currentMode == androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES) {
+            checkedItem = 2;
+        }
+
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("اختر المظهر 🎨")
+                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
+                    int selectedMode;
+                    if (which == 1) {
+                        selectedMode = androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
+                    } else if (which == 2) {
+                        selectedMode = androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
+                    } else {
+                        selectedMode = androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                    }
+                    SharedHelper.putInt(this, SharedPrefsConstants.APP_THEME_MODE, selectedMode);
+                    androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(selectedMode);
+                    dialog.dismiss();
+                })
+                .setNegativeButton("إلغاء", null)
+                .show();
     }
 
     public void checkAndShowDialog(String preferenceKey, String message) {

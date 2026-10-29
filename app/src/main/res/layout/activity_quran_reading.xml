@@ -4,240 +4,233 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7e0a3"
+    android:background="@color/quran_page_bg"
     android:orientation="vertical"
     tools:context=".quran.quran_reading_v2.QuranReadingActivity">
 
-
-    <LinearLayout
+    <!-- Control Header Bar -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/back_button"
                 android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/ic_back_button" />
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back_button" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:layout_margin="4dp"
-                android:onClick="plus"
-                app:cardBackgroundColor="#ff7bb0"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="8dp">
-
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    android:id="@+id/iconplus"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:onClick="plus"
-                    android:scaleType="center"
-                    app:materialIcon="plus"
-                    app:materialIconColor="#FFFFFF"
-                    app:materialIconSize="40dp" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:layout_margin="4dp"
-                android:onClick="minus"
-                app:cardBackgroundColor="#ff7bb0"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="8dp">
-
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    android:id="@+id/shareabout"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:onClick="minus"
-                    android:scaleType="center"
-                    app:materialIcon="minus"
-                    app:materialIconColor="#FFFFFF"
-                    app:materialIconSize="40dp" />
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:layout_margin="4dp"
-                android:onClick="star"
-                app:cardBackgroundColor="#32dbc6"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="8dp">
-
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:onClick="star"
-                    android:scaleType="center"
-                    app:materialIcon="star"
-                    app:materialIconColor="#FFFFFF"
-                    app:materialIconSize="40dp" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/screen_on"
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:layout_margin="4dp"
-                android:onClick="star"
-                android:visibility="visible"
-                app:cardBackgroundColor="#32dbc6"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="8dp">
-
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:onClick="screenOn"
-                    android:scaleType="center"
-                    app:materialIcon="eye"
-                    app:materialIconColor="#FFFFFF"
-                    app:materialIconSize="40dp" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/screen_off"
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:layout_margin="4dp"
-                android:onClick="star"
-                android:visibility="gone"
-                app:cardBackgroundColor="#32dbc6"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="8dp">
-
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:onClick="screenOn"
-                    android:scaleType="center"
-                    app:materialIcon="eye_off"
-                    app:materialIconColor="#FFFFFF"
-                    app:materialIconSize="40dp" />
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="@drawable/des00sql"
-            android:orientation="vertical">
-
+            <!-- Action Controls -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:gravity="center_vertical|end"
                 android:orientation="horizontal">
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="4dp"
+                    android:onClick="plus"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="19dp"
+                    app:cardElevation="2dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/iconplus"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:onClick="plus"
+                        android:scaleType="center"
+                        app:materialIcon="plus"
+                        app:materialIconColor="@color/colorPrimary"
+                        app:materialIconSize="24dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="4dp"
+                    android:onClick="minus"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="19dp"
+                    app:cardElevation="2dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/shareabout"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:onClick="minus"
+                        android:scaleType="center"
+                        app:materialIcon="minus"
+                        app:materialIconColor="@color/colorPrimary"
+                        app:materialIconSize="24dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="4dp"
+                    android:onClick="star"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="19dp"
+                    app:cardElevation="2dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:onClick="star"
+                        android:scaleType="center"
+                        app:materialIcon="star"
+                        app:materialIconColor="@color/gold_accent"
+                        app:materialIconSize="24dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/screen_on"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="4dp"
+                    android:onClick="screenOn"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="19dp"
+                    app:cardElevation="2dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:onClick="screenOn"
+                        android:scaleType="center"
+                        app:materialIcon="eye"
+                        app:materialIconColor="@color/colorPrimary"
+                        app:materialIconSize="24dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/screen_off"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="4dp"
+                    android:onClick="screenOn"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="19dp"
+                    app:cardElevation="2dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:onClick="screenOn"
+                        android:scaleType="center"
+                        app:materialIcon="eye_off"
+                        app:materialIconColor="@color/text_secondary"
+                        app:materialIconSize="24dp" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Surah Info Badge Bar -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/ooo03"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:fontFamily="@font/flat"
-                        android:gravity="center"
-                        android:lineSpacingExtra="5dp"
-                        android:shadowColor="#011925"
-                        android:shadowDx="2"
-                        android:shadowDy="2"
-                        android:textColor="#C2185B"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/ooo02"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:fontFamily="@font/flat"
-                        android:gravity="center"
-                        android:lineSpacingExtra="5dp"
-                        android:shadowColor="#011925"
-                        android:shadowDx="2"
-                        android:shadowDy="2"
-                        android:textColor="#800000"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
-                    android:gravity="right">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
                     <TextView
                         android:id="@+id/ooo01"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:fontFamily="@font/flat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/flat5"
                         android:gravity="center"
-                        android:lineSpacingExtra="5dp"
-                        android:shadowColor="#011925"
-                        android:shadowDx="2"
-                        android:shadowDy="2"
-                        android:textColor="#C2185B"
-                        android:textSize="11dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ooo02"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/flat5"
+                        android:gravity="center"
+                        android:textColor="@color/gold_accent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ooo03"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/flat5"
+                        android:gravity="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/ts"
+            <!-- Main Surah Text Container -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:lineSpacingExtra="5dp"
-                android:shadowColor="#011925"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:text="ffd"
-                android:textColor="#00101A"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <TextView
+                    android:id="@+id/ts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jazeera"
+                    android:gravity="center"
+                    android:lineSpacingExtra="12dp"
+                    android:padding="20dp"
+                    android:textColor="@color/quran_text_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

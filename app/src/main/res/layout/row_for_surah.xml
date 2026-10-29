@@ -1,60 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/row_surah"
     android:layout_width="match_parent"
-    android:padding="5dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="4dp">
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:text="1"
-            android:textSize="20sp"
-            android:id="@+id/surah_id"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary"/>
-
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_gravity="center">
+        android:layout_height="68dp"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp">
 
-        <ImageView
-            android:id="@+id/quran_side"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_quran_side"/>
-        <TextView
-            android:textColor="@color/colorPrimary"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/quran_side"
-            android:textSize="25sp"
-            android:text="الفاتحة"
-            android:fontFamily="@font/cairo_bold"
-            android:id="@+id/sura_name_arabic"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp">
 
-    </RelativeLayout>
+            <!-- Surah Index Badge -->
+            <TextView
+                android:id="@+id/surah_id"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circlw_bac1"
+                android:fontFamily="@font/flat5"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
+            <!-- Surah Side Icon -->
+            <ImageView
+                android:id="@+id/quran_side"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_quran_side" />
 
+            <!-- Surah Name Arabic -->
+            <TextView
+                android:id="@+id/sura_name_arabic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/quran_side"
+                android:layout_toEndOf="@id/surah_id"
+                android:fontFamily="@font/cairo_bold"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="12dp"
+                android:text="الفاتحة"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

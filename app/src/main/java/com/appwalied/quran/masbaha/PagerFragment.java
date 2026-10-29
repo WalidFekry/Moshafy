@@ -18,7 +18,7 @@ public class PagerFragment extends Fragment {
     private int position;
     private int layout;
 
-    private FrameLayout colord_frame;
+    private View colord_frame;
 
     public PagerFragment() {
         // Required empty public constructor

@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/row_ayat"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/quran_page_bg"
     android:orientation="vertical"
-    android:gravity="right"
-    android:background="@color/bookPageColor"
-    android:id="@+id/row_ayat">
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp">
 
-    <RelativeLayout
-        android:id="@+id/paraView"
-        android:gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/arabicView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jazeera"
+        android:gravity="end"
+        android:lineSpacingExtra="10dp"
+        android:padding="8dp"
+        android:text="بسم الله"
+        android:textColor="@color/quran_text_color"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:padding="10dp"
-            android:gravity="right"
-            android:textColor="@color/tools_items_color"
-            android:id="@+id/arabicView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="بسم الله"
-            android:textSize="25sp"/>
-
-
-
-    </RelativeLayout>
     <LinearLayout
         android:id="@+id/paraAndPageNoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="4dp">
 
         <TextView
-            android:gravity="center"
             android:id="@+id/paraAndPageNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:fontFamily="@font/flat5"
+            android:gravity="center"
+            android:padding="4dp"
             android:text="30/610"
-            android:textSize="14sp"
-            android:textColor="@color/intro_description_color"/>
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
     </LinearLayout>
-    <RelativeLayout
+
+    <TextView
+        android:id="@+id/bookmark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:fontFamily="@font/flat5"
+        android:text="آخر قراءة"
+        android:textColor="@color/gold_accent"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/bookmark"
-            android:visibility="gone"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last read !"
-            android:textSize="23sp"/>
-
-    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/divider_color" />
 
 </LinearLayout>

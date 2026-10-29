@@ -18,12 +18,14 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:background="@drawable/bkue"
-        app:itemBackground="@color/white"
-        app:headerLayout="@layout/nav_header_main"
-        app:drawerShape="arcConcave"
         android:layout_gravity="start"
+        android:background="@color/drawer_bg"
+        android:fitsSystemWindows="true"
+        app:drawerShape="arcConcave"
+        app:headerLayout="@layout/nav_header_main"
+        app:itemBackground="@color/card_bg"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextColor="@color/text_primary"
         app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

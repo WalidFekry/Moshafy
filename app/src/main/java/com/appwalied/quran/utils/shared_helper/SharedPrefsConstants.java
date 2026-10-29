@@ -9,6 +9,6 @@ public class SharedPrefsConstants {
     public static final String AZKAR_FIRST_TIME= "AZKAR_FIRST_TIME";
     public static final String MONW3AT_FIRST_TIME= "MONW3AT_FIRST_TIME";
     public static final String QURAN_MESSAGES_FIRST_TIME= "QURAN_MESSAGES_FIRST_TIME";
-
+    public static final String APP_THEME_MODE = "APP_THEME_MODE";
 }
 

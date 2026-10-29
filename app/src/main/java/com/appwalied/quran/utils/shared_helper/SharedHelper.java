@@ -36,6 +36,11 @@ public class SharedHelper {
     }
 
 
+    public static int getInt(Context contextGetKey, String Key, int defaultValue) {
+        sharedPreferences = contextGetKey.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(Key, defaultValue);
+    }
+
     public static void putInt(Context context, String Key, int Value) {
         sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

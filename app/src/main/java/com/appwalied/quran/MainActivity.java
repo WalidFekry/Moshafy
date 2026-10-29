@@ -66,7 +66,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.show_notifications) {
+        if (id == R.id.theme_mode) {
+            showThemeChooserDialog();
+            return true;
+        } else if (id == R.id.show_notifications) {
             Intent i = new Intent(this, NotificationsMessagesActivity.class);
             startActivity(i);
             return true;
@@ -284,23 +287,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            return;
+        }
+
         final PrettyDialog pDialog = new PrettyDialog(this);
         pDialog.setCanceledOnTouchOutside(false);
-        pDialog.setTitle("هل تريد الخروج من التطبيق !").setMessage("كيف نطوره ليصبح افضل.. و لا تنسى تقييم التطبيق").setIcon(R.mipmap.ico_app).setAnimationEnabled(true).setMessageColor(R.color.colorPrimary).setTitleColor(R.color.colorAccent).setIconTint(R.color.white).setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL).setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf")).addButton("خروج", R.color.white, R.color.colorPrimary, new PrettyDialogCallback() {
-                    @Override
-                    public void onClick() {
-                        finish();
-                    }
-                })
-
-                .addButton("تقييم التطبيق", R.color.white, R.color.colorPrimary, () -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")))
-
-                ).show();
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
+        pDialog.setTitle("هل تريد الخروج من التطبيق ؟")
+                .setMessage("كيف نطوره ليصبح أفضل؟ ولا تنسَ تقييم التطبيق 🌸")
+                .setIcon(R.mipmap.ico_app)
+                .setAnimationEnabled(true)
+                .setMessageColor(R.color.colorPrimary)
+                .setTitleColor(R.color.colorAccent)
+                .setIconTint(R.color.white)
+                .setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL)
+                .setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf"))
+                .addButton("خروج", R.color.white, R.color.colorPrimary, () -> finish())
+                .addButton("تقييم التطبيق", R.color.white, R.color.colorAccent, () -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn"))))
+                .show();
     }
 
 

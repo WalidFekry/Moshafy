@@ -3,734 +3,893 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#015585"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
-        <ScrollView
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Hero Header Card -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_marginTop="2dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:onClick="ooh1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        app:materialIcon="flower"
-                        android:layout_margin="3dp"
-                        app:materialIconColor="#FFA000"
-                        app:materialIconSize="20dp" />
-                    <com.romainpiel.shimmer.ShimmerTextView
-                        android:id="@+id/shmer"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="wrap_content"
-                        android:gravity="center"
-                        android:layout_margin="5dp"
-                        android:textSize="23sp"
-                        android:textColor="#FADE9C"
-                        android:text="اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ"
-                        android:layout_height="wrap_content" />
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:onClick="ooh1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        app:materialIcon="flower"
-                        android:layout_margin="3dp"
-                        app:materialIconColor="#FFA000"
-                        app:materialIconSize="20dp" />
-                </LinearLayout>
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    tools:ignore="MissingConstraints">
-
-                  <androidx.cardview.widget.CardView
-                      android:layout_width="120dp"
-                      app:cardCornerRadius="20dp"
-                      app:cardBackgroundColor="#ECECEC"
-                      app:cardElevation="5dp"
-                      android:layout_height="120dp">
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_margin="10dp"
-                          android:layout_height="match_parent">
-                          <ImageView
-                              android:layout_width="match_parent"
-                              android:src="@mipmap/ico_app"
-                              android:layout_height="match_parent" />
-                      </LinearLayout>
-                  </androidx.cardview.widget.CardView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:onClick="ooh1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        app:materialIcon="history"
-                        android:layout_margin="3dp"
-                        app:materialIconColor="#FFFFFF"
-                        app:materialIconSize="20dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/bb"
-                        android:text="5من جمادي الاول لسنه 1440"
-                        android:shadowDx="2"
-                        android:fontFamily="@font/flat5"
-                        android:shadowDy="2"
-                        android:gravity="center"
-                        android:shadowColor="#FDFDFD"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold"
-                        android:lineSpacingExtra="5dp"
-                        android:textSize="18sp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
+                    android:padding="16dp">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <net.steamcrafted.materialiconlib.MaterialIconView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="4dp"
+                            android:onClick="ooh1"
+                            app:materialIcon="flower"
+                            app:materialIconColor="@color/gold_accent"
+                            app:materialIconSize="20dp" />
+
+                        <com.romainpiel.shimmer.ShimmerTextView
+                            android:id="@+id/shmer"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2"
-                            android:layout_marginBottom="10dp">
+                            android:fontFamily="@font/flat5"
+                            android:gravity="center"
+                            android:text="اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ"
+                            android:textColor="@color/gold_accent"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
-                            <LinearLayout
-                                android:id="@+id/notifications_messages"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/qoutes"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="اقتباسات عشوائية"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/quran_reading"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/ic_opportunities"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="المصحف الشريف"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/masbaha"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/masbaha"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="المسبحة"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/quran_listening"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/wwww2019"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="القرآن الكريم استماع"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/quran_reading_v2"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/quq"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="القرآن الكريم قراءة"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/azkar"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/mus"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="أذكار المسلم"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/islamic_sections"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/kaaba"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="منوعات إسلامية"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/quran_messages"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/qumsg"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="رسائل قرآنية"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/islamic_stories"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/book1"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="قصص إسلامية"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/sahaba_stories"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/book3"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="قصص الصحابة"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/short_ahadiths"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/book2"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="أحاديث قصيرة"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/sunnah"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/book4"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="سنن مهجورة"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/khfa"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/ww2019"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="سورة الكهف"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:id="@+id/molk"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/www2019"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="سورة الملك"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/ayakor"
-                                android:layout_width="0dp"
-                                android:layout_height="65dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buoo"
-                                android:descendantFocusability="blocksDescendants"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:padding="8dp"
-                                android:layout_marginStart="10dp">
-
-                                <ImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:src="@drawable/kor"
-                                    android:contentDescription="@string/app_name"
-                                    android:layout_marginEnd="8dp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="آية الكرسي"
-                                    android:textSize="18sp"
-                                    android:fontFamily="@font/flat5"
-                                    android:textStyle="bold"
-                                    android:textColor="#252020"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
+                        <net.steamcrafted.materialiconlib.MaterialIconView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="4dp"
+                            android:onClick="ooh1"
+                            app:materialIcon="flower"
+                            app:materialIconColor="@color/gold_accent"
+                            app:materialIconSize="20dp" />
                     </LinearLayout>
 
+                    <!-- App Icon Badge -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        app:cardBackgroundColor="@color/card_bg"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/app_name"
+                            android:padding="10dp"
+                            android:src="@mipmap/ico_app" />
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Hijri Date Banner -->
                     <LinearLayout
-                        android:id="@+id/quran_fnish"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:background="@drawable/buoo"
-                        android:layout_margin="10dp"
-                        android:descendantFocusability="blocksDescendants"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
+
+                        <net.steamcrafted.materialiconlib.MaterialIconView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginEnd="6dp"
+                            android:onClick="ooh1"
+                            app:materialIcon="calendar"
+                            app:materialIconColor="@color/gold_accent"
+                            app:materialIconSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/bb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:gravity="center"
+                            android:text="5 من جمادى الأولى لسنة 1440"
+                            android:textColor="@color/text_white"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Dashboard Grid Section -->
+            <!-- Pair 1: Notifications/Quotes & Quran Reading -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/notifications_messages"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/qoutes" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="دعاء ختم القرآن الكريمِ"
-                            android:textSize="21sp"
                             android:fontFamily="@font/flat5"
-                            android:textStyle="bold"
-                            android:textColor="#252020" />
+                            android:text="اقتباسات عشوائية"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/quran_reading"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="50dp"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_opportunities" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="المصحف الشريف"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 2: Listening & Reading V2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/quran_listening"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/wwww2019" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="القرآن استماع"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/quran_reading_v2"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/quq" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="القرآن قراءة"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 3: Masbaha & Azkar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/masbaha"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/masbaha" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="المسبحة"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/azkar"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/mus" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="أذكار المسلم"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 4: Islamic Sections & Quranic Messages -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/islamic_sections"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/kaaba" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="منوعات إسلامية"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/quran_messages"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/qumsg" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="رسائل قرآنية"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 5: Islamic Stories & Sahaba Stories -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/islamic_stories"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/book1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="قصص إسلامية"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/sahaba_stories"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/book3" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="قصص الصحابة"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 6: Short Ahadiths & Sunnah -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/short_ahadiths"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/book2" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="أحاديث قصيرة"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/sunnah"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/book4" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="سنن مهجورة"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 7: Surah Al-Kahf & Surah Al-Mulk -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/khfa"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ww2019" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="سورة الكهف"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/molk"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/www2019" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="سورة الملك"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Pair 8: Ayakor & Quran Finish -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/ayakor"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/kor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="آية الكرسي"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/quran_fnish"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="8dp"
                             android:contentDescription="@string/app_name"
                             android:src="@drawable/quran_fnish" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="دعاء ختم القرآن"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_margin="10dp"
-                    android:layout_height="wrap_content">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_margin="4dp"
-                        app:cardElevation="8dp"
-                        android:onClick="ooh1"
-                        app:cardBackgroundColor="#F57C00"
-                        android:layout_width="50dp"
-                        app:cardCornerRadius="25dp"
-                        android:layout_height="50dp">
-
-                        <net.steamcrafted.materialiconlib.MaterialIconView
-                            android:id="@+id/faceabout"
-                            android:onClick="ooh1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="center"
-                            app:materialIcon="share_variant"
-                            app:materialIconColor="#FFFFFF"
-                            app:materialIconSize="40dp" />
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/rate_app"
-                        android:layout_margin="4dp"
-                        app:cardElevation="8dp"
-                        app:cardBackgroundColor="#0097A7"
-                        android:layout_width="50dp"
-                        app:cardCornerRadius="25dp"
-                        android:layout_height="50dp">
-                        <net.steamcrafted.materialiconlib.MaterialIconView
-                            android:id="@+id/shareabout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="center"
-                            app:materialIcon="star"
-                            app:materialIconColor="#FFFFFF"
-                            app:materialIconSize="40dp" />
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/share_app"
-                        android:layout_width="50dp"
-                        app:cardCornerRadius="25dp"
-                        app:cardElevation="8dp"
-                        app:cardBackgroundColor="#F57C00"
-                        android:layout_margin="4dp"
-                        android:layout_height="50dp">
-                        <net.steamcrafted.materialiconlib.MaterialIconView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="center"
-                            android:layout_gravity="center"
-                            app:materialIcon="heart"
-                            app:materialIconColor="#FFFFFF"
-                            app:materialIconSize="40dp" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/about"
-                        android:layout_width="50dp"
-                        app:cardCornerRadius="25dp"
-                        app:cardElevation="8dp"
-                        app:cardBackgroundColor="#388E3C"
-                        android:layout_margin="4dp"
-                        android:layout_height="50dp">
-                        <net.steamcrafted.materialiconlib.MaterialIconView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="center"
-                            android:layout_gravity="center"
-                            app:materialIcon="account"
-                            app:materialIconColor="#FFFFFF"
-                            app:materialIconSize="40dp" />
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
-
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
-        </ScrollView>
+
+            <!-- Bottom Action Footer Bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="6dp"
+                    android:onClick="ooh1"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="3dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/faceabout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:onClick="ooh1"
+                        android:scaleType="center"
+                        app:materialIcon="share_variant"
+                        app:materialIconColor="@color/text_white"
+                        app:materialIconSize="28dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/rate_app"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="3dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/shareabout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:materialIcon="star"
+                        app:materialIconColor="@color/gold_accent"
+                        app:materialIconSize="28dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/share_app"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="3dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:materialIcon="heart"
+                        app:materialIconColor="@color/gold_accent"
+                        app:materialIconSize="28dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/about"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="3dp">
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:materialIcon="account"
+                        app:materialIconColor="@color/text_white"
+                        app:materialIconSize="28dp" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

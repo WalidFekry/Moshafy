@@ -32,7 +32,7 @@ public class SurahFragment extends Fragment {
     RecyclerView sRecyclerView;
     ArrayList<Surah> surahArrayList;
     SuraListAdapter adapter;
-    LinearLayout lastview;
+    View lastview;
     AppCompatImageButton back;
     int pos;
     int sura_id;

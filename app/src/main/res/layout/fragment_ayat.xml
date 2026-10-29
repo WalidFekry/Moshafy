@@ -1,74 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/quran_page_bg"
+    android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:background="@drawable/around_line3"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layoutDirection="ltr">
+        android:background="@color/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/around_line3"
-            app:layout_collapseMode="pin"
-            app:titleTextAppearance="@style/TitleToolBarApppearance"
-            app:popupTheme="@style/TextAppearance.AppCompat">
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:layout_gravity="end">
+                android:paddingEnd="16dp">
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/back_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="onBackClicked"
+                    android:src="@drawable/ic_back_button" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/flat5"
                     android:text="@string/roqia_title"
-                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
-                    android:gravity="end"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="16dp"/>
-
-            </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/back_button"
-                android:onClick="onBackClicked"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:background="@drawable/ic_back_button" />
-
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="60dp"
             android:id="@+id/recycler_ayat"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="12dp" />
 
         <xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller
             android:id="@+id/fast_scroller"
-            android:layout_width="5dp"
+            android:layout_width="6dp"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="2dp" />
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
-</FrameLayout>
+</LinearLayout>

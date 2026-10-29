@@ -35,6 +35,10 @@ public class QuranicMessage extends BaseActivity {
 
         checkAndShowDialog(SharedPrefsConstants.QURAN_MESSAGES_FIRST_TIME, "يحتوي هذا القسم على رسائل قرآنية 💙");
 
+        if (findViewById(R.id.back_button) != null) {
+            findViewById(R.id.back_button).setOnClickListener(v -> finish());
+        }
+
         recyclerView = findViewById(R.id.quranicmessage_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();

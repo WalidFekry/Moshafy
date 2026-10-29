@@ -4,88 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_face1"
+    android:background="@color/bg_main"
     tools:context=".masbaha.MasbahaActivity">
 
+    <!-- Top Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/around_line3"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layoutDirection="ltr"
-        tools:ignore="MissingConstraints">
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/around_line3"
-            app:layout_collapseMode="pin"
-            app:titleTextAppearance="@style/TitleToolBarApppearance"
-            app:popupTheme="@style/TextAppearance.AppCompat">
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:layout_gravity="end">
+                android:paddingEnd="16dp">
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/back_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_back_button" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="المسبحه"
-                    style="@style/TextAppearance.MyApp.Title.QiblahActivity"
-                    android:gravity="end"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="16dp"/>
-
-            </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/back_button"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:background="@drawable/ic_back_button" />
-
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/flat5"
+                    android:text="المسبحة الإلكترونية"
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
+    <!-- Header Info Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/info_card"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:fontFamily="@font/jazeera"
-        android:padding="10dp"
-        android:layout_marginTop="55dp"
-        android:text="سبحان الله"
-        android:textColor="#FFF"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_desc"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
-    <TextView
-        android:id="@+id/tv_desc"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="center"
-        android:textColor="#FFF"
-        android:textSize="20sp"
-        android:fontFamily="@font/jazeera"
-        android:padding="10dp"
-        android:text="من قال سبحان الله وبحمده في يوم مائة مرة حطت خطاياه وإن كانت مثل زبد البحر"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_masbaha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/flat5"
+                android:gravity="center"
+                android:text="سبحان الله"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/flat5"
+                android:gravity="center"
+                android:text="من قال سبحان الله وبحمده في يوم مائة مرة حطت خطاياه وإن كانت مثل زبد البحر"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ViewPager for Counter -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/recycler_masbaha"
         android:layout_width="0dp"
@@ -93,100 +104,107 @@
         app:layout_constraintBottom_toTopOf="@+id/iv_reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desc"
+        app:layout_constraintTop_toBottomOf="@+id/info_card"
         tools:listitem="@layout/item_masbaha" />
 
+    <!-- Reset FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/iv_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
+        android:layout_margin="12dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/reset"
-        app:elevation="6dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="4dp"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@id/content_linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_masbaha" />
+        app:tint="@color/text_white" />
 
+    <!-- Presets Selection Bar -->
     <LinearLayout
         android:id="@+id/content_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:padding="15dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@id/adsContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_reset">
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/iv_1"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            app:elevation="6dp"
+            android:contentDescription="@string/app_name"
+            app:backgroundTint="@color/colorPrimary"
+            app:elevation="4dp"
             app:fabSize="mini" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/iv_2"
-            android:layout_width="48dp"
-
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:backgroundTint="#3F51B5"
-            app:elevation="6dp"
+            android:contentDescription="@string/app_name"
+            app:backgroundTint="#3F51B5"
+            app:elevation="4dp"
             app:fabSize="mini" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/iv_3"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:backgroundTint="#F44336"
-
-            app:elevation="6dp"
+            android:contentDescription="@string/app_name"
+            app:backgroundTint="#F44336"
+            app:elevation="4dp"
             app:fabSize="mini" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/iv_4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:backgroundTint="#4CAF50"
-            app:elevation="6dp"
+            android:contentDescription="@string/app_name"
+            app:backgroundTint="#4CAF50"
+            app:elevation="4dp"
             app:fabSize="mini" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/iv_5"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="6dp"
+            android:contentDescription="@string/app_name"
             app:backgroundTint="#009688"
-            app:elevation="6dp"
+            app:elevation="4dp"
             app:fabSize="mini" />
     </LinearLayout>
 
+    <!-- Tap Overlay View for incrementing counter -->
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#00CD7878"
+        android:background="#00000000"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toTopOf="@id/iv_reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/info_card" />
 
     <FrameLayout
         android:id="@+id/adsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="320dp"
-    android:layout_height="320dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@null">
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/colord_frame"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center">
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="110dp"
+        app:cardElevation="6dp">
 
-        <TextView
-            android:id="@+id/counter"
-            style="@style/TextAppearance.AllTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="35sp" />
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/flat5"
+                android:textColor="@color/colorPrimary"
+                android:textSize="56sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/flat5"
+                android:text="اضغط للعد 👆"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

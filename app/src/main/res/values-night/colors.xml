@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand & Theme Primary Colors (Dark Mode) -->
+    <color name="colorPrimary">#14728F</color>
+    <color name="colorPrimaryDark">#0F172A</color>
+    <color name="colorAccent">#E5C158</color>
+    <color name="bar">#121F2B</color>
+
+    <!-- Backgrounds & Surfaces -->
+    <color name="bg_main">#0F172A</color>
+    <color name="card_bg">#1E293B</color>
+    <color name="card_stroke">#334155</color>
+    <color name="header_bg">#121F2B</color>
+    <color name="drawer_bg">#1E293B</color>
+
+    <!-- Typography Colors -->
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_gold">#E5C158</color>
+    <color name="text_white">#F8FAFC</color>
+
+    <!-- Functional / Quran Reading Colors -->
+    <color name="quran_page_bg">#1A2432</color>
+    <color name="quran_text_color">#E2E8F0</color>
+    <color name="gold_accent">#E5C158</color>
+    <color name="divider_color">#334155</color>
+    <color name="chip_bg">#334155</color>
+
+    <!-- Legacy Color Entries Preserved for Compatibility (Adapted for Night) -->
+    <color name="white">#1E293B</color>
+    <color name="b1">#14728F</color>
+    <color name="b2">#1A3644</color>
+    <color name="black">#F8FAFC</color>
+    <color name="black_overlay">#99000000</color>
+    <color name="blue">#14728F</color>
+    <color name="purple">#9575CD</color>
+    <color name="green">#4CAF50</color>
+    <color name="orange">#FF9800</color>
+    <color name="red">#EF5350</color>
+    <color name="darkblue">#0F172A</color>
+    <color name="darkpurple">#673AB7</color>
+    <color name="darkgreen">#2E7D32</color>
+    <color name="darkorange">#F57C00</color>
+    <color name="darkred">#E53935</color>
+    <color name="customeblue">#283593</color>
+    <color name="lowDarkfont">#80FFFFFF</color>
+
+    <color name="whiteback">#1E293B</color>
+    <color name="colorWhite">#1E293B</color>
+    <color name="whitebackground">#334155</color>
+
+    <color name="background_dark">#0F172A</color>
+    <color name="background_light">#0F172A</color>
+    <color name="transparent">#00000000</color>
+    <color name="bookPageColor">#1A2432</color>
+    <color name="tools_items_color">#94A3B8</color>
+    <color name="intro_description_color">#94A3B8</color>
+    <color name="offWhitePageColor">#1A2432</color>
+    <color name="new_one">#F8FAFC</color>
+
+    <color name="darkred1">#EF5350</color>
+    <color name="darkred2">#E53935</color>
+    <color name="darkred3">#14728F</color>
+    <color name="darkred4">#673AB7</color>
+    <color name="darkred5">#9575CD</color>
+
+    <color name="dark_gray">#94A3B8</color>
+</resources>
