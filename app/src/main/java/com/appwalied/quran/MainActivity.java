@@ -46,17 +46,12 @@ import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.romainpiel.shimmer.Shimmer;
-
-import org.joda.time.DateTime;
-import org.joda.time.chrono.IslamicChronology;
-
 import libs.mjn.prettydialog.PrettyDialog;
 import softpro.naseemali.ShapedNavigationView;
 import softpro.naseemali.ShapedViewSettings;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1;
-    private Shimmer shimmer;
     private ActivityMainBinding binding;
 
     @Override
@@ -92,7 +87,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setupNavigationView();
 
         setupShimmer();
-        setDate();
 
         setupBackDispatcher();
 
@@ -129,52 +123,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void setupShimmer() {
-        shimmer = new Shimmer();
+        Shimmer shimmer = new Shimmer();
         shimmer.start(binding.main.contentMain.shmer);
     }
 
-    private void setDate() {
-        DateTime dm = new DateTime();
-        DateTime dh = dm.withChronology(IslamicChronology.getInstance());
-        String stMonth = dh.toString("MM");
-        if (stMonth.contains("10")) {
-            String st = dh.plusDays(1).toString("d/ " + "من شهر شوال" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("01")) {
-            String st = dh.plusDays(0).toString("d/ " + "من شهر محرم" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("02")) {
-            String st = dh.plusDays(1).toString("d/ " + "من شهر صفر" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("03")) {
-            String st = dh.plusDays(1).toString("d/ " + "من شهر ربيع الاول" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("04")) {
-            String st = dh.plusDays(1).toString("d/ " + "من شهر ربيع الثاني" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("05")) {
-            String st = dh.plusDays(1).toString("d/ " + "من شهر جمادى الاول" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("06")) {
-            String st = dh.plusDays(0).toString("d/ " + "من شهر جمادى الثاني" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("07")) {
-            String st = dh.plusDays(1).toString("d/ " + "من شهر رجب" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("08")) {
-            String st = dh.plusDays(0).toString("d/ " + "من شهر شعبان" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("09")) {
-            String st = dh.plusDays(0).toString("d/ " + "من شهر رمضان" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else if (stMonth.contains("11")) {
-            String st = dh.plusDays(0).toString("d/ " + "من شهرذو القعدة" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        } else {
-            String st = dh.plusDays(0).toString("d/" + "من شهر ذو الحجة" + "/yyyy" + "من الهجري");
-            binding.main.contentMain.bb.setText(st);
-        }
-    }
 
     private void requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

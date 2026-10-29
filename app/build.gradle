@@ -43,7 +43,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
     implementation 'com.google.android.gms:play-services-ads:25.5.0'
     implementation 'com.google.firebase:firebase-database:23.0.0'
-    implementation 'joda-time:joda-time:2.15.1'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'com.github.code-mc:material-icon-lib:1.1.5'
     implementation 'com.github.naseemali925:ShapedNavigationView:1.0.0'

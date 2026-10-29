@@ -91,33 +91,7 @@
                             android:src="@mipmap/ico_app" />
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Hijri Date Banner -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
 
-                        <net.steamcrafted.materialiconlib.MaterialIconView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_marginEnd="6dp"
-                            android:onClick="ooh1"
-                            app:materialIcon="calendar"
-                            app:materialIconColor="@color/gold_accent"
-                            app:materialIconSize="18dp" />
-
-                        <TextView
-                            android:id="@+id/bb"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:gravity="center"
-                            android:text="5 من جمادى الأولى لسنة 1440"
-                            android:textColor="@color/text_white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
