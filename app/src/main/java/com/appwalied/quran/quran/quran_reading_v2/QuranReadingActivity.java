@@ -14,11 +14,12 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.cardview.widget.CardView;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class QuranReadingActivity extends AppCompatActivity {
+public class QuranReadingActivity extends BaseActivity {
     TextView ts, ooo01, ooo02, ooo03;
     InputStream os;
     int c = 18;

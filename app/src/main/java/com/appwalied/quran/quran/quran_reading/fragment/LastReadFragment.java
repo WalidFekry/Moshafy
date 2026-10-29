@@ -1,6 +1,5 @@
 package com.appwalied.quran.quran.quran_reading.fragment;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
@@ -24,14 +24,11 @@ import java.util.ArrayList;
 
 import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class LastReadFragment extends Fragment {
-    LastReadAdapter ayatAdapter;
-    String sura_name;
-    AppCompatImageButton back;
-    int position = 0;
+
+    private LastReadAdapter ayatAdapter;
+    private AppCompatImageButton back;
+    private int position = 0;
     private RecyclerView ayatRecyclerView;
     private ArrayList<Ayat> ayatArrayList;
 
@@ -44,51 +41,59 @@ public class LastReadFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         Bundle bundle = getArguments();
-        int sura_id = bundle.getInt("sura_id");
-        // position = bundle.getInt("pos");
-        sura_name = bundle.getString("sura_name");
-        ayatArrayList = new ArrayList<>();
-        GetAllSurahList getAllSurahList = new GetAllSurahList(getContext());
-        ayatArrayList = getAllSurahList.GetAyatBySurah(sura_id);
+        int sura_id = 1;
+        if (bundle != null) {
+            sura_id = bundle.getInt("sura_id", 1);
+        }
+        if (getContext() != null) {
+            GetAllSurahList getAllSurahList = new GetAllSurahList(getContext());
+            ayatArrayList = getAllSurahList.GetAyatBySurah(sura_id);
+        } else {
+            ayatArrayList = new ArrayList<>();
+        }
     }
-
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_last_read, container, false);
 
-
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("LASTREADAYAT", Context.MODE_PRIVATE);
-        if (sharedPreferences.contains("AYAT_ID")) {
-            position = Integer.parseInt(sharedPreferences.getString("AYAT_ID", null));
+        if (getContext() != null) {
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences("LASTREADAYAT", Context.MODE_PRIVATE);
+            if (sharedPreferences.contains("AYAT_ID")) {
+                try {
+                    position = Integer.parseInt(sharedPreferences.getString("AYAT_ID", "0"));
+                } catch (NumberFormatException ignored) {
+                    position = 0;
+                }
+            }
         }
-
 
         back = view.findViewById(R.id.back_button);
-        back.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
+        if (back != null) {
+            back.setOnClickListener(v -> {
+                if (getActivity() != null) {
+                    getActivity().getSupportFragmentManager().popBackStack();
+                }
+            });
+        }
 
         ayatRecyclerView = view.findViewById(R.id.lastReadrecycler_ayat);
-        //for fast scroll
         VerticalRecyclerViewFastScroller fastScroller = view.findViewById(R.id.fast_scroller);
 
-        // let the scroller scroll the list
-        fastScroller.setRecyclerView(ayatRecyclerView);
+        if (fastScroller != null && ayatRecyclerView != null) {
+            fastScroller.setRecyclerView(ayatRecyclerView);
+            ayatRecyclerView.setOnScrollListener(fastScroller.getOnScrollListener());
+        }
 
-        //  let the recycler scroll the scroller's handle
-        ayatRecyclerView.setOnScrollListener(fastScroller.getOnScrollListener());
-        ayatAdapter = new LastReadAdapter(getContext(), ayatArrayList);
-        ayatRecyclerView.setHasFixedSize(true);
-        ayatRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(getContext()));
-        ayatRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        ayatRecyclerView.setAdapter(ayatAdapter);
-
-        if (position == 0) {
-            ayatRecyclerView.smoothScrollToPosition(position);
-        } else {
+        if (ayatRecyclerView != null && getContext() != null) {
+            ayatAdapter = new LastReadAdapter(getContext(), ayatArrayList);
+            ayatRecyclerView.setHasFixedSize(true);
+            ayatRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(getContext()));
+            ayatRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+            ayatRecyclerView.setAdapter(ayatAdapter);
             ayatRecyclerView.smoothScrollToPosition(position);
         }
+
         return view;
     }
-
 }

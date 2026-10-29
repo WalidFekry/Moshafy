@@ -1,111 +1,102 @@
 package com.appwalied.quran.ayakor;
 
-import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 
-public class AyaKorListen extends AppCompatActivity {
+public class AyaKorListen extends BaseActivity {
 
-    ImageButton PlayButton;
-    SeekBar ayakorseekbar;
-    MediaPlayer mediaPlayer;
-    int totalTime;
-    @SuppressLint("HandlerLeak")
-    private final Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message message) {
-            ayakorseekbar.setProgress(message.what);
-        }
-    };
+    private ImageButton playButton;
+    private SeekBar ayakorseekbar;
+    private MediaPlayer mediaPlayer;
+    private AppCompatImageButton back;
+    private final Handler progressHandler = new Handler(Looper.getMainLooper());
+    private Runnable updateProgressTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayakorlisten);
 
-        PlayButton = findViewById(R.id.btnPlay);
+        playButton = findViewById(R.id.btnPlay);
         ayakorseekbar = findViewById(R.id.ayakorseekbar);
+        back = findViewById(R.id.back_button);
 
-        mediaPlayer = MediaPlayer.create(AyaKorListen.this, R.raw.kor);
-        mediaPlayer.seekTo(0);
-        totalTime = mediaPlayer.getDuration();
+        if (back != null) {
+            back.setOnClickListener(v -> finish());
+        }
 
-        ayakorseekbar.setMax(totalTime);
+        mediaPlayer = MediaPlayer.create(this, R.raw.kor);
+        if (mediaPlayer != null) {
+            int totalTime = mediaPlayer.getDuration();
+            ayakorseekbar.setMax(totalTime);
+        }
+
         ayakorseekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
+                if (fromUser && mediaPlayer != null) {
                     mediaPlayer.seekTo(progress);
-                    ayakorseekbar.setProgress(progress);
                 }
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        new Thread(new Runnable() {
+        updateProgressTask = new Runnable() {
             @Override
             public void run() {
-                while (mediaPlayer != null) {
-                    try {
-                        if (mediaPlayer.isPlaying()) {
-                            Message message = new Message();
-                            message.what = mediaPlayer.getCurrentPosition();
-                            handler.sendMessage(message);
-                            Thread.sleep(1000);
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                    ayakorseekbar.setProgress(mediaPlayer.getCurrentPosition());
+                    progressHandler.postDelayed(this, 500);
                 }
             }
-        }).start();
+        };
 
-        PlayButton.setOnClickListener(new View.OnClickListener() {
+        playButton.setOnClickListener(v -> {
+            if (mediaPlayer == null) return;
 
-            @Override
-            public void onClick(View arg0) {
-                // check for already playing
-                if (mediaPlayer.isPlaying()) {
-                    if (mediaPlayer != null) {
-                        mediaPlayer.pause();
-                        // Changing button image to play button
-                        PlayButton.setImageResource(R.drawable.btn_play);
-                    }
-                } else {
-                    // Resume song
-                    if (mediaPlayer != null) {
-                        mediaPlayer.start();
-                        // Changing button image to pause button
-                        PlayButton.setImageResource(R.drawable.btn_pause);
-                    }
-                }
-
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+                playButton.setImageResource(R.drawable.btn_play);
+                progressHandler.removeCallbacks(updateProgressTask);
+            } else {
+                mediaPlayer.start();
+                playButton.setImageResource(R.drawable.btn_pause);
+                progressHandler.post(updateProgressTask);
             }
         });
 
+        mediaPlayer.setOnCompletionListener(mp -> {
+            playButton.setImageResource(R.drawable.btn_play);
+            ayakorseekbar.setProgress(0);
+            progressHandler.removeCallbacks(updateProgressTask);
+        });
     }
 
     @Override
-    public void onBackPressed() {
-        mediaPlayer.pause();
-        finish();
+    protected void onDestroy() {
+        progressHandler.removeCallbacksAndMessages(null);
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
     }
 }
