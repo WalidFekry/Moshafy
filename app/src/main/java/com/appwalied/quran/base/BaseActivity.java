@@ -293,4 +293,26 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         }
         super.onResume();
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Bundle viewHierarchyState = outState.getBundle("android:viewHierarchyState");
+        if (viewHierarchyState != null) {
+            android.os.Parcel parcel = android.os.Parcel.obtain();
+            try {
+                viewHierarchyState.writeToParcel(parcel, 0);
+                int bytes = parcel.dataSize();
+                if (bytes > 100000) {
+                    Log.w(TAG, "viewHierarchyState is dangerously large (" + bytes + " bytes). Removing to prevent TransactionTooLargeException.");
+                    outState.remove("android:viewHierarchyState");
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Error measuring viewHierarchyState size", e);
+                outState.remove("android:viewHierarchyState");
+            } finally {
+                parcel.recycle();
+            }
+        }
+    }
 }

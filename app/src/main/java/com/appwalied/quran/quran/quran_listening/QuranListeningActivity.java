@@ -1,11 +1,12 @@
 package com.appwalied.quran.quran.quran_listening;
 
-
 import android.content.Intent;
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.KeyEvent;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -13,26 +14,23 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageButton;
-
+import androidx.activity.OnBackPressedCallback;
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.quran.quran_listening.listening.SongsManager;
 import com.appwalied.quran.quran.quran_listening.listening.Utilities;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class QuranListeningActivity extends BaseActivity implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
-    // Media Player
-    private static MediaPlayer mp;
-    String RecitesName = "";
-    String RecitesAYA = "";
+
+    private static final String TAG = "QuranListeningActivity";
+
+    private MediaPlayer mp;
+    private String RecitesName = "";
+    private String RecitesAYA = "";
     private ImageButton btnPlay;
     private ImageButton btnForward;
     private ImageButton btnBackward;
@@ -44,43 +42,43 @@ public class QuranListeningActivity extends BaseActivity implements MediaPlayer.
     private TextView songTitleLabel;
     private TextView songCurrentDurationLabel;
     private TextView songTotalDurationLabel;
-    // Handler to update UI timer, progress bar etc,.
-    private final Handler mHandler = new Handler();
+
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
     private SongsManager songManager;
     private Utilities utils;
-    private final int seekForwardTime = 5000; // 5000 milliseconds
-    private final int seekBackwardTime = 5000; // 5000 milliseconds
+    private final int seekForwardTime = 5000;
+    private final int seekBackwardTime = 5000;
     private int currentSongIndex = 0;
     private boolean isShuffle = false;
     private boolean isRepeat = false;
-    private AppCompatImageButton back;
     private FrameLayout adsContainer;
-    private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
-    /**
-     * Background Runnable thread
-     */
+    private ArrayList<HashMap<String, String>> songsList = new ArrayList<>();
+
     private final Runnable mUpdateTimeTask = new Runnable() {
         public void run() {
-            try {
-                long totalDuration = mp.getDuration();
-                long currentDuration = mp.getCurrentPosition();
+            if (mp != null) {
+                try {
+                    if (mp.isPlaying()) {
+                        long totalDuration = mp.getDuration();
+                        long currentDuration = mp.getCurrentPosition();
 
-                // Displaying Total Duration time
-                songTotalDurationLabel.setText(utils.milliSecondsToTimer(totalDuration));
-                // Displaying time completed playing
-                songCurrentDurationLabel.setText(utils.milliSecondsToTimer(currentDuration));
+                        if (songTotalDurationLabel != null) {
+                            songTotalDurationLabel.setText(utils.milliSecondsToTimer(totalDuration));
+                        }
+                        if (songCurrentDurationLabel != null) {
+                            songCurrentDurationLabel.setText(utils.milliSecondsToTimer(currentDuration));
+                        }
 
-                // Updating progress bar
-                int progress = utils.getProgressPercentage(currentDuration, totalDuration);
-                //Log.d("Progress", ""+progress);
-                songProgressBar.setProgress(progress);
+                        int progress = utils.getProgressPercentage(currentDuration, totalDuration);
+                        if (songProgressBar != null) {
+                            songProgressBar.setProgress(progress);
+                        }
 
-                // Running this thread after 100 milliseconds
-                mHandler.postDelayed(this, 100);
-                if (currentDuration >= (totalDuration / 8)) {
-                    //layoutads.setVisibility(View.VISIBLE);
+                        mHandler.postDelayed(this, 100);
+                    }
+                } catch (Exception ex) {
+                    Log.e(TAG, "Error in progress update runnable", ex);
                 }
-            } catch (Exception ex) {
             }
         }
     };
@@ -89,10 +87,13 @@ public class QuranListeningActivity extends BaseActivity implements MediaPlayer.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_managerdb);
-        Bundle b = getIntent().getExtras();
-        RecitesName = b.getString("RecitesName");
-        RecitesAYA = b.getString("RecitesAYA");
-        // All player buttons
+
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            Bundle b = getIntent().getExtras();
+            RecitesName = b.getString("RecitesName", "");
+            RecitesAYA = b.getString("RecitesAYA", "0");
+        }
+
         btnPlay = findViewById(R.id.btnPlay);
         btnForward = findViewById(R.id.btnForward);
         btnBackward = findViewById(R.id.btnBackward);
@@ -104,339 +105,305 @@ public class QuranListeningActivity extends BaseActivity implements MediaPlayer.
         songTitleLabel = findViewById(R.id.songTitle);
         songCurrentDurationLabel = findViewById(R.id.songCurrentDurationLabel);
         songTotalDurationLabel = findViewById(R.id.songTotalDurationLabel);
-        back = findViewById(R.id.back_button);
+        View back = findViewById(R.id.back_button);
         adsContainer = findViewById(R.id.adsContainer);
 
-        back.setOnClickListener(v -> finish());
+        if (back != null) {
+            back.setOnClickListener(v -> {
+                safeStopAndRelease();
+                finish();
+            });
+        }
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                safeStopAndRelease();
+                finish();
+            }
+        });
 
         showBanner(adsContainer);
 
-        // Mediaplayer
-
-        mp = new MediaPlayer();
-        mp.setLooping(false);
-        try {
-            mp.setDataSource("http://server11.mp3quran.net/mp3/%s.mp3");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         songManager = new SongsManager();
         utils = new Utilities();
 
-        // Listeners
-        songProgressBar.setOnSeekBarChangeListener(this); // Important
-        mp.setOnCompletionListener(this); // Important
+        if (songProgressBar != null) {
+            songProgressBar.setOnSeekBarChangeListener(this);
+        }
 
-        // Getting all songs list
         songsList = songManager.getPlayList(RecitesName);
 
-        // By default play first song
-        currentSongIndex = Integer.parseInt(RecitesAYA);//-1 ;
+        try {
+            currentSongIndex = Integer.parseInt(RecitesAYA);
+        } catch (NumberFormatException e) {
+            currentSongIndex = 0;
+        }
+
         playSong(currentSongIndex);
 
-        /**
-         * Play button click event
-         * plays a song and changes button to pause image
-         * pauses a song and changes button to play image
-         * */
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // check for already playing
-                if (mp.isPlaying()) {
-                    if (mp != null) {
+        btnPlay.setOnClickListener(arg0 -> {
+            if (mp != null) {
+                try {
+                    if (mp.isPlaying()) {
                         mp.pause();
-                        // Changing button image to play button
                         btnPlay.setImageResource(R.drawable.btn_play);
-                    }
-                } else {
-                    // Resume song
-                    if (mp != null) {
+                    } else {
                         mp.start();
-                        // Changing button image to pause button
                         btnPlay.setImageResource(R.drawable.btn_pause);
+                        updateProgressBar();
                     }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error toggling play/pause", e);
+                    playSong(currentSongIndex);
                 }
-
+            } else {
+                playSong(currentSongIndex);
             }
         });
 
-        /**
-         * Forward button click event
-         * Forwards song specified seconds
-         * */
-        btnForward.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // get current song position
-                int currentPosition = mp.getCurrentPosition();
-                // check if seekForward time is lesser than song duration
-                if (currentPosition + seekForwardTime <= mp.getDuration()) {
-                    // forward song
-                    mp.seekTo(currentPosition + seekForwardTime);
-                } else {
-                    // forward to end position
-                    mp.seekTo(mp.getDuration());
+        btnForward.setOnClickListener(arg0 -> {
+            if (mp != null) {
+                try {
+                    int currentPosition = mp.getCurrentPosition();
+                    int duration = mp.getDuration();
+                    if (currentPosition + seekForwardTime <= duration) {
+                        mp.seekTo(currentPosition + seekForwardTime);
+                    } else {
+                        mp.seekTo(duration);
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error seeking forward", e);
                 }
             }
         });
 
-        /**
-         * Backward button click event
-         * Backward song to specified seconds
-         * */
-        btnBackward.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // get current song position
-                int currentPosition = mp.getCurrentPosition();
-                // check if seekBackward time is greater than 0 sec
-                if (currentPosition - seekBackwardTime >= 0) {
-                    // forward song
-                    mp.seekTo(currentPosition - seekBackwardTime);
-                } else {
-                    // backward to starting position
-                    mp.seekTo(0);
+        btnBackward.setOnClickListener(arg0 -> {
+            if (mp != null) {
+                try {
+                    int currentPosition = mp.getCurrentPosition();
+                    if (currentPosition - seekBackwardTime >= 0) {
+                        mp.seekTo(currentPosition - seekBackwardTime);
+                    } else {
+                        mp.seekTo(0);
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error seeking backward", e);
                 }
-
             }
         });
 
-        /**
-         * Next button click event
-         * Plays next song by taking currentSongIndex + 1
-         * */
-        btnNext.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // check if next song is there or not
+        btnNext.setOnClickListener(arg0 -> {
+            if (songsList != null && !songsList.isEmpty()) {
                 if (currentSongIndex < (songsList.size() - 1)) {
                     playSong(currentSongIndex + 1);
                     currentSongIndex = currentSongIndex + 1;
                 } else {
-                    // play first song
                     playSong(0);
                     currentSongIndex = 0;
                 }
-
             }
         });
 
-        /**
-         * Back button click event
-         * Plays previous song by currentSongIndex - 1
-         * */
-        btnPrevious.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
+        btnPrevious.setOnClickListener(arg0 -> {
+            if (songsList != null && !songsList.isEmpty()) {
                 if (currentSongIndex > 0) {
                     playSong(currentSongIndex - 1);
                     currentSongIndex = currentSongIndex - 1;
                 } else {
-                    // play last song
                     playSong(songsList.size() - 1);
                     currentSongIndex = songsList.size() - 1;
                 }
-
             }
         });
 
-        /**
-         * Button Click event for Repeat button
-         * Enables repeat flag to true
-         * */
-        btnRepeat.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                if (isRepeat) {
-                    isRepeat = false;
-                    Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
-                    btnRepeat.setImageResource(R.drawable.btn_repeat);
-                } else {
-                    // make repeat to true
-                    isRepeat = true;
-                    Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
-                    // make shuffle to false
-                    isShuffle = false;
-                    btnRepeat.setImageResource(R.drawable.btn_repeat_focused);
-                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
-                }
+        btnRepeat.setOnClickListener(arg0 -> {
+            if (isRepeat) {
+                isRepeat = false;
+                Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
+                btnRepeat.setImageResource(R.drawable.btn_repeat);
+            } else {
+                isRepeat = true;
+                Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
+                isShuffle = false;
+                btnRepeat.setImageResource(R.drawable.btn_repeat_focused);
+                btnShuffle.setImageResource(R.drawable.btn_shuffle);
             }
         });
 
-        /**
-         * Button Click event for Shuffle button
-         * Enables shuffle flag to true
-         * */
-        btnShuffle.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                if (isShuffle) {
-                    isShuffle = false;
-                    Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
-                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
-                } else {
-                    // make repeat to true
-                    isShuffle = true;
-                    Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
-                    // make shuffle to false
-                    isRepeat = false;
-                    btnShuffle.setImageResource(R.drawable.btn_shuffle_focused);
-                    btnRepeat.setImageResource(R.drawable.btn_repeat);
-                }
+        btnShuffle.setOnClickListener(arg0 -> {
+            if (isShuffle) {
+                isShuffle = false;
+                Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
+                btnShuffle.setImageResource(R.drawable.btn_shuffle);
+            } else {
+                isShuffle = true;
+                Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
+                isRepeat = false;
+                btnShuffle.setImageResource(R.drawable.btn_shuffle_focused);
+                btnRepeat.setImageResource(R.drawable.btn_repeat);
             }
         });
-
-        /**
-         * Button Click event for Play list click event
-         * Launches list activity which displays list of songs
-         * */
-
-
     }
 
-
-    // @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (mp.isPlaying()) if (mp != null) mp.pause();
-
-            this.finish();
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
-
-    /**
-     * Receiving song index from playlist view
-     * and play the song
-     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 100) {
-            currentSongIndex = data.getExtras().getInt("songIndex");
-            // play selected song
+        if (resultCode == 100 && data != null && data.getExtras() != null) {
+            currentSongIndex = data.getExtras().getInt("songIndex", 0);
             playSong(currentSongIndex);
         }
-
     }
 
-    /**
-     * Function to play a song
-     *
-     * @param songIndex - index of song
-     */
     public void playSong(int songIndex) {
-        // Play song
+        if (songsList == null || songsList.isEmpty() || songIndex < 0 || songIndex >= songsList.size()) {
+            Log.e(TAG, "Invalid song index or empty songs list: " + songIndex);
+            return;
+        }
+
+        mHandler.removeCallbacks(mUpdateTimeTask);
+
+        if (mp != null) {
+            try {
+                if (mp.isPlaying()) {
+                    mp.stop();
+                }
+            } catch (Exception ignored) {}
+            try {
+                mp.reset();
+            } catch (Exception ignored) {}
+        } else {
+            mp = new MediaPlayer();
+        }
+
         try {
-            mp.reset();
-            mp.setDataSource(songsList.get(songIndex).get("songPath"));
-            mp.prepare();
-            mp.start();
-            // Displaying Song title
-            String songTitle = songsList.get(songIndex).get("songTitle");
-            songTitleLabel.setText(songTitle);
+            mp.setAudioAttributes(
+                new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .build()
+            );
 
-            // Changing Button Image to pause image
-            btnPlay.setImageResource(R.drawable.btn_pause);
+            String songPath = songsList.get(songIndex).get("songPath");
+            if (songPath == null || songPath.isEmpty()) {
+                Toast.makeText(this, "رابط الصوت غير صالح", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            // set Progress bar values
-            songProgressBar.setProgress(0);
-            songProgressBar.setMax(100);
+            mp.setDataSource(songPath);
+            mp.setOnCompletionListener(this);
 
-            // Updating progress bar
-            updateProgressBar();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            showLoading();
+
+            mp.setOnPreparedListener(mpPrepared -> {
+                hideLoading();
+                if (isFinishing() || isDestroyed()) {
+                    safeStopAndRelease();
+                    return;
+                }
+                try {
+                    mpPrepared.start();
+                    if (songTitleLabel != null) {
+                        String songTitle = songsList.get(songIndex).get("songTitle");
+                        songTitleLabel.setText(songTitle != null ? songTitle : "");
+                    }
+                    if (btnPlay != null) {
+                        btnPlay.setImageResource(R.drawable.btn_pause);
+                    }
+                    if (songProgressBar != null) {
+                        songProgressBar.setProgress(0);
+                        songProgressBar.setMax(100);
+                    }
+                    updateProgressBar();
+                } catch (Exception e) {
+                    Log.e(TAG, "Error starting player in onPrepared", e);
+                }
+            });
+
+            mp.setOnErrorListener((mpError, what, extra) -> {
+                hideLoading();
+                Log.e(TAG, "MediaPlayer error: what=" + what + ", extra=" + extra);
+                Toast.makeText(QuranListeningActivity.this, "حدث خطأ أثناء تشغيل الصوت", Toast.LENGTH_SHORT).show();
+                if (btnPlay != null) {
+                    btnPlay.setImageResource(R.drawable.btn_play);
+                }
+                return true;
+            });
+
+            mp.prepareAsync();
+
+        } catch (Exception e) {
+            hideLoading();
+            Log.e(TAG, "Error preparing media player", e);
+            Toast.makeText(this, "تعذر تشغيل هذا المقطع", Toast.LENGTH_SHORT).show();
         }
     }
 
-    /**
-     * Update timer on seekbar
-     */
     public void updateProgressBar() {
+        mHandler.removeCallbacks(mUpdateTimeTask);
         mHandler.postDelayed(mUpdateTimeTask, 100);
     }
 
-    /**
-     *
-     */
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {}
 
-    }
-
-    /**
-     * When user starts moving the progress handler
-     */
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        // remove message Handler from updating progress bar
         mHandler.removeCallbacks(mUpdateTimeTask);
     }
 
-    /**
-     * When user stops moving the progress hanlder
-     */
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         mHandler.removeCallbacks(mUpdateTimeTask);
-        int totalDuration = mp.getDuration();
-        int currentPosition = utils.progressToTimer(seekBar.getProgress(), totalDuration);
-
-        // forward or backward to certain seconds
-        mp.seekTo(currentPosition);
-
-        // update timer progress again
+        if (mp != null) {
+            try {
+                int totalDuration = mp.getDuration();
+                int currentPosition = utils.progressToTimer(seekBar.getProgress(), totalDuration);
+                mp.seekTo(currentPosition);
+            } catch (Exception e) {
+                Log.e(TAG, "Error seeking onStopTrackingTouch", e);
+            }
+        }
         updateProgressBar();
     }
 
-    /**
-     * On Song Playing completed
-     * if repeat is ON play same song again
-     * if shuffle is ON play random song
-     */
     @Override
     public void onCompletion(MediaPlayer arg0) {
-
-        // check for repeat is ON or OFF
         if (isRepeat) {
-            // repeat is on play same song again
             playSong(currentSongIndex);
-        } else if (isShuffle) {
-            // shuffle is on - play a random song
+        } else if (isShuffle && songsList != null && songsList.size() > 1) {
             Random rand = new Random();
-            currentSongIndex = rand.nextInt((songsList.size() - 1) + 1);
+            currentSongIndex = rand.nextInt(songsList.size());
             playSong(currentSongIndex);
-        } else {
-            // no repeat or shuffle ON - play next song
+        } else if (songsList != null && !songsList.isEmpty()) {
             if (currentSongIndex < (songsList.size() - 1)) {
                 playSong(currentSongIndex + 1);
                 currentSongIndex = currentSongIndex + 1;
             } else {
-                // play first song
                 playSong(0);
                 currentSongIndex = 0;
             }
         }
     }
 
-    @Override
-    public void onDestroy() {
+    private void safeStopAndRelease() {
+        mHandler.removeCallbacks(mUpdateTimeTask);
+        if (mp != null) {
+            try {
+                if (mp.isPlaying()) {
+                    mp.stop();
+                }
+            } catch (Exception ignored) {}
+            try {
+                mp.release();
+            } catch (Exception ignored) {}
+            mp = null;
+        }
+    }
 
-        mp.release();
+    @Override
+    protected void onDestroy() {
+        safeStopAndRelease();
         super.onDestroy();
     }
 }

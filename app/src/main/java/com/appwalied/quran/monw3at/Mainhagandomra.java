@@ -1,20 +1,18 @@
 package com.appwalied.quran.monw3at;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.Adapterrec3;
 import com.appwalied.quran.adabters.itemrex3;
+import com.appwalied.quran.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mainhagandomra extends AppCompatActivity {
+public class Mainhagandomra extends BaseActivity {
     RecyclerView rec4;
     List<itemrex3> list;
     @Override

@@ -3,9 +3,10 @@ package com.appwalied.quran;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class Splash extends AppCompatActivity {
+import com.appwalied.quran.base.BaseActivity;
+
+public class Splash extends BaseActivity {
     private static final int SPLASH_TIME_OUT = 2000;
 
     @Override

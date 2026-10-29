@@ -2,17 +2,17 @@ package com.appwalied.quran.quran.quran_images;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 
 import java.util.ArrayList;
 
-public class QuranList extends AppCompatActivity {
+public class QuranList extends BaseActivity {
     ArrayList<Quran> quranlist;
     RecyclerView recyclerView;
     Quran_Adapter quran_adapter;

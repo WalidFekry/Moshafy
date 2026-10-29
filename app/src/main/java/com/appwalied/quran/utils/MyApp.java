@@ -8,9 +8,10 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // تهيئة Google Mobile Ads SDK مرة واحدة عند بدء التطبيق
-        MobileAds.initialize(this, initializationStatus -> {
-            // يمكنك إضافة كود إضافي بعد التهيئة هنا
-        });
+        new Thread(() -> {
+            // Initialize the Google Mobile Ads SDK on a background thread.
+            MobileAds.initialize(this, initializationStatus -> {
+            });
+        }).start();
     }
 }

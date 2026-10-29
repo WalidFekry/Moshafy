@@ -60,6 +60,7 @@
                         android:gravity="center"
                         android:textColor="#363434"
                         android:textSize="17dp"
+                        android:saveEnabled="false"
                         android:fontFamily="@font/jazeera"
                         android:layout_height="wrap_content"/>
                     <com.airbnb.lottie.LottieAnimationView
@@ -85,6 +86,7 @@
                         android:gravity="center"
                         android:textColor="#363434"
                         android:textSize="16dp"
+                        android:saveEnabled="false"
                         android:fontFamily="@font/jazeera"
                         android:layout_height="match_parent"/>
                 </LinearLayout>

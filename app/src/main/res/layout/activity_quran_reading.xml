@@ -226,6 +226,7 @@
                     android:gravity="center"
                     android:lineSpacingExtra="12dp"
                     android:padding="20dp"
+                    android:saveEnabled="false"
                     android:textColor="@color/quran_text_color"
                     android:textSize="20sp"
                     android:textStyle="bold" />

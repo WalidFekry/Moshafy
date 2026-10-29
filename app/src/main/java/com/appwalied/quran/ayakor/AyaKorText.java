@@ -8,11 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.appwalied.quran.R;
+import com.appwalied.quran.base.BaseActivity;
 
-public class AyaKorText extends AppCompatActivity {
+public class AyaKorText extends BaseActivity {
 
     TextView ayakortxt;
     Button btnup, btndown, btnstar;
