@@ -802,6 +802,145 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
+            <!-- Promo Card for Al-Muhfiz App -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_almuhfz_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Top Badge Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/chip_bg"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/flat5"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="4dp"
+                                android:text="تطبيق موصى به 🌟"
+                                android:textColor="@color/gold_accent"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </androidx.cardview.widget.CardView>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="بدون إعلانات 🌿"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Main App Info Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginEnd="12dp"
+                            app:cardBackgroundColor="@color/bg_main"
+                            app:cardCornerRadius="14dp"
+                            app:cardElevation="1dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/app_name"
+                                android:padding="8dp"
+                                android:src="@drawable/quq" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/cairo_bold"
+                                android:text="المُحفظ – المصحف المعلم"
+                                android:textColor="@color/text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/flat5"
+                                android:text="رفيقك لتعلم وحفظ القرآن الكريم بالتكرار واستماع نخبة من كبار القراء"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- CTA Download Button -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="14dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/flat5"
+                                android:text="تحميل التطبيق الآن مجانًا 🚀"
+                                android:textColor="@color/text_white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- Bottom Action Footer Bar -->
             <LinearLayout
                 android:layout_width="match_parent"

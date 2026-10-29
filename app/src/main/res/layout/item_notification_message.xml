@@ -156,53 +156,83 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_divider">
 
-                <com.airbnb.lottie.LottieAnimationView
+                <!-- Save / Bookmark Quote -->
+                <net.steamcrafted.materialiconlib.MaterialIconView
                     android:id="@+id/starquran"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:layout_margin="8dp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_fileName="favorite.json"
-                    app:lottie_loop="false" />
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_margin="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="bookmark_outline"
+                    app:materialIconColor="@color/gold_accent"
+                    app:materialIconSize="28dp" />
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/sharequran"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:layout_margin="8dp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_fileName="share.json"
-                    app:lottie_loop="false" />
+                <!-- Share Quote as Image -->
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/share_image"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_margin="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="image"
+                    app:materialIconColor="@color/colorPrimary"
+                    app:materialIconSize="28dp" />
 
+                <!-- Download Quote Image to Gallery -->
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/download_image"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_margin="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="download"
+                    app:materialIconColor="@color/colorPrimary"
+                    app:materialIconSize="28dp" />
+
+                <!-- Copy Text -->
                 <net.steamcrafted.materialiconlib.MaterialIconView
                     android:id="@+id/copyquran"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_margin="8dp"
+                    android:layout_margin="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:scaleType="center"
                     app:materialIcon="content_copy"
                     app:materialIconColor="@color/colorAccent"
-                    app:materialIconSize="28dp" />
+                    app:materialIconSize="26dp" />
 
+                <!-- WhatsApp Share Text -->
                 <net.steamcrafted.materialiconlib.MaterialIconView
                     android:id="@+id/qumsgwhats"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_margin="8dp"
+                    android:layout_margin="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:scaleType="center"
                     app:materialIcon="whatsapp"
                     app:materialIconColor="#25D366"
-                    app:materialIconSize="30dp" />
+                    app:materialIconSize="28dp" />
 
+                <!-- Facebook Share Text -->
                 <net.steamcrafted.materialiconlib.MaterialIconView
                     android:id="@+id/facebook_share"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_margin="8dp"
+                    android:layout_margin="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:scaleType="center"
                     app:materialIcon="facebook_box"
                     app:materialIconColor="#1877F2"
-                    app:materialIconSize="30dp" />
+                    app:materialIconSize="28dp" />
 
             </LinearLayout>
 

@@ -213,6 +213,17 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@mipmap/ico_app" />
+
+        <!-- File Provider for Image Sharing -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 

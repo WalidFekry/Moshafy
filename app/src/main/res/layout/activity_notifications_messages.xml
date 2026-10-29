@@ -24,6 +24,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="0dp"
                 android:paddingEnd="16dp">
 
                 <androidx.appcompat.widget.AppCompatImageButton
@@ -41,13 +42,79 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/flat5"
-                    android:text="اقتباسات عشوائية"
+                    android:text="اقتباسات وإشراقات"
                     android:textColor="@color/text_white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
+
+        <!-- Segmented Tab Toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="8dp"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_tab_all"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/buoo"
+                android:fontFamily="@font/flat5"
+                android:text="جميع الاقتباسات"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_tab_saved"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/buoo1"
+                android:fontFamily="@font/flat5"
+                android:text="المحفوظات 🔖"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Offline Indicator Banner -->
+    <LinearLayout
+        android:id="@+id/layout_offline_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/chip_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:visibility="gone">
+
+        <net.steamcrafted.materialiconlib.MaterialIconView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="6dp"
+            app:materialIcon="wifi_off"
+            app:materialIconColor="@color/colorPrimary"
+            app:materialIconSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/flat5"
+            android:text="أنت تتصفح الاقتباسات بدون اتصال إنترنت (أوفلاين) 📡"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec"

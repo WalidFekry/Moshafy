@@ -16,10 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.appwalied.quran.R;
 import com.appwalied.quran.notifications_messages.model.NotificationModel;
+import com.appwalied.quran.notifications_messages.utility.QuoteImageHelper;
+import com.appwalied.quran.notifications_messages.utility.SavedQuotesManager;
 
+import net.steamcrafted.materialiconlib.MaterialDrawableBuilder;
 import net.steamcrafted.materialiconlib.MaterialIconView;
 
 import java.util.List;
@@ -27,9 +29,18 @@ import java.util.List;
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
 
     private final List<NotificationModel> list;
+    private OnSavedStateChangedListener onSavedStateChangedListener;
+
+    public interface OnSavedStateChangedListener {
+        void onSavedStateChanged();
+    }
 
     public NotificationAdapter(List<NotificationModel> list) {
         this.list = list;
+    }
+
+    public void setOnSavedStateChangedListener(OnSavedStateChangedListener listener) {
+        this.onSavedStateChangedListener = listener;
     }
 
     @NonNull
@@ -47,52 +58,51 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.title.setText(notification.getTitle().replace("_", "\n"));
         holder.messageNumber.setText(String.valueOf(notification.getId()));
 
-        holder.messageTime.setText(notification.getCreatedAt() != null ?
-                notification.getCreatedAt().split(" ")[0] : "2025-02-14");
+        String dateStr = notification.getCreatedAt() != null ? notification.getCreatedAt().split(" ")[0] : "";
+        holder.messageTime.setText(!dateStr.isEmpty() ? dateStr : "اليوم");
 
-        setClickListener(holder.shareButton, v -> shareNotification(itemContext, notification));
-        setClickListener(holder.starButton, v -> openLink(itemContext, "https://t.co/fkNQTMLNxn"));
-        setClickListener(holder.whatsappButton, v -> shareOnWhatsApp(itemContext, notification.getTitle()));
-        setClickListener(holder.copyButton, v -> copyToClipboard(itemContext, notification.getTitle()));
-        setClickListener(holder.facebookButton, v -> shareOnFacebook(itemContext, notification.getTitle()));
-    }
+        boolean isSaved = SavedQuotesManager.isQuoteSaved(itemContext, notification.getId());
+        holder.starButton.setIcon(isSaved ? MaterialDrawableBuilder.IconValue.BOOKMARK : MaterialDrawableBuilder.IconValue.BOOKMARK_OUTLINE);
 
-    private void setClickListener(View view, View.OnClickListener listener) {
-        view.setOnClickListener(listener);
+        holder.starButton.setOnClickListener(v -> {
+            boolean newlySaved = SavedQuotesManager.toggleSaveQuote(itemContext, notification);
+            holder.starButton.setIcon(newlySaved ? MaterialDrawableBuilder.IconValue.BOOKMARK : MaterialDrawableBuilder.IconValue.BOOKMARK_OUTLINE);
+            Toast.makeText(itemContext, newlySaved ? "تم الحفظ في المحفوظات 🔖" : "تم الحذف من المحفوظات", Toast.LENGTH_SHORT).show();
+            if (onSavedStateChangedListener != null) {
+                onSavedStateChangedListener.onSavedStateChanged();
+            }
+        });
+
+        holder.shareImageButton.setOnClickListener(v ->
+                QuoteImageHelper.shareQuoteAsImage(itemContext, notification.getTitle(), dateStr)
+        );
+
+        holder.downloadImageButton.setOnClickListener(v ->
+                QuoteImageHelper.saveQuoteImageToGallery(itemContext, notification.getTitle(), dateStr)
+        );
+
+        holder.whatsappButton.setOnClickListener(v -> shareOnWhatsApp(itemContext, notification.getTitle()));
+        holder.copyButton.setOnClickListener(v -> copyToClipboard(itemContext, notification.getTitle()));
+        holder.facebookButton.setOnClickListener(v -> shareOnFacebook(itemContext, notification.getTitle()));
     }
 
     private void shareOnFacebook(Context context, String text) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.setPackage("com.facebook.katana");
-        intent.putExtra(Intent.EXTRA_TEXT, text + "\n" + "تم نسخ هذا النص من تطبيق مُصحفي ^_^");
+        intent.putExtra(Intent.EXTRA_TEXT, text + "\n\n" + "تم النسخ من تطبيق مُصحفي 🌸");
         try {
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(context, "تطبيق فيسبوك غير مثبت!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "تطبيق فيسبوك غير مثبت!", Toast.LENGTH_SHORT).show();
         }
-    }
-
-
-    private void shareNotification(Context context, NotificationModel notification) {
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        sendIntent.setType("text/plain");
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "تطبيق (مُصحفي)");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, notification.getTitle() + "\n" +
-                "تم النسخ من تطبيق المٌحقظ 💙 👇 https://t.co/fkNQTMLNxn \n");
-        context.startActivity(Intent.createChooser(sendIntent, "مشاركة نصوص من تطبيق مُصحفي:"));
-    }
-
-    private void openLink(Context context, String url) {
-        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
     private void shareOnWhatsApp(Context context, String text) {
         Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
         whatsappIntent.setType("text/plain");
         whatsappIntent.setPackage("com.whatsapp");
-        whatsappIntent.putExtra(Intent.EXTRA_TEXT, text + "\n" +
-                "تم النسخ من تطبيق المٌحقظ 💙 👇 https://t.co/fkNQTMLNxn \n");
+        whatsappIntent.putExtra(Intent.EXTRA_TEXT, text + "\n\n" + "تم النسخ من تطبيق مُصحفي 🌸\nhttps://play.google.com/store/apps/details?id=com.appwalied.quran");
         try {
             context.startActivity(whatsappIntent);
         } catch (ActivityNotFoundException ex) {
@@ -102,9 +112,15 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     private void copyToClipboard(Context context, String text) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("", text + "\n" + "تم نسخ هذا النص من تطبيق مُصحفي ^_^");
-        clipboard.setPrimaryClip(clip);
-        Toast.makeText(context, "تم نسخ النص - قم بمشاركته الآن مع أصدقائك", Toast.LENGTH_LONG).show();
+        if (clipboard != null) {
+            ClipData clip = ClipData.newPlainText("Moshafy Quote", text + "\n\n" + "تم النسخ من تطبيق مُصحفي 🌸");
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(context, "تم نسخ النص إلى الحافظة 📋", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void openLink(Context context, String url) {
+        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
     @Override
@@ -113,16 +129,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     public static class NotificationViewHolder extends RecyclerView.ViewHolder {
-        MaterialIconView whatsappButton, copyButton, facebookButton;
+        MaterialIconView starButton, shareImageButton, downloadImageButton, whatsappButton, copyButton, facebookButton;
         TextView title;
-        LottieAnimationView starButton, shareButton;
         AppCompatTextView messageNumber, messageTime;
 
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
-            shareButton = itemView.findViewById(R.id.sharequran);
             starButton = itemView.findViewById(R.id.starquran);
+            shareImageButton = itemView.findViewById(R.id.share_image);
+            downloadImageButton = itemView.findViewById(R.id.download_image);
             copyButton = itemView.findViewById(R.id.copyquran);
             whatsappButton = itemView.findViewById(R.id.qumsgwhats);
             messageNumber = itemView.findViewById(R.id.message_number);
