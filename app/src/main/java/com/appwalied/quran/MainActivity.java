@@ -34,7 +34,6 @@ import com.appwalied.quran.masbaha.MasbahaActivity;
 import com.appwalied.quran.monw3at.Diffrentis;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.QuranicMessage;
-import com.appwalied.quran.quran.qouran_learning.QouranLearningActivity;
 import com.appwalied.quran.quran.quran_images.QuranList;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
@@ -209,9 +208,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class));
         });
-        binding.main.contentMain.quranLearning.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, QouranLearningActivity.class));
-        });
         binding.main.contentMain.quranReading.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, QuranRead.class));
         });
@@ -277,9 +273,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         });
         binding.main.contentMain.rateApp.setOnClickListener(v -> {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
-        });
-        binding.main.contentMain.ramadan.setOnClickListener(v -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.walid.myapplication")));
         });
     }
 

@@ -52,12 +52,6 @@
 
         <!-- Quran & Islamic Features -->
         <activity
-            android:name=".quran.qouran_learning.QouranLearningActivity"
-            android:exported="false" />
-        <activity
-            android:name=".quran.qouran_learning.LearningActivity"
-            android:exported="false" />
-        <activity
             android:name=".quran.quran_reading.QuranRead"
             android:exported="false" />
         <activity
