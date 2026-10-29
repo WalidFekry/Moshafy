@@ -38,13 +38,11 @@ android {
 }
 
 dependencies {
-    //noinspection GradleCompatible
     implementation 'androidx.appcompat:appcompat:1.8.0'
     implementation 'com.google.android.material:material:1.14.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
     implementation 'com.google.android.gms:play-services-ads:25.5.0'
     implementation 'com.google.firebase:firebase-database:23.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'joda-time:joda-time:2.15.1'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'com.github.code-mc:material-icon-lib:1.1.5'
@@ -53,11 +51,8 @@ dependencies {
     implementation 'com.github.mjn1369:prettydialog:1.0.4'
     implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.08'
     implementation "com.airbnb.android:lottie:6.7.1"
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     implementation 'com.squareup.retrofit2:retrofit:3.0.0'
     implementation 'com.squareup.retrofit2:converter-gson:3.0.0'
-    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.5.1'
     implementation 'com.google.firebase:firebase-messaging:26.0.1'
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'

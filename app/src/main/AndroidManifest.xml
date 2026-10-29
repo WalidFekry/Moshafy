@@ -184,14 +184,6 @@
         <!-- Floating Features -->
         <activity android:name=".masbaha.MasbahaActivity" />
 
-        <!-- Receivers -->
-        <receiver
-            android:name=".quran.quran_listening.listening.ListeningStatesBroadcast"
-            android:enabled="true" />
-        <receiver
-            android:name=".quran.quran_listening.listening.ListeningBroadCast"
-            android:enabled="true" />
-
         <!-- Firebase Messaging -->
         <service
             android:name=".MyFirebaseMessagingService"
