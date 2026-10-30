@@ -47,7 +47,6 @@ import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.QuranicMessage;
 import com.appwalied.quran.quran.quran_images.QuranList;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
-import com.appwalied.quran.quran.quran_reading.QuranRead;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
@@ -200,7 +199,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private void setOnClickListeners() {
         binding.main.contentMain.cardHijriDate.setOnClickListener(v -> showHijriAdjustmentDialog());
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class)));
-        binding.main.contentMain.quranReading.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, QuranRead.class)));
         binding.main.contentMain.masbaha.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MasbahaActivity.class)));
         binding.main.contentMain.quranListening.setOnClickListener(v -> {
             if (isNetworkConnected()) {
