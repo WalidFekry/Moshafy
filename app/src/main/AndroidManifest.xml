@@ -63,12 +63,6 @@
         <activity
             android:name=".quran.quran_listening.QuranListeningActivity"
             android:exported="false" />
-        <activity
-            android:name=".quran.quran_reading_v2.Qurandata"
-            android:exported="false" />
-        <activity
-            android:name=".quran.quran_reading_v2.QuranReadingActivity"
-            android:exported="false" />
 
         <!-- Azkar -->
         <activity

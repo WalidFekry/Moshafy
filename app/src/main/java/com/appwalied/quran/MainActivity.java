@@ -48,7 +48,6 @@ import com.appwalied.quran.quran.QuranicMessage;
 import com.appwalied.quran.quran.quran_images.QuranList;
 import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.quran.quran_reading.QuranRead;
-import com.appwalied.quran.quran.quran_reading_v2.Qurandata;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
@@ -210,7 +209,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل القرآن الكريم 🌸", Toast.LENGTH_SHORT).show();
             }
         });
-        binding.main.contentMain.quranReadingV2.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Qurandata.class)));
         binding.main.contentMain.azkar.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Azkar.class)));
         binding.main.contentMain.islamicSections.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Diffrentis.class)));
         binding.main.contentMain.quranMessages.setOnClickListener(v -> {
