@@ -1,9 +1,12 @@
 package com.appwalied.quran;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.res.ColorStateList;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
@@ -16,11 +19,16 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.button.MaterialButton;
+import com.appwalied.quran.utils.HijriCalendarHelper;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -87,6 +95,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setupNavigationView();
 
         setupShimmer();
+        updateHijriDateDisplay();
 
         setupBackDispatcher();
 
@@ -153,7 +162,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void showSettingsDialog() {
-        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("تفعيل الإشعارات 📢");
         builder.setMessage("لكي تصلك اقتباسات يومية ورسائل تحفيزية، تحتاج إلى تفعيل الإشعارات من الإعدادات.");
 
@@ -190,6 +199,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void setOnClickListeners() {
+        binding.main.contentMain.cardHijriDate.setOnClickListener(v -> showHijriAdjustmentDialog());
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class)));
         binding.main.contentMain.quranReading.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, QuranRead.class)));
         binding.main.contentMain.masbaha.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MasbahaActivity.class)));
@@ -297,5 +307,106 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
+    }
+
+    private void updateHijriDateDisplay() {
+        HijriCalendarHelper.HijriDateResult result = HijriCalendarHelper.getHijriDate(this);
+        binding.main.contentMain.tvHijriDate.setText(result.getFormattedHijriDate());
+        binding.main.contentMain.tvGregorianDate.setText(HijriCalendarHelper.getGregorianDateFormatted());
+    }
+
+    private void showHijriAdjustmentDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_adjust_hijri);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
+
+        final int[] selectedOffset = {HijriCalendarHelper.getOffset(this)};
+
+        TextView tvPreviewDate = dialog.findViewById(R.id.tv_dialog_preview_date);
+        TextView tvOffsetBadge = dialog.findViewById(R.id.tv_dialog_offset_badge);
+        TextView tvOffsetText = dialog.findViewById(R.id.tv_offset_text);
+        View btnMinus = dialog.findViewById(R.id.btn_minus);
+        View btnPlus = dialog.findViewById(R.id.btn_plus);
+
+        MaterialButton chipMinus2 = dialog.findViewById(R.id.chip_minus_2);
+        MaterialButton chipMinus1 = dialog.findViewById(R.id.chip_minus_1);
+        MaterialButton chipZero = dialog.findViewById(R.id.chip_zero);
+        MaterialButton chipPlus1 = dialog.findViewById(R.id.chip_plus_1);
+        MaterialButton chipPlus2 = dialog.findViewById(R.id.chip_plus_2);
+
+        MaterialButton[] chips = {chipMinus2, chipMinus1, chipZero, chipPlus1, chipPlus2};
+        int[] offsets = {-2, -1, 0, 1, 2};
+
+        View btnCancel = dialog.findViewById(R.id.btn_cancel);
+        View btnSave = dialog.findViewById(R.id.btn_save);
+
+        int primaryColor = ContextCompat.getColor(this, R.color.colorPrimary);
+        int strokeColor = ContextCompat.getColor(this, R.color.card_stroke);
+        int primaryTextColor = ContextCompat.getColor(this, R.color.text_primary);
+        int whiteTextColor = ContextCompat.getColor(this, R.color.text_white);
+
+        Runnable updateUI = () -> {
+            HijriCalendarHelper.HijriDateResult res = HijriCalendarHelper.getHijriDateWithOffset(selectedOffset[0]);
+            tvPreviewDate.setText(res.getFormattedHijriDate());
+            tvOffsetBadge.setText("(" + HijriCalendarHelper.getOffsetSpannableText(selectedOffset[0]) + ")");
+            String offsetLabel;
+            if (selectedOffset[0] == 0) {
+                offsetLabel = "0 يوم (الافتراضي)";
+            } else if (selectedOffset[0] > 0) {
+                offsetLabel = "+" + selectedOffset[0] + " يوم";
+            } else {
+                offsetLabel = selectedOffset[0] + " يوم";
+            }
+            tvOffsetText.setText(offsetLabel);
+
+            for (int i = 0; i < chips.length; i++) {
+                if (chips[i] == null) continue;
+                boolean isSelected = (selectedOffset[0] == offsets[i]);
+                if (isSelected) {
+                    chips[i].setBackgroundColor(primaryColor);
+                    chips[i].setTextColor(whiteTextColor);
+                    chips[i].setStrokeColor(ColorStateList.valueOf(primaryColor));
+                } else {
+                    chips[i].setBackgroundColor(Color.TRANSPARENT);
+                    chips[i].setTextColor(primaryTextColor);
+                    chips[i].setStrokeColor(ColorStateList.valueOf(strokeColor));
+                }
+            }
+        };
+
+        updateUI.run();
+
+        btnMinus.setOnClickListener(v -> {
+            if (selectedOffset[0] > -2) {
+                selectedOffset[0]--;
+                updateUI.run();
+            }
+        });
+
+        btnPlus.setOnClickListener(v -> {
+            if (selectedOffset[0] < 2) {
+                selectedOffset[0]++;
+                updateUI.run();
+            }
+        });
+
+        chipMinus2.setOnClickListener(v -> { selectedOffset[0] = -2; updateUI.run(); });
+        chipMinus1.setOnClickListener(v -> { selectedOffset[0] = -1; updateUI.run(); });
+        chipZero.setOnClickListener(v -> { selectedOffset[0] = 0; updateUI.run(); });
+        chipPlus1.setOnClickListener(v -> { selectedOffset[0] = 1; updateUI.run(); });
+        chipPlus2.setOnClickListener(v -> { selectedOffset[0] = 2; updateUI.run(); });
+
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+        btnSave.setOnClickListener(v -> {
+            HijriCalendarHelper.setOffset(MainActivity.this, selectedOffset[0]);
+            updateHijriDateDisplay();
+            Toast.makeText(MainActivity.this, "تم حفظ تعديل التاريخ الهجري بنجاح", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 }

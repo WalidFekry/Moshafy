@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_rounded"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Header Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="تاريخ اليوم"
+            android:src="@drawable/ic_hijri_calendar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/flat5"
+                android:text="تعديل التاريخ الهجري"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/flat5"
+                android:text="يمكنك إضافة أو إنقاص يوم/يومين لتصحيح التاريخ حسب رؤية الهلال."
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        android:background="@color/divider_color" />
+
+    <!-- Live Preview Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/chip_bg"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/flat5"
+                android:text="التاريخ بعد التعديل"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_dialog_preview_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/flat5"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="الخميس، 15 رمضان 1445 هـ" />
+
+            <TextView
+                android:id="@+id/tv_dialog_offset_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/flat5"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="(التاريخ الافتراضي)" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Stepper Control Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_minus"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="-"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:cornerRadius="24dp"
+            app:strokeColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_offset_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/flat5"
+            android:gravity="center"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:text="0 يوم (الافتراضي)" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_plus"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:cornerRadius="24dp"
+            app:strokeColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <!-- Quick Preset Buttons -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip_minus_2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/flat5"
+                android:text="-2 يوم"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:cornerRadius="18dp"
+                app:strokeColor="@color/card_stroke" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip_minus_1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/flat5"
+                android:text="-1 يوم"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:cornerRadius="18dp"
+                app:strokeColor="@color/card_stroke" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip_zero"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/flat5"
+                android:text="الافتراضي"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:cornerRadius="18dp"
+                app:strokeColor="@color/card_stroke" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip_plus_1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/flat5"
+                android:text="+1 يوم"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:cornerRadius="18dp"
+                app:strokeColor="@color/card_stroke" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chip_plus_2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:fontFamily="@font/flat5"
+                android:text="+2 يوم"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:cornerRadius="18dp"
+                app:strokeColor="@color/card_stroke" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Dialog Actions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/flat5"
+            android:text="إلغاء"
+            android:textColor="@color/text_secondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/flat5"
+            android:text="حفظ والتطبيق"
+            android:textColor="@color/text_white"
+            app:cornerRadius="10dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

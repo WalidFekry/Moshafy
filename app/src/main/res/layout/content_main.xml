@@ -95,6 +95,70 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Hijri & Gregorian Date Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_hijri_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="ضبط التاريخ"
+                        android:src="@drawable/ic_tune" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_hijri_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:text="الخميس، 15 رمضان 1445 هـ" />
+
+                        <TextView
+                            android:id="@+id/tv_gregorian_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/flat5"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp"
+                            tools:text="28 مارس 2024 م" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="تاريخ اليوم"
+                        android:src="@drawable/ic_hijri_calendar" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- Dashboard Grid Section -->
             <!-- Pair 1: Notifications/Quotes & Quran Reading -->
             <LinearLayout
