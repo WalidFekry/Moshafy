@@ -52,6 +52,16 @@
 
         <!-- Quran & Islamic Features -->
         <activity
+            android:name=".quran.ui.QuranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quran.ui.QuranReadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quran.ui.QuranSearchActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".quran.quran_listening.RecitesName"
             android:exported="false" />
         <activity

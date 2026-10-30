@@ -22,6 +22,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appwalied.quran.quran.ui.QuranActivity;
+import com.appwalied.quran.quran.ui.QuranReadingActivity;
 import com.google.android.material.button.MaterialButton;
 import com.appwalied.quran.utils.HijriCalendarHelper;
 
@@ -201,11 +203,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class)));
         binding.main.contentMain.masbaha.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MasbahaActivity.class)));
         binding.main.contentMain.quranListening.setOnClickListener(v -> {
-            if (isNetworkConnected()) {
-                startActivity(new Intent(getApplicationContext(), RecitesName.class));
-            } else {
-                Toast.makeText(this, "من فضلك تأكد من اتصالك بالإنترنت لتشغيل القرآن الكريم 🌸", Toast.LENGTH_SHORT).show();
-            }
+            startActivity(new Intent(MainActivity.this, RecitesName.class));
         });
         binding.main.contentMain.azkar.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Azkar.class)));
         binding.main.contentMain.islamicSections.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Diffrentis.class)));
