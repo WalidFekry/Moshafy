@@ -163,23 +163,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"
+                android:gravity="end"
                 android:orientation="horizontal">
 
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/colorPrimary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/flat5"
                     android:text="القرآن الكريم"
+                    android:layout_marginEnd="8dp"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorPrimary" />
             </LinearLayout>
 
             <LinearLayout
@@ -189,60 +191,12 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <!-- Quran Reading Card -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/quran_reading"
-                    android:layout_width="0dp"
-                    android:layout_height="115dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/card_bg"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <ImageView
-                            android:layout_width="42dp"
-                            android:layout_height="42dp"
-                            android:contentDescription="قراءة القرآن"
-                            android:src="@drawable/quran" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/flat5"
-                            android:text="القرآن الكريم (قراءة)"
-                            android:textColor="@color/text_primary"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:fontFamily="@font/flat5"
-                            android:text="السور والأجزاء والعلامات"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
                 <!-- Quran Listening Card -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/quran_listening"
+                    android:layout_marginEnd="6dp"
                     android:layout_width="0dp"
                     android:layout_height="115dp"
-                    android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
@@ -254,7 +208,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:orientation="vertical"
                         android:padding="12dp">
 
@@ -284,6 +239,55 @@
                             android:textSize="11sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!-- Quran Reading Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/quran_reading"
+                    android:layout_width="0dp"
+                    android:layout_height="115dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:contentDescription="قراءة القرآن"
+                            android:src="@drawable/quran" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/flat5"
+                            android:text="القرآن الكريم (قراءة)"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/flat5"
+                            android:text="السور والأجزاء والعلامات"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
             <!-- SECTION 2: DAILY ESSENTIALS (الخدمات والأذكار) -->
@@ -291,23 +295,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"
+                android:gravity="end"
                 android:orientation="horizontal">
-
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/colorPrimary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/flat5"
+                    android:layout_marginEnd="8dp"
                     android:text="الأذكار والخدمات اليومية"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorPrimary" />
             </LinearLayout>
 
             <!-- Grid Pair 1: Azkar & Masbaha -->
@@ -334,7 +338,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -372,7 +376,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -419,7 +423,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -434,7 +438,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/flat5"
-                            android:text="اقتباسات عشوائية"
+                            android:text="اقتباسات"
                             android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -457,7 +461,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -485,23 +489,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"
+                android:gravity="end"
                 android:orientation="horizontal">
 
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/colorPrimary" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/flat5"
                     android:text="المكتبة الإسلامية والقصص"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorPrimary" />
             </LinearLayout>
 
             <!-- Library Pair 1: Islamic Stories & Sahaba Stories -->
@@ -528,7 +534,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -566,7 +572,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -613,7 +619,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -651,7 +657,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -675,71 +681,67 @@
             </LinearLayout>
 
             <!-- Library Item 3: Islamic Sections (Single Full Card) -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <androidx.cardview.widget.CardView
                 android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
+                android:id="@+id/islamic_sections"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/islamic_sections"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="72dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/card_bg"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
+                    <ImageView
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="منوعات إسلامية"
+                        android:src="@drawable/kaaba" />
 
-                        <ImageView
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
-                            android:layout_marginEnd="10dp"
-                            android:contentDescription="منوعات إسلامية"
-                            android:src="@drawable/kaaba" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:text="منوعات إسلامية شاملة"
-                            android:textColor="@color/text_primary"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/flat5"
+                        android:text="منوعات إسلامية شاملة"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- SECTION 4: BLESSED SURAHS & DUAS (سور وأدعية مباركة) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"
+                android:gravity="end"
                 android:orientation="horizontal">
 
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/colorPrimary" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/flat5"
                     android:text="سور وأدعية مباركة"
+                    android:layout_marginEnd="8dp"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorPrimary" />
             </LinearLayout>
 
             <!-- Surahs Pair 1: Surah Al-Kahf & Surah Al-Mulk -->
@@ -766,7 +768,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -804,7 +806,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -851,7 +853,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -889,7 +891,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -939,6 +941,20 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="بدون إعلانات 🌿"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
                         <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -958,19 +974,8 @@
                                 android:textStyle="bold" />
                         </androidx.cardview.widget.CardView>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/flat5"
-                            android:text="بدون إعلانات 🌿"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+
                     </LinearLayout>
 
                     <!-- Main App Info Row -->
@@ -978,7 +983,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
@@ -994,18 +1000,21 @@
                                 android:layout_height="match_parent"
                                 android:contentDescription="@string/app_name"
                                 android:padding="8dp"
-                                android:src="@drawable/quq" />
+                                android:src="@drawable/almuhfz" />
                         </androidx.cardview.widget.CardView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/cairo_bold"
+                                android:gravity="center"
                                 android:text="المُحفظ – المصحف المعلم"
                                 android:textColor="@color/text_primary"
                                 android:textSize="16sp"
@@ -1016,6 +1025,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
                                 android:fontFamily="@font/flat5"
+                                android:gravity="center"
                                 android:text="رفيقك لتعلم وحفظ القرآن الكريم بالتكرار واستماع نخبة من كبار القراء"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="12sp" />
@@ -1041,6 +1051,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/flat5"
+                                android:gravity="center"
                                 android:text="تحميل التطبيق الآن مجانًا 🚀"
                                 android:textColor="@color/text_white"
                                 android:textSize="14sp"
