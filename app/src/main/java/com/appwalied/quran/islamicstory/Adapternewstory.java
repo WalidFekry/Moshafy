@@ -38,8 +38,6 @@ public class Adapternewstory extends RecyclerView.Adapter<Adapternewstory.holder
         holder.linearll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                final MediaPlayer mediaPlayer = MediaPlayer.create(v.getContext(), R.raw.clikkk);
-//                mediaPlayer.start();
                 Intent intent=new Intent(context, Maintitlenewstory.class);
                 intent.putExtra("storytitle",listaya.get(position).getTitle());
                 intent.putExtra("headert",listaya.get(position).getHeader());

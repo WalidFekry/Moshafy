@@ -37,8 +37,6 @@ public class AdapterRecyclerahdes extends RecyclerView.Adapter<AdapterRecyclerah
         holder.linnear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                final MediaPlayer mediaPlayer = MediaPlayer.create(v.getContext(), R.raw.clikkk);
-//                mediaPlayer.start();
                 Intent intent = new Intent(context, Mainpagerahdes.class);
                 intent.putExtra("positon", listahdes.get(position).getId());
                 context.startActivity(intent);

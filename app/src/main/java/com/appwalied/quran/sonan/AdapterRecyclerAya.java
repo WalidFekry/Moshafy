@@ -5,7 +5,6 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +38,6 @@ public class AdapterRecyclerAya  extends RecyclerView.Adapter<AdapterRecyclerAya
         holder.linearll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                final MediaPlayer mediaPlayer = MediaPlayer.create(v.getContext(), R.raw.clikkk);
-//                mediaPlayer.start();
                 Intent intent=new Intent(context, MaintitlepagerAya.class);
                 intent.putExtra("positon",listaya.get(position).getId());
                 context.startActivity(intent);

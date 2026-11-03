@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appwalied.quran.quran.ui.QuranActivity;
-import com.appwalied.quran.quran.ui.QuranReadingActivity;
 import com.google.android.material.button.MaterialButton;
 import com.appwalied.quran.utils.HijriCalendarHelper;
 
