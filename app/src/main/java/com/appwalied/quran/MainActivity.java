@@ -231,8 +231,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             startActivity(intent);
         });
         binding.main.contentMain.ayakor.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Ayakor.class)));
-        binding.main.contentMain.quranFnish.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Quran_fnish.class)));
-        binding.main.contentMain.shareApp.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShareApp.class)));
+        binding.main.contentMain.quranFnish.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, QuranFinishActivity.class)));
+        binding.main.contentMain.shareApp.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShareAppActivity.class)));
         binding.main.contentMain.about.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, About.class)));
         binding.main.contentMain.rateApp.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"))));
         binding.main.contentMain.cardAlmuhfzPromo.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.walid.almuhfz"))));

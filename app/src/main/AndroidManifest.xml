@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Quran_fnish"
+            android:name=".QuranFinishActivity"
             android:exported="false"
             />
         <activity
@@ -42,7 +42,7 @@
             android:exported="false"
             />
         <activity
-            android:name=".ShareApp"
+            android:name=".ShareAppActivity"
             android:exported="false"
             />
 
