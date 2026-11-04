@@ -69,6 +69,7 @@ public class Mainstorytitle extends BaseActivity {
 
             }
         });
+        showBanner(findViewById(R.id.adsContainer));
     }
 
     public void copy(View view) {

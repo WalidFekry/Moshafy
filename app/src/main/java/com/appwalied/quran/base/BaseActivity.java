@@ -5,32 +5,27 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcel;
 import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.window.layout.WindowMetrics;
-import androidx.window.layout.WindowMetricsCalculator;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.ads.AdsManager;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
 import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-
-import java.util.Random;
 
 import guy4444.smartrate.SmartRate;
 
@@ -38,17 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private static final String TAG = "BaseActivity";
     private static final int MAX_PROMPT_COUNT = 10;
     private static final long ONE_DAY_MILLIS = 24 * 60 * 60 * 1000;
-    private static final long AD_INTERVAL = 30 * 60 * 1000; // 30 دقيقة بالميللي ثانية
     private static final String PREFS_NAME = "app_prefs";
-    private static final String LAST_AD_TIME_KEY = "LastAdTime";
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable ratingRunnable;
     private Dialog loadingDialog;
-    private InterstitialAd mInterstitialAd;
     private SharedPreferences sharedPreferences;
-    private AdView adView;
-    private boolean initialLayoutComplete = false;
-    private long currentTime;
 
 
     @Override
@@ -60,37 +49,33 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     private void applyAppTheme() {
-        int mode = SharedHelper.getInt(this, SharedPrefsConstants.APP_THEME_MODE, androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode);
+        int mode = SharedHelper.getInt(this, SharedPrefsConstants.APP_THEME_MODE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        AppCompatDelegate.setDefaultNightMode(mode);
     }
 
     public void showThemeChooserDialog() {
         String[] options = {"تلقائي (حسب إعدادات النظام)", "الوضع النهاري ☀️", "الوضع الليلي 🌙"};
-        int currentMode = SharedHelper.getInt(this, SharedPrefsConstants.APP_THEME_MODE, androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        int currentMode = SharedHelper.getInt(this, SharedPrefsConstants.APP_THEME_MODE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         int checkedItem = 0;
-        if (currentMode == androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO) {
+        if (currentMode == AppCompatDelegate.MODE_NIGHT_NO) {
             checkedItem = 1;
-        } else if (currentMode == androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES) {
+        } else if (currentMode == AppCompatDelegate.MODE_NIGHT_YES) {
             checkedItem = 2;
         }
 
-        new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("اختر المظهر 🎨")
-                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
-                    int selectedMode;
-                    if (which == 1) {
-                        selectedMode = androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
-                    } else if (which == 2) {
-                        selectedMode = androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
-                    } else {
-                        selectedMode = androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                    }
-                    SharedHelper.putInt(this, SharedPrefsConstants.APP_THEME_MODE, selectedMode);
-                    androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(selectedMode);
-                    dialog.dismiss();
-                })
-                .setNegativeButton("إلغاء", null)
-                .show();
+        new AlertDialog.Builder(this).setTitle("اختر المظهر 🎨").setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
+            int selectedMode;
+            if (which == 1) {
+                selectedMode = AppCompatDelegate.MODE_NIGHT_NO;
+            } else if (which == 2) {
+                selectedMode = AppCompatDelegate.MODE_NIGHT_YES;
+            } else {
+                selectedMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+            }
+            SharedHelper.putInt(this, SharedPrefsConstants.APP_THEME_MODE, selectedMode);
+            AppCompatDelegate.setDefaultNightMode(selectedMode);
+            dialog.dismiss();
+        }).setNegativeButton("إلغاء", null).show();
     }
 
     public void checkAndShowDialog(String preferenceKey, String message) {
@@ -192,78 +177,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void setUpAds() {
-        long lastAdTime = sharedPreferences.getLong(LAST_AD_TIME_KEY, 0);
-        currentTime = System.currentTimeMillis();
-
-        // التحقق مما إذا كان قد مر 30 دقيقة منذ آخر إعلان
-        if ((currentTime - lastAdTime) < AD_INTERVAL) {
-            Log.d("TAG", "Not enough time has passed since the last ad. Skipping ad load.");
-            return;
-        }
-
-        String[] adIds = {getString(R.string.Biny1), getString(R.string.Biny2), getString(R.string.Biny3)};
-        String selectedAdId = adIds[new Random().nextInt(adIds.length)];
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this, selectedAdId, adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                mInterstitialAd = interstitialAd;
-                getHandler().postDelayed(BaseActivity.this::loadAds, 4000);
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                Log.i("TAG", "Ad Failed: " + selectedAdId + " - " + loadAdError.getMessage());
-                mInterstitialAd = null;
-                sharedPreferences.edit().putLong(LAST_AD_TIME_KEY, currentTime).apply();
-            }
-        });
-    }
-
-
-    private void loadAds() {
-        sharedPreferences.edit().putLong(LAST_AD_TIME_KEY, currentTime).apply();
-        if (mInterstitialAd != null) {
-            mInterstitialAd.show(BaseActivity.this);
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.");
-        }
+        AdsManager.getInstance().showInterstitialAdIfReady(this, null);
     }
 
     @Override
     public void showBanner(FrameLayout adsContainer) {
-        if (adsContainer == null) return;
-        adView = new AdView(this);
-        adsContainer.addView(adView);
-        adsContainer.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            if (!initialLayoutComplete) {
-                initialLayoutComplete = true;
-                String[] adIds = {getString(R.string.Banner1), getString(R.string.Banner2), getString(R.string.Banner3)};
-                String selectedAdId = adIds[new Random().nextInt(adIds.length)];
-                adView.setAdUnitId(selectedAdId);
-                AdSize adSize = getAdSize(adsContainer);
-                adView.setAdSize(adSize);
-                AdRequest adRequest = new AdRequest.Builder().build();
-                adView.loadAd(adRequest);
-            }
-            });
-    }
-
-    private AdSize getAdSize(FrameLayout adsContainer) {
-        WindowMetrics windowMetrics = WindowMetricsCalculator.getOrCreate().computeCurrentWindowMetrics(this);
-        Rect bounds = windowMetrics.getBounds();
-
-        float adWidthPixels = adsContainer.getWidth();
-
-        if (adWidthPixels == 0f) {
-            adWidthPixels = bounds.width();
-        }
-
-        float density = getResources().getDisplayMetrics().density;
-        int adWidth = (int) (adWidthPixels / density);
-
-        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+        AdsManager.getInstance().loadAdaptiveBanner(this, adsContainer, null);
     }
 
     @Override
@@ -272,25 +191,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             handler.removeCallbacks(ratingRunnable);
         }
         handler.removeCallbacksAndMessages(null);
-        if (adView != null) {
-            adView.destroy();
-        }
+        AdsManager.getInstance().onDestroyActivity(this);
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        if (adView != null) {
-            adView.pause();
-        }
+        AdsManager.getInstance().onPauseActivity(this);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        if (adView != null) {
-            adView.resume();
-        }
+        AdsManager.getInstance().onResumeActivity(this);
         super.onResume();
     }
 
@@ -299,7 +212,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         super.onSaveInstanceState(outState);
         Bundle viewHierarchyState = outState.getBundle("android:viewHierarchyState");
         if (viewHierarchyState != null) {
-            android.os.Parcel parcel = android.os.Parcel.obtain();
+            Parcel parcel = Parcel.obtain();
             try {
                 viewHierarchyState.writeToParcel(parcel, 0);
                 int bytes = parcel.dataSize();

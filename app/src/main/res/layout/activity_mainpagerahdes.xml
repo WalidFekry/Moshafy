@@ -65,18 +65,9 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_gravity="bottom"
+    <FrameLayout
+        android:id="@+id/adsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/adsContainer">
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/M4"
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/Banner1">
-        </com.google.android.gms.ads.AdView>
-    </LinearLayout>
+        android:layout_gravity="bottom" />
 </LinearLayout>

@@ -39,6 +39,8 @@ public class QuranicMessage extends BaseActivity {
             findViewById(R.id.back_button).setOnClickListener(v -> finish());
         }
 
+        showBanner(findViewById(R.id.adsContainer));
+
         recyclerView = findViewById(R.id.quranicmessage_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();

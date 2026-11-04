@@ -72,6 +72,7 @@ public class Maintitlenewstory extends BaseActivity {
             }
         });
 
+        showBanner(findViewById(R.id.adsContainer));
         setUpAds();
     }
 

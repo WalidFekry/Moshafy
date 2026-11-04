@@ -45,5 +45,7 @@ public class ActivityAhdes extends BaseActivity {
                 }
             });
         });
+
+        showBanner(findViewById(R.id.banner_container));
     }
 }

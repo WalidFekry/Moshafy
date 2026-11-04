@@ -46,6 +46,7 @@ public class MaintitlepagerAya extends BaseActivity {
         pagerAya.setAdapter(pager);
         pagerAya.setCurrentItem(ID - 1);
 
+        showBanner(findViewById(R.id.adsContainer));
         setUpAds();
     }
 

@@ -46,6 +46,7 @@ public class MainAyaandabra extends BaseActivity {
             });
         });
 
+        showBanner(findViewById(R.id.banner_container));
         promptUserForRating();
     }
 }

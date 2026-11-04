@@ -46,6 +46,7 @@ public class Mainpagerahdes extends BaseActivity {
         pagerahdes.setAdapter(adapter);
         pagerahdes.setCurrentItem(ID - 1);
 
+        showBanner(findViewById(R.id.adsContainer));
         setUpAds();
     }
     public void onBackClicked(View view) {

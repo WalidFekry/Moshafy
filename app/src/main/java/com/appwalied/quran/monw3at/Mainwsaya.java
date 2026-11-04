@@ -37,10 +37,7 @@ public class Mainwsaya extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainwsaya);
 
-        AdView adView = (AdView) findViewById(R.id.mainwsaya);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        showBanner(findViewById(R.id.adsContainer));
         rec3 = (RecyclerView) findViewById(R.id.rec3);
         rec3.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();

@@ -47,6 +47,7 @@ public class Mainnewstory extends BaseActivity {
             });
         });
 
+        showBanner(findViewById(R.id.banner_container));
         promptUserForRating();
     }
 }
