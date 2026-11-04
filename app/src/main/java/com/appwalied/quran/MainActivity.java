@@ -28,6 +28,7 @@ import com.appwalied.quran.utils.HijriCalendarHelper;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -83,6 +84,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -124,7 +126,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                         .setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL)
                         .setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf"))
                         .addButton("خروج", R.color.white, R.color.colorPrimary, MainActivity.this::finish)
-                        .addButton("تقييم التطبيق", R.color.white, R.color.colorAccent, () -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn"))))
+                        .addButton("تقييم التطبيق", R.color.white, R.color.colorAccent, () -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"))))
                         .show();
             }
         });
@@ -232,7 +234,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.quranFnish.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Quran_fnish.class)));
         binding.main.contentMain.shareApp.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShareApp.class)));
         binding.main.contentMain.about.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, About.class)));
-        binding.main.contentMain.rateApp.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn"))));
+        binding.main.contentMain.rateApp.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"))));
         binding.main.contentMain.cardAlmuhfzPromo.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.walid.almuhfz"))));
     }
 
@@ -269,12 +271,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else if (id == R.id.appshare2) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/sharer.php?u=https%3A%2F%2Ft.co%2FFp1vYCCiQv%3Famp")));
         } else if (id == R.id.apprate) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran")));
         } else if (id == R.id.appshare) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://play.google.com/store/apps/details?id=com.appwalied.quran \n");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
         } else if (id == R.id.policy) {
@@ -298,7 +300,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn \n");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://play.google.com/store/apps/details?id=com.appwalied.quran \n");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }

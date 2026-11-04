@@ -25,7 +25,7 @@ public class ShareApp extends BaseActivity {
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, "\uD83D\uDE0Dصدقه جاريه\uD83D\uDC9A");
         sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.about1) + "\n" + "لتحميل التطبيق انقر هنا \uD83D\uDC47\uD83D\uDC47 :\n" +
                 "\n" +
-                "https://t.co/fkNQTMLNxn");
+                "https://play.google.com/store/apps/details?id=com.appwalied.quran");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }

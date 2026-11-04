@@ -28,7 +28,6 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/flat5"
                 android:gravity="center"
-                android:text="@string/t2"
                 android:textColor="@color/gold_accent"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -40,7 +39,6 @@
                 android:fontFamily="@font/jazeera"
                 android:gravity="center"
                 android:lineSpacingExtra="6dp"
-                android:text="@string/t2"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />

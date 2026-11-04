@@ -71,7 +71,7 @@ public class AdapterQuranmsg extends RecyclerView.Adapter<AdapterQuranmsg.MyView
                     String appname = v.getContext().getResources().getString(R.string.app_name);
                     ClipboardManager myClickboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
                     ClipData myClip = ClipData.newPlainText("text", title.getText().toString() +"\n"+
-                            "\n"+"تم نسخ هذه النصوص من تطبيق مصحفي " +"\n"+  " https://t.co/fkNQTMLNxn\n");
+                            "\n"+"تم نسخ هذه النصوص من تطبيق مصحفي " +"\n"+  " https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
                     myClickboard.setPrimaryClip(myClip);
                     Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();
                 }
@@ -83,7 +83,7 @@ public class AdapterQuranmsg extends RecyclerView.Adapter<AdapterQuranmsg.MyView
                     Intent shareIntent = new Intent();
                     shareIntent.setAction(Intent.ACTION_SEND);
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT,"تطبيق مصحفي ");
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, title.getText().toString() +"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://t.co/fkNQTMLNxn");
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, title.getText().toString() +"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://play.google.com/store/apps/details?id=com.appwalied.quran");
                     shareIntent.setType("text/plain");
                     context.startActivity(Intent.createChooser(shareIntent,"مشاركه تطبيق مصحفي  مع الاصدقاء:"));
                 }
@@ -92,7 +92,7 @@ public class AdapterQuranmsg extends RecyclerView.Adapter<AdapterQuranmsg.MyView
             rsael_rate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn"));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"));
                     context.startActivity(intent);
                 }
             });

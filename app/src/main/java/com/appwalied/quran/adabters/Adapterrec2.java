@@ -43,7 +43,7 @@ public class Adapterrec2 extends RecyclerView.Adapter<Adapterrec2.holder2>{
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT,"تطبيق مصحفي ");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,list.get(position).getTextrec()+"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://t.co/fkNQTMLNxn");
+                sendIntent.putExtra(Intent.EXTRA_TEXT,list.get(position).getTextrec()+"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://play.google.com/store/apps/details?id=com.appwalied.quran");
                 sendIntent.setType("text/plain");
                 context.startActivity(Intent.createChooser(sendIntent,"مشاركه تطبيق مصحفي  مع الاصدقاء:"));
 
@@ -54,7 +54,7 @@ public class Adapterrec2 extends RecyclerView.Adapter<Adapterrec2.holder2>{
             public void onClick(View v) {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)context. getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clip = android.content.ClipData.newPlainText("",list.get(position).getTextrec()+"\n"+
-                        "\n"+"تم نسخ هذه النصوص من تطبيق مصحفي " +"\n"+  " https://t.co/fkNQTMLNxn\n");
+                        "\n"+"تم نسخ هذه النصوص من تطبيق مصحفي " +"\n"+  " https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();
 

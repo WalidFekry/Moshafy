@@ -74,7 +74,7 @@ public class pagerAya extends PagerAdapter {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT," تطبيق مصحفي ");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,"\n" +list2.get(position).getName()+"\n"+list2.get(position).getTitle()+"تفضل رابط التطبيق  https://t.co/fkNQTMLNxn \n");
+                sendIntent.putExtra(Intent.EXTRA_TEXT,"\n" +list2.get(position).getName()+"\n"+list2.get(position).getTitle()+"تفضل رابط التطبيق  https://play.google.com/store/apps/details?id=com.appwalied.quran \n");
                 sendIntent.setType("text/plain");
                 context.startActivity(Intent.createChooser(sendIntent,"مشاركه نصوص من  تطبيق مصحفي :"));
 
@@ -86,7 +86,7 @@ public class pagerAya extends PagerAdapter {
             public void onClick(View v) {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)context. getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clip = android.content.ClipData.newPlainText("",list2.get(position).getName()+"\n"+list2.get(position).getTitle()+
-                        "\n"+"تم نسخ من  تطبيق مصحفي " +"\n"+  "https://t.co/fkNQTMLNxn\n");
+                        "\n"+"تم نسخ من  تطبيق مصحفي " +"\n"+  "https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();
 

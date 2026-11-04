@@ -24,11 +24,11 @@ public class About extends BaseActivity {
     }
 
     public void oos1(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran")));
     }
 
     public void walid(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran")));
     }
 
     public void ooh1(View view) {
@@ -37,7 +37,7 @@ public class About extends BaseActivity {
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
         sendIntent.putExtra(Intent.EXTRA_TEXT, "\n" +
                 "قمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \n" +
-                "تفضل رابط تطبيق مصحفي  https://t.co/fkNQTMLNxn\n");
+                "تفضل رابط تطبيق مصحفي  https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }

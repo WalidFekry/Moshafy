@@ -97,7 +97,7 @@ public class Adapterpager4 extends PagerAdapter {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT," تطبيق مصحفي ");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,listpager5.get(position).getText1()+"\n"+listpager5.get(position).getText2()+"\n"+ "مشاركه نصوص من تطبيق'مصحفي" +"\n"+ "\n"+" https://t.co/fkNQTMLNxn\n");
+                sendIntent.putExtra(Intent.EXTRA_TEXT,listpager5.get(position).getText1()+"\n"+listpager5.get(position).getText2()+"\n"+ "مشاركه نصوص من تطبيق'مصحفي" +"\n"+ "\n"+" https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
                 sendIntent.setType("text/plain");
                 context.startActivity(Intent.createChooser(sendIntent,"مشاركه تطبيق مصحفي"));
                 Toast.makeText(context, "جزاك الله خيرا لمشاركه التطبيق", Toast.LENGTH_SHORT).show();
@@ -109,7 +109,7 @@ public class Adapterpager4 extends PagerAdapter {
         starts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.co/fkNQTMLNxn"));
+                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"));
                 context.startActivity(intent);
 
 

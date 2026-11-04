@@ -23,17 +23,7 @@ public class Title1 extends BaseActivity {
         list=new ArrayList<>();
         rec= findViewById(R.id.rec1);
         rec.setLayoutManager(new LinearLayoutManager(this));
-        list.add(new itemrec(getResources().getString(R.string.t1)));
-        list.add(new itemrec(getResources().getString(R.string.t2)));
-        list.add(new itemrec(getResources().getString(R.string.t3)));
-        list.add(new itemrec(getResources().getString(R.string.t4)));
-        list.add(new itemrec(getResources().getString(R.string.t5)));
-        list.add(new itemrec(getResources().getString(R.string.t6)));
-        list.add(new itemrec(getResources().getString(R.string.t7)));
-        list.add(new itemrec(getResources().getString(R.string.t8)));
-        list.add(new itemrec(getResources().getString(R.string.t9)));
-        list.add(new itemrec(getResources().getString(R.string.t10)));
-        list.add(new itemrec(getResources().getString(R.string.t11)));
+        // Azkar here
         Adapterrec1 adapterrec1=new Adapterrec1(list,Title1.this);
         rec.setAdapter(adapterrec1);
     }

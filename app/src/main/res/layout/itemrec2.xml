@@ -28,7 +28,6 @@
                 android:fontFamily="@font/jazeera"
                 android:gravity="center"
                 android:lineSpacingExtra="6dp"
-                android:text="@string/t2"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />

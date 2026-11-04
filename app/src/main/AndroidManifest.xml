@@ -5,6 +5,7 @@
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -21,22 +22,17 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:supportsRtl">
 
-        <!-- Main Activities -->
+        <!-- Main Activity with AndroidX SplashScreen -->
         <activity
-            android:name=".Splash"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            >
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"
-             />
         <activity
             android:name=".Quran_fnish"
             android:exported="false"
@@ -76,22 +72,7 @@
             android:name=".azkar.Azkar"
             android:exported="false" />
         <activity
-            android:name=".azkar.Azcartitle1"
-            android:exported="false" />
-        <activity
-            android:name=".azkar.Azcartitle2"
-            android:exported="false" />
-        <activity
-            android:name=".azkar.Azcartitle3"
-            android:exported="false" />
-        <activity
-            android:name=".azkar.Azcartitle4"
-            android:exported="false" />
-        <activity
-            android:name=".azkar.Azcartitle5"
-            android:exported="false" />
-        <activity
-            android:name=".azkar.Azcartitle6"
+            android:name=".azkar.AzkarDetailActivity"
             android:exported="false" />
 
         <!-- Monw3at -->
