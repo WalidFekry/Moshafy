@@ -44,7 +44,7 @@
         <item
             android:id="@+id/policy"
             android:icon="@drawable/ic_policy"
-            android:title="سياسية الخصوصية - Privacy Policy" />
+            android:title="سياسية الخصوصية" />
 
         <item
             android:id="@+id/moreapp"

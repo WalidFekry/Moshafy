@@ -38,7 +38,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.appwalied.quran.ahades.ActivityAhdes;
-import com.appwalied.quran.ayakor.Ayakor;
+import com.appwalied.quran.ayakor.AyakorActivity;
 import com.appwalied.quran.azkar.Azkar;
 import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.databinding.ActivityMainBinding;
@@ -230,10 +230,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             intent.putExtra("soranum", 1);
             startActivity(intent);
         });
-        binding.main.contentMain.ayakor.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Ayakor.class)));
+        binding.main.contentMain.ayakor.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AyakorActivity.class)));
         binding.main.contentMain.quranFnish.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, QuranFinishActivity.class)));
         binding.main.contentMain.shareApp.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShareAppActivity.class)));
-        binding.main.contentMain.about.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, About.class)));
+        binding.main.contentMain.about.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AboutActivity.class)));
         binding.main.contentMain.rateApp.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"))));
         binding.main.contentMain.cardAlmuhfzPromo.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.walid.almuhfz"))));
     }
@@ -275,14 +275,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else if (id == R.id.appshare) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://play.google.com/store/apps/details?id=com.appwalied.quran \n");
+            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "تطبيق مصحفي - القرآن الكريم والأذكار");
+
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                    "🌿 تطبيق مصحفي\n\n" +
+                            "اجعل القرآن الكريم وذكر الله رفيقك في كل وقت ومكان 💙\n\n" +
+                            "تطبيق مصحفي صُمم ليكون رفيقك الإيماني البسيط والمجاني، ويضم:\n\n" +
+                            "📖 القرآن الكريم كاملاً بدون إنترنت.\n" +
+                            "🤲 أذكار الصباح والمساء مكتوبة.\n" +
+                            "🌿 واجهة بسيطة وسهلة الاستخدام.\n\n" +
+                            "حمّل التطبيق وشاركه مع من تحب، فربما تكون سبباً في أجر لا ينقطع.\n\n" +
+                            "📲 رابط تحميل التطبيق:\n" +
+                            "https://play.google.com/store/apps/details?id=com.appwalied.quran\n\n" +
+                            "الدال على الخير كفاعله 💙");
+
             sendIntent.setType("text/plain");
-            startActivity(sendIntent);
+            startActivity(Intent.createChooser(sendIntent, "مشاركة تطبيق مصحفي"));
         } else if (id == R.id.policy) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/appquran/home?fbclid=IwAR16BN6g94eIYrAgVjkBXqb0dBYAJSk0Mq4uo7mtJe5g7bOzxdm9Ax2kCsI")));
         } else if (id == R.id.appabout) {
-            startActivity(new Intent(getApplicationContext(), About.class));
+            startActivity(new Intent(getApplicationContext(), AboutActivity.class));
         } else if (id == R.id.moreapp) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=6257553101128037563&fbclid=IwAR3MAupHsRMlNy-eSNy44UNoTTGq0U5lHIOdlxuHTR-sCxJAfuAUIGn2Veo")));
         } else if (id == R.id.appsug) {
@@ -299,10 +311,22 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void ooh1(View view) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, " تطبيق مصحفي ");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "\nقمنا بتصميم البرنامج ليكون بسيط و مجاني ليضم القران الكريم كامل بدون إنترنت و أذكار الصباح و المساء مكتوبة  ليساعدك على أن لا تنسى ذكر الله ابداً .\n \nتفضل رابط تطبيق مصحفي  https://play.google.com/store/apps/details?id=com.appwalied.quran \n");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "تطبيق مصحفي - القرآن الكريم والأذكار");
+
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+                "🌿 تطبيق مصحفي\n\n" +
+                        "اجعل القرآن الكريم وذكر الله رفيقك في كل وقت ومكان 💙\n\n" +
+                        "تطبيق مصحفي صُمم ليكون رفيقك الإيماني البسيط والمجاني، ويضم:\n\n" +
+                        "📖 القرآن الكريم كاملاً بدون إنترنت.\n" +
+                        "🤲 أذكار الصباح والمساء مكتوبة.\n" +
+                        "🌿 واجهة بسيطة وسهلة الاستخدام.\n\n" +
+                        "حمّل التطبيق وشاركه مع من تحب، فربما تكون سبباً في أجر لا ينقطع.\n\n" +
+                        "📲 رابط تحميل التطبيق:\n" +
+                        "https://play.google.com/store/apps/details?id=com.appwalied.quran\n\n" +
+                        "الدال على الخير كفاعله 💙");
+
         sendIntent.setType("text/plain");
-        startActivity(sendIntent);
+        startActivity(Intent.createChooser(sendIntent, "مشاركة تطبيق مصحفي"));
     }
 
     private void updateHijriDateDisplay() {

@@ -38,7 +38,7 @@
             android:exported="false"
             />
         <activity
-            android:name=".About"
+            android:name=".AboutActivity"
             android:exported="false"
             />
         <activity
@@ -148,7 +148,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ayakor.Ayakor"
+            android:name=".ayakor.AyakorActivity"
             android:exported="false" />
 
         <activity

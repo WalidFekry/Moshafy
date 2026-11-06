@@ -1,54 +1,71 @@
 package com.appwalied.quran.ayakor;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.azkar.AzkarManager;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityAyakortextBinding;
 
 public class AyaKorText extends BaseActivity {
 
-    TextView ayakortxt;
-    Button btnup, btndown, btnstar;
+    private ActivityAyakortextBinding binding;
+    private int currentTextSizeSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ayakortext);
+        binding = ActivityAyakortextBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        btnup = findViewById(R.id.btn_up);
-        btndown = findViewById(R.id.btn_down);
-        btnstar = findViewById(R.id.btn_star);
-        ayakortxt = findViewById(R.id.ayakortxt);
+        currentTextSizeSp = AzkarManager.getTextSize(this, 21);
+        binding.tvAyakorText.setTextSize(currentTextSizeSp);
 
+        binding.backButton.setOnClickListener(v -> finish());
 
-        btnup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ayakortxt.setTextSize(TypedValue.COMPLEX_UNIT_PX, (ayakortxt.getTextSize() + 2f));
+        binding.btnFontMinus.setOnClickListener(v -> {
+            if (currentTextSizeSp > 15) {
+                currentTextSizeSp -= 2;
+                binding.tvAyakorText.setTextSize(currentTextSizeSp);
+                AzkarManager.saveTextSize(this, currentTextSizeSp);
+            } else {
+                Toast.makeText(this, "هذا أصغر حجم للخط", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btndown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ayakortxt.setTextSize(TypedValue.COMPLEX_UNIT_PX, (ayakortxt.getTextSize() - 2f));
-
+        binding.btnFontPlus.setOnClickListener(v -> {
+            if (currentTextSizeSp < 38) {
+                currentTextSizeSp += 2;
+                binding.tvAyakorText.setTextSize(currentTextSizeSp);
+                AzkarManager.saveTextSize(this, currentTextSizeSp);
+            } else {
+                Toast.makeText(this, "هذا أكبر حجم للخط", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btnstar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran")));
-
+        binding.btnCopy.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard != null) {
+                ClipData clip = ClipData.newPlainText("AyatAlKursi", getString(R.string.ayakortxt));
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(this, "تم نسخ آية الكرسي بنجاح 📋", Toast.LENGTH_SHORT).show();
             }
         });
 
+        binding.btnShare.setOnClickListener(v -> {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            String shareBody = "﴿" + getString(R.string.ayakortxt) + "﴾\n\n" +
+                    "مشاركة من تطبيق مصحفي القرآن الكريم:\nhttps://play.google.com/store/apps/details?id=" + getPackageName();
+            sendIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sendIntent, "مشاركة آية الكرسي:"));
+        });
+
+        showBanner(binding.adsContainer);
     }
 }

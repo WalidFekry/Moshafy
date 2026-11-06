@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/bg_main"
     android:orientation="vertical"
-    tools:context=".About">
+    tools:context=".AboutActivity">
 
+    <!-- Top AppBar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,20 +52,23 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="16dp">
 
+            <!-- App Info Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,8 +78,8 @@
                     android:padding="20dp">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
                         android:layout_marginBottom="12dp"
                         app:cardBackgroundColor="@color/card_bg"
                         app:cardCornerRadius="20dp"
@@ -85,136 +89,238 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/app_name"
-                            android:padding="8dp"
+                            android:padding="6dp"
                             android:src="@mipmap/ico_app" />
                     </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo_bold"
+                        android:text="@string/app_name"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_app_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/bg_badge_primary"
+                        android:fontFamily="@font/jazeera"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="4dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        tools:text="الإصدار 6.0" />
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/animationView"
                         android:layout_width="match_parent"
-                        android:layout_height="130dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="8dp"
                         app:lottie_autoPlay="true"
                         app:lottie_loop="false"
                         app:lottie_rawRes="@raw/rateapp" />
 
                     <TextView
-                        android:id="@+id/ts"
+                        android:id="@+id/tv_about_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="12dp"
-                        android:fontFamily="@font/flat4"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/flat5"
                         android:gravity="center"
                         android:lineSpacingExtra="6dp"
                         android:text="@string/about"
+                        android:textIsSelectable="true"
                         android:textColor="@color/text_primary"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="15sp" />
 
+                    <!-- Quick Action Circle Buttons -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="12dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_margin="8dp"
-                            android:onClick="oos1"
-                            app:cardBackgroundColor="@color/colorPrimary"
-                            app:cardCornerRadius="24dp"
-                            app:cardElevation="2dp">
+                        <!-- Rate App -->
+                        <LinearLayout
+                            android:id="@+id/btn_rate_app"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <net.steamcrafted.materialiconlib.MaterialIconView
+                            <FrameLayout
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/bg_badge_primary">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="تقييم"
+                                    android:src="@drawable/ic_star"
+                                    app:tint="@color/gold_accent" />
+                            </FrameLayout>
+
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:onClick="oos1"
-                                android:scaleType="center"
-                                app:materialIcon="star"
-                                app:materialIconColor="@color/gold_accent"
-                                app:materialIconSize="28dp" />
-                        </androidx.cardview.widget.CardView>
+                                android:fontFamily="@font/flat5"
+                                android:text="تقييم التطبيق"
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_margin="8dp"
-                            android:onClick="ooh1"
-                            app:cardBackgroundColor="@color/colorPrimary"
-                            app:cardCornerRadius="24dp"
-                            app:cardElevation="2dp">
+                        <!-- Share App -->
+                        <LinearLayout
+                            android:id="@+id/btn_share_app"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <net.steamcrafted.materialiconlib.MaterialIconView
+                            <FrameLayout
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/bg_badge_primary">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="مشاركة"
+                                    android:src="@drawable/ic_share"
+                                    app:tint="@color/colorPrimary" />
+                            </FrameLayout>
+
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:onClick="ooh1"
-                                android:scaleType="center"
-                                app:materialIcon="share_variant"
-                                app:materialIconColor="@color/text_white"
-                                app:materialIconSize="28dp" />
-                        </androidx.cardview.widget.CardView>
+                                android:fontFamily="@font/flat5"
+                                android:text="مشاركة"
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_margin="8dp"
-                            android:onClick="oon1"
-                            app:cardBackgroundColor="@color/colorPrimary"
-                            app:cardCornerRadius="24dp"
-                            app:cardElevation="2dp">
+                        <!-- Contact Dev -->
+                        <LinearLayout
+                            android:id="@+id/btn_contact_dev"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <net.steamcrafted.materialiconlib.MaterialIconView
+                            <FrameLayout
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/bg_badge_primary">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="تواصل معنا"
+                                    android:src="@drawable/ic_call_black_24dp"
+                                    app:tint="@color/colorPrimary" />
+                            </FrameLayout>
+
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:onClick="oon1"
-                                android:scaleType="center"
-                                app:materialIcon="message"
-                                app:materialIconColor="@color/text_white"
-                                app:materialIconSize="28dp" />
-                        </androidx.cardview.widget.CardView>
+                                android:fontFamily="@font/flat5"
+                                android:text="تواصل معنا"
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
                     </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/buoo"
-                        android:fontFamily="@font/flat5"
-                        android:onClick="oom1"
-                        android:text="تقديم اقتراح أو استفسار"
-                        android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/buoo"
-                        android:fontFamily="@font/flat5"
-                        android:onClick="walid99"
-                        android:text="المزيد من التطبيقات المجانية"
-                        android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/buoo"
-                        android:fontFamily="@font/flat5"
-                        android:onClick="walid"
-                        android:text="إصدار التطبيق الحالي : V 5.3"
-                        android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <!-- Additional Options Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_send_feedback"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/flat5"
+                        android:text="تقديم اقتراح أو استفسار"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        app:cornerRadius="12dp"
+                        app:icon="@drawable/ic_about"
+                        app:iconGravity="textStart"
+                        app:iconSize="20dp"
+                        app:iconTint="@color/colorPrimary"
+                        app:strokeColor="@color/card_stroke"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_more_apps"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/flat5"
+                        android:text="المزيد من التطبيقات المجانية"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        app:cornerRadius="12dp"
+                        app:icon="@drawable/ic_moreapp"
+                        app:iconGravity="textStart"
+                        app:iconSize="20dp"
+                        app:iconTint="@color/colorPrimary"
+                        app:strokeColor="@color/card_stroke"
+                        app:strokeWidth="1dp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/flat5"
+                android:gravity="center"
+                android:text="جميع الحقوق محفوظة © تطبيق مصحفي"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
