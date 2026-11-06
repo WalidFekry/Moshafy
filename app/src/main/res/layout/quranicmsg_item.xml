@@ -1,111 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="6dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="7dp"
-        android:layout_marginBottom="5dp">
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:background="@drawable/rbg1">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <!-- Decorative Header Badge -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_badge_primary"
+                android:fontFamily="@font/cairo_bold"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="5dp"
+                android:text="رسائل وبشائر قرآنية"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <!-- Quote / Message Text -->
             <TextView
                 android:id="@+id/rsael_item_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="5dp"
-                android:text="رسائل قرآنية"
+                android:layout_marginBottom="14dp"
                 android:fontFamily="@font/qumsg"
                 android:gravity="center"
-                android:textSize="19sp"
-                android:textColor="#4A148C"/>
+                android:lineSpacingExtra="8dp"
+                android:paddingHorizontal="8dp"
+                android:textIsSelectable="true"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="رسالة قرآنية مباركة تؤنس قلبك..." />
 
-            <androidx.cardview.widget.CardView
-                android:layout_below="@+id/rsael_item_textview"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/divider_color" />
+
+            <!-- Action Bar Buttons -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/rbg2"
-                    android:padding="5dp"
-                    android:gravity="center">
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/qumsgrate"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="star_circle"
+                    app:materialIconColor="@color/gold_accent"
+                    app:materialIconSize="28dp" />
 
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/qumsgrate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        android:layout_margin="10dp"
-                        app:materialIcon="star_circle"
-                        app:materialIconColor="#FFD600"
-                        app:materialIconSize="40dp" />
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/qumsgcopy"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="content_copy"
+                    app:materialIconColor="@color/colorAccent"
+                    app:materialIconSize="26dp" />
 
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/qumsgshare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        android:layout_margin="10dp"
-                        app:materialIcon="share_variant"
-                        app:materialIconColor="#0091EA"
-                        app:materialIconSize="40dp" />
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/qumsgshare"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="share_variant"
+                    app:materialIconColor="@color/colorPrimary"
+                    app:materialIconSize="28dp" />
 
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/qumsgcopy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        android:layout_margin="10dp"
-                        app:materialIcon="content_copy"
-                        app:materialIconColor="#AA00FF"
-                        app:materialIconSize="40dp" />
+                <net.steamcrafted.materialiconlib.MaterialIconView
+                    android:id="@+id/qumsgwhats"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    app:materialIcon="whatsapp"
+                    app:materialIconColor="#25D366"
+                    app:materialIconSize="28dp" />
 
+            </LinearLayout>
 
-
-
-
-
-
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/qumsgwhats"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="center"
-                        android:layout_margin="10dp"
-                        app:materialIcon="whatsapp"
-                        app:materialIconColor="#43A047"
-                        app:materialIconSize="40dp" />
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

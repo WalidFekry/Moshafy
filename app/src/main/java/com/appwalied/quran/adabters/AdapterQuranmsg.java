@@ -5,111 +5,99 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appwalied.quran.quran.model.QuranMsg;
-import com.appwalied.quran.R;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-import net.steamcrafted.materialiconlib.MaterialIconView;
+import com.appwalied.quran.databinding.QuranicmsgItemBinding;
+import com.appwalied.quran.quran.model.QuranMsg;
 
 import java.util.ArrayList;
 
 public class AdapterQuranmsg extends RecyclerView.Adapter<AdapterQuranmsg.MyViewHolder> {
 
-    Context context;
-    ArrayList<QuranMsg> list;
-    MaterialIconView rsael_rate, rsael_copy, rsael_share, rsael_whats;
+    private final Context context;
+    private final ArrayList<QuranMsg> list;
 
-
-    public AdapterQuranmsg(Context c, ArrayList<QuranMsg> p)
-    {
-        context = c;
-        list = p;
+    public AdapterQuranmsg(Context c, ArrayList<QuranMsg> p) {
+        this.context = c;
+        this.list = p;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.quranicmsg_item, parent, false));
+        QuranicmsgItemBinding binding = QuranicmsgItemBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false
+        );
+        return new MyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.title.setText(list.get(position).getTitle().replace("_","\n"));
+        QuranMsg quranMsg = list.get(position);
+        if (quranMsg == null || quranMsg.getTitle() == null) return;
 
+        String formattedText = quranMsg.getTitle().replace("_", "\n");
+        holder.binding.rsaelItemTextview.setText(formattedText);
+
+        // Copy Action
+        holder.binding.qumsgcopy.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard != null) {
+                String copyContent = formattedText + "\n\n" +
+                        "تم النسخ من تطبيق مصحفي القرآن الكريم:\nhttps://play.google.com/store/apps/details?id=" + context.getPackageName();
+                ClipData clip = ClipData.newPlainText("QuranicMsg", copyContent);
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(context, "تم نسخ النص إلى الحافظة 📋", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Share Action
+        holder.binding.qumsgshare.setOnClickListener(v -> {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            String shareBody = formattedText + "\n\n" +
+                    "مشاركة من تطبيق مصحفي القرآن الكريم:\nhttps://play.google.com/store/apps/details?id=" + context.getPackageName();
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            context.startActivity(Intent.createChooser(shareIntent, "مشاركة الرسالة القرآنية:"));
+        });
+
+        // Rate Action
+        holder.binding.qumsgrate.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName()));
+            context.startActivity(intent);
+        });
+
+        // WhatsApp Action
+        holder.binding.qumsgwhats.setOnClickListener(v -> {
+            try {
+                Intent whatsIntent = new Intent(Intent.ACTION_SEND);
+                whatsIntent.setType("text/plain");
+                whatsIntent.setPackage("com.whatsapp");
+                whatsIntent.putExtra(Intent.EXTRA_TEXT, formattedText + "\n\n" + "مشاركة من تطبيق مصحفي 🌸\nhttps://play.google.com/store/apps/details?id=" + context.getPackageName());
+                context.startActivity(whatsIntent);
+            } catch (Exception e) {
+                Intent openStore = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp"));
+                context.startActivity(openStore);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list != null ? list.size() : 0;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
+        final QuranicmsgItemBinding binding;
 
-        TextView title;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            title = (TextView) itemView.findViewById(R.id.rsael_item_textview);
-
-            //Rsael Items OnClick
-            rsael_copy = itemView.findViewById(R.id.qumsgcopy);
-            rsael_share = itemView.findViewById(R.id.qumsgshare);
-            rsael_rate = itemView.findViewById(R.id.qumsgrate);
-            rsael_whats = itemView.findViewById(R.id.qumsgwhats);
-
-            rsael_copy.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String appname = v.getContext().getResources().getString(R.string.app_name);
-                    ClipboardManager myClickboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData myClip = ClipData.newPlainText("text", title.getText().toString() +"\n"+
-                            "\n"+"تم نسخ هذه النصوص من تطبيق مصحفي " +"\n"+  " https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
-                    myClickboard.setPrimaryClip(myClip);
-                    Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            rsael_share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent shareIntent = new Intent();
-                    shareIntent.setAction(Intent.ACTION_SEND);
-                    shareIntent.putExtra(Intent.EXTRA_SUBJECT,"تطبيق مصحفي ");
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, title.getText().toString() +"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://play.google.com/store/apps/details?id=com.appwalied.quran");
-                    shareIntent.setType("text/plain");
-                    context.startActivity(Intent.createChooser(shareIntent,"مشاركه تطبيق مصحفي  مع الاصدقاء:"));
-                }
-            });
-
-            rsael_rate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.appwalied.quran"));
-                    context.startActivity(intent);
-                }
-            });
-
-            rsael_whats.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent whatsIntent = new Intent();
-                    whatsIntent.setAction(Intent.ACTION_SEND);
-                    whatsIntent.putExtra(Intent.EXTRA_TEXT, title.getText().toString());
-                    whatsIntent.setType("text/plain");
-                    whatsIntent.setPackage("com.whatsapp");
-                    context.startActivity(whatsIntent);
-                }
-            });
-
-
+        public MyViewHolder(@NonNull QuranicmsgItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

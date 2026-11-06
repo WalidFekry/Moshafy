@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.appwalied.quran.base.BaseActivity;
-import com.appwalied.quran.quran.model.QuranMsg;
-import com.appwalied.quran.R;
 import com.appwalied.quran.adabters.AdapterQuranmsg;
+import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityQuranicMessageBinding;
+import com.appwalied.quran.quran.model.QuranMsg;
 import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,48 +21,53 @@ import java.util.ArrayList;
 
 public class QuranicMessage extends BaseActivity {
 
-    DatabaseReference reference;
-    RecyclerView recyclerView;
-    ArrayList<QuranMsg> list;
-    AdapterQuranmsg adapter;
+    private ActivityQuranicMessageBinding binding;
+    private DatabaseReference reference;
+    private ArrayList<QuranMsg> list;
+    private AdapterQuranmsg adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quranic_message);
+        binding = ActivityQuranicMessageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         checkAndShowDialog(SharedPrefsConstants.QURAN_MESSAGES_FIRST_TIME, "يحتوي هذا القسم على رسائل قرآنية 💙");
 
-        if (findViewById(R.id.back_button) != null) {
-            findViewById(R.id.back_button).setOnClickListener(v -> finish());
-        }
+        binding.backButton.setOnClickListener(v -> finish());
 
-        showBanner(findViewById(R.id.adsContainer));
-
-        recyclerView = findViewById(R.id.quranicmessage_recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.quranicmessageRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
+        adapter = new AdapterQuranmsg(this, list);
+        binding.quranicmessageRecyclerview.setAdapter(adapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-
+        showLoading();
         reference = FirebaseDatabase.getInstance().getReference().child("QuranicMessage");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (isFinishing() || isDestroyed()) return;
+
+                hideLoading();
+                list.clear();
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     QuranMsg quranMsg = dataSnapshot1.getValue(QuranMsg.class);
-                    list.add(quranMsg);
+                    if (quranMsg != null) {
+                        list.add(quranMsg);
+                    }
                 }
-                adapter = new AdapterQuranmsg(QuranicMessage.this, list);
-                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                if (isFinishing() || isDestroyed()) return;
+
+                hideLoading();
                 Toast.makeText(QuranicMessage.this, "حدث خطأ ما... رجاء المحاولة مرة أخرى", Toast.LENGTH_LONG).show();
             }
         });
+
+        showBanner(binding.adsContainer);
     }
 }
