@@ -44,7 +44,7 @@ import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.databinding.ActivityMainBinding;
 import com.appwalied.quran.islamicstory.Mainnewstory;
 import com.appwalied.quran.masbaha.MasbahaActivity;
-import com.appwalied.quran.monw3at.Diffrentis;
+import com.appwalied.quran.monw3at.DifferentActivity;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.QuranicMessage;
 import com.appwalied.quran.quran.quran_images.QuranList;
@@ -208,7 +208,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             startActivity(new Intent(MainActivity.this, RecitesName.class));
         });
         binding.main.contentMain.azkar.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Azkar.class)));
-        binding.main.contentMain.islamicSections.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Diffrentis.class)));
+        binding.main.contentMain.islamicSections.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, DifferentActivity.class)));
         binding.main.contentMain.quranMessages.setOnClickListener(v -> {
             if (isNetworkConnected()) {
                 startActivity(new Intent(MainActivity.this, QuranicMessage.class));

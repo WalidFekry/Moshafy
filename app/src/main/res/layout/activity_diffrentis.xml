@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_main"
     android:orientation="vertical"
-    tools:context=".monw3at.Diffrentis">
+    tools:context=".monw3at.DifferentActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

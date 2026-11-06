@@ -77,7 +77,7 @@
 
         <!-- Monw3at -->
         <activity
-            android:name=".monw3at.Diffrentis"
+            android:name=".monw3at.DifferentActivity"
             android:exported="false" />
         <activity
             android:name=".monw3at.Title1"
