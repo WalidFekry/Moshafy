@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.appwalied.quran.R;
@@ -28,23 +29,43 @@ public class QuoteImageHelper {
     public static Bitmap generateQuoteBitmap(Context context, String quoteText, String dateText) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_quote_card_image, null, false);
         TextView tvText = view.findViewById(R.id.img_quote_text);
-        TextView tvDate = view.findViewById(R.id.img_quote_date);
 
         if (tvText != null) {
-            tvText.setText(quoteText.replace("_", "\n"));
-        }
-        if (tvDate != null && dateText != null && !dateText.trim().isEmpty()) {
-            tvDate.setText("اقتباس يوم " + dateText);
+            String formattedQuote = quoteText.replace("_", "\n").trim();
+            if (!formattedQuote.startsWith("“") && !formattedQuote.startsWith("«")) {
+                formattedQuote = "“" + formattedQuote + "”";
+            }
+            tvText.setText(formattedQuote);
         }
 
-        int widthSpec = View.MeasureSpec.makeMeasureSpec(800, View.MeasureSpec.EXACTLY);
+        int targetWidth = 1080;
+        int widthSpec = View.MeasureSpec.makeMeasureSpec(targetWidth, View.MeasureSpec.EXACTLY);
         int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-        view.measure(widthSpec, heightSpec);
-        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
 
-        Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        view.measure(widthSpec, heightSpec);
+        int measuredWidth = view.getMeasuredWidth();
+        int measuredHeight = view.getMeasuredHeight();
+
+        int targetHeight = Math.max(targetWidth, measuredHeight);
+
+        view.layout(0, 0, measuredWidth, measuredHeight);
+
+        Bitmap bitmap = Bitmap.createBitmap(targetWidth, targetHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        view.draw(canvas);
+
+        int primaryColor = ContextCompat.getColor(context, R.color.colorPrimary);
+        canvas.drawColor(primaryColor);
+
+        if (targetHeight > measuredHeight) {
+            int topOffset = (targetHeight - measuredHeight) / 2;
+            canvas.save();
+            canvas.translate(0, topOffset);
+            view.draw(canvas);
+            canvas.restore();
+        } else {
+            view.draw(canvas);
+        }
+
         return bitmap;
     }
 
@@ -70,7 +91,7 @@ public class QuoteImageHelper {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("image/png");
             shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "مشاركة من تطبيق مُصحفي 🌸\nhttps://play.google.com/store/apps/details?id=com.appwalied.quran");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "مشاركة من تطبيق مُصحفي 🌸\nhttps://play.google.com/store/apps/details?id=" + context.getPackageName());
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
             context.startActivity(Intent.createChooser(shareIntent, "مشاركة الاقتباس كصورة"));

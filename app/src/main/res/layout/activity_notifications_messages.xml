@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/flat5"
-                    android:text="اقتباسات وإشراقات"
+                    android:text="اقتباسات"
                     android:textColor="@color/text_white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
