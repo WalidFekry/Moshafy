@@ -4,26 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityQuranBinding;
 import com.appwalied.quran.quran.audio.QuranAudioPlayer;
-import com.appwalied.quran.quran.audio.Reciter;
 import com.appwalied.quran.quran.db.QuranRepository;
 import com.appwalied.quran.quran.db.models.Juz;
 import com.appwalied.quran.quran.db.models.Surah;
@@ -36,7 +25,6 @@ import com.appwalied.quran.quran.ui.adapters.BookmarkAdapter;
 import com.appwalied.quran.quran.ui.adapters.JuzAdapter;
 import com.appwalied.quran.quran.ui.adapters.SurahAdapter;
 import com.appwalied.quran.quran.ui.dialogs.QuranSettingsDialog;
-import com.appwalied.quran.quran.ui.dialogs.ReciterChooserBottomSheet;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -44,14 +32,7 @@ import java.util.List;
 
 public class QuranActivity extends BaseActivity implements QuranAudioPlayer.AudioPlayerListener {
 
-    private Toolbar toolbar;
-    private CardView cardContinueReading;
-    private TextView tvLastReadingPos, tvEmptyList;
-    private Button btnContinueReading;
-    private EditText etFilter;
-    private TabLayout tabLayout;
-    private ProgressBar pbLoading;
-    private RecyclerView rvList;
+    private ActivityQuranBinding binding;
 
     private SurahAdapter surahAdapter;
     private JuzAdapter juzAdapter;
@@ -67,19 +48,15 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
     private QuranSettingsEntity settings;
     private QuranAudioPlayer audioPlayer;
 
-    private CardView cardMiniPlayer;
-    private TextView tvMiniTitle, tvMiniReciter;
-    private ImageButton btnMiniPlayPause, btnMiniNext, btnMiniPrev, btnMiniClose;
-
     private int activeTabPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quran);
+        binding = ActivityQuranBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         initViews();
-        setupToolbar();
         setupTabs();
         setupAudioPlayer();
         loadSettings();
@@ -87,25 +64,11 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
     }
 
     private void initViews() {
-        toolbar = findViewById(R.id.toolbar_quran);
-        cardContinueReading = findViewById(R.id.card_continue_reading);
-        tvLastReadingPos = findViewById(R.id.tv_last_reading_pos);
-        btnContinueReading = findViewById(R.id.btn_continue_reading);
-        etFilter = findViewById(R.id.et_filter_list);
-        tabLayout = findViewById(R.id.tab_layout_quran);
-        pbLoading = findViewById(R.id.pb_quran_loading);
-        tvEmptyList = findViewById(R.id.tv_quran_list_empty);
-        rvList = findViewById(R.id.rv_quran_list);
+        binding.backButton.setOnClickListener(v -> finish());
+        binding.btnActionSearch.setOnClickListener(v -> startActivity(new Intent(this, QuranSearchActivity.class)));
+        binding.btnActionSettings.setOnClickListener(v -> openSettingsDialog());
 
-        cardMiniPlayer = findViewById(R.id.card_mini_player);
-        tvMiniTitle = findViewById(R.id.tv_mini_player_title);
-        tvMiniReciter = findViewById(R.id.tv_mini_player_reciter);
-        btnMiniPlayPause = findViewById(R.id.btn_mini_play_pause);
-        btnMiniNext = findViewById(R.id.btn_mini_next);
-        btnMiniPrev = findViewById(R.id.btn_mini_prev);
-        btnMiniClose = findViewById(R.id.btn_mini_close);
-
-        rvList.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvQuranList.setLayoutManager(new LinearLayoutManager(this));
 
         // Adapters
         surahAdapter = new SurahAdapter(surah -> openReadingForSurah(surah.getId(), 1), (surah, isFavorite) -> {
@@ -142,9 +105,9 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
             });
         });
 
-        rvList.setAdapter(surahAdapter);
+        binding.rvQuranList.setAdapter(surahAdapter);
 
-        etFilter.addTextChangedListener(new TextWatcher() {
+        binding.etFilterList.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterCurrentTab(s.toString());
@@ -152,7 +115,7 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        btnContinueReading.setOnClickListener(v -> {
+        binding.btnContinueReading.setOnClickListener(v -> {
             if (lastProgress != null) {
                 openReadingForSurah(lastProgress.getSuraId(), lastProgress.getAyahId());
             } else {
@@ -161,61 +124,33 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
         });
     }
 
-    private void setupToolbar() {
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("القرآن الكريم");
-        }
-        toolbar.setNavigationOnClickListener(v -> finish());
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.show_notifications) {
-            startActivity(new Intent(this, QuranSearchActivity.class));
-            return true;
-        } else if (id == R.id.theme_mode) {
-            openSettingsDialog();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void setupTabs() {
-        tabLayout.addTab(tabLayout.newTab().setText("السور"));
-        tabLayout.addTab(tabLayout.newTab().setText("الأجزاء"));
-        tabLayout.addTab(tabLayout.newTab().setText("العلامات"));
-        tabLayout.addTab(tabLayout.newTab().setText("المفضلة"));
+        binding.tabLayoutQuran.addTab(binding.tabLayoutQuran.newTab().setText("السور"));
+        binding.tabLayoutQuran.addTab(binding.tabLayoutQuran.newTab().setText("الأجزاء"));
+        binding.tabLayoutQuran.addTab(binding.tabLayoutQuran.newTab().setText("العلامات"));
+        binding.tabLayoutQuran.addTab(binding.tabLayoutQuran.newTab().setText("المفضلة"));
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        binding.tabLayoutQuran.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 activeTabPosition = tab.getPosition();
-                etFilter.setText("");
+                binding.etFilterList.setText("");
                 switch (activeTabPosition) {
                     case 0:
-                        rvList.setAdapter(surahAdapter);
-                        tvEmptyList.setVisibility(allSurahs.isEmpty() ? View.VISIBLE : View.GONE);
+                        binding.rvQuranList.setAdapter(surahAdapter);
+                        binding.tvQuranListEmpty.setVisibility(allSurahs.isEmpty() ? View.VISIBLE : View.GONE);
                         break;
                     case 1:
-                        rvList.setAdapter(juzAdapter);
-                        tvEmptyList.setVisibility(allJuzs.isEmpty() ? View.VISIBLE : View.GONE);
+                        binding.rvQuranList.setAdapter(juzAdapter);
+                        binding.tvQuranListEmpty.setVisibility(allJuzs.isEmpty() ? View.VISIBLE : View.GONE);
                         break;
                     case 2:
-                        rvList.setAdapter(bookmarkAdapter);
-                        tvEmptyList.setVisibility(allBookmarks.isEmpty() ? View.VISIBLE : View.GONE);
+                        binding.rvQuranList.setAdapter(bookmarkAdapter);
+                        binding.tvQuranListEmpty.setVisibility(allBookmarks.isEmpty() ? View.VISIBLE : View.GONE);
                         break;
                     case 3:
-                        rvList.setAdapter(favoritesAdapter);
-                        tvEmptyList.setVisibility(allFavorites.isEmpty() ? View.VISIBLE : View.GONE);
+                        binding.rvQuranList.setAdapter(favoritesAdapter);
+                        binding.tvQuranListEmpty.setVisibility(allFavorites.isEmpty() ? View.VISIBLE : View.GONE);
                         break;
                 }
             }
@@ -228,7 +163,7 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
         audioPlayer = QuranAudioPlayer.getInstance(this);
         audioPlayer.setListener(this);
 
-        btnMiniPlayPause.setOnClickListener(v -> {
+        binding.miniPlayerLayout.btnMiniPlayPause.setOnClickListener(v -> {
             if (audioPlayer.isPlaying()) {
                 audioPlayer.pause();
             } else {
@@ -236,11 +171,11 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
             }
         });
 
-        btnMiniNext.setOnClickListener(v -> audioPlayer.nextAyah());
-        btnMiniPrev.setOnClickListener(v -> audioPlayer.prevAyah());
-        btnMiniClose.setOnClickListener(v -> {
+        binding.miniPlayerLayout.btnMiniNext.setOnClickListener(v -> audioPlayer.nextAyah());
+        binding.miniPlayerLayout.btnMiniPrev.setOnClickListener(v -> audioPlayer.prevAyah());
+        binding.miniPlayerLayout.btnMiniClose.setOnClickListener(v -> {
             audioPlayer.stop();
-            cardMiniPlayer.setVisibility(View.GONE);
+            binding.miniPlayerLayout.getRoot().setVisibility(View.GONE);
         });
     }
 
@@ -251,15 +186,13 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
     }
 
     private void loadAllData() {
-        pbLoading.setVisibility(View.VISIBLE);
+        binding.pbQuranLoading.setVisibility(View.VISIBLE);
 
-        // Load Surahs
         QuranRepository.getInstance(this).getAllSurahs(surahs -> {
-            pbLoading.setVisibility(View.GONE);
+            binding.pbQuranLoading.setVisibility(View.GONE);
             allSurahs = surahs;
             surahAdapter.setSurahs(surahs);
 
-            // Load Juzs
             QuranRepository.getInstance(this).getAllJuzs(juzs -> {
                 allJuzs = juzs;
                 juzAdapter.setJuzList(juzs);
@@ -291,7 +224,7 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
             favoritesAdapter.setSurahs(favSurahs);
 
             if (activeTabPosition == 3) {
-                tvEmptyList.setVisibility(favSurahs.isEmpty() ? View.VISIBLE : View.GONE);
+                binding.tvQuranListEmpty.setVisibility(favSurahs.isEmpty() ? View.VISIBLE : View.GONE);
             }
         });
     }
@@ -301,7 +234,7 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
             allBookmarks = bookmarks;
             bookmarkAdapter.setBookmarks(bookmarks);
             if (activeTabPosition == 2) {
-                tvEmptyList.setVisibility(bookmarks.isEmpty() ? View.VISIBLE : View.GONE);
+                binding.tvQuranListEmpty.setVisibility(bookmarks.isEmpty() ? View.VISIBLE : View.GONE);
             }
         });
     }
@@ -310,13 +243,13 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
         UserLocalRepository.getInstance(this).getReadingProgress(progress -> {
             this.lastProgress = progress;
             if (progress != null) {
-                cardContinueReading.setVisibility(View.VISIBLE);
+                binding.cardContinueReading.setVisibility(View.VISIBLE);
                 QuranRepository.getInstance(this).getSurahName(progress.getSuraId(), suraName -> {
                     String info = "سورة " + suraName + " - آية " + progress.getAyahId() + " (صفحة " + progress.getPageNumber() + ")";
-                    tvLastReadingPos.setText(info);
+                    binding.tvLastReadingPos.setText(info);
                 });
             } else {
-                cardContinueReading.setVisibility(View.GONE);
+                binding.cardContinueReading.setVisibility(View.GONE);
             }
         });
     }
@@ -352,37 +285,27 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
         loadBookmarks();
         loadFavorites();
 
-        if (cardMiniPlayer != null) {
-            if (audioPlayer != null && audioPlayer.isPlaying()) {
-                cardMiniPlayer.setVisibility(View.VISIBLE);
-                if (tvMiniTitle != null) tvMiniTitle.setText("سورة " + audioPlayer.getCurrentSuraName() + " - آية " + audioPlayer.getCurrentAyahId());
-                if (tvMiniReciter != null) tvMiniReciter.setText(audioPlayer.getReciterName());
-                if (btnMiniPlayPause != null) btnMiniPlayPause.setImageResource(R.drawable.ic_pause);
-            } else {
-                cardMiniPlayer.setVisibility(View.GONE);
-            }
+        if (audioPlayer != null && audioPlayer.isPlaying()) {
+            binding.miniPlayerLayout.getRoot().setVisibility(View.VISIBLE);
+            binding.miniPlayerLayout.tvMiniPlayerTitle.setText("سورة " + audioPlayer.getCurrentSuraName() + " - آية " + audioPlayer.getCurrentAyahId());
+            binding.miniPlayerLayout.tvMiniPlayerReciter.setText(audioPlayer.getReciterName());
+            binding.miniPlayerLayout.btnMiniPlayPause.setImageResource(R.drawable.ic_pause);
+        } else {
+            binding.miniPlayerLayout.getRoot().setVisibility(View.GONE);
         }
     }
 
     // AudioPlayerListener
     @Override
     public void onAyahChanged(int suraId, int ayahId, String suraName, String reciterName) {
-        if (cardMiniPlayer != null) {
-            cardMiniPlayer.setVisibility(View.VISIBLE);
-            if (tvMiniTitle != null) tvMiniTitle.setText("سورة " + suraName + " - آية " + ayahId);
-            if (tvMiniReciter != null) tvMiniReciter.setText(reciterName);
-        }
+        binding.miniPlayerLayout.getRoot().setVisibility(View.VISIBLE);
+        binding.miniPlayerLayout.tvMiniPlayerTitle.setText("سورة " + suraName + " - آية " + ayahId);
+        binding.miniPlayerLayout.tvMiniPlayerReciter.setText(reciterName);
     }
 
     @Override
     public void onPlaybackStateChanged(boolean isPlaying) {
-        if (btnMiniPlayPause != null) {
-            if (isPlaying) {
-                btnMiniPlayPause.setImageResource(R.drawable.ic_pause);
-            } else {
-                btnMiniPlayPause.setImageResource(R.drawable.ic_play_arrow);
-            }
-        }
+        binding.miniPlayerLayout.btnMiniPlayPause.setImageResource(isPlaying ? R.drawable.ic_pause : R.drawable.ic_play_arrow);
     }
 
     @Override
@@ -392,8 +315,6 @@ public class QuranActivity extends BaseActivity implements QuranAudioPlayer.Audi
 
     @Override
     public void onPlayCompleted() {
-        if (cardMiniPlayer != null) {
-            cardMiniPlayer.setVisibility(View.GONE);
-        }
+        binding.miniPlayerLayout.getRoot().setVisibility(View.GONE);
     }
 }

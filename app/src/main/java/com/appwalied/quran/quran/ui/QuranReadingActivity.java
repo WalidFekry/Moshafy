@@ -2,26 +2,16 @@ package com.appwalied.quran.quran.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityQuranReadingBinding;
 import com.appwalied.quran.quran.audio.QuranAudioPlayer;
-import com.appwalied.quran.quran.audio.Reciter;
 import com.appwalied.quran.quran.db.QuranRepository;
 import com.appwalied.quran.quran.db.models.Ayah;
 import com.appwalied.quran.quran.room.QuranSettingsEntity;
@@ -37,22 +27,15 @@ import java.util.List;
 
 public class QuranReadingActivity extends BaseActivity implements QuranAudioPlayer.AudioPlayerListener {
 
+    private ActivityQuranReadingBinding binding;
+
     private int suraId = 1;
     private int pageNumber = -1;
     private int juzNumber = -1;
     private int targetAyahId = 1;
 
-    private Toolbar toolbar;
-    private TextView tvSurahInfo;
-    private ProgressBar pbLoading;
-    private RecyclerView rvVerses;
     private AyahAdapter adapter;
     private LinearLayoutManager layoutManager;
-
-    private CardView cardMiniPlayer;
-    private TextView tvMiniTitle, tvMiniReciter;
-    private ImageButton btnMiniPlayPause, btnMiniNext, btnMiniPrev, btnMiniClose;
-    private ImageView ivAudioIcon;
 
     private QuranAudioPlayer audioPlayer;
     private QuranSettingsEntity settings;
@@ -61,11 +44,11 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quran_reading);
+        binding = ActivityQuranReadingBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         parseIntentData();
         initViews();
-        setupToolbar();
         setupAudioPlayer();
         loadSettingsAndData();
     }
@@ -80,29 +63,12 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
     }
 
     private void initViews() {
-        toolbar = findViewById(R.id.toolbar_reading);
-        tvSurahInfo = findViewById(R.id.tv_reading_surah_info);
-        pbLoading = findViewById(R.id.pb_verses_loading);
-        rvVerses = findViewById(R.id.rv_verses);
-
-        ImageButton btnReciter = findViewById(R.id.btn_reading_reciter);
-        ImageButton btnSettings = findViewById(R.id.btn_reading_settings);
-
-        btnReciter.setOnClickListener(v -> openReciterChooser());
-        btnSettings.setOnClickListener(v -> openSettingsDialog());
-
-        // Mini player views
-        cardMiniPlayer = findViewById(R.id.card_mini_player);
-        tvMiniTitle = findViewById(R.id.tv_mini_player_title);
-        tvMiniReciter = findViewById(R.id.tv_mini_player_reciter);
-        btnMiniPlayPause = findViewById(R.id.btn_mini_play_pause);
-        btnMiniNext = findViewById(R.id.btn_mini_next);
-        btnMiniPrev = findViewById(R.id.btn_mini_prev);
-        btnMiniClose = findViewById(R.id.btn_mini_close);
-        ivAudioIcon = findViewById(R.id.iv_audio_icon);
+        binding.backButton.setOnClickListener(v -> finish());
+        binding.btnReadingReciter.setOnClickListener(v -> openReciterChooser());
+        binding.btnReadingSettings.setOnClickListener(v -> openSettingsDialog());
 
         layoutManager = new LinearLayoutManager(this);
-        rvVerses.setLayoutManager(layoutManager);
+        binding.rvVerses.setLayoutManager(layoutManager);
 
         adapter = new AyahAdapter(ayah -> {
             AyahActionsBottomSheet sheet = AyahActionsBottomSheet.newInstance(ayah, new AyahActionsBottomSheet.OnAyahActionListener() {
@@ -118,37 +84,9 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
             });
             sheet.show(getSupportFragmentManager(), "ayah_actions");
         });
-        rvVerses.setAdapter(adapter);
+        binding.rvVerses.setAdapter(adapter);
 
         setupMiniPlayerControls();
-    }
-
-    private void setupToolbar() {
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("القرآن الكريم");
-        }
-        toolbar.setNavigationOnClickListener(v -> finish());
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.show_notifications) {
-            startActivity(new Intent(this, QuranSearchActivity.class));
-            return true;
-        } else if (id == R.id.theme_mode) {
-            openSettingsDialog();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void setupAudioPlayer() {
@@ -157,7 +95,7 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
     }
 
     private void setupMiniPlayerControls() {
-        btnMiniPlayPause.setOnClickListener(v -> {
+        binding.miniPlayerLayout.btnMiniPlayPause.setOnClickListener(v -> {
             if (audioPlayer.isPlaying()) {
                 audioPlayer.pause();
             } else {
@@ -165,11 +103,11 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
             }
         });
 
-        btnMiniNext.setOnClickListener(v -> audioPlayer.nextAyah());
-        btnMiniPrev.setOnClickListener(v -> audioPlayer.prevAyah());
-        btnMiniClose.setOnClickListener(v -> {
+        binding.miniPlayerLayout.btnMiniNext.setOnClickListener(v -> audioPlayer.nextAyah());
+        binding.miniPlayerLayout.btnMiniPrev.setOnClickListener(v -> audioPlayer.prevAyah());
+        binding.miniPlayerLayout.btnMiniClose.setOnClickListener(v -> {
             audioPlayer.stop();
-            cardMiniPlayer.setVisibility(View.GONE);
+            binding.miniPlayerLayout.getRoot().setVisibility(View.GONE);
             adapter.setPlayingAyahId(-1);
         });
     }
@@ -195,7 +133,7 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
     }
 
     private void loadVerses() {
-        pbLoading.setVisibility(View.VISIBLE);
+        binding.pbVersesLoading.setVisibility(View.VISIBLE);
 
         if (pageNumber > 0) {
             QuranRepository.getInstance(this).getVersesByPage(pageNumber, this::displayVerses);
@@ -207,7 +145,7 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
     }
 
     private void displayVerses(List<Ayah> ayahs) {
-        pbLoading.setVisibility(View.GONE);
+        binding.pbVersesLoading.setVisibility(View.GONE);
         if (ayahs == null || ayahs.isEmpty()) {
             Toast.makeText(this, "تعذر تحميل الآيات", Toast.LENGTH_SHORT).show();
             return;
@@ -218,12 +156,8 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
 
         Ayah firstAyah = ayahs.get(0);
         String title = "سورة " + firstAyah.getSuraName() + " • الجزء " + firstAyah.getParaNumber() + " • صفحة " + firstAyah.getPageNumber();
-        tvSurahInfo.setText(title);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("سورة " + firstAyah.getSuraName());
-        }
+        binding.tvReadingSurahInfo.setText(title);
 
-        // Scroll to target ayah or saved position
         int targetPosition = 0;
         if (targetAyahId > 1) {
             for (int i = 0; i < ayahs.size(); i++) {
@@ -234,9 +168,8 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
             }
         }
         final int pos = targetPosition;
-        rvVerses.post(() -> rvVerses.scrollToPosition(pos));
+        binding.rvVerses.post(() -> binding.rvVerses.scrollToPosition(pos));
 
-        // Save reading progress
         saveProgress(ayahs.get(pos));
     }
 
@@ -261,7 +194,7 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
             );
         }
 
-        cardMiniPlayer.setVisibility(View.VISIBLE);
+        binding.miniPlayerLayout.getRoot().setVisibility(View.VISIBLE);
         saveProgress(ayah);
     }
 
@@ -286,7 +219,8 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
                 UserLocalRepository.getInstance(this).updateSettings(settings);
             }
             audioPlayer.setReciter(reciter.getArabicName(), reciter.getSubfolder());
-            tvMiniReciter.setText(reciter.getArabicName());
+
+            binding.miniPlayerLayout.tvMiniPlayerReciter.setText(reciter.getArabicName());
             Toast.makeText(this, "تم اختيار القارئ: " + reciter.getArabicName(), Toast.LENGTH_SHORT).show();
         });
         dialog.show(getSupportFragmentManager(), "reciter_chooser");
@@ -314,17 +248,14 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
     @Override
     public void onAyahChanged(int suraId, int ayahId, String suraName, String reciterName) {
         adapter.setPlayingAyahId(ayahId);
-        if (cardMiniPlayer != null) {
-            cardMiniPlayer.setVisibility(View.VISIBLE);
-            if (tvMiniTitle != null) tvMiniTitle.setText("سورة " + suraName + " - آية " + ayahId);
-            if (tvMiniReciter != null) tvMiniReciter.setText(reciterName);
-        }
+        binding.miniPlayerLayout.getRoot().setVisibility(View.VISIBLE);
+        binding.miniPlayerLayout.tvMiniPlayerTitle.setText("سورة " + suraName + " - آية " + ayahId);
+        binding.miniPlayerLayout.tvMiniPlayerReciter.setText(reciterName);
 
-        // Scroll to verse
         for (int i = 0; i < currentAyahsList.size(); i++) {
             if (currentAyahsList.get(i).getVerseId() == ayahId) {
                 int pos = i;
-                rvVerses.post(() -> rvVerses.smoothScrollToPosition(pos));
+                binding.rvVerses.post(() -> binding.rvVerses.smoothScrollToPosition(pos));
                 saveProgress(currentAyahsList.get(i));
                 break;
             }
@@ -333,13 +264,7 @@ public class QuranReadingActivity extends BaseActivity implements QuranAudioPlay
 
     @Override
     public void onPlaybackStateChanged(boolean isPlaying) {
-        if (btnMiniPlayPause != null) {
-            if (isPlaying) {
-                btnMiniPlayPause.setImageResource(R.drawable.ic_pause);
-            } else {
-                btnMiniPlayPause.setImageResource(R.drawable.ic_play_arrow);
-            }
-        }
+        binding.miniPlayerLayout.btnMiniPlayPause.setImageResource(isPlaying ? R.drawable.ic_pause : R.drawable.ic_play_arrow);
     }
 
     @Override

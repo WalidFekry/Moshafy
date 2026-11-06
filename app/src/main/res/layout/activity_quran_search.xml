@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_main"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".quran.ui.QuranSearchActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_search"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/header_bg"
-        app:title="البحث في القرآن الكريم"
-        app:titleTextColor="@color/text_white" />
-
+    <!-- Top Compact Search Bar (Replaces Heavy Toolbar) -->
     <LinearLayout
+        android:id="@+id/search_header_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="رجوع"
+            android:src="@drawable/ic_back_button" />
 
         <EditText
             android:id="@+id/et_quran_search"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
             android:background="@drawable/search_input_bg"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"
+            android:fontFamily="@font/flat5"
             android:hint="ادخل الكلمة أو العبارة للبحث..."
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:paddingHorizontal="12dp"
             android:textColor="@color/text_primary"
             android:textColorHint="@color/text_secondary"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <ProgressBar
@@ -50,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/flat5"
         android:text="لا توجد نتائج بحث"
         android:textColor="@color/text_secondary"
         android:textSize="16sp"

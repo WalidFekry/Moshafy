@@ -1,65 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_main">
+    android:background="@color/bg_main"
+    tools:context=".quran.ui.QuranReadingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Reading Toolbar -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_reading"
+        <!-- Combined Slim Header Bar (Maximizes Reading Space) -->
+        <RelativeLayout
+            android:id="@+id/reading_header_bar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/header_bg"
-            app:title="سورة الفاتحة"
-            app:titleTextColor="@color/text_white" />
+            android:layout_height="52dp"
+            android:background="@color/colorPrimary"
+            android:paddingHorizontal="12dp">
 
-        <!-- Subheader info bar -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/card_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="8dp">
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="رجوع"
+                android:src="@drawable/ic_back_button" />
 
             <TextView
                 android:id="@+id/tv_reading_surah_info"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="سورة الفاتحة • الجزء 1 • صفحة 1"
-                android:textColor="@color/text_primary"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_centerInParent="true"
+                android:layout_toStartOf="@id/action_buttons_container"
+                android:layout_toEndOf="@id/back_button"
+                android:ellipsize="end"
+                android:fontFamily="@font/flat5"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/text_white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="سورة الفاتحة • الجزء 1 • صفحة 1" />
 
-            <ImageButton
-                android:id="@+id/btn_reading_reciter"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Select Reciter"
-                android:src="@drawable/ic_person"
-                app:tint="@color/colorPrimary" />
+            <LinearLayout
+                android:id="@+id/action_buttons_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/btn_reading_settings"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="4dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Settings"
-                android:src="@drawable/ic_settings"
-                app:tint="@color/colorPrimary" />
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/btn_reading_reciter"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="القارئ"
+                    android:src="@drawable/ic_person"
+                    app:tint="@color/text_white" />
+
+                <ImageButton
+                    android:id="@+id/btn_reading_settings"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="إعدادات"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/text_white" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <ProgressBar
             android:id="@+id/pb_verses_loading"
@@ -81,6 +96,7 @@
 
     <!-- Mini Player at bottom -->
     <include
+        android:id="@+id/mini_player_layout"
         layout="@layout/layout_mini_player"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
