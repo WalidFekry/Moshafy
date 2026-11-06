@@ -1,6 +1,8 @@
 package com.appwalied.quran.adabters;
 
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
@@ -18,10 +20,10 @@ import net.steamcrafted.materialiconlib.MaterialIconView;
 import java.util.List;
 
 public class Adapterrec1 extends RecyclerView.Adapter<Adapterrec1.holder> {
-    List<itemrec>list;
+    List<Item>list;
     Context context;
 
-    public Adapterrec1(List<itemrec> list, Context context) {
+    public Adapterrec1(List<Item> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -36,14 +38,14 @@ public class Adapterrec1 extends RecyclerView.Adapter<Adapterrec1.holder> {
     @Override
     public void onBindViewHolder(@NonNull holder holder, final int position) {
 
-        holder.t6.setText(list.get(position).getTextrec());
+        holder.t6.setText(list.get(position).getText());
         holder.sha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT,"تطبيق مصحفي ");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,list.get(position).getTextrec()+"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://play.google.com/store/apps/details?id=com.appwalied.quran");
+                sendIntent.putExtra(Intent.EXTRA_TEXT,list.get(position).getText()+"\n"+ "مشاركه نصوص من تطبيق مصحفي  \n" +"\n"+ "\n"+"https://play.google.com/store/apps/details?id=com.appwalied.quran");
                 sendIntent.setType("text/plain");
                 context.startActivity(Intent.createChooser(sendIntent,"مشاركه تطبيق مصحفي  مع الاصدقاء:"));
 
@@ -52,8 +54,8 @@ public class Adapterrec1 extends RecyclerView.Adapter<Adapterrec1.holder> {
         holder.cap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager)context. getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("",list.get(position).getTextrec()+"\n"+
+                ClipboardManager clipboard = (ClipboardManager)context. getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("",list.get(position).getText()+"\n"+
                         "\n"+"تم نسخ هذه النصوص من تطبيق مصحفي " +"\n"+  " https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();

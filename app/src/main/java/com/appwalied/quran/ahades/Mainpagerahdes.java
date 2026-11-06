@@ -2,54 +2,48 @@ package com.appwalied.quran.ahades;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.viewpager.widget.ViewPager;
-
-import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.appwalied.quran.databinding.ActivityMainpagerahdesBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class Mainpagerahdes extends BaseActivity {
-    private static final String TAG = "TAG";
-    ViewPager pagerahdes;
-    private AppCompatImageButton back;
 
+    private ActivityMainpagerahdesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainpagerahdes);
-        back = findViewById(R.id.back_button);
-        back.setOnClickListener(v -> finish());
-        Intent intent = getIntent();
-        int ID = intent.getIntExtra("positon", 0);
-        pagerahdes = findViewById(R.id.pagerahdes);
-        ArrayList<item_ahdes> listahdes = new ArrayList<>();
-        DatabaseAcsessahdes dp = DatabaseAcsessahdes.getInstance(this);
-        dp.opean();
-        listahdes = dp.getalldata();
-        dp.close();
-        AdapterpagerAhdes adapter = new AdapterpagerAhdes(listahdes, Mainpagerahdes.this);
-        pagerahdes.setAdapter(adapter);
-        pagerahdes.setCurrentItem(ID - 1);
+        binding = ActivityMainpagerahdesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        showBanner(findViewById(R.id.adsContainer));
+        binding.backButton.setOnClickListener(v -> finish());
+
+        Intent intent = getIntent();
+        int positionId = intent.getIntExtra("positon", 0);
+
+        showLoading();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            DatabaseAcsessahdes dp = DatabaseAcsessahdes.getInstance(getApplicationContext());
+            dp.opean();
+            ArrayList<item_ahdes> listahdes = dp.getalldata();
+            dp.close();
+
+            runOnUiThread(() -> {
+                if (!isFinishing() && !isDestroyed()) {
+                    AdapterpagerAhdes adapter = new AdapterpagerAhdes(listahdes, Mainpagerahdes.this);
+                    binding.pagerahdes.setAdapter(adapter);
+                    if (positionId > 0 && positionId <= listahdes.size()) {
+                        binding.pagerahdes.setCurrentItem(positionId - 1);
+                    }
+                    hideLoading();
+                }
+            });
+        });
+
+        showBanner(binding.adsContainer);
         setUpAds();
-    }
-    public void onBackClicked(View view) {
-        onBackPressed();
     }
 }

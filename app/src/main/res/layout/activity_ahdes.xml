@@ -59,10 +59,10 @@
             android:layoutAnimation="@anim/layout_animation_down_to_up" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/banner_container"
+    <FrameLayout
+        android:id="@+id/adsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:layout_gravity="bottom" />
 
 </LinearLayout>

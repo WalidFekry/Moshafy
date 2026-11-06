@@ -1,30 +1,48 @@
 package com.appwalied.quran.monw3at;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.appwalied.quran.R;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.appwalied.quran.adabters.Adapterrec1;
-import com.appwalied.quran.adabters.itemrec;
+import com.appwalied.quran.adabters.Item;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityTitle1Binding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Title1 extends BaseActivity {
-    List<itemrec> list;
-    RecyclerView rec;
+
+    private ActivityTitle1Binding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_title1);
+        binding = ActivityTitle1Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        list=new ArrayList<>();
-        rec= findViewById(R.id.rec1);
-        rec.setLayoutManager(new LinearLayoutManager(this));
-        // Azkar here
-        Adapterrec1 adapterrec1=new Adapterrec1(list,Title1.this);
-        rec.setAdapter(adapterrec1);
+        binding.backButton.setOnClickListener(v -> finish());
+
+        binding.rec1.setLayoutManager(new LinearLayoutManager(this));
+
+        List<Item> list = new ArrayList<>();
+        list.add(new Item("أَسْتَغْفِرُ اللهَ (ثَلاَثاً)، اللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ، تَبَارَكْتَ يَا ذَا الْجَلاَلِ وَالإِكْرَامِ."));
+        list.add(new Item("لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، اللَّهُمَّ لاَ مَانِعَ لِمَا أَعْطَيْتَ، وَلاَ مُعْطِيَ لِمَا مَنَعْتَ، وَلاَ يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ."));
+        list.add(new Item("لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللهِ، لاَ إِلَهَ إِلاَّ اللهُ، وَلاَ نَعْبُدُ إِلاَّ إِيَّاهُ، لَهُ النِّعْمَةُ وَلَهُ الْفَضْلُ وَلَهُ الثَّنَاءُ الْحَسَنُ، لاَ إِلَهَ إِلاَّ اللهُ مُخْلِصِينَ لَهُ الدِّينَ وَلَوْ كَرِهَ الْكَافِرُونَ."));
+        list.add(new Item("سُبْحَانَ اللهِ (٣٣ مرة)، وَالْحَمْدُ لِلَّهِ (٣٣ مرة)، وَاللهُ أَكْبَرُ (٣٣ مرة)، لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (تمام المائة)."));
+        list.add(new Item("آيَةُ الْكُرْسِيِّ: ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾ (مَنْ قَرَأَهَا دُبُرَ كُلِّ صَلاَةٍ مَكْتُوبَةٍ لَمْ يَمْنَعْهُ مِنْ دُخُولِ الْجَنَّةِ إِلاَّ أَنْ يَمُوتَ)."));
+        list.add(new Item("سُورَةُ الإِخْلاَصِ: ﴿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ * قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ * لَمْ يَلِدْ وَلَمْ يُولَدْ * وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾ (تُقْرَأُ مَرَّةً وَاحِدَةً عَقِبَ كُلِّ صَلاَةٍ، وَثَلاَثَ مَرَّاتٍ بَعْدَ الْفَجْرِ وَالْمَغْرِبِ)."));
+        list.add(new Item("سُورَةُ الْفَلَقِ: ﴿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ * قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ * مِن شَرِّ مَا خَلَقَ * وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ * وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ * وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ﴾ (تُقْرَأُ مَرَّةً وَاحِدَةً عَقِبَ كُلِّ صَلاَةٍ، وَثَلاَثَ مَرَّاتٍ بَعْدَ الْفَجْرِ وَالْمَغْرِبِ)."));
+        list.add(new Item("سُورَةُ النَّاسِ: ﴿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ * قُلْ أَعُوذُ بِرَبِّ النَّاسِ * مَلِكِ النَّاسِ * إِلَٰهِ النَّاسِ * مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ * الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ * مِنَ الْجِنَّةِ وَالنَّاسِ﴾ (تُقْرَأُ مَرَّةً وَاحِدَةً عَقِبَ كُلِّ صَلاَةٍ، وَثَلاَثَ مَرَّاتٍ بَعْدَ الْفَجْرِ وَالْمَغْرِبِ)."));
+        list.add(new Item("لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (عَشْرَ مَرَّاتٍ بَعْدَ صَلاَةِ الْمَغْرِبِ وَالصُّبْحِ)."));
+        list.add(new Item("اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً، وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً (بَعْدَ السَّلاَمِ مِنْ صَلاَةِ الْفَجْرِ)."));
+        list.add(new Item("اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ (سَبْعَ مَرَّاتٍ بَعْدَ صَلاَةِ الْفَجْرِ وَالْمَغْرِبِ)."));
+        list.add(new Item("اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ."));
+
+        Adapterrec1 adapter = new Adapterrec1(list, this);
+        binding.rec1.setAdapter(adapter);
+
+        showBanner(binding.adsContainer);
     }
 }

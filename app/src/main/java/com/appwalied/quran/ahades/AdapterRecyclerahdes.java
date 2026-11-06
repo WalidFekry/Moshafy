@@ -3,21 +3,18 @@ package com.appwalied.quran.ahades;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appwalied.quran.R;
+import com.appwalied.quran.databinding.ItemAhdesBinding;
 
 import java.util.List;
 
-public class AdapterRecyclerahdes extends RecyclerView.Adapter<AdapterRecyclerahdes.holder> {
-    Context context;
-    List<item_ahdes> listahdes;
+public class AdapterRecyclerahdes extends RecyclerView.Adapter<AdapterRecyclerahdes.ViewHolder> {
+    private final Context context;
+    private final List<item_ahdes> listahdes;
 
     public AdapterRecyclerahdes(Context context, List<item_ahdes> listahdes) {
         this.context = context;
@@ -26,40 +23,36 @@ public class AdapterRecyclerahdes extends RecyclerView.Adapter<AdapterRecyclerah
 
     @NonNull
     @Override
-    public holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_ahdes, viewGroup, false);
-        return new holder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemAhdesBinding binding = ItemAhdesBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false
+        );
+        return new ViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull holder holder, final int position) {
-        holder.Nameahdes.setText(listahdes.get(position).getName());
-        holder.linnear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, Mainpagerahdes.class);
-                intent.putExtra("positon", listahdes.get(position).getId());
-                context.startActivity(intent);
-            }
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        item_ahdes item = listahdes.get(position);
+        holder.binding.Nameahdes.setText(item.getName());
+
+        holder.binding.linnear.setOnClickListener(v -> {
+            Intent intent = new Intent(context, Mainpagerahdes.class);
+            intent.putExtra("positon", item.getId());
+            context.startActivity(intent);
         });
-
-
     }
 
     @Override
     public int getItemCount() {
-        return listahdes.size();
+        return listahdes != null ? listahdes.size() : 0;
     }
 
-    public class holder extends RecyclerView.ViewHolder {
-        TextView Nameahdes;
-        LinearLayout linnear;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final ItemAhdesBinding binding;
 
-        public holder(@NonNull View itemView) {
-            super(itemView);
-            Nameahdes = (TextView) itemView.findViewById(R.id.Nameahdes);
-            linnear = (LinearLayout) itemView.findViewById(R.id.linnear);
-
+        public ViewHolder(@NonNull ItemAhdesBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

@@ -17,10 +17,10 @@ import net.steamcrafted.materialiconlib.MaterialIconView;
 import java.util.List;
 
 public class Adapterrec3 extends RecyclerView.Adapter<Adapterrec3.holder> {
-    List<itemrex3> list;
+    List<ItemModel> list;
     Context context;
 
-    public Adapterrec3(List<itemrex3> list, Context context) {
+    public Adapterrec3(List<ItemModel> list, Context context) {
         this.list = list;
         this.context = context;
     }

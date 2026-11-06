@@ -1,102 +1,84 @@
 package com.appwalied.quran.ahades;
 
-
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.appwalied.quran.R;
-
-import net.steamcrafted.materialiconlib.MaterialIconView;
+import com.appwalied.quran.databinding.ItemPagerahdesBinding;
 
 import java.util.List;
+import java.util.Locale;
 
-public class AdapterpagerAhdes extends PagerAdapter{
+public class AdapterpagerAhdes extends PagerAdapter {
 
-
-    List<item_ahdes> listahdes;
-    Context context;
-    public static int count=0;
-    LayoutInflater inflater;
-    Typeface typeface;
+    private final List<item_ahdes> listahdes;
+    private final Context context;
 
     public AdapterpagerAhdes(List<item_ahdes> listahdes, Context context) {
         this.listahdes = listahdes;
         this.context = context;
     }
 
-    public AdapterpagerAhdes(Context context) {
-        this.context = context;
-    }
-
-
     @Override
     public int getCount() {
-        return listahdes.size();
-
-
-
+        return listahdes != null ? listahdes.size() : 0;
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-
-        return  (view==o);
-
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((LinearLayout)object);
+        container.removeView((View) object);
     }
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        ItemPagerahdesBinding binding = ItemPagerahdesBinding.inflate(
+                LayoutInflater.from(context), container, false
+        );
 
-        inflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view=inflater.inflate(R.layout.item_pagerahdes,container,false);
-        final TextView title=(TextView)view.findViewById(R.id.title);
-        final TextView number=(TextView)view.findViewById(R.id.number);
-        final TextView name=(TextView)view.findViewById(R.id.name);
-        MaterialIconView share=(MaterialIconView)view.findViewById(R.id.shares);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_SUBJECT," تطبيق مصحفي ");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,listahdes.get(position).getTitle()+"\n"+"تفضل رابط التطبيق  https://bit.ly/3jMaYsR \n");
-                sendIntent.setType("text/plain");
-                context.startActivity(Intent.createChooser(sendIntent,"مشاركه نصوص من  تطبيق مصحفي :"));
+        item_ahdes item = listahdes.get(position);
 
-            }
+        binding.name.setText(item.getName());
+        binding.title.setText(item.getTitle());
+        String numberText = String.format(Locale.getDefault(), "حديث رقم %d", position + 1);
+        binding.number.setText(numberText);
+
+        // Share Action
+        binding.shares.setOnClickListener(v -> {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            String shareBody = item.getName() + "\n\n" +
+                    item.getTitle() + "\n\n" +
+                    "مشاركة من تطبيق مصحفي القرآن الكريم:\nhttps://play.google.com/store/apps/details?id=" + context.getPackageName();
+            sendIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            context.startActivity(Intent.createChooser(sendIntent, "مشاركة الحديث الشريف:"));
         });
-        MaterialIconView copy=(MaterialIconView)view.findViewById(R.id.copys);
-        copy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager)context. getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("","\n"+listahdes.get(position).getTitle()+
-                        "\n"+"تم نسخ من  تطبيق مصحفي " +"\n"+  "https://bit.ly/3jMaYsR\n");
+
+        // Copy Action
+        binding.copys.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard != null) {
+                String copyText = item.getName() + "\n" + item.getTitle();
+                ClipData clip = ClipData.newPlainText("HadithText", copyText);
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(context, "تم نسخ الحديث الشريف بنجاح 📋", Toast.LENGTH_SHORT).show();
             }
         });
-        title.setText(listahdes.get(position).getTitle());
-        name.setText(listahdes.get(position).getName());
-        number.setText(String.valueOf(listahdes.get(position).getId())+("-142"));
-        container.addView(view);
-        return view;
+
+        container.addView(binding.getRoot());
+        return binding.getRoot();
     }
 }

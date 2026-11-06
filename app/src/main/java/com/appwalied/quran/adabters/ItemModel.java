@@ -1,10 +1,10 @@
 package com.appwalied.quran.adabters;
 
-public class itemrex3 {
+public class ItemModel {
     private String name;
     private String theader;
 
-    public itemrex3(String name, String theader) {
+    public ItemModel(String name, String theader) {
         this.name = name;
         this.theader = theader;
     }

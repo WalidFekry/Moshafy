@@ -1,152 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:layout_margin="12dp"
+    app:cardBackgroundColor="@color/card_bg"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp">
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        app:cardElevation="3dp"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="#BEACF1"
-        app:cardCornerRadius="5dp"
-        android:layout_height="wrap_content">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <!-- Top Header Badge & Number -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/tv_badge_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_badge_primary"
+                    android:fontFamily="@font/cairo_bold"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="أحاديث نبوية من الصحيحين"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/flat5"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    tools:text="حديث رقم ١" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="14dp"
+                android:background="@color/divider_color" />
+
+            <!-- Hadith Title -->
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:fontFamily="@font/cairo_bold"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="اسم الحديث الشريف" />
+
+            <!-- Hadith Main Content Text -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/jazeera"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:textIsSelectable="true"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                tools:text="نص الحديث النبوي الشريف قال رسول الله صلى الله عليه وسلم..." />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="14dp"
+                android:background="@color/divider_color" />
+
+            <!-- Action Buttons: Copy & Share -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:text="احاديث فقط من الصحيحين البخاري ومسلم"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="#363434"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/jazeera"
-                    android:layout_height="match_parent"/>
-                <View
-                    android:layout_width="200dp"
-                    android:background="#fff"
-                    android:layout_gravity="center"
-                    android:layout_height="1dp"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="3dp"
-                        android:layout_gravity="center"
-                        app:lottie_autoPlay="true"
-                        app:lottie_fileName="8617-open-book.json"
-                        app:lottie_loop="true"
-                        tools:ignore="MissingConstraints" />
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="wrap_content"
-                        android:text="اسم الحديث "
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textColor="#363434"
-                        android:textSize="17dp"
-                        android:saveEnabled="false"
-                        android:fontFamily="@font/jazeera"
-                        android:layout_height="wrap_content"/>
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="3dp"
-                        android:layout_gravity="center"
-                        app:lottie_autoPlay="true"
-                        app:lottie_fileName="8617-open-book.json"
-                        app:lottie_loop="true"
-                        tools:ignore="MissingConstraints" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_margin="4dp"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/title"
-                        android:layout_width="match_parent"
-                        android:text="اسم الايه هنا"
-                        android:layout_margin="3dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textColor="#363434"
-                        android:textSize="16dp"
-                        android:saveEnabled="false"
-                        android:fontFamily="@font/jazeera"
-                        android:layout_height="match_parent"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/shares"
-                        android:layout_margin="5dp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        app:materialIcon="share_variant"
-                        app:materialIconColor="#E64A19"
-                        app:materialIconSize="30dp"
-                        tools:ignore="MissingConstraints" />
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                    <net.steamcrafted.materialiconlib.MaterialIconView
-                        android:id="@+id/copys"
-                        android:layout_margin="5dp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        app:materialIcon="content_copy"
-                        app:materialIconColor="#E64A19"
-                        app:materialIconSize="30dp"
-                        tools:ignore="MissingConstraints" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/copys"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/flat5"
+                    android:text="نسخ الحديث"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_content_copy"
+                    app:iconGravity="textStart"
+                    app:iconSize="18dp"
+                    app:iconTint="@color/colorPrimary"
+                    app:strokeColor="@color/card_stroke"
+                    app:strokeWidth="1dp" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_margin="10dp"
-                        android:id="@+id/number"
-                        android:layout_width="match_parent"
-                        android:text="1"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textColor="#363434"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/jazeera"
-                        android:layout_height="match_parent"/>
-                </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/shares"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/flat5"
+                    android:text="مشاركة الحديث"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_share"
+                    app:iconGravity="textStart"
+                    app:iconSize="18dp"
+                    app:iconTint="@color/colorPrimary"
+                    app:strokeColor="@color/card_stroke"
+                    app:strokeWidth="1dp" />
             </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="arrow.json"
-        app:lottie_loop="true"
-        />
-
-
-</LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>
