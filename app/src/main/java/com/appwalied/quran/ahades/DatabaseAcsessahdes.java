@@ -34,24 +34,7 @@ public class DatabaseAcsessahdes {
         }
     }
 
-    public boolean insertdata(azkarmodel azkarmodel) {
-        ContentValues values = new ContentValues();
-        values.put(sqliteahdes.NAME, azkarmodel.getName());
-        values.put(sqliteahdes.TITLE, azkarmodel.getTitle());
-        opean();
-        long result = database.insert(sqliteahdes.DB_table, null, values);
-        return result != -1;
-    }
 
-    public boolean updatedata(azkarmodel azkarmodel) {
-        ContentValues values = new ContentValues();
-        values.put(sqliteahdes.NAME, azkarmodel.getName());
-        values.put(sqliteahdes.TITLE, azkarmodel.getTitle());
-        String[] args = {String.valueOf(azkarmodel.getId())};
-        opean();
-        int result = database.update(sqliteahdes.DB_table, values, "id=?", args);
-        return result > 0;
-    }
 
     public ArrayList<item_ahdes> getalldata() {
         ArrayList<item_ahdes> liststory = new ArrayList<>();

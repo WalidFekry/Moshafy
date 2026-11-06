@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.appwalied.quran.ahades.azkarmodel;
 import com.appwalied.quran.sahaba.item_story;
 
 import java.util.ArrayList;
@@ -37,24 +36,8 @@ public class DatabaseAsstes5 {
         }
     }
 
-    public boolean insertdata(azkarmodel azkarmodel) {
-        ContentValues values = new ContentValues();
-        values.put(sqlitenewstory.HEADER, azkarmodel.getName());
-        values.put(sqlitenewstory.TITLE, azkarmodel.getTitle());
-        opean();
-        long result = database.insert(sqlitenewstory.DB_table, null, values);
-        return result != -1;
-    }
 
-    public boolean updatedata(azkarmodel azkarmodel) {
-        ContentValues values = new ContentValues();
-        values.put(sqlitenewstory.HEADER, azkarmodel.getName());
-        values.put(sqlitenewstory.TITLE, azkarmodel.getFadl());
-        String[] args = {String.valueOf(azkarmodel.getId())};
-        opean();
-        int result = database.update(sqlitenewstory.DB_table, values, "id=?", args);
-        return result > 0;
-    }
+
 
     public ArrayList<item_story> getalldata() {
         ArrayList<item_story> liststory = new ArrayList<>();
