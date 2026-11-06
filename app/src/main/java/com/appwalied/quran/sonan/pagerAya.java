@@ -1,102 +1,84 @@
 package com.appwalied.quran.sonan;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
-import com.appwalied.quran.R;
-
-import net.steamcrafted.materialiconlib.MaterialIconView;
+import com.appwalied.quran.databinding.ItemPagerayaBinding;
 
 import java.util.List;
+import java.util.Locale;
 
 public class pagerAya extends PagerAdapter {
-    List<item_Aya> list2;
-    Context context;
-    public static int count=0;
 
-    public pagerAya(List<item_Aya> list2, Context context) {
+    private final List<AyaItem> list2;
+    private final Context context;
+
+    public pagerAya(List<AyaItem> list2, Context context) {
         this.list2 = list2;
         this.context = context;
     }
 
-    LayoutInflater inflater;
-
-    Typeface typeface;
-
-    public pagerAya(Context context) {
-        this.context = context;
-    }
-
-
     @Override
     public int getCount() {
-        return list2.size();
-
-
-
+        return list2 != null ? list2.size() : 0;
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-
-        return  (view==o);
-
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((LinearLayout)object);
+        container.removeView((View) object);
     }
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        ItemPagerayaBinding binding = ItemPagerayaBinding.inflate(
+                LayoutInflater.from(context), container, false
+        );
 
-        inflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view=inflater.inflate(R.layout.item_pageraya,container,false);
-        final TextView nameaya=(TextView)view.findViewById(R.id.nameaya);
-        final TextView title=(TextView)view.findViewById(R.id.title);
-        final TextView num=(TextView)view.findViewById(R.id.num);
-        MaterialIconView share=(MaterialIconView)view.findViewById(R.id.share);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_SUBJECT," تطبيق مصحفي ");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,"\n" +list2.get(position).getName()+"\n"+list2.get(position).getTitle()+"تفضل رابط التطبيق  https://play.google.com/store/apps/details?id=com.appwalied.quran \n");
-                sendIntent.setType("text/plain");
-                context.startActivity(Intent.createChooser(sendIntent,"مشاركه نصوص من  تطبيق مصحفي :"));
+        AyaItem item = list2.get(position);
 
-            }
+        binding.nameaya.setText(item.getName());
+        binding.title.setText(item.getTitle());
+        String numberText = String.format(Locale.getDefault(), "سنة رقم %d", position + 1);
+        binding.num.setText(numberText);
+
+        // Share Action
+        binding.share.setOnClickListener(v -> {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            String shareBody = item.getName() + "\n\n" +
+                    item.getTitle() + "\n\n" +
+                    "مشاركة من تطبيق مصحفي القرآن الكريم:\nhttps://play.google.com/store/apps/details?id=" + context.getPackageName();
+            sendIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            context.startActivity(Intent.createChooser(sendIntent, "مشاركة السنة الشريفة:"));
         });
-        MaterialIconView copy=(MaterialIconView)view.findViewById(R.id.copy);
-        copy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager)context. getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("",list2.get(position).getName()+"\n"+list2.get(position).getTitle()+
-                        "\n"+"تم نسخ من  تطبيق مصحفي " +"\n"+  "https://play.google.com/store/apps/details?id=com.appwalied.quran\n");
+
+        // Copy Action
+        binding.copy.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard != null) {
+                String copyText = item.getName() + "\n" + item.getTitle();
+                ClipData clip = ClipData.newPlainText("SunnahText", copyText);
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(context, "تم نسخ النص", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(context, "تم نسخ النص بنجاح 📋", Toast.LENGTH_SHORT).show();
             }
         });
-        nameaya.setText(list2.get(position).getName());
-        title.setText(list2.get(position).getTitle());
-        num.setText(String.valueOf(list2.get(position).getNum())+("-59"));
-        container.addView(view);
-        return view;
+
+        container.addView(binding.getRoot());
+        return binding.getRoot();
     }
 }
-

@@ -26,9 +26,6 @@ public class DatabaseAsstes5 {
         return instance;
     }
 
-    public void opean() {
-        this.database = this.openHelper.getWritableDatabase();
-    }
 
     public void close() {
         if (this.database != null && this.database.isOpen()) {

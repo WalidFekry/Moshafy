@@ -2,51 +2,45 @@ package com.appwalied.quran.sahaba;
 
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityMainStoryBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainStory extends BaseActivity {
-    private RecyclerView recstory;
-    private ArrayList<item_story> listabra;
-    private AppCompatImageButton back;
+
+    private ActivityMainStoryBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_story);
+        binding = ActivityMainStoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        recstory = findViewById(R.id.recstory);
-        back = findViewById(R.id.back_button);
-        if (back != null) {
-            back.setOnClickListener(v -> finish());
-        }
+        binding.backButton.setOnClickListener(v -> finish());
 
-        recstory.setLayoutManager(new LinearLayoutManager(this));
-        listabra = new ArrayList<>();
+        binding.recstory.setLayoutManager(new LinearLayoutManager(this));
 
         showLoading();
-        Executors.newSingleThreadExecutor().execute(() -> {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
             DatabaseAsstes4 dp = DatabaseAsstes4.getInstance(getApplicationContext());
             ArrayList<item_story> data = dp.getalldata();
             runOnUiThread(() -> {
                 if (!isFinishing() && !isDestroyed()) {
-                    listabra.clear();
-                    listabra.addAll(data);
-                    Adapterstory adapter = new Adapterstory(MainStory.this, listabra);
-                    recstory.setAdapter(adapter);
+                    Adapterstory adapter = new Adapterstory(MainStory.this, data);
+                    binding.recstory.setAdapter(adapter);
                     hideLoading();
                 }
             });
         });
+        executor.shutdown();
 
-        showBanner(findViewById(R.id.adsContainer));
+        showBanner(binding.adsContainer);
         promptUserForRating();
     }
 }

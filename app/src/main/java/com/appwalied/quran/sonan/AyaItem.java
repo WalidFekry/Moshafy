@@ -1,13 +1,13 @@
 package com.appwalied.quran.sonan;
 
 
-public class item_Aya {
+public class AyaItem {
     private String name;
     private String title;
     private int id;
     private int num;
 
-    public item_Aya(String name, String title, int id, int num) {
+    public AyaItem(String name, String title, int id, int num) {
         this.name = name;
         this.title = title;
         this.id = id;

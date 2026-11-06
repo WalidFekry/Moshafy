@@ -2,53 +2,51 @@ package com.appwalied.quran.sonan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.viewpager.widget.ViewPager;
-
-import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.appwalied.quran.databinding.ActivityMaintitlepagerAyaBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MaintitlepagerAya extends BaseActivity {
-    private static final String TAG = "TAG";
-    ViewPager pagerAya;
-    private AppCompatImageButton back;
+
+    private ActivityMaintitlepagerAyaBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maintitlepager_aya);
-        back = findViewById(R.id.back_button);
-        back.setOnClickListener(v -> finish());
+        binding = ActivityMaintitlepagerAyaBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.backButton.setOnClickListener(v -> finish());
+
         Intent intent = getIntent();
-        int ID = intent.getIntExtra("positon", 0);
-        pagerAya = findViewById(R.id.pagerAya);
-        ArrayList<item_Aya> list2 = new ArrayList<>();
+        int positionId = intent.getIntExtra("positon", 0);
 
-        DatabaseAcsessAya dp = DatabaseAcsessAya.getInstance(this);
-        dp.opean();
-        list2 = dp.getalldata();
-        dp.close();
-        pagerAya pager = new pagerAya(list2, MaintitlepagerAya.this);
-        pagerAya.setAdapter(pager);
-        pagerAya.setCurrentItem(ID - 1);
+        showLoading();
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            DatabaseAcsessAya dp = DatabaseAcsessAya.getInstance(getApplicationContext());
+            dp.opean();
+            ArrayList<AyaItem> list2 = dp.getalldata();
+            dp.close();
 
-        showBanner(findViewById(R.id.adsContainer));
+            runOnUiThread(() -> {
+                if (!isFinishing() && !isDestroyed()) {
+                    pagerAya pager = new pagerAya(list2, MaintitlepagerAya.this);
+                    binding.pagerAya.setAdapter(pager);
+                    if (positionId > 0 && positionId <= list2.size()) {
+                        binding.pagerAya.setCurrentItem(positionId - 1);
+                    }
+                    hideLoading();
+                }
+            });
+        });
+        executor.shutdown();
+
+        showBanner(binding.adsContainer);
         setUpAds();
     }
-
-
 }

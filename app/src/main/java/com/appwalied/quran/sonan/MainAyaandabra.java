@@ -2,51 +2,45 @@ package com.appwalied.quran.sonan;
 
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
+import com.appwalied.quran.databinding.ActivityMainAyaandabraBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainAyaandabra extends BaseActivity {
-    private RecyclerView recaya;
-    private ArrayList<item_Aya> listaya;
-    private AppCompatImageButton back;
+
+    private ActivityMainAyaandabraBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_ayaandabra);
+        binding = ActivityMainAyaandabraBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        recaya = findViewById(R.id.recaya);
-        back = findViewById(R.id.back_button);
-        if (back != null) {
-            back.setOnClickListener(v -> finish());
-        }
+        binding.backButton.setOnClickListener(v -> finish());
 
-        recaya.setLayoutManager(new LinearLayoutManager(this));
-        listaya = new ArrayList<>();
+        binding.recaya.setLayoutManager(new LinearLayoutManager(this));
 
         showLoading();
-        Executors.newSingleThreadExecutor().execute(() -> {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
             DatabaseAcsessAya dp = DatabaseAcsessAya.getInstance(getApplicationContext());
-            ArrayList<item_Aya> data = dp.getalldata();
+            ArrayList<AyaItem> data = dp.getalldata();
             runOnUiThread(() -> {
                 if (!isFinishing() && !isDestroyed()) {
-                    listaya.clear();
-                    listaya.addAll(data);
-                    AdapterRecyclerAya adapter = new AdapterRecyclerAya(MainAyaandabra.this, listaya);
-                    recaya.setAdapter(adapter);
+                    AdapterRecyclerAya adapter = new AdapterRecyclerAya(MainAyaandabra.this, data);
+                    binding.recaya.setAdapter(adapter);
                     hideLoading();
                 }
             });
         });
+        executor.shutdown();
 
-        showBanner(findViewById(R.id.adsContainer));
+        showBanner(binding.adsContainer);
         promptUserForRating();
     }
 }

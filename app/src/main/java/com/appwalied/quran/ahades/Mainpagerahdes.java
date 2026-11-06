@@ -7,6 +7,7 @@ import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.databinding.ActivityMainpagerahdesBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Mainpagerahdes extends BaseActivity {
@@ -25,7 +26,8 @@ public class Mainpagerahdes extends BaseActivity {
         int positionId = intent.getIntExtra("positon", 0);
 
         showLoading();
-        Executors.newSingleThreadExecutor().execute(() -> {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
             DatabaseAcsessahdes dp = DatabaseAcsessahdes.getInstance(getApplicationContext());
             dp.opean();
             ArrayList<item_ahdes> listahdes = dp.getalldata();
@@ -42,6 +44,7 @@ public class Mainpagerahdes extends BaseActivity {
                 }
             });
         });
+        executor.shutdown();
 
         showBanner(binding.adsContainer);
         setUpAds();

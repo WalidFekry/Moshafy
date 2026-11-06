@@ -2,63 +2,57 @@ package com.appwalied.quran.sonan;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-
-import com.appwalied.quran.R;
+import com.appwalied.quran.databinding.ItemRecyclerviewayaBinding;
 
 import java.util.List;
 
-public class AdapterRecyclerAya  extends RecyclerView.Adapter<AdapterRecyclerAya.holder> {
-    Context context;
-    List<item_Aya>listaya;
+public class AdapterRecyclerAya extends RecyclerView.Adapter<AdapterRecyclerAya.ViewHolder> {
+    private final Context context;
+    private final List<AyaItem> listaya;
 
-    public AdapterRecyclerAya(Context context, List<item_Aya> listaya) {
+    public AdapterRecyclerAya(Context context, List<AyaItem> listaya) {
         this.context = context;
         this.listaya = listaya;
     }
 
     @NonNull
     @Override
-    public holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_recyclerviewaya,viewGroup,false);
-        return new holder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemRecyclerviewayaBinding binding = ItemRecyclerviewayaBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false
+        );
+        return new ViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull holder holder, final int position) {
-        holder.nameaya.setText(listaya.get(position).getName());
-        holder.linearll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context, MaintitlepagerAya.class);
-                intent.putExtra("positon",listaya.get(position).getId());
-                context.startActivity(intent);
-            }
-        });
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        AyaItem item = listaya.get(position);
+        holder.binding.nameaya.setText(item.getName());
 
+        holder.binding.linearll.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MaintitlepagerAya.class);
+            intent.putExtra("positon", item.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return listaya.size();
+        return listaya != null ? listaya.size() : 0;
     }
 
-    public class holder extends RecyclerView.ViewHolder{
-        TextView nameaya;
-        LinearLayout linearll;
-        public holder(@NonNull View itemView) {
-            super(itemView);
-            nameaya=(TextView)itemView.findViewById(R.id.nameaya);
-            linearll=(LinearLayout)itemView.findViewById(R.id.linearll);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final ItemRecyclerviewayaBinding binding;
+
+        public ViewHolder(@NonNull ItemRecyclerviewayaBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
-

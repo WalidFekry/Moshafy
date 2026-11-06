@@ -10,6 +10,7 @@ import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ActivityAhdes extends BaseActivity {
@@ -32,7 +33,8 @@ public class ActivityAhdes extends BaseActivity {
         listahdes = new ArrayList<>();
 
         showLoading();
-        Executors.newSingleThreadExecutor().execute(() -> {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
             DatabaseAcsessahdes dp = DatabaseAcsessahdes.getInstance(getApplicationContext());
             ArrayList<item_ahdes> data = dp.getalldata();
             runOnUiThread(() -> {
@@ -45,6 +47,7 @@ public class ActivityAhdes extends BaseActivity {
                 }
             });
         });
+        executor.shutdown();
 
     }
 }
