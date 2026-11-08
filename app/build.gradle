@@ -66,10 +66,11 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.6.1'
     annotationProcessor 'androidx.room:room-compiler:2.6.1'
 
-    // Media3 ExoPlayer
-    implementation 'androidx.media3:media3-exoplayer:1.5.1'
-    implementation 'androidx.media3:media3-ui:1.5.1'
-    implementation 'androidx.media3:media3-common:1.5.1'
+    // Media3 ExoPlayer & Session
+    implementation 'androidx.media3:media3-exoplayer:1.11.1'
+    implementation 'androidx.media3:media3-ui:1.11.1'
+    implementation 'androidx.media3:media3-common:1.11.1'
+    implementation 'androidx.media3:media3-session:1.11.1'
 
     testImplementation 'junit:junit:4.13.2'
 }

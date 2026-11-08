@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appwalied.quran.quran.ui.QuranActivity;
+import com.appwalied.quran.quran_listening.QuranListeningActivity;
 import com.google.android.material.button.MaterialButton;
 import com.appwalied.quran.utils.HijriCalendarHelper;
 
@@ -48,7 +49,6 @@ import com.appwalied.quran.monw3at.DifferentActivity;
 import com.appwalied.quran.notifications_messages.NotificationsMessagesActivity;
 import com.appwalied.quran.quran.QuranicMessage;
 import com.appwalied.quran.quran.quran_images.QuranList;
-import com.appwalied.quran.quran.quran_listening.RecitesName;
 import com.appwalied.quran.sahaba.MainStory;
 import com.appwalied.quran.sonan.MainAyaandabra;
 import com.google.android.material.navigation.NavigationView;
@@ -205,7 +205,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class)));
         binding.main.contentMain.masbaha.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MasbahaActivity.class)));
         binding.main.contentMain.quranListening.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, RecitesName.class));
+            startActivity(new Intent(MainActivity.this, QuranListeningActivity.class));
         });
         binding.main.contentMain.azkar.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Azkar.class)));
         binding.main.contentMain.islamicSections.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, DifferentActivity.class)));
