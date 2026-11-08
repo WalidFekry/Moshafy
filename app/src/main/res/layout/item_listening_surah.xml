@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/flat5"
+                    android:fontFamily="@font/ffon1"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -47,10 +47,10 @@
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/actions_container"
                 android:layout_toEndOf="@id/number_badge"
                 android:orientation="vertical">
 
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:fontFamily="@font/cairo_bold"
+                    android:fontFamily="@font/ffon1"
                     android:maxLines="1"
                     android:textColor="@color/text_primary"
                     android:textSize="17sp"
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="@font/flat5"
+                    android:fontFamily="@font/ffon1"
                     android:textColor="@color/text_secondary"
                     android:textSize="12sp"
                     tools:text="مكية" />

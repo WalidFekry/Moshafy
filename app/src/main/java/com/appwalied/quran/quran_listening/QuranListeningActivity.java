@@ -86,8 +86,8 @@ public class QuranListeningActivity extends BaseActivity implements AudioPlayerM
         binding.backButton.setOnClickListener(v -> finish());
         binding.rvListeningContent.setLayoutManager(new LinearLayoutManager(this));
 
-        surahAdapter = new ListeningSurahAdapter(surah -> playSurah(surah));
-        reciterAdapter = new ListeningReciterAdapter(reciter -> changeReciter(reciter));
+        surahAdapter = new ListeningSurahAdapter(this::playSurah);
+        reciterAdapter = new ListeningReciterAdapter(this::changeReciter);
 
         binding.rvListeningContent.setAdapter(surahAdapter);
 

@@ -4,6 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
@@ -81,6 +82,10 @@ public class QuranMediaService extends Service implements AudioPlayerManager.OnM
                 } else {
                     stopForeground(true);
                 }
+                NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                if (manager != null) {
+                    manager.cancel(NOTIFICATION_ID);
+                }
                 stopSelf();
                 return START_NOT_STICKY;
             }
@@ -135,7 +140,8 @@ public class QuranMediaService extends Service implements AudioPlayerManager.OnM
                 .setContentTitle(title)
                 .setContentText("القارئ: " + reciter)
                 .setContentIntent(pendingOpenIntent)
-                .setOngoing(isPlayWhenReady)
+                .setDeleteIntent(pendingStop)
+                .setOngoing(false)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .addAction(R.drawable.ic_skip_previous, "السابقة", pendingPrev)
                 .addAction(
@@ -143,8 +149,7 @@ public class QuranMediaService extends Service implements AudioPlayerManager.OnM
                         isPlayWhenReady ? "إيقاف مؤقت" : "تشغيل",
                         pendingPlayPause
                 )
-                .addAction(R.drawable.ic_skip_next, "التالية", pendingNext)
-                .addAction(R.drawable.ic_close, "إغلاق", pendingStop);
+                .addAction(R.drawable.ic_skip_next, "التالية", pendingNext);
 
         startForeground(NOTIFICATION_ID, builder.build());
     }
