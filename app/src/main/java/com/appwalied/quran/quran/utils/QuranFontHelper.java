@@ -2,6 +2,8 @@ package com.appwalied.quran.quran.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.TextPaint;
+import android.text.style.MetricAffectingSpan;
 
 import androidx.core.content.res.ResourcesCompat;
 
@@ -32,5 +34,29 @@ public class QuranFontHelper {
             return "خط القرآن العادي";
         }
         return "الرسم العثماني الأصلي";
+    }
+
+    public static class CustomTypefaceSpan extends MetricAffectingSpan {
+        private final Typeface typeface;
+
+        public CustomTypefaceSpan(Typeface typeface) {
+            this.typeface = typeface;
+        }
+
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            apply(ds);
+        }
+
+        @Override
+        public void updateMeasureState(TextPaint paint) {
+            apply(paint);
+        }
+
+        private void apply(TextPaint paint) {
+            if (typeface != null) {
+                paint.setTypeface(typeface);
+            }
+        }
     }
 }

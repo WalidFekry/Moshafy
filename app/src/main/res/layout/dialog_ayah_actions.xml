@@ -17,6 +17,9 @@
     <TextView
         android:id="@+id/tv_dialog_ayah_title"
         android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/quran_font"
         android:layout_height="wrap_content"
         android:text="سورة البقرة - آية 255"
         android:textColor="@color/text_primary"
@@ -44,9 +47,10 @@
     <LinearLayout
         android:id="@+id/action_play_ayah"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
@@ -70,9 +74,10 @@
     <LinearLayout
         android:id="@+id/action_copy_ayah"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
@@ -97,8 +102,9 @@
         android:id="@+id/action_share_ayah"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_gravity="center"
         android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
@@ -123,8 +129,9 @@
         android:id="@+id/action_share_with_info"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_gravity="center"
         android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
@@ -149,8 +156,9 @@
         android:id="@+id/action_add_bookmark"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_gravity="center"
         android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingEnd="8dp">

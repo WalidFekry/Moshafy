@@ -18,6 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="اختر القارئ"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/jazeera"
         android:textColor="@color/text_primary"
         android:textSize="18sp"
         android:textStyle="bold" />

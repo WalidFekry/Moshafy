@@ -1,18 +1,18 @@
 package com.appwalied.quran.quran.ui.adapters;
 
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.databinding.ItemAyahBinding;
 import com.appwalied.quran.quran.db.models.Ayah;
 import com.appwalied.quran.quran.utils.QuranFontHelper;
 
@@ -58,8 +58,10 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
     @NonNull
     @Override
     public AyahViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ayah, parent, false);
-        return new AyahViewHolder(view);
+        ItemAyahBinding binding = ItemAyahBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false
+        );
+        return new AyahViewHolder(binding);
     }
 
     @Override
@@ -68,40 +70,60 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
 
         // Surah Header & Bismillah for first verse
         if (ayah.getVerseId() == 1) {
-            holder.llSurahHeader.setVisibility(View.VISIBLE);
-            holder.tvHeaderSurahName.setText("سورة " + (ayah.getSuraName() != null ? ayah.getSuraName() : ""));
+            holder.binding.llSurahHeader.setVisibility(View.VISIBLE);
+            holder.binding.tvHeaderSurahName.setText("سورة " + (ayah.getSuraName() != null ? ayah.getSuraName() : ""));
 
-            // Hide Bismillah for Surah 1 (Al-Fatihah where Bismillah is verse 1) and Surah 9 (At-Tawbah)
             if (ayah.getSuraId() == 1 || ayah.getSuraId() == 9) {
-                holder.tvBismillah.setVisibility(View.GONE);
+                holder.binding.tvBismillah.setVisibility(View.GONE);
             } else {
-                holder.tvBismillah.setVisibility(View.VISIBLE);
-                holder.tvBismillah.setTypeface(QuranFontHelper.getFont(holder.itemView.getContext(), fontKey));
+                holder.binding.tvBismillah.setVisibility(View.VISIBLE);
+                holder.binding.tvBismillah.setTypeface(QuranFontHelper.getFont(holder.itemView.getContext(), fontKey));
             }
         } else {
-            holder.llSurahHeader.setVisibility(View.GONE);
+            holder.binding.llSurahHeader.setVisibility(View.GONE);
         }
 
-        // Verse Text
-        String verseFormatted = ayah.getArabicUthmanic() + " ﴿" + getArabicNumberString(ayah.getVerseId()) + "﴾";
-        holder.tvAyahText.setText(verseFormatted);
-        holder.tvAyahText.setTextSize(fontSizeSp);
-        holder.tvAyahText.setTypeface(QuranFontHelper.getFont(holder.itemView.getContext(), fontKey));
+        // Clean raw Uthmanic text
+        String cleanText = cleanUthmanicText(ayah.getArabicUthmanic());
+        String arabicNumber = getArabicNumberString(ayah.getVerseId());
+        String numberText = "\u00A0\u200F﴿" + arabicNumber + "﴾\u200F";
+
+        Typeface verseTypeface = QuranFontHelper.getFont(holder.itemView.getContext(), fontKey);
+        Typeface numberTypeface = QuranFontHelper.getFont(holder.itemView.getContext(), QuranFontHelper.FONT_QURAN_MSG);
+
+        SpannableStringBuilder ssb = new SpannableStringBuilder();
+
+        int startVerse = ssb.length();
+        ssb.append(cleanText);
+        int endVerse = ssb.length();
+        if (verseTypeface != null) {
+            ssb.setSpan(new QuranFontHelper.CustomTypefaceSpan(verseTypeface), startVerse, endVerse, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        int startNumber = ssb.length();
+        ssb.append(numberText);
+        int endNumber = ssb.length();
+        if (numberTypeface != null) {
+            ssb.setSpan(new QuranFontHelper.CustomTypefaceSpan(numberTypeface), startNumber, endNumber, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        holder.binding.tvAyahText.setText(ssb);
+        holder.binding.tvAyahText.setTextSize(fontSizeSp);
 
         // Badge info
-        holder.tvAyahInfo.setText("الآية " + ayah.getVerseId() + " • صفحة " + ayah.getPageNumber() + " • الجزء " + ayah.getParaNumber());
+        holder.binding.tvAyahInfoBadge.setText("الآية " + ayah.getVerseId() + " • صفحة " + ayah.getPageNumber() + " • الجزء " + ayah.getParaNumber());
 
         // Highlight state
         boolean isPlayingThis = (ayah.getVerseId() == playingAyahId);
         if (isPlayingThis) {
-            holder.cardContainer.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.chip_bg));
-            holder.ivPlayingIndicator.setVisibility(View.VISIBLE);
+            holder.binding.cardAyahContainer.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.chip_bg));
+            holder.binding.ivAyahPlayingIndicator.setVisibility(View.VISIBLE);
         } else {
-            holder.cardContainer.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.quran_page_bg));
-            holder.ivPlayingIndicator.setVisibility(View.GONE);
+            holder.binding.cardAyahContainer.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.quran_page_bg));
+            holder.binding.ivAyahPlayingIndicator.setVisibility(View.GONE);
         }
 
-        holder.llAyahContent.setOnClickListener(v -> {
+        holder.binding.llAyahContent.setOnClickListener(v -> {
             if (clickListener != null) {
                 clickListener.onAyahClick(ayah);
             }
@@ -110,7 +132,14 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
 
     @Override
     public int getItemCount() {
-        return ayahList.size();
+        return ayahList != null ? ayahList.size() : 0;
+    }
+
+    public static String cleanUthmanicText(String rawText) {
+        if (rawText == null) return "";
+        return rawText.replaceAll("\\s*\\{[0-9٠-٩]+\\}\\s*$", "")
+                .replaceAll("[{}]", "")
+                .trim();
     }
 
     private String getArabicNumberString(int number) {
@@ -128,21 +157,11 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
     }
 
     static class AyahViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout llSurahHeader, llAyahContent;
-        TextView tvHeaderSurahName, tvBismillah, tvAyahText, tvAyahInfo;
-        CardView cardContainer;
-        ImageView ivPlayingIndicator;
+        final ItemAyahBinding binding;
 
-        public AyahViewHolder(@NonNull View itemView) {
-            super(itemView);
-            llSurahHeader = itemView.findViewById(R.id.ll_surah_header);
-            llAyahContent = itemView.findViewById(R.id.ll_ayah_content);
-            tvHeaderSurahName = itemView.findViewById(R.id.tv_header_surah_name);
-            tvBismillah = itemView.findViewById(R.id.tv_bismillah);
-            tvAyahText = itemView.findViewById(R.id.tv_ayah_text);
-            tvAyahInfo = itemView.findViewById(R.id.tv_ayah_info_badge);
-            cardContainer = itemView.findViewById(R.id.card_ayah_container);
-            ivPlayingIndicator = itemView.findViewById(R.id.iv_ayah_playing_indicator);
+        public AyahViewHolder(@NonNull ItemAyahBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

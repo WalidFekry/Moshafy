@@ -13,6 +13,9 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/jazeera"
             android:layout_height="wrap_content"
             android:text="إعدادات القراءة والتلاوة"
             android:textColor="@color/text_primary"
@@ -23,6 +26,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/jazeera"
             android:layout_marginTop="16dp"
             android:text="نوع الخط"
             android:textColor="@color/colorPrimary"
@@ -58,6 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/jazeera"
             android:text="حجم الخط"
             android:textColor="@color/colorPrimary"
             android:textSize="15sp"
@@ -119,6 +128,9 @@
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_keep_screen_on"
             android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/jazeera"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="إبقاء الشاشة مفعلة أثناء القراءة"
@@ -130,7 +142,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:checked="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/jazeera"
+                android:checked="true"
             android:text="التشغيل التلقائي للآية التالية"
             android:textColor="@color/text_primary"
             android:textSize="15sp" />
@@ -153,6 +168,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/jazeera"
                 android:text="تكرار الآية"
                 android:textColor="@color/text_primary"
                 android:textSize="15sp" />
@@ -161,6 +179,7 @@
                 android:id="@+id/tv_repeat_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/ffon1"
                 android:text="مرة واحدة"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp"
@@ -180,6 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/ffon1"
             android:backgroundTint="@color/colorPrimary"
             android:text="حفظ الإعدادات"
             android:textColor="@color/text_white" />

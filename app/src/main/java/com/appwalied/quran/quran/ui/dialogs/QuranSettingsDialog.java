@@ -2,7 +2,10 @@ package com.appwalied.quran.quran.ui.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
@@ -75,7 +78,7 @@ public class QuranSettingsDialog extends Dialog {
             } else {
                 rbUthmanii.setChecked(true);
             }
-            tvFontPreview.setTypeface(QuranFontHelper.getFont(getContext(), fontKey));
+            updatePreviewText(getContext(), tvFontPreview, fontKey);
 
             int progressFontSize = Math.max(0, Math.min(24, settings.getFontSize() - 16));
             sbFontSize.setProgress(progressFontSize);
@@ -96,7 +99,7 @@ public class QuranSettingsDialog extends Dialog {
             if (currentSettings != null) {
                 currentSettings.setSelectedFont(selectedFontKey);
             }
-            tvFontPreview.setTypeface(QuranFontHelper.getFont(getContext(), selectedFontKey));
+            updatePreviewText(getContext(), tvFontPreview, selectedFontKey);
         });
 
         sbFontSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -153,6 +156,32 @@ public class QuranSettingsDialog extends Dialog {
             }
             dismiss();
         });
+    }
+
+    private void updatePreviewText(Context context, TextView tvPreview, String fontKey) {
+        Typeface verseTypeface = QuranFontHelper.getFont(context, fontKey);
+        Typeface numberTypeface = QuranFontHelper.getFont(context, QuranFontHelper.FONT_QURAN_MSG);
+
+        String verseText = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+        String numberText = "\u00A0\u200F﴿١﴾\u200F";
+
+        SpannableStringBuilder ssb = new SpannableStringBuilder();
+
+        int startVerse = ssb.length();
+        ssb.append(verseText);
+        int endVerse = ssb.length();
+        if (verseTypeface != null) {
+            ssb.setSpan(new QuranFontHelper.CustomTypefaceSpan(verseTypeface), startVerse, endVerse, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        int startNumber = ssb.length();
+        ssb.append(numberText);
+        int endNumber = ssb.length();
+        if (numberTypeface != null) {
+            ssb.setSpan(new QuranFontHelper.CustomTypefaceSpan(numberTypeface), startNumber, endNumber, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        tvPreview.setText(ssb);
     }
 
     private void updateRepeatLabel(TextView tv, int count) {
