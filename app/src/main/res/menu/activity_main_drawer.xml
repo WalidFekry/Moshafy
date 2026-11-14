@@ -32,7 +32,7 @@
         <item
             android:id="@+id/appshare2"
             android:icon="@drawable/ic_walid"
-            android:title="مشاركه التطبيق على الفيسبوك" />
+            android:title="مشاركة التطبيق على الفيسبوك" />
         <item
             android:id="@+id/site"
             android:icon="@drawable/ic_call_black_24dp"
