@@ -38,7 +38,6 @@ public class DifferentActivity extends BaseActivity {
 
         checkAndShowDialog(SharedPrefsConstants.MONW3AT_FIRST_TIME, "في قسم منوعات إسلامية، ستجد الأذكار، الرقية الشرعية، الأحاديث، الوصايا، سنن الرسول ﷺ، وأحكام الحج والعمرة 💙");
 
-        showBanner(binding.adsContainer);
     }
 
     private void openRamadanBagApp() {
