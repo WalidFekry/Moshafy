@@ -40,7 +40,6 @@ public class MainStory extends BaseActivity {
         });
         executor.shutdown();
 
-        showBanner(binding.adsContainer);
         promptUserForRating();
     }
 }

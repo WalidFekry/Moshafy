@@ -40,7 +40,6 @@ public class MainAyaandabra extends BaseActivity {
         });
         executor.shutdown();
 
-        showBanner(binding.adsContainer);
         promptUserForRating();
     }
 }

@@ -41,7 +41,6 @@ public class Mainnewstory extends BaseActivity {
         });
         executor.shutdown();
 
-        showBanner(binding.adsContainer);
         promptUserForRating();
     }
 }
