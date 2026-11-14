@@ -112,7 +112,7 @@ public class AzkarDetailActivity extends BaseActivity {
         String subtitle = String.format(Locale.getDefault(), "الذكر %d من %d", currentDisplay, total);
         binding.tvSubtitle.setText(subtitle);
 
-        String pageIndicator = String.format(Locale.getDefault(), "%d / %d", currentDisplay, total);
+        String pageIndicator = String.format(Locale.getDefault(), "%d / %d", total, currentDisplay);
         binding.tvPageIndicator.setText(pageIndicator);
 
         binding.btnPrev.setEnabled(position > 0);

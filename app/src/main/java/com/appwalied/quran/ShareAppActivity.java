@@ -25,7 +25,7 @@ public class ShareAppActivity extends BaseActivity {
 
     private String getFormattedShareText() {
         return getString(R.string.about1) + "\n\n" +
-                "لتحميل تطبيق مصحفي 👇👇:\n" +
+                "لتحميل تطبيق مصحفي 👇👇\n" +
                 "https://play.google.com/store/apps/details?id=" + getPackageName();
     }
 

@@ -54,7 +54,7 @@
                 android:id="@+id/rb_font_quran_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="خط القرآن العادي (quran_font)"
+                android:text="خط القرآن العادي (quran)"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp" />
         </RadioGroup>

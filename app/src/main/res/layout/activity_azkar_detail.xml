@@ -57,7 +57,7 @@
                         android:id="@+id/tv_subtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/flat5"
+                        android:fontFamily="@font/jazeera"
                         android:textColor="#D1E8F0"
                         android:textSize="12sp"
                         tools:text="الذكر ١ من ٣٠" />
@@ -118,7 +118,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/flat5"
+            android:fontFamily="@font/digital"
             android:gravity="center"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"

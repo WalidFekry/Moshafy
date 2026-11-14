@@ -25,8 +25,6 @@ import com.appwalied.quran.ads.AdsManager;
 import com.appwalied.quran.utils.shared_helper.SharedHelper;
 import com.appwalied.quran.utils.shared_helper.SharedPrefsConstants;
 import com.appwalied.quran.utils.shared_helper.views.CustomDialogClass;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 import guy4444.smartrate.SmartRate;
 
@@ -94,11 +92,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         }
     }
 
-    public Handler getHandler() {
-        return handler;
-    }
-
-
     @Override
     public void showLoading() {
         if (loadingDialog != null && loadingDialog.isShowing()) {
@@ -113,18 +106,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         loadingDialog.setContentView(R.layout.loading_dialog);
         loadingDialog.setCancelable(false);
         loadingDialog.show();
-    }
-
-    @Override
-    public void showMessage(int resId) {
-        Toast.makeText(this, resId, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showMessage(String message) {
-        if (message != null) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -199,14 +180,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     protected void onPause() {
-        AdsManager.getInstance().onPauseActivity(this);
         super.onPause();
+        AdsManager.getInstance().onPauseActivity(this);
     }
 
     @Override
     protected void onResume() {
-        AdsManager.getInstance().onResumeActivity(this);
         super.onResume();
+        AdsManager.getInstance().onResumeActivity(this);
     }
 
     @Override
