@@ -57,16 +57,19 @@ public class HijriCalendarHelper {
     }
 
     public static HijriDateResult getHijriDateWithOffset(int offset) {
-        Calendar cal = Calendar.getInstance();
-        if (offset != 0) {
-            cal.add(Calendar.DAY_OF_MONTH, offset);
-        }
-
-        int dayOfWeekIndex = cal.get(Calendar.DAY_OF_WEEK) - 1; // Calendar.SUNDAY = 1 -> index 0
+        // Today's fixed real-world day of week (Unchanged by Hijri offset)
+        Calendar todayCal = Calendar.getInstance();
+        int dayOfWeekIndex = todayCal.get(Calendar.DAY_OF_WEEK) - 1; // Calendar.SUNDAY = 1 -> index 0
         if (dayOfWeekIndex < 0 || dayOfWeekIndex >= DAY_NAMES.length) {
             dayOfWeekIndex = 0;
         }
         String dayName = DAY_NAMES[dayOfWeekIndex];
+
+        // Shifted calendar for Islamic Hijri lunar date calculation only
+        Calendar hijriCal = Calendar.getInstance();
+        if (offset != 0) {
+            hijriCal.add(Calendar.DAY_OF_MONTH, offset);
+        }
 
         int day;
         int monthIndex; // 0..11
@@ -74,7 +77,7 @@ public class HijriCalendarHelper {
 
         try {
             IslamicCalendar islamicCalendar = new IslamicCalendar();
-            islamicCalendar.setTime(cal.getTime());
+            islamicCalendar.setTime(hijriCal.getTime());
 
             year = islamicCalendar.get(IslamicCalendar.YEAR);
             monthIndex = islamicCalendar.get(IslamicCalendar.MONTH); // 0-based
@@ -84,7 +87,7 @@ public class HijriCalendarHelper {
                 monthIndex = 0;
             }
         } catch (Exception e) {
-            int[] fallback = calculateHijriFallback(cal.getTime());
+            int[] fallback = calculateHijriFallback(hijriCal.getTime());
             day = fallback[0];
             monthIndex = fallback[1] - 1;
             year = fallback[2];
