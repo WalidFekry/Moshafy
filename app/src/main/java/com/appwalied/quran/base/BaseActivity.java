@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         applyAppTheme();
+        EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         // تهيئة SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
