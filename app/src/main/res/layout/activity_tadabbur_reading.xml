@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/quran_page_bg"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".tadabbur.ui.TadabburReadingActivity">
+
+    <!-- Top Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:titleCentered="true"
+        app:navigationIcon="@drawable/ic_back_button"
+        app:title="قراءة القرآن وتدبره"
+        app:titleTextAppearance="@style/TitleBarTextAppearance"
+        app:titleTextColor="@color/text_white" />
+
+    <!-- Control Header Bar (Font size, Page, Juz info) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/btn_font_size"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="تغيير حجم الخط"
+            android:focusable="true"
+            android:padding="4dp"
+            android:src="@drawable/ic_font_size"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ffon1"
+            android:gravity="center"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="سورة الفاتحة • الجزء 1 • ص 1" />
+
+        <ImageView
+            android:id="@+id/btn_search_in_surah"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="بحث"
+            android:focusable="true"
+            android:padding="4dp"
+            android:src="@drawable/ic_search"
+            app:tint="@color/colorPrimary" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/card_stroke" />
+
+    <!-- Ayahs RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ayahs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="12dp"
+        tools:listitem="@layout/item_tadabbur_ayah" />
+
+    <!-- Bottom Navigation Bar for Page/Surah Browsing -->
+    <LinearLayout
+        android:id="@+id/layout_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/jazeera"
+            android:text="التالية"
+            android:textColor="@color/colorPrimary"
+            app:icon="@drawable/ic_previous"
+            app:iconGravity="end"
+            app:iconTint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_page_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jazeera"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            tools:text="صفحة 1 من 604" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_prev"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/jazeera"
+            android:text="السابقة"
+            android:textColor="@color/colorPrimary"
+            app:icon="@drawable/ic_skip_next"
+            app:iconTint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/card_bg"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_bookmark_surah_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/quran_font"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="سورة الفاتحة - الآية 1" />
+
+            <ImageView
+                android:id="@+id/btn_delete_bookmark"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="حذف من المفضلة"
+                android:focusable="true"
+                android:padding="4dp"
+                android:src="@drawable/ic_close"
+                app:tint="@color/red" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bookmark_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="end"
+            android:gravity="start"
+            android:fontFamily="@font/uthmanii"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/quran_text_color"
+            android:textSize="16sp"
+            tools:text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

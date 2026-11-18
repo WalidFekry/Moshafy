@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".tadabbur.ui.TadabburAyahDetailActivity">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/ic_back_button"
+        app:titleCentered="true"
+        app:title="تفاصيل الآية والتفسير"
+        app:titleTextAppearance="@style/TitleBarTextAppearance"
+        app:titleTextColor="@color/text_white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <!-- Ayah Card Header -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_detail_surah_info"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/qumsg"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:text="سورة الفاتحة - الآية 1" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_juz_page"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/ffon1"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            tools:text="الجزء 1 • الصفحة 1" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_detail_ayah_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="start"
+                        android:layout_gravity="end"
+                        android:fontFamily="@font/uthmanii"
+                        android:lineSpacingExtra="8dp"
+                        android:textColor="@color/quran_text_color"
+                        android:textSize="22sp"
+                        tools:text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/card_stroke" />
+
+                    <!-- Header Quick Actions -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_detail_copy"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="نسخ الآية"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            app:icon="@drawable/ic_content_copy"
+                            app:iconTint="@color/text_secondary" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_detail_share"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="مشاركة"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            app:icon="@drawable/ic_share"
+                            app:iconTint="@color/text_secondary" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_detail_bookmark"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/flat5"
+                            android:text="حفظ"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            app:icon="@drawable/ic_favorite_border"
+                            app:iconTint="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Main Categories Tab Segment -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/search_input_bg"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorHeight="3dp"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextAppearance="@style/TitleBarTextAppearance"
+                app:tabTextColor="@color/text_secondary" />
+
+            <!-- Tafseer Selector Sub-Segment (Only shown when Tafseer tab is active) -->
+            <LinearLayout
+                android:id="@+id/layout_tafseer_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/search_input_bg"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_tafseer_saadi"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/ffon1"
+                    android:text="تفسير السعدي"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_tafseer_moysar"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/ffon1"
+                    android:text="التفسير الميسر"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_tafseer_bughiu"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/ffon1"
+                    android:text="تفسير البغوي"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+
+            <!-- Text Content Display Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_content_section_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:fontFamily="@font/qumsg"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:text="تفسير السعدي" />
+
+                        <!-- Font zoom control inside content -->
+                        <ImageView
+                            android:id="@+id/btn_content_zoom_in"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:contentDescription="تكبير الخط"
+                            android:focusable="true"
+                            android:padding="4dp"
+                            android:src="@drawable/plus"
+                             />
+
+                        <ImageView
+                            android:id="@+id/btn_content_zoom_out"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="4dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:contentDescription="تصغير الخط"
+                            android:focusable="true"
+                            android:padding="4dp"
+                            android:src="@drawable/minus"
+                             />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@color/card_stroke" />
+
+                    <!-- Content Text View -->
+                    <TextView
+                        android:id="@+id/tv_content_body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ffon1"
+                        android:layout_gravity="end"
+                        android:gravity="start"
+                        android:lineSpacingExtra="3dp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        tools:text="نص التفسير أو الإعراب أو معاني الآية يظهر هنا بشكل نسق..." />
+
+                    <!-- Empty / Unavailable Info Box -->
+                    <LinearLayout
+                        android:id="@+id/layout_content_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_about"
+                            app:tint="@color/text_secondary" />
+
+                        <TextView
+                            android:id="@+id/tv_empty_notice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/ffon1"
+                            android:gravity="center"
+                            android:text="لا تتوفر معلومات لهذا القسم لهذه الآية الشريفة."
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Ayah Navigation Bar (Previous / Next Ayah) -->
+    <LinearLayout
+        android:id="@+id/layout_bottom_ayah_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg"
+        android:elevation="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next_ayah"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/jazeera"
+            android:text="الآية التالية"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            app:icon="@drawable/ic_previous"
+            app:iconGravity="end"
+            app:iconTint="@color/colorPrimary" />
+
+
+
+        <TextView
+            android:id="@+id/tv_ayah_nav_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jazeera"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            tools:text="آية 1 من 6236" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_prev_ayah"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/jazeera"
+            android:text="الآية السابقة"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            app:icon="@drawable/ic_skip_next"
+            app:iconTint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</LinearLayout>
