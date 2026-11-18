@@ -9,14 +9,18 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkDao;
+import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
+
 @Database(
     entities = {
         BookmarkEntity.class,
         ReadingProgressEntity.class,
         QuranSettingsEntity.class,
-        FavoriteSurahEntity.class
+        FavoriteSurahEntity.class,
+        TadabburBookmarkEntity.class
     },
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -28,6 +32,22 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ReadingProgressDao readingProgressDao();
     public abstract QuranSettingsDao quranSettingsDao();
     public abstract FavoriteSurahDao favoriteSurahDao();
+    public abstract TadabburBookmarkDao tadabburBookmarkDao();
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `tadabbur_bookmarks` (" +
+                    "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                    "`sora` INTEGER NOT NULL, " +
+                    "`ayaNo` INTEGER NOT NULL, " +
+                    "`page` INTEGER NOT NULL, " +
+                    "`jozz` INTEGER NOT NULL, " +
+                    "`soraNameAr` TEXT, " +
+                    "`ayaText` TEXT, " +
+                    "`timestamp` INTEGER NOT NULL)");
+        }
+    };
 
     public static AppDatabase getInstance(Context context) {
         if (instance == null) {
@@ -38,6 +58,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class,
                             DATABASE_NAME
                     )
+                    .addMigrations(MIGRATION_1_2)
                     .build();
                 }
             }
