@@ -122,7 +122,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                         .setAnimationEnabled(true)
                         .setMessageColor(R.color.colorPrimary)
                         .setTitleColor(R.color.colorAccent)
-                        .setIconTint(R.color.white)
                         .setGravity(Gravity.DISPLAY_CLIP_HORIZONTAL)
                         .setTypeface(Typeface.createFromAsset(getAssets(), "flat5.otf"))
                         .addButton("خروج", R.color.white, R.color.colorPrimary, MainActivity.this::finish)

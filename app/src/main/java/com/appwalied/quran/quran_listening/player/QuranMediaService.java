@@ -1,11 +1,13 @@
 package com.appwalied.quran.quran_listening.player;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.os.Build;
 import android.os.IBinder;
 
@@ -89,6 +91,13 @@ public class QuranMediaService extends Service implements AudioPlayerManager.OnM
                 stopSelf();
                 return START_NOT_STICKY;
             }
+        } else if (intent == null) {
+            // Service was restarted by system after process death.
+            // If media is not actively playing, stop self to avoid background FGS start exception.
+            if (!playerManager.isPlaying() && !playerManager.isPlayWhenReady()) {
+                stopSelf();
+                return START_NOT_STICKY;
+            }
         }
 
         updateNotification();
@@ -151,7 +160,25 @@ public class QuranMediaService extends Service implements AudioPlayerManager.OnM
                 )
                 .addAction(R.drawable.ic_skip_next, "التالية", pendingNext);
 
-        startForeground(NOTIFICATION_ID, builder.build());
+        Notification notification = builder.build();
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
+            } else {
+                startForeground(NOTIFICATION_ID, notification);
+            }
+        } catch (Exception e) {
+            // Android 12+ (API 31+) throws ForegroundServiceStartNotAllowedException
+            // if app is in background when startForeground is called.
+            // Catching it prevents crash and falls back to updating notification via NotificationManager.
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (manager != null) {
+                try {
+                    manager.notify(NOTIFICATION_ID, notification);
+                } catch (Exception ignored) {
+                }
+            }
+        }
     }
 
     @Override
