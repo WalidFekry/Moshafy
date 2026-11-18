@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="1"
+                android:fontFamily="@font/ffon1"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -48,6 +49,7 @@
                 android:id="@+id/tv_surah_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quran_font"
                 android:text="سورة الفاتحة"
                 android:textColor="@color/text_primary"
                 android:textSize="17sp"
@@ -58,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:fontFamily="@font/ffon1"
                 android:text="آياتها 7 • صفحة 1"
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp" />

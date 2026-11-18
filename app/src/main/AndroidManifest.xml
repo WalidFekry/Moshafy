@@ -59,6 +59,20 @@
             android:name=".quran.ui.QuranSearchActivity"
             android:exported="false" />
 
+        <!-- Tadabbur & Quranic Sciences Feature -->
+        <activity
+            android:name=".tadabbur.ui.TadabburMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tadabbur.ui.TadabburReadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tadabbur.ui.TadabburAyahDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tadabbur.ui.TadabburSearchActivity"
+            android:exported="false" />
+
         <!-- New Quran Listening Feature -->
         <activity
             android:name=".quran_listening.QuranListeningActivity"
