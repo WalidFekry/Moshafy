@@ -5,7 +5,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class QuranDatabaseHelper extends SQLiteAssetHelper {
 
-    public static final String DB_NAME = "quran.db";
+    public static final String DB_NAME = "quran_v1.db";
     public static final int DB_VERSION = 1;
 
     public QuranDatabaseHelper(Context context) {
