@@ -238,17 +238,20 @@ public class TadabburMainActivity extends BaseActivity {
     }
 
     private void filterCurrentTab(String query) {
-        String q = query.trim().toLowerCase();
+        String q = query.trim();
         if (q.isEmpty()) {
             switchTabContent();
             return;
         }
 
+        String normQuery = QuranV2Repository.normalizeArabic(q);
+
         switch (currentTabPosition) {
             case 0:
                 List<QuranV2Surah> filteredSurahs = new ArrayList<>();
                 for (QuranV2Surah s : allSurahs) {
-                    if (s.getNameAr().contains(q) || s.getNameEn().toLowerCase().contains(q) || String.valueOf(s.getSoraNumber()).equals(q)) {
+                    String normSurahAr = QuranV2Repository.normalizeArabic(s.getNameAr());
+                    if (normSurahAr.contains(normQuery) || s.getNameEn().toLowerCase().contains(q.toLowerCase()) || String.valueOf(s.getSoraNumber()).equals(q)) {
                         filteredSurahs.add(s);
                     }
                 }
@@ -258,7 +261,8 @@ public class TadabburMainActivity extends BaseActivity {
             case 1:
                 List<QuranV2Juz> filteredJuzs = new ArrayList<>();
                 for (QuranV2Juz j : allJuzs) {
-                    if (String.valueOf(j.getJuzNumber()).contains(q) || j.getStartSoraNameAr().contains(q)) {
+                    String normSoraName = QuranV2Repository.normalizeArabic(j.getStartSoraNameAr());
+                    if (String.valueOf(j.getJuzNumber()).contains(q) || normSoraName.contains(normQuery)) {
                         filteredJuzs.add(j);
                     }
                 }
@@ -268,7 +272,8 @@ public class TadabburMainActivity extends BaseActivity {
             case 2:
                 List<QuranV2Page> filteredPages = new ArrayList<>();
                 for (QuranV2Page p : allPages) {
-                    if (String.valueOf(p.getPageNumber()).contains(q) || p.getSurahsSummary().contains(q)) {
+                    String normSurahs = QuranV2Repository.normalizeArabic(p.getSurahsSummary());
+                    if (String.valueOf(p.getPageNumber()).contains(q) || normSurahs.contains(normQuery)) {
                         filteredPages.add(p);
                     }
                 }
@@ -278,7 +283,9 @@ public class TadabburMainActivity extends BaseActivity {
             case 3:
                 List<TadabburBookmarkEntity> filteredBookmarks = new ArrayList<>();
                 for (TadabburBookmarkEntity b : allBookmarks) {
-                    if (b.getSoraNameAr().contains(q) || b.getAyaText().contains(q)) {
+                    String normSoraName = QuranV2Repository.normalizeArabic(b.getSoraNameAr());
+                    String normAyaText = QuranV2Repository.normalizeArabic(b.getAyaText());
+                    if (normSoraName.contains(normQuery) || normAyaText.contains(normQuery)) {
                         filteredBookmarks.add(b);
                     }
                 }

@@ -25,7 +25,7 @@ public class AboutActivity extends BaseActivity {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             binding.tvAppVersion.setText("الإصدار " + pInfo.versionName);
         } catch (Exception e) {
-            binding.tvAppVersion.setText("الإصدار 6.0");
+            binding.tvAppVersion.setText("الإصدار 7.0");
         }
 
         // Action Listeners

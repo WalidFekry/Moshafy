@@ -114,7 +114,7 @@
                         android:paddingVertical="4dp"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp"
-                        tools:text="الإصدار 6.0" />
+                        tools:text="الإصدار 7.0" />
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/animationView"

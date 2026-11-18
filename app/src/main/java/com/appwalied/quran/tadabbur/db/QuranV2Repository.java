@@ -222,56 +222,67 @@ public class QuranV2Repository {
                 return;
             }
 
-            String query = queryText.trim();
-            String normalizedQuery = normalizeArabic(query);
+            String rawQuery = queryText.trim();
+            String normQuery = normalizeArabic(rawQuery);
+            String likeRaw = "%" + rawQuery + "%";
+            String likeNorm = "%" + normQuery + "%";
+
             SQLiteDatabase db = helper.getReadableDatabase();
+            String sql;
+            String[] args;
 
-            String sql = "SELECT * FROM quran ORDER BY id ASC";
-            Cursor cursor = db.rawQuery(sql, null);
+            switch (scope) {
+                case AYAH_TEXT:
+                    sql = "SELECT * FROM quran WHERE aya_text_emlaey LIKE ? OR aya_text LIKE ? OR aya_text_tashkil LIKE ? ORDER BY id ASC LIMIT 150";
+                    args = new String[]{likeNorm, likeRaw, likeRaw};
+                    break;
+                case MAANY:
+                    sql = "SELECT * FROM quran WHERE maany_aya LIKE ? ORDER BY id ASC LIMIT 150";
+                    args = new String[]{likeRaw};
+                    break;
+                case EARAB:
+                    sql = "SELECT * FROM quran WHERE earab_quran LIKE ? ORDER BY id ASC LIMIT 150";
+                    args = new String[]{likeRaw};
+                    break;
+                case TAFSEER:
+                    sql = "SELECT * FROM quran WHERE tafseer_moysar LIKE ? OR tafseer_saadi LIKE ? OR tafseer_bughiu LIKE ? ORDER BY id ASC LIMIT 150";
+                    args = new String[]{likeRaw, likeRaw, likeRaw};
+                    break;
+                case ALL:
+                default:
+                    sql = "SELECT * FROM quran WHERE aya_text_emlaey LIKE ? OR sora_name_ar LIKE ? OR aya_text LIKE ? OR maany_aya LIKE ? OR earab_quran LIKE ? OR tafseer_moysar LIKE ? OR tafseer_saadi LIKE ? OR tafseer_bughiu LIKE ? ORDER BY id ASC LIMIT 150";
+                    args = new String[]{likeNorm, likeRaw, likeRaw, likeRaw, likeRaw, likeRaw, likeRaw, likeRaw};
+                    break;
+            }
 
+            Cursor cursor = db.rawQuery(sql, args);
             if (cursor != null) {
                 while (cursor.moveToNext()) {
-                    QuranV2Ayah ayah = mapAyah(cursor);
-                    boolean match = false;
-
-                    switch (scope) {
-                        case AYAH_TEXT:
-                            match = matchesText(ayah.getAyaTextEmlaey(), normalizedQuery) ||
-                                    matchesText(ayah.getAyaText(), query);
-                            break;
-                        case MAANY:
-                            match = matchesText(ayah.getMaanyAya(), query);
-                            break;
-                        case EARAB:
-                            match = matchesText(ayah.getEarabQuran(), query);
-                            break;
-                        case TAFSEER:
-                            match = matchesText(ayah.getTafseerMoysar(), query) ||
-                                    matchesText(ayah.getTafseerSaadi(), query) ||
-                                    matchesText(ayah.getTafseerBughiu(), query);
-                            break;
-                        case ALL:
-                        default:
-                            match = matchesText(ayah.getAyaTextEmlaey(), normalizedQuery) ||
-                                    matchesText(ayah.getAyaText(), query) ||
-                                    matchesText(ayah.getSoraNameAr(), query) ||
-                                    matchesText(ayah.getMaanyAya(), query) ||
-                                    matchesText(ayah.getEarabQuran(), query) ||
-                                    matchesText(ayah.getTafseerMoysar(), query) ||
-                                    matchesText(ayah.getTafseerSaadi(), query) ||
-                                    matchesText(ayah.getTafseerBughiu(), query);
-                            break;
-                    }
-
-                    if (match) {
-                        results.add(ayah);
-                        if (results.size() >= 150) {
-                            break;
-                        }
-                    }
+                    results.add(mapAyah(cursor));
                 }
                 cursor.close();
             }
+
+            // Fallback in-memory check if SQL LIKE returned empty (e.g. for diacritic variations in Tafseer/Eerab)
+            if (results.isEmpty()) {
+                String fullSql = "SELECT * FROM quran ORDER BY id ASC";
+                Cursor c = db.rawQuery(fullSql, null);
+                if (c != null) {
+                    while (c.moveToNext()) {
+                        QuranV2Ayah ayah = mapAyah(c);
+                        if (matchesText(ayah.getAyaTextEmlaey(), normQuery) ||
+                                matchesText(ayah.getSoraNameAr(), normQuery) ||
+                                matchesText(ayah.getTafseerMoysar(), normQuery) ||
+                                matchesText(ayah.getEarabQuran(), normQuery) ||
+                                matchesText(ayah.getMaanyAya(), normQuery)) {
+                            results.add(ayah);
+                            if (results.size() >= 150) break;
+                        }
+                    }
+                    c.close();
+                }
+            }
+
             mainHandler.post(() -> callback.onResult(results));
         });
     }
