@@ -87,7 +87,6 @@ public class ImageQuranDownloadActivity extends BaseActivity {
                 binding.tvDownloadStatus.setText(statusText);
                 binding.progressDownload.setProgress(percent);
                 binding.tvDownloadPercent.setText(percent + "%");
-                updateStorageInfo();
             }
 
             @Override

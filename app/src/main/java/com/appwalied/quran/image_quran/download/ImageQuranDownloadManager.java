@@ -170,7 +170,14 @@ public class ImageQuranDownloadManager {
     }
 
     public boolean downloadSingleFile(String url, File destFile) {
-        File tmpFile = new File(destFile.getParentFile(), destFile.getName() + ".tmp");
+        File parentDir = destFile.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            boolean created = parentDir.mkdirs();
+            if (!created && !parentDir.exists()) {
+                return false;
+            }
+        }
+        File tmpFile = new File(parentDir, destFile.getName() + ".tmp");
         try {
             Request request = new Request.Builder().url(url).build();
             try (Response response = httpClient.newCall(request).execute()) {
