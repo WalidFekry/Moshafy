@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ffon1"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="سورة البقرة" />
@@ -74,7 +74,7 @@
             android:layout_marginEnd="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_bookmark"
-            app:tint="@color/white" />
+            app:tint="#FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btn_download_offline"
@@ -83,7 +83,7 @@
             android:layout_marginEnd="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_download"
-            app:tint="@color/white" />
+            app:tint="#FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btn_settings"
@@ -91,7 +91,7 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_tune"
-            app:tint="@color/white" />
+            app:tint="#FFFFFF" />
 
     </LinearLayout>
 
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ffon1"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="11sp"
                 tools:text="00:00 / 01:30" />
 
@@ -145,7 +145,7 @@
                 android:layout_height="36dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_repeat"
-                app:tint="@color/white" />
+                app:tint="#FFFFFF" />
         </LinearLayout>
 
         <!-- Divider -->
@@ -168,7 +168,7 @@
                 android:layout_height="36dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_chevron_left"
-                app:tint="@color/white" />
+                app:tint="#FFFFFF" />
 
 
 
@@ -179,7 +179,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/ffon1"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 tools:text="صفحة 15 من 604 - الجزء 1" />
 
@@ -189,7 +189,7 @@
                 android:layout_height="36dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_chevron_right"
-                app:tint="@color/white" />
+                app:tint="#FFFFFF" />
 
 
         </LinearLayout>
@@ -211,7 +211,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/flat5"
                 android:text="الفهرس"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 app:icon="@drawable/ic_grid"
                 app:iconGravity="top"
@@ -226,7 +226,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/flat5"
                 android:text="السور"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 app:icon="@drawable/ic_book"
                 app:iconGravity="top"
@@ -241,7 +241,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/flat5"
                 android:text="الأجزاء"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 app:icon="@drawable/ic_layers"
                 app:iconGravity="top"
@@ -256,7 +256,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/flat5"
                 android:text="علاماتي"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 app:icon="@drawable/ic_bookmark"
                 app:iconGravity="top"
@@ -271,7 +271,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/flat5"
                 android:text="تنقل"
-                android:textColor="@color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 app:icon="@drawable/ic_compass"
                 app:iconGravity="top"

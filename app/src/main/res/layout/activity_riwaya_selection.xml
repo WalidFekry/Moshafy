@@ -201,7 +201,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/ffon1"
         android:text="فتح المصحف الشريف"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="16dp" />
