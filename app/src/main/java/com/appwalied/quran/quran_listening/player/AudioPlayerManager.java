@@ -15,6 +15,7 @@ import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
 import androidx.media3.exoplayer.ExoPlayer;
 
+import com.appwalied.quran.quran_listening.download.DownloadedSurahEntity;
 import com.appwalied.quran.quran_listening.download.SurahDownloadManager;
 
 import java.io.File;
@@ -23,6 +24,21 @@ import java.util.List;
 import java.util.Locale;
 
 public class AudioPlayerManager implements Player.Listener {
+
+    public static final String[] SURAH_NAMES_AR = {
+            "الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس",
+            "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه",
+            "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم",
+            "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر",
+            "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق",
+            "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة",
+            "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج",
+            "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس",
+            "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد",
+            "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات",
+            "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر",
+            "المسد", "الإخلاص", "الفلق", "الناس"
+    };
 
     private static volatile AudioPlayerManager instance;
     private final Context context;
@@ -36,6 +52,8 @@ public class AudioPlayerManager implements Player.Listener {
     private String currentReciterName = "أبو بكر الشاطري";
     private String currentServerUrl = "https://server11.mp3quran.net/shatri/";
     private List<Integer> availableSurahIds = new ArrayList<>();
+    private List<DownloadedSurahEntity> downloadedPlaylist = null;
+    private int currentDownloadedIndex = -1;
     private boolean isCurrentSourceOffline = false;
 
     private int repeatMode = 0; // 0 = Off, 1 = Repeat One, 2 = Repeat All
@@ -108,6 +126,9 @@ public class AudioPlayerManager implements Player.Listener {
     public void playSurah(int surahId, String surahName, int reciterId, String reciterName, String serverUrl, List<Integer> availableSurahIds) {
         initPlayer();
 
+        this.downloadedPlaylist = null;
+        this.currentDownloadedIndex = -1;
+
         this.currentSurahId = surahId;
         this.currentSurahName = surahName;
         this.currentReciterId = reciterId;
@@ -122,7 +143,7 @@ public class AudioPlayerManager implements Player.Listener {
 
         SurahDownloadManager downloadManager = SurahDownloadManager.getInstance(context);
         File localFile = downloadManager.getLocalFile(reciterId, surahId);
-        boolean isLocalValid = localFile.exists() && localFile.length() >= 4096;
+        boolean isLocalValid = localFile != null && localFile.exists() && localFile.length() >= 4096;
 
         String audioSource;
         if (isLocalValid) {
@@ -148,6 +169,70 @@ public class AudioPlayerManager implements Player.Listener {
 
         if (listener != null) {
             listener.onSurahChanged(surahId, surahName, reciterName);
+            listener.onPlaybackStateChanged(true, true);
+        }
+
+        if (serviceUpdateListener != null) {
+            serviceUpdateListener.onMediaStateUpdated();
+        }
+
+        startProgressUpdates();
+    }
+
+    public void playDownloadedPlaylist(List<DownloadedSurahEntity> playlist, int startIndex) {
+        if (playlist == null || playlist.isEmpty()) return;
+        this.downloadedPlaylist = new ArrayList<>(playlist);
+        if (startIndex >= 0 && startIndex < playlist.size()) {
+            this.currentDownloadedIndex = startIndex;
+        } else {
+            this.currentDownloadedIndex = 0;
+        }
+        playDownloadedSurahEntity(this.downloadedPlaylist.get(this.currentDownloadedIndex));
+    }
+
+    public void playDownloadedSurahEntity(DownloadedSurahEntity entity) {
+        if (entity == null) return;
+        initPlayer();
+
+        this.currentSurahId = entity.getSurahId();
+        this.currentSurahName = entity.getSurahName();
+        this.currentReciterId = entity.getReciterId();
+        this.currentReciterName = entity.getReciterName();
+        if (entity.getRemoteUrl() != null && !entity.getRemoteUrl().trim().isEmpty()) {
+            this.currentServerUrl = entity.getRemoteUrl().endsWith("/") ? entity.getRemoteUrl() : entity.getRemoteUrl() + "/";
+        }
+
+        SurahDownloadManager downloadManager = SurahDownloadManager.getInstance(context);
+        File localFile = downloadManager.getLocalFile(entity.getReciterId(), entity.getSurahId());
+        boolean isLocalValid = localFile != null && localFile.exists() && localFile.length() >= 4096;
+
+        String audioSource;
+        if (isLocalValid) {
+            audioSource = localFile.getAbsolutePath();
+            this.isCurrentSourceOffline = true;
+        } else if (entity.getLocalFilePath() != null && !entity.getLocalFilePath().isEmpty() && new File(entity.getLocalFilePath()).exists()) {
+            audioSource = entity.getLocalFilePath();
+            this.isCurrentSourceOffline = true;
+        } else {
+            this.isCurrentSourceOffline = false;
+            if (!isNetworkAvailable()) {
+                stopProgressUpdates();
+                String errMsg = "هذه السورة غير محملة وتتطلب اتصالاً بالإنترنت للتشغيل";
+                if (listener != null) {
+                    listener.onError(errMsg);
+                }
+                return;
+            }
+            audioSource = entity.getRemoteUrl();
+        }
+
+        MediaItem mediaItem = MediaItem.fromUri(audioSource);
+        player.setMediaItem(mediaItem);
+        player.prepare();
+        player.setPlayWhenReady(true);
+
+        if (listener != null) {
+            listener.onSurahChanged(entity.getSurahId(), entity.getSurahName(), entity.getReciterName());
             listener.onPlaybackStateChanged(true, true);
         }
 
@@ -239,42 +324,139 @@ public class AudioPlayerManager implements Player.Listener {
         }
     }
 
+    public boolean isSurahDownloadedLocally(int reciterId, int surahId) {
+        SurahDownloadManager downloadManager = SurahDownloadManager.getInstance(context);
+        File localFile = downloadManager.getLocalFile(reciterId, surahId);
+        return localFile != null && localFile.exists() && localFile.length() >= 4096;
+    }
+
     public void playNext(String[] surahNames) {
+        if (downloadedPlaylist != null && !downloadedPlaylist.isEmpty()) {
+            if (currentDownloadedIndex >= 0 && currentDownloadedIndex < downloadedPlaylist.size() - 1) {
+                currentDownloadedIndex++;
+                playDownloadedSurahEntity(downloadedPlaylist.get(currentDownloadedIndex));
+                return;
+            } else if (repeatMode == 2 && !downloadedPlaylist.isEmpty()) {
+                currentDownloadedIndex = 0;
+                playDownloadedSurahEntity(downloadedPlaylist.get(currentDownloadedIndex));
+                return;
+            }
+            return;
+        }
+
+        String[] names = surahNames != null ? surahNames : SURAH_NAMES_AR;
         if (availableSurahIds == null || availableSurahIds.isEmpty()) {
             if (currentSurahId < 114) {
                 int nextId = currentSurahId + 1;
-                String nextName = (surahNames != null && nextId <= surahNames.length) ? surahNames[nextId - 1] : "سورة " + nextId;
+                String nextName = (nextId <= names.length) ? names[nextId - 1] : "سورة " + nextId;
                 playSurah(nextId, nextName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
             }
             return;
         }
 
+        boolean requireOfflineOnly = !isNetworkAvailable();
         int currentIndexInList = availableSurahIds.indexOf(currentSurahId);
-        if (currentIndexInList != -1 && currentIndexInList < availableSurahIds.size() - 1) {
-            int nextId = availableSurahIds.get(currentIndexInList + 1);
-            String nextName = (surahNames != null && nextId <= surahNames.length) ? surahNames[nextId - 1] : "سورة " + nextId;
+        int targetIndex = -1;
+
+        if (requireOfflineOnly) {
+            int startIndex = currentIndexInList != -1 ? currentIndexInList + 1 : 0;
+            for (int i = startIndex; i < availableSurahIds.size(); i++) {
+                int id = availableSurahIds.get(i);
+                if (isSurahDownloadedLocally(currentReciterId, id)) {
+                    targetIndex = i;
+                    break;
+                }
+            }
+            if (targetIndex == -1 && (repeatMode == 2 || currentIndexInList != -1)) {
+                int limit = currentIndexInList != -1 ? currentIndexInList : availableSurahIds.size();
+                for (int i = 0; i < limit; i++) {
+                    int id = availableSurahIds.get(i);
+                    if (isSurahDownloadedLocally(currentReciterId, id)) {
+                        targetIndex = i;
+                        break;
+                    }
+                }
+            }
+        } else {
+            if (currentIndexInList != -1 && currentIndexInList < availableSurahIds.size() - 1) {
+                targetIndex = currentIndexInList + 1;
+            } else if (repeatMode == 2 && !availableSurahIds.isEmpty()) {
+                targetIndex = 0;
+            }
+        }
+
+        if (targetIndex != -1 && targetIndex < availableSurahIds.size()) {
+            int nextId = availableSurahIds.get(targetIndex);
+            String nextName = (nextId <= names.length) ? names[nextId - 1] : "سورة " + nextId;
             playSurah(nextId, nextName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
-        } else if (repeatMode == 2 && !availableSurahIds.isEmpty()) {
-            int firstId = availableSurahIds.get(0);
-            String firstName = (surahNames != null && firstId <= surahNames.length) ? surahNames[firstId - 1] : "سورة " + firstId;
-            playSurah(firstId, firstName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
+        } else if (!requireOfflineOnly && currentSurahId < 114) {
+            int nextId = currentSurahId + 1;
+            String nextName = (nextId <= names.length) ? names[nextId - 1] : "سورة " + nextId;
+            playSurah(nextId, nextName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
         }
     }
 
     public void playPrevious(String[] surahNames) {
+        if (downloadedPlaylist != null && !downloadedPlaylist.isEmpty()) {
+            if (currentDownloadedIndex > 0 && currentDownloadedIndex < downloadedPlaylist.size()) {
+                currentDownloadedIndex--;
+                playDownloadedSurahEntity(downloadedPlaylist.get(currentDownloadedIndex));
+                return;
+            } else if (repeatMode == 2 && !downloadedPlaylist.isEmpty()) {
+                currentDownloadedIndex = downloadedPlaylist.size() - 1;
+                playDownloadedSurahEntity(downloadedPlaylist.get(currentDownloadedIndex));
+                return;
+            }
+            return;
+        }
+
+        String[] names = surahNames != null ? surahNames : SURAH_NAMES_AR;
         if (availableSurahIds == null || availableSurahIds.isEmpty()) {
             if (currentSurahId > 1) {
                 int prevId = currentSurahId - 1;
-                String prevName = (surahNames != null && prevId <= surahNames.length) ? surahNames[prevId - 1] : "سورة " + prevId;
+                String prevName = (prevId <= names.length) ? names[prevId - 1] : "سورة " + prevId;
                 playSurah(prevId, prevName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
             }
             return;
         }
 
+        boolean requireOfflineOnly = !isNetworkAvailable();
         int currentIndexInList = availableSurahIds.indexOf(currentSurahId);
-        if (currentIndexInList > 0) {
-            int prevId = availableSurahIds.get(currentIndexInList - 1);
-            String prevName = (surahNames != null && prevId <= surahNames.length) ? surahNames[prevId - 1] : "سورة " + prevId;
+        int targetIndex = -1;
+
+        if (requireOfflineOnly) {
+            int startIndex = currentIndexInList > 0 ? currentIndexInList - 1 : availableSurahIds.size() - 1;
+            for (int i = startIndex; i >= 0; i--) {
+                int id = availableSurahIds.get(i);
+                if (isSurahDownloadedLocally(currentReciterId, id)) {
+                    targetIndex = i;
+                    break;
+                }
+            }
+            if (targetIndex == -1 && repeatMode == 2) {
+                for (int i = availableSurahIds.size() - 1; i > currentIndexInList; i--) {
+                    int id = availableSurahIds.get(i);
+                    if (isSurahDownloadedLocally(currentReciterId, id)) {
+                        targetIndex = i;
+                        break;
+                    }
+                }
+            }
+        } else {
+            if (currentIndexInList > 0) {
+                targetIndex = currentIndexInList - 1;
+            } else if (repeatMode == 2 && !availableSurahIds.isEmpty()) {
+                targetIndex = availableSurahIds.size() - 1;
+            }
+        }
+
+        if (targetIndex != -1 && targetIndex < availableSurahIds.size()) {
+            int prevId = availableSurahIds.get(targetIndex);
+            String prevName = (prevId <= names.length) ? names[prevId - 1] : "سورة " + prevId;
+            playSurah(prevId, prevName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
+        } else if (!requireOfflineOnly && currentSurahId > 1) {
+            int prevId = currentSurahId - 1;
+            String prevName = (prevId <= names.length) ? names[prevId - 1] : "سورة " + prevId;
             playSurah(prevId, prevName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
         }
     }
@@ -386,7 +568,13 @@ public class AudioPlayerManager implements Player.Listener {
                 listener.onPlaybackCompleted();
             }
             if (repeatMode == 1) { // Repeat current Surah
-                playSurah(currentSurahId, currentSurahName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
+                if (downloadedPlaylist != null && currentDownloadedIndex >= 0 && currentDownloadedIndex < downloadedPlaylist.size()) {
+                    playDownloadedSurahEntity(downloadedPlaylist.get(currentDownloadedIndex));
+                } else {
+                    playSurah(currentSurahId, currentSurahName, currentReciterId, currentReciterName, currentServerUrl, availableSurahIds);
+                }
+            } else { // Auto-play next Surah in playlist (repeatMode 0 or 2)
+                playNext(SURAH_NAMES_AR);
             }
         }
     }

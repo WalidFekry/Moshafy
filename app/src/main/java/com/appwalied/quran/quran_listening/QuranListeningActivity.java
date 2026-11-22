@@ -22,7 +22,6 @@ import com.appwalied.quran.quran.room.AppDatabase;
 import com.appwalied.quran.quran_listening.adapter.DownloadedSurahAdapter;
 import com.appwalied.quran.quran_listening.adapter.ListeningReciterAdapter;
 import com.appwalied.quran.quran_listening.adapter.ListeningSurahAdapter;
-import com.appwalied.quran.quran_listening.download.DownloadStatus;
 import com.appwalied.quran.quran_listening.download.DownloadedSurahEntity;
 import com.appwalied.quran.quran_listening.download.SurahDownloadManager;
 import com.appwalied.quran.quran_listening.helper.ListeningPreferences;
@@ -67,21 +66,6 @@ public class QuranListeningActivity extends BaseActivity implements AudioPlayerM
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
-
-    private static final String[] SURAH_NAMES_AR = {
-            "الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس",
-            "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه",
-            "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم",
-            "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر",
-            "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق",
-            "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة",
-            "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج",
-            "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس",
-            "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد",
-            "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات",
-            "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر",
-            "المسد", "الإخلاص", "الفلق", "الناس"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,8 +225,8 @@ public class QuranListeningActivity extends BaseActivity implements AudioPlayerM
             }
         });
 
-        binding.btnPlayerNext.setOnClickListener(v -> playerManager.playNext(SURAH_NAMES_AR));
-        binding.btnPlayerPrev.setOnClickListener(v -> playerManager.playPrevious(SURAH_NAMES_AR));
+        binding.btnPlayerNext.setOnClickListener(v -> playerManager.playNext(AudioPlayerManager.SURAH_NAMES_AR));
+        binding.btnPlayerPrev.setOnClickListener(v -> playerManager.playPrevious(AudioPlayerManager.SURAH_NAMES_AR));
 
         binding.btnPlayerForward.setOnClickListener(v -> playerManager.seekForward(10000));
         binding.btnPlayerRewind.setOnClickListener(v -> playerManager.seekRewind(10000));
@@ -488,14 +472,28 @@ public class QuranListeningActivity extends BaseActivity implements AudioPlayerM
         startMediaService();
 
         downloadedAdapter.setActivePlayingDownloadId(downloadedSurah.getDownloadId());
-        playerManager.playSurah(
-                downloadedSurah.getSurahId(),
-                downloadedSurah.getSurahName(),
-                downloadedSurah.getReciterId(),
-                downloadedSurah.getReciterName(),
-                downloadedSurah.getRemoteUrl(),
-                null
-        );
+
+        List<DownloadedSurahEntity> playlist = (downloadedAdapter != null && !downloadedAdapter.getFilteredItems().isEmpty())
+                ? downloadedAdapter.getFilteredItems()
+                : completedDownloads;
+
+        int targetIndex = -1;
+        if (playlist != null) {
+            for (int i = 0; i < playlist.size(); i++) {
+                if (playlist.get(i).getDownloadId().equals(downloadedSurah.getDownloadId())) {
+                    targetIndex = i;
+                    break;
+                }
+            }
+        }
+
+        if (targetIndex != -1) {
+            playerManager.playDownloadedPlaylist(playlist, targetIndex);
+        } else {
+            List<DownloadedSurahEntity> singleList = new ArrayList<>();
+            singleList.add(downloadedSurah);
+            playerManager.playDownloadedPlaylist(singleList, 0);
+        }
     }
 
     private void confirmDeleteDownloadedSurah(DownloadedSurahEntity surah) {
@@ -636,8 +634,32 @@ public class QuranListeningActivity extends BaseActivity implements AudioPlayerM
     public void onSurahChanged(int surahId, String surahName, String reciterName) {
         binding.tvActiveSurahName.setText("سورة " + surahName);
         binding.tvActiveReciterName.setText(reciterName);
+
+        if (allSuwar != null) {
+            for (SurahModel s : allSuwar) {
+                if (s.getId() == surahId) {
+                    this.activeSurah = s;
+                    break;
+                }
+            }
+        }
+        if (activeSurah == null || activeSurah.getId() != surahId) {
+            this.activeSurah = new SurahModel(surahId, surahName, 1);
+        }
+
+        if (allReciters != null) {
+            for (ReciterModel r : allReciters) {
+                if (r.getId() == playerManager.getCurrentReciterId()) {
+                    this.activeReciter = r;
+                    break;
+                }
+            }
+        }
+
+        preferences.saveLastSurah(surahId, surahName);
+
         surahAdapter.setPlayingSurahId(surahId);
-        if (activeTab == 2 && downloadedAdapter != null) {
+        if (downloadedAdapter != null) {
             downloadedAdapter.setActivePlayingDownloadId(
                     playerManager.getCurrentReciterId() + "_" + surahId
             );

@@ -39,6 +39,10 @@ public class DownloadedSurahAdapter extends RecyclerView.Adapter<DownloadedSurah
         notifyDataSetChanged();
     }
 
+    public List<DownloadedSurahEntity> getFilteredItems() {
+        return itemsFiltered != null ? itemsFiltered : items;
+    }
+
     public void setActivePlayingDownloadId(String downloadId) {
         this.activePlayingDownloadId = downloadId != null ? downloadId : "";
         notifyDataSetChanged();
