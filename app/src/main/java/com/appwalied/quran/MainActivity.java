@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appwalied.quran.image_quran.ui.RiwayaSelectionActivity;
 import com.appwalied.quran.quran.ui.QuranActivity;
 import com.appwalied.quran.quran_listening.QuranListeningActivity;
 import com.appwalied.quran.tadabbur.ui.TadabburMainActivity;
@@ -201,6 +202,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private void setOnClickListeners() {
         binding.main.contentMain.cardHijriDate.setOnClickListener(v -> showHijriAdjustmentDialog());
+        binding.main.contentMain.cardImageQuran.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RiwayaSelectionActivity.class)));
         binding.main.contentMain.quranReading.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, QuranActivity.class)));
         binding.main.contentMain.quranTadabbur.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TadabburMainActivity.class)));
         binding.main.contentMain.notificationsMessages.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, NotificationsMessagesActivity.class)));

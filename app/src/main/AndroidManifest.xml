@@ -59,6 +59,20 @@
             android:name=".quran.ui.QuranSearchActivity"
             android:exported="false" />
 
+        <!-- Image Quran -->
+        <activity
+            android:name=".image_quran.ui.RiwayaSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".image_quran.ui.ImageQuranReaderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".image_quran.ui.ImageQuranDownloadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".image_quran.ui.ImageQuranSettingsActivity"
+            android:exported="false" />
+
         <!-- Tadabbur & Quranic Sciences Feature -->
         <activity
             android:name=".tadabbur.ui.TadabburMainActivity"

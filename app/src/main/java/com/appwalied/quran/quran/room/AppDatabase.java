@@ -9,6 +9,8 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.appwalied.quran.image_quran.data.ImageQuranBookmarkDao;
+import com.appwalied.quran.image_quran.data.ImageQuranBookmarkEntity;
 import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkDao;
 import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
 
@@ -18,9 +20,10 @@ import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
         ReadingProgressEntity.class,
         QuranSettingsEntity.class,
         FavoriteSurahEntity.class,
-        TadabburBookmarkEntity.class
+        TadabburBookmarkEntity.class,
+        ImageQuranBookmarkEntity.class
     },
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -33,6 +36,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract QuranSettingsDao quranSettingsDao();
     public abstract FavoriteSurahDao favoriteSurahDao();
     public abstract TadabburBookmarkDao tadabburBookmarkDao();
+    public abstract ImageQuranBookmarkDao imageQuranBookmarkDao();
 
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
@@ -49,6 +53,20 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
+    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `image_quran_bookmarks` (" +
+                    "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                    "`riwayaKey` TEXT, " +
+                    "`pageNumber` INTEGER NOT NULL, " +
+                    "`surahName` TEXT, " +
+                    "`juzNumber` INTEGER NOT NULL, " +
+                    "`title` TEXT, " +
+                    "`createdAt` INTEGER NOT NULL)");
+        }
+    };
+
     public static AppDatabase getInstance(Context context) {
         if (instance == null) {
             synchronized (AppDatabase.class) {
@@ -58,7 +76,8 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class,
                             DATABASE_NAME
                     )
-                    .addMigrations(MIGRATION_1_2)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .fallbackToDestructiveMigration(true)
                     .build();
                 }
             }

@@ -46,6 +46,8 @@
                 android:fontFamily="@font/jazeera"
                 android:textColor="@color/text_primary"
                 android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textStyle="bold"
                 tools:text="صفحة 15 (سورة البقرة)" />
 
@@ -55,6 +57,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/ffon1"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:textColor="@color/text_secondary"
                 android:textSize="11sp"
                 tools:text="حفص عن عاصم • الجزء 1 • 2026/03/28" />
