@@ -90,8 +90,10 @@ public class ImageQuranPagerAdapter extends RecyclerView.Adapter<ImageQuranPager
             ivPage.resetZoom();
             tvError.setVisibility(View.GONE);
 
-            File localFile = ImageQuranConfig.getLocalImageFile(context, currentRiwaya, page);
-            if (localFile.exists() && localFile.length() > 0) {
+            tvError.setOnClickListener(v -> bind(page, currentRiwaya));
+
+            if (ImageQuranConfig.isImageDownloaded(context, currentRiwaya, page)) {
+                File localFile = ImageQuranConfig.getLocalImageFile(context, currentRiwaya, page);
                 progressBar.setVisibility(View.GONE);
                 Picasso.get()
                         .load(localFile)
@@ -107,15 +109,24 @@ public class ImageQuranPagerAdapter extends RecyclerView.Adapter<ImageQuranPager
                             public void onSuccess() {
                                 progressBar.setVisibility(View.GONE);
 
-                                // Save downloaded image locally for offline reuse
+                                // Save downloaded image locally for offline reuse atomically
                                 if (ivPage.getDrawable() instanceof BitmapDrawable) {
                                     Bitmap bitmap = ((BitmapDrawable) ivPage.getDrawable()).getBitmap();
                                     if (bitmap != null) {
                                         Executors.newSingleThreadExecutor().execute(() -> {
-                                            try (FileOutputStream fos = new FileOutputStream(localFile)) {
+                                            File localFile = ImageQuranConfig.getLocalImageFile(context, currentRiwaya, page);
+                                            File tmpFile = new File(localFile.getParentFile(), localFile.getName() + ".tmp");
+                                            try (FileOutputStream fos = new FileOutputStream(tmpFile)) {
                                                 bitmap.compress(Bitmap.CompressFormat.JPEG, 95, fos);
                                                 fos.flush();
+                                                if (tmpFile.length() > 2048) {
+                                                    if (localFile.exists()) localFile.delete();
+                                                    tmpFile.renameTo(localFile);
+                                                } else {
+                                                    tmpFile.delete();
+                                                }
                                             } catch (Exception ignored) {
+                                                if (tmpFile.exists()) tmpFile.delete();
                                             }
                                         });
                                     }

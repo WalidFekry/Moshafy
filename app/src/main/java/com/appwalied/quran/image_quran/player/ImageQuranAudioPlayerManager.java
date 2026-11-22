@@ -1,7 +1,11 @@
 package com.appwalied.quran.image_quran.player;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -118,9 +122,15 @@ public class ImageQuranAudioPlayerManager {
 
         Uri uri;
         File localFile = ImageQuranConfig.getLocalAudioFile(context, page);
-        if (localFile.exists() && localFile.length() > 0) {
+        if (ImageQuranConfig.isAudioDownloaded(context, page)) {
             uri = Uri.fromFile(localFile);
         } else {
+            if (!isNetworkAvailable()) {
+                if (listener != null) {
+                    listener.onError("التلاوة غير محملة محلياً. يرجى الاتصال بالإنترنت للاستماع إليها.");
+                }
+                return;
+            }
             uri = Uri.parse(ImageQuranConfig.getAudioUrl(page));
         }
 
@@ -132,6 +142,19 @@ public class ImageQuranAudioPlayerManager {
         if (listener != null) {
             listener.onPageAudioChanged(page, true);
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm != null) {
+            NetworkCapabilities capabilities = cm.getNetworkCapabilities(cm.getActiveNetwork());
+            return capabilities != null && (
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
+            );
+        }
+        return false;
     }
 
     public void togglePlayPause() {

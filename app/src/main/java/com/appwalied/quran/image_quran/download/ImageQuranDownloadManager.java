@@ -194,11 +194,14 @@ public class ImageQuranDownloadManager {
                     outputStream.flush();
                 }
 
-                if (tmpFile.length() > 0) {
+                long minSize = destFile.getName().endsWith(".mp3") ? 4096 : 2048;
+                if (tmpFile.length() >= minSize) {
                     if (destFile.exists()) {
                         destFile.delete();
                     }
                     return tmpFile.renameTo(destFile);
+                } else {
+                    tmpFile.delete();
                 }
             }
         } catch (Exception e) {
@@ -244,8 +247,7 @@ public class ImageQuranDownloadManager {
     public int getDownloadedImagesCount(Riwaya riwaya) {
         int count = 0;
         for (int p = 1; p <= ImageQuranConfig.TOTAL_PAGES; p++) {
-            File f = ImageQuranConfig.getLocalImageFile(context, riwaya, p);
-            if (f.exists() && f.length() > 0) {
+            if (ImageQuranConfig.isImageDownloaded(context, riwaya, p)) {
                 count++;
             }
         }
@@ -258,7 +260,7 @@ public class ImageQuranDownloadManager {
         File[] files = dir.listFiles();
         if (files != null) {
             for (File f : files) {
-                if (f.isFile()) {
+                if (f.isFile() && f.length() > 2048) {
                     size += f.length();
                 }
             }
@@ -269,8 +271,7 @@ public class ImageQuranDownloadManager {
     public int getDownloadedAudioCount() {
         int count = 0;
         for (int p = 1; p <= ImageQuranConfig.TOTAL_PAGES; p++) {
-            File f = ImageQuranConfig.getLocalAudioFile(context, p);
-            if (f.exists() && f.length() > 0) {
+            if (ImageQuranConfig.isAudioDownloaded(context, p)) {
                 count++;
             }
         }
@@ -283,7 +284,7 @@ public class ImageQuranDownloadManager {
         File[] files = dir.listFiles();
         if (files != null) {
             for (File f : files) {
-                if (f.isFile()) {
+                if (f.isFile() && f.length() > 4096) {
                     size += f.length();
                 }
             }

@@ -86,11 +86,25 @@ public class ImageQuranConfig {
 
     public static boolean isImageDownloaded(Context context, Riwaya riwaya, int page) {
         File file = getLocalImageFile(context, riwaya, page);
-        return file.exists() && file.length() > 0;
+        if (file.exists()) {
+            if (file.length() > 2048) {
+                return true;
+            } else {
+                file.delete();
+            }
+        }
+        return false;
     }
 
     public static boolean isAudioDownloaded(Context context, int page) {
         File file = getLocalAudioFile(context, page);
-        return file.exists() && file.length() > 0;
+        if (file.exists()) {
+            if (file.length() > 4096) {
+                return true;
+            } else {
+                file.delete();
+            }
+        }
+        return false;
     }
 }
