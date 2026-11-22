@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_reader_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:fitsSystemWindows="true"
+    android:keepScreenOn="true">
+
+    <!-- ViewPager2 for Quran Pages (Forced LTR for Right-to-Left swipe gesture) -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_quran"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr" />
+
+    <!-- Top Overlay Bar -->
+    <LinearLayout
+        android:id="@+id/layout_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#D9000000"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingTop="36dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back_button"
+             />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_reader_surah_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ffon1"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="سورة البقرة" />
+
+            <TextView
+                android:id="@+id/tv_reader_riwaya_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/ffon1"
+                android:textColor="@color/gold_accent"
+                android:textSize="12sp"
+                tools:text="مصحف حفص عن عاصم" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_add_bookmark"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_bookmark"
+            app:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_download_offline"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_download"
+            app:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_settings"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_tune"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Bottom Overlay Controls Container -->
+    <LinearLayout
+        android:id="@+id/layout_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#E6000000"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Audio Control Bar -->
+        <LinearLayout
+            android:id="@+id/layout_audio_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_audio_play_pause"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_play"
+                app:tint="@color/gold_accent" />
+
+            <SeekBar
+                android:id="@+id/seekbar_audio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:progressTint="@color/gold_accent"
+                android:thumbTint="@color/gold_accent" />
+
+            <TextView
+                android:id="@+id/tv_audio_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ffon1"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                tools:text="00:00 / 01:30" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_audio_repeat"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_repeat"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="#33FFFFFF" />
+
+        <!-- Page Stepper and Quick Jump Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_next_page"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_left"
+                app:tint="@color/white" />
+
+
+
+            <TextView
+                android:id="@+id/tv_page_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/ffon1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="صفحة 15 من 604 - الجزء 1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_prev_page"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/white" />
+
+
+        </LinearLayout>
+
+        <!-- Bottom Actions Row (Indexes, Bookmarks, Switch Riwaya) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_visual_index"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/flat5"
+                android:text="الفهرس"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_grid"
+                app:iconGravity="top"
+                app:iconSize="20dp"
+                app:iconTint="@color/gold_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_surah_index"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/flat5"
+                android:text="السور"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_book"
+                app:iconGravity="top"
+                app:iconSize="20dp"
+                app:iconTint="@color/gold_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_juz_index"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/flat5"
+                android:text="الأجزاء"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_layers"
+                app:iconGravity="top"
+                app:iconSize="20dp"
+                app:iconTint="@color/gold_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_bookmarks"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/flat5"
+                android:text="علاماتي"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_bookmark"
+                app:iconGravity="top"
+                app:iconSize="20dp"
+                app:iconTint="@color/gold_accent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_quick_nav"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/flat5"
+                android:text="تنقل"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_compass"
+                app:iconGravity="top"
+                app:iconSize="20dp"
+                app:iconTint="@color/gold_accent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

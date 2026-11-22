@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_main"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Handle Bar -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="#44888888" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/ffon1"
+        android:gravity="center"
+        android:text="التنقل السريع في المصحف"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Jump to Page Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_confirm_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/flat5"
+            android:text="انتقال"
+            android:textColor="@color/white"
+            app:cornerRadius="12dp" />
+
+        <EditText
+            android:id="@+id/et_jump_page_num"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/search_input_bg"
+            android:fontFamily="@font/ffon1"
+            android:hint="أدخل رقم الصفحة (1 - 604)"
+            android:inputType="number"
+            android:maxLength="3"
+            android:paddingHorizontal="12dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="16dp"
+        android:background="#22888888" />
+
+    <!-- Quick Buttons Grid -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_quick_visual"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/ffon1"
+            android:text="فتح الفهرس المصور للصفحات"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_grid"
+            app:iconTint="@color/colorPrimary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_quick_surah"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/ffon1"
+            android:text="فتح فهرس السور الـ 114"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_book"
+            app:iconTint="@color/colorPrimary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_quick_juz"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/ffon1"
+            android:text="فتح فهرس الأجزاء الثلاثين"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_layers"
+            app:iconTint="@color/colorPrimary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_quick_bookmarks"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/ffon1"
+            android:text="عرض العلامات المرجعية المحفوظة"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_bookmark"
+            app:iconTint="@color/gold_accent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_quick_switch_riwaya"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/ffon1"
+            android:text="تغيير رواية المصحف (حفص / ورش)"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_tune"
+            app:iconTint="@color/colorAccent" />
+
+    </LinearLayout>
+
+</LinearLayout>

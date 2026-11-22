@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <com.appwalied.quran.image_quran.ui.ZoomableImageView
+        android:id="@+id/iv_quran_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="صفحة المصحف الشريف" />
+
+    <ProgressBar
+        android:id="@+id/progress_page_loading"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_page_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/ffon1"
+        android:padding="16dp"
+        android:text="تعذر تحميل الصفحة. يرجى التحقق من الاتصال بالإنترنت."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+</FrameLayout>
