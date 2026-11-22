@@ -1,6 +1,8 @@
 package com.appwalied.quran.quran_listening.player;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -13,6 +15,9 @@ import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
 import androidx.media3.exoplayer.ExoPlayer;
 
+import com.appwalied.quran.quran_listening.download.SurahDownloadManager;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -31,6 +36,7 @@ public class AudioPlayerManager implements Player.Listener {
     private String currentReciterName = "أبو بكر الشاطري";
     private String currentServerUrl = "https://server11.mp3quran.net/shatri/";
     private List<Integer> availableSurahIds = new ArrayList<>();
+    private boolean isCurrentSourceOffline = false;
 
     private int repeatMode = 0; // 0 = Off, 1 = Repeat One, 2 = Repeat All
     private float playbackSpeed = 1.0f;
@@ -114,9 +120,28 @@ public class AudioPlayerManager implements Player.Listener {
             this.availableSurahIds = availableSurahIds;
         }
 
-        String audioUrl = this.currentServerUrl + String.format(Locale.US, "%03d.mp3", surahId);
+        SurahDownloadManager downloadManager = SurahDownloadManager.getInstance(context);
+        File localFile = downloadManager.getLocalFile(reciterId, surahId);
+        boolean isLocalValid = localFile.exists() && localFile.length() >= 4096;
 
-        MediaItem mediaItem = MediaItem.fromUri(audioUrl);
+        String audioSource;
+        if (isLocalValid) {
+            audioSource = localFile.getAbsolutePath();
+            this.isCurrentSourceOffline = true;
+        } else {
+            this.isCurrentSourceOffline = false;
+            if (!isNetworkAvailable()) {
+                stopProgressUpdates();
+                String errMsg = "هذه السورة غير محملة وتتطلب اتصالاً بالإنترنت للتشغيل";
+                if (listener != null) {
+                    listener.onError(errMsg);
+                }
+                return;
+            }
+            audioSource = this.currentServerUrl + String.format(Locale.US, "%03d.mp3", surahId);
+        }
+
+        MediaItem mediaItem = MediaItem.fromUri(audioSource);
         player.setMediaItem(mediaItem);
         player.prepare();
         player.setPlayWhenReady(true);
@@ -131,6 +156,17 @@ public class AudioPlayerManager implements Player.Listener {
         }
 
         startProgressUpdates();
+    }
+
+    public boolean isCurrentSourceOffline() {
+        return isCurrentSourceOffline;
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) return false;
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnected();
     }
 
     public void togglePlayPause() {

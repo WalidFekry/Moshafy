@@ -12,25 +12,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.databinding.ItemListeningSurahBinding;
+import com.appwalied.quran.quran_listening.download.DownloadStatus;
+import com.appwalied.quran.quran_listening.download.DownloadedSurahEntity;
 import com.appwalied.quran.quran_listening.model.SurahModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ListeningSurahAdapter extends RecyclerView.Adapter<ListeningSurahAdapter.SurahViewHolder> implements Filterable {
 
     private List<SurahModel> surahList = new ArrayList<>();
     private List<SurahModel> surahFiltered = new ArrayList<>();
     private List<Integer> availableSurahIds = new ArrayList<>();
+    private Map<Integer, DownloadedSurahEntity> downloadStateMap = new HashMap<>();
     private int playingSurahId = -1;
+
     private final OnSurahClickListener clickListener;
+    private OnSurahDownloadClickListener downloadClickListener;
 
     public interface OnSurahClickListener {
         void onSurahClick(SurahModel surah);
     }
 
+    public interface OnSurahDownloadClickListener {
+        void onDownloadClick(SurahModel surah);
+        void onPauseDownloadClick(SurahModel surah);
+        void onResumeDownloadClick(SurahModel surah);
+        void onCancelDownloadClick(SurahModel surah);
+    }
+
     public ListeningSurahAdapter(OnSurahClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    public void setOnSurahDownloadClickListener(OnSurahDownloadClickListener downloadClickListener) {
+        this.downloadClickListener = downloadClickListener;
     }
 
     public void setSurahs(List<SurahModel> list, List<Integer> availableSurahIds, int playingSurahId) {
@@ -38,6 +56,22 @@ public class ListeningSurahAdapter extends RecyclerView.Adapter<ListeningSurahAd
         this.availableSurahIds = availableSurahIds != null ? availableSurahIds : new ArrayList<>();
         this.playingSurahId = playingSurahId;
         filterAvailableSurahs();
+    }
+
+    public void setDownloadStates(Map<Integer, DownloadedSurahEntity> states) {
+        this.downloadStateMap = states != null ? states : new HashMap<>();
+        notifyDataSetChanged();
+    }
+
+    public void updateDownloadState(DownloadedSurahEntity entity) {
+        if (entity == null) return;
+        downloadStateMap.put(entity.getSurahId(), entity);
+        for (int i = 0; i < surahFiltered.size(); i++) {
+            if (surahFiltered.get(i).getId() == entity.getSurahId()) {
+                notifyItemChanged(i);
+                break;
+            }
+        }
     }
 
     public void setPlayingSurahId(int playingSurahId) {
@@ -96,6 +130,77 @@ public class ListeningSurahAdapter extends RecyclerView.Adapter<ListeningSurahAd
                 clickListener.onSurahClick(surah);
             }
         });
+
+        // Download Status & Progress Binding
+        DownloadedSurahEntity downloadEntity = downloadStateMap.get(surah.getId());
+        DownloadStatus status = downloadEntity != null ? downloadEntity.getStatusEnum() : DownloadStatus.NOT_DOWNLOADED;
+
+        switch (status) {
+            case COMPLETED:
+                holder.binding.pbDownloadProgress.setVisibility(View.GONE);
+                holder.binding.btnDownloadAction.setVisibility(View.VISIBLE);
+                holder.binding.btnDownloadAction.setImageResource(R.drawable.ic_check);
+                holder.binding.btnDownloadAction.setColorFilter(
+                        ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary)
+                );
+                holder.binding.btnDownloadAction.setOnClickListener(v -> {
+                    if (clickListener != null) {
+                        clickListener.onSurahClick(surah);
+                    }
+                });
+                break;
+
+            case DOWNLOADING:
+            case QUEUED:
+            case VERIFYING:
+                holder.binding.pbDownloadProgress.setVisibility(View.VISIBLE);
+                int progress = downloadEntity != null ? downloadEntity.getProgressPercentage() : 0;
+                holder.binding.pbDownloadProgress.setProgress(progress);
+                holder.binding.btnDownloadAction.setVisibility(View.VISIBLE);
+                holder.binding.btnDownloadAction.setImageResource(R.drawable.ic_pause);
+                holder.binding.btnDownloadAction.setColorFilter(
+                        ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary)
+                );
+                holder.binding.btnDownloadAction.setOnClickListener(v -> {
+                    if (downloadClickListener != null) {
+                        downloadClickListener.onPauseDownloadClick(surah);
+                    }
+                });
+                break;
+
+            case PAUSED:
+                holder.binding.pbDownloadProgress.setVisibility(View.VISIBLE);
+                int pausedProgress = downloadEntity != null ? downloadEntity.getProgressPercentage() : 0;
+                holder.binding.pbDownloadProgress.setProgress(pausedProgress);
+                holder.binding.btnDownloadAction.setVisibility(View.VISIBLE);
+                holder.binding.btnDownloadAction.setImageResource(R.drawable.ic_play);
+                holder.binding.btnDownloadAction.setColorFilter(
+                        ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary)
+                );
+                holder.binding.btnDownloadAction.setOnClickListener(v -> {
+                    if (downloadClickListener != null) {
+                        downloadClickListener.onResumeDownloadClick(surah);
+                    }
+                });
+                break;
+
+            case FAILED:
+            case CANCELLED:
+            case NOT_DOWNLOADED:
+            default:
+                holder.binding.pbDownloadProgress.setVisibility(View.GONE);
+                holder.binding.btnDownloadAction.setVisibility(View.VISIBLE);
+                holder.binding.btnDownloadAction.setImageResource(R.drawable.ic_download);
+                holder.binding.btnDownloadAction.setColorFilter(
+                        ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary)
+                );
+                holder.binding.btnDownloadAction.setOnClickListener(v -> {
+                    if (downloadClickListener != null) {
+                        downloadClickListener.onDownloadClick(surah);
+                    }
+                });
+                break;
+        }
     }
 
     @Override

@@ -11,6 +11,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.appwalied.quran.image_quran.data.ImageQuranBookmarkDao;
 import com.appwalied.quran.image_quran.data.ImageQuranBookmarkEntity;
+import com.appwalied.quran.quran_listening.download.DownloadedSurahDao;
+import com.appwalied.quran.quran_listening.download.DownloadedSurahEntity;
 import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkDao;
 import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
 
@@ -21,9 +23,10 @@ import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
         QuranSettingsEntity.class,
         FavoriteSurahEntity.class,
         TadabburBookmarkEntity.class,
-        ImageQuranBookmarkEntity.class
+        ImageQuranBookmarkEntity.class,
+        DownloadedSurahEntity.class
     },
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -37,6 +40,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract FavoriteSurahDao favoriteSurahDao();
     public abstract TadabburBookmarkDao tadabburBookmarkDao();
     public abstract ImageQuranBookmarkDao imageQuranBookmarkDao();
+    public abstract DownloadedSurahDao downloadedSurahDao();
 
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
@@ -67,6 +71,26 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
+    static final Migration MIGRATION_3_4 = new Migration(3, 4) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `downloaded_surahs` (" +
+                    "`downloadId` TEXT NOT NULL PRIMARY KEY, " +
+                    "`reciterId` INTEGER NOT NULL, " +
+                    "`reciterName` TEXT, " +
+                    "`surahId` INTEGER NOT NULL, " +
+                    "`surahName` TEXT, " +
+                    "`remoteUrl` TEXT, " +
+                    "`localFilePath` TEXT, " +
+                    "`fileSize` INTEGER NOT NULL, " +
+                    "`downloadedBytes` INTEGER NOT NULL, " +
+                    "`downloadStatus` INTEGER NOT NULL, " +
+                    "`downloadDate` INTEGER NOT NULL, " +
+                    "`lastModified` INTEGER NOT NULL, " +
+                    "`errorMessage` TEXT)");
+        }
+    };
+
     public static AppDatabase getInstance(Context context) {
         if (instance == null) {
             synchronized (AppDatabase.class) {
@@ -76,7 +100,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class,
                             DATABASE_NAME
                     )
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                     .fallbackToDestructiveMigration(true)
                     .build();
                 }
