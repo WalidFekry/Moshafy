@@ -71,6 +71,7 @@
             android:id="@+id/btn_add_bookmark"
             android:layout_width="30dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_bookmark"
             app:tint="@color/white" />
@@ -79,6 +80,7 @@
             android:id="@+id/btn_download_offline"
             android:layout_width="30dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_download"
             app:tint="@color/white" />
