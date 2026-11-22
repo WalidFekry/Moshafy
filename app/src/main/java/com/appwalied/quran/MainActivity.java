@@ -184,6 +184,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
     }
 
     private void setupDrawer() {
