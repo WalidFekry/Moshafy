@@ -14,6 +14,7 @@ import com.appwalied.quran.R;
 import com.appwalied.quran.databinding.ItemListeningReciterBinding;
 import com.appwalied.quran.quran_listening.model.MoshafModel;
 import com.appwalied.quran.quran_listening.model.ReciterModel;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,7 +110,7 @@ public class ListeningReciterAdapter extends RecyclerView.Adapter<ListeningRecit
                     filtered.addAll(reciters);
                 } else {
                     for (ReciterModel r : reciters) {
-                        if (r.getName().contains(query)) {
+                        if (ArabicNormalizer.matches(r.getName(), query)) {
                             filtered.add(r);
                         }
                     }

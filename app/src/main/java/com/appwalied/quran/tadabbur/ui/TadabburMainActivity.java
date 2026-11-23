@@ -20,6 +20,7 @@ import com.appwalied.quran.tadabbur.ui.adapters.TadabburBookmarkAdapter;
 import com.appwalied.quran.tadabbur.ui.adapters.TadabburJuzAdapter;
 import com.appwalied.quran.tadabbur.ui.adapters.TadabburPageAdapter;
 import com.appwalied.quran.tadabbur.ui.adapters.TadabburSurahAdapter;
+import com.appwalied.quran.utils.ArabicNormalizer;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -244,14 +245,11 @@ public class TadabburMainActivity extends BaseActivity {
             return;
         }
 
-        String normQuery = QuranV2Repository.normalizeArabic(q);
-
         switch (currentTabPosition) {
             case 0:
                 List<QuranV2Surah> filteredSurahs = new ArrayList<>();
                 for (QuranV2Surah s : allSurahs) {
-                    String normSurahAr = QuranV2Repository.normalizeArabic(s.getNameAr());
-                    if (normSurahAr.contains(normQuery) || s.getNameEn().toLowerCase().contains(q.toLowerCase()) || String.valueOf(s.getSoraNumber()).equals(q)) {
+                    if (ArabicNormalizer.matches(s.getNameAr(), q) || s.getNameEn().toLowerCase().contains(q.toLowerCase()) || String.valueOf(s.getSoraNumber()).equals(q)) {
                         filteredSurahs.add(s);
                     }
                 }
@@ -261,8 +259,7 @@ public class TadabburMainActivity extends BaseActivity {
             case 1:
                 List<QuranV2Juz> filteredJuzs = new ArrayList<>();
                 for (QuranV2Juz j : allJuzs) {
-                    String normSoraName = QuranV2Repository.normalizeArabic(j.getStartSoraNameAr());
-                    if (String.valueOf(j.getJuzNumber()).contains(q) || normSoraName.contains(normQuery)) {
+                    if (String.valueOf(j.getJuzNumber()).contains(q) || ArabicNormalizer.matches(j.getStartSoraNameAr(), q)) {
                         filteredJuzs.add(j);
                     }
                 }
@@ -272,8 +269,7 @@ public class TadabburMainActivity extends BaseActivity {
             case 2:
                 List<QuranV2Page> filteredPages = new ArrayList<>();
                 for (QuranV2Page p : allPages) {
-                    String normSurahs = QuranV2Repository.normalizeArabic(p.getSurahsSummary());
-                    if (String.valueOf(p.getPageNumber()).contains(q) || normSurahs.contains(normQuery)) {
+                    if (String.valueOf(p.getPageNumber()).contains(q) || ArabicNormalizer.matches(p.getSurahsSummary(), q)) {
                         filteredPages.add(p);
                     }
                 }
@@ -283,9 +279,7 @@ public class TadabburMainActivity extends BaseActivity {
             case 3:
                 List<TadabburBookmarkEntity> filteredBookmarks = new ArrayList<>();
                 for (TadabburBookmarkEntity b : allBookmarks) {
-                    String normSoraName = QuranV2Repository.normalizeArabic(b.getSoraNameAr());
-                    String normAyaText = QuranV2Repository.normalizeArabic(b.getAyaText());
-                    if (normSoraName.contains(normQuery) || normAyaText.contains(normQuery)) {
+                    if (ArabicNormalizer.matches(b.getSoraNameAr(), q) || ArabicNormalizer.matches(b.getAyaText(), q)) {
                         filteredBookmarks.add(b);
                     }
                 }

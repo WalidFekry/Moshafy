@@ -16,6 +16,7 @@ import com.appwalied.quran.R;
 import com.appwalied.quran.databinding.BottomSheetSurahIndexBinding;
 import com.appwalied.quran.quran.db.QuranRepository;
 import com.appwalied.quran.quran.db.models.Surah;
+import com.appwalied.quran.utils.ArabicNormalizer;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
@@ -79,10 +80,8 @@ public class SurahIndexBottomSheet extends BottomSheetDialogFragment {
 
     private void filterList(String query) {
         filteredSurahList.clear();
-        String normalizedQuery = QuranRepository.normalizeArabic(query);
         for (Surah s : fullSurahList) {
-            String normalizedName = QuranRepository.normalizeArabic(s.getNameAr());
-            if (normalizedQuery.isEmpty() || normalizedName.contains(normalizedQuery)) {
+            if (query.trim().isEmpty() || ArabicNormalizer.matches(s.getNameAr(), query) || String.valueOf(s.getId()).equals(query.trim())) {
                 filteredSurahList.add(s);
             }
         }

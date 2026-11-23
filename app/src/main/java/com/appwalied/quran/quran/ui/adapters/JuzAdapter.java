@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.quran.db.models.Juz;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,13 +68,13 @@ public class JuzAdapter extends RecyclerView.Adapter<JuzAdapter.JuzViewHolder> i
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                String query = constraint == null ? "" : constraint.toString().trim().toLowerCase();
+                String query = constraint == null ? "" : constraint.toString().trim();
                 List<Juz> results = new ArrayList<>();
                 if (query.isEmpty()) {
                     results.addAll(juzList);
                 } else {
                     for (Juz j : juzList) {
-                        if (j.getStartSuraName().toLowerCase().contains(query) || String.valueOf(j.getJuzNumber()).equals(query)) {
+                        if (ArabicNormalizer.matches(j.getStartSuraName(), query) || String.valueOf(j.getJuzNumber()).equals(query)) {
                             results.add(j);
                         }
                     }

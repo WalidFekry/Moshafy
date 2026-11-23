@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.quran.audio.Reciter;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,15 +74,15 @@ public class ReciterAdapter extends RecyclerView.Adapter<ReciterAdapter.ReciterV
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                String query = constraint == null ? "" : constraint.toString().trim().toLowerCase();
+                String query = constraint == null ? "" : constraint.toString().trim();
                 List<Reciter> results = new ArrayList<>();
                 if (query.isEmpty()) {
                     results.addAll(reciterList);
                 } else {
                     for (Reciter r : reciterList) {
-                        if (r.getArabicName().toLowerCase().contains(query) ||
-                                r.getName().toLowerCase().contains(query) ||
-                                r.getSubfolder().toLowerCase().contains(query)) {
+                        if (ArabicNormalizer.matches(r.getArabicName(), query) ||
+                                ArabicNormalizer.matches(r.getName(), query) ||
+                                r.getSubfolder().toLowerCase().contains(query.toLowerCase())) {
                             results.add(r);
                         }
                     }

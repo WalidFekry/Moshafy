@@ -20,6 +20,7 @@ import com.appwalied.quran.image_quran.data.Riwaya;
 import com.appwalied.quran.image_quran.player.ImageQuranAudioPlayerManager;
 import com.appwalied.quran.quran.db.QuranRepository;
 import com.appwalied.quran.quran.db.models.Ayah;
+import com.appwalied.quran.quran.utils.SajdahHelper;
 
 import java.util.List;
 import java.util.Locale;
@@ -113,14 +114,24 @@ public class ImageQuranReaderActivity extends BaseActivity {
         updatePageMetadata();
     }
 
+    private boolean currentPageHasSajdah = false;
+
     private void updatePageMetadata() {
         quranDbRepository.getVersesByPage(currentPage, new QuranRepository.Callback<List<Ayah>>() {
             @Override
             public void onResult(List<Ayah> verses) {
+                currentPageHasSajdah = false;
                 if (verses != null && !verses.isEmpty()) {
                     Ayah firstAyah = verses.get(0);
                     currentSurahName = firstAyah.getSuraName();
                     currentJuzNumber = firstAyah.getParaNumber();
+
+                    for (Ayah a : verses) {
+                        if (SajdahHelper.isSajdahAyah(a.getSuraId(), a.getVerseId())) {
+                            currentPageHasSajdah = true;
+                            break;
+                        }
+                    }
                 }
                 updateUiText();
                 checkBookmarkStatus();
@@ -131,7 +142,11 @@ public class ImageQuranReaderActivity extends BaseActivity {
     private void updateUiText() {
         binding.tvReaderSurahName.setText("سورة " + currentSurahName);
         binding.tvReaderRiwayaName.setText(currentRiwaya.getDisplayName());
-        binding.tvPageInfo.setText(String.format(Locale.getDefault(), "صفحة %d من 604 - الجزء %d", currentPage, currentJuzNumber));
+        String pageInfo = String.format(Locale.getDefault(), "صفحة %d من 604 - الجزء %d", currentPage, currentJuzNumber);
+        if (currentPageHasSajdah) {
+            pageInfo += "  ۩ سجدة تلاوة";
+        }
+        binding.tvPageInfo.setText(pageInfo);
     }
 
     private void checkBookmarkStatus() {

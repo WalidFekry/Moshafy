@@ -63,7 +63,7 @@
                             android:layout_marginEnd="5dp"
                             android:fontFamily="@font/qumsg"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             tools:text="سورة الفاتحة - الآية 1" />
 
@@ -75,6 +75,22 @@
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp"
                             tools:text="الجزء 1 • الصفحة 1" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_sajdah_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/sajdah_badge_bg"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:text="۩ سجدة"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                     <TextView

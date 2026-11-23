@@ -67,6 +67,22 @@
                     android:textSize="12sp"
                     tools:text="آية 1" />
 
+                <TextView
+                    android:id="@+id/tv_sajdah_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/sajdah_badge_bg"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="۩ سجدة تلاوة"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"

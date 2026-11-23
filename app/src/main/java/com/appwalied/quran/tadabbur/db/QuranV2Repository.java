@@ -10,6 +10,7 @@ import com.appwalied.quran.tadabbur.model.QuranV2Ayah;
 import com.appwalied.quran.tadabbur.model.QuranV2Juz;
 import com.appwalied.quran.tadabbur.model.QuranV2Page;
 import com.appwalied.quran.tadabbur.model.QuranV2Surah;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -289,8 +290,7 @@ public class QuranV2Repository {
 
     private boolean matchesText(String target, String query) {
         if (target == null || query == null || query.isEmpty()) return false;
-        return target.toLowerCase().contains(query.toLowerCase()) ||
-                normalizeArabic(target).contains(normalizeArabic(query));
+        return ArabicNormalizer.matches(target, query);
     }
 
     private QuranV2Ayah mapAyah(Cursor cursor) {
@@ -319,14 +319,6 @@ public class QuranV2Repository {
     }
 
     public static String normalizeArabic(String input) {
-        if (input == null) return "";
-        String text = input.replaceAll("[\\u0610-\\u061A\\u064B-\\u065F\\u0670\\u06D6-\\u06DC\\u06DF-\\u06E8\\u06EA-\\u06ED]", "");
-        text = text.replace('أ', 'ا')
-                .replace('إ', 'ا')
-                .replace('آ', 'ا')
-                .replace('ٱ', 'ا')
-                .replace('ى', 'ي')
-                .replace('ة', 'ه');
-        return text.trim().toLowerCase();
+        return ArabicNormalizer.normalize(input);
     }
 }

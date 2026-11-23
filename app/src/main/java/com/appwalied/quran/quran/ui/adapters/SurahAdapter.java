@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
 import com.appwalied.quran.quran.db.models.Surah;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,13 +98,13 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahViewHol
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                String query = constraint == null ? "" : constraint.toString().trim().toLowerCase();
+                String query = constraint == null ? "" : constraint.toString().trim();
                 List<Surah> results = new ArrayList<>();
                 if (query.isEmpty()) {
                     results.addAll(surahList);
                 } else {
                     for (Surah s : surahList) {
-                        if (s.getNameAr().toLowerCase().contains(query) || String.valueOf(s.getId()).equals(query)) {
+                        if (ArabicNormalizer.matches(s.getNameAr(), query) || String.valueOf(s.getId()).equals(query)) {
                             results.add(s);
                         }
                     }

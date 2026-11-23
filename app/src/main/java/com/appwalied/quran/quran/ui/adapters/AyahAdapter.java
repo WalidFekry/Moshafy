@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import com.appwalied.quran.R;
 import com.appwalied.quran.databinding.ItemAyahBinding;
 import com.appwalied.quran.quran.db.models.Ayah;
 import com.appwalied.quran.quran.utils.QuranFontHelper;
+import com.appwalied.quran.quran.utils.SajdahHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +115,17 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
 
         // Badge info
         holder.binding.tvAyahInfoBadge.setText("الآية " + ayah.getVerseId() + " • صفحة " + ayah.getPageNumber() + " • الجزء " + ayah.getParaNumber());
+
+        // Sajdah Badge
+        boolean isSajdah = SajdahHelper.isSajdahAyah(ayah.getSuraId(), ayah.getVerseId());
+        if (isSajdah) {
+            holder.binding.tvSajdahBadge.setVisibility(View.VISIBLE);
+            holder.binding.tvSajdahBadge.setOnClickListener(v ->
+                    Toast.makeText(holder.itemView.getContext(), "موضع سجدة تلاوة", Toast.LENGTH_SHORT).show()
+            );
+        } else {
+            holder.binding.tvSajdahBadge.setVisibility(View.GONE);
+        }
 
         // Highlight state
         boolean isPlayingThis = (ayah.getVerseId() == playingAyahId);

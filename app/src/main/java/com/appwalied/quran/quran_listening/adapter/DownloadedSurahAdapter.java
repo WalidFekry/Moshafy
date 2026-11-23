@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.appwalied.quran.R;
 import com.appwalied.quran.databinding.ItemDownloadedSurahBinding;
 import com.appwalied.quran.quran_listening.download.DownloadedSurahEntity;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,8 +125,8 @@ public class DownloadedSurahAdapter extends RecyclerView.Adapter<DownloadedSurah
                     filtered.addAll(items);
                 } else {
                     for (DownloadedSurahEntity item : items) {
-                        if (item.getSurahName().contains(query)
-                                || item.getReciterName().contains(query)
+                        if (ArabicNormalizer.matches(item.getSurahName(), query)
+                                || ArabicNormalizer.matches(item.getReciterName(), query)
                                 || String.valueOf(item.getSurahId()).equals(query)) {
                             filtered.add(item);
                         }

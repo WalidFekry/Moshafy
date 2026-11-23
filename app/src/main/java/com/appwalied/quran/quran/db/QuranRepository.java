@@ -9,6 +9,7 @@ import android.os.Looper;
 import com.appwalied.quran.quran.db.models.Ayah;
 import com.appwalied.quran.quran.db.models.Juz;
 import com.appwalied.quran.quran.db.models.Surah;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,7 +162,7 @@ public class QuranRepository {
                 return;
             }
 
-            String normalizedQuery = normalizeArabic(queryText);
+            String normalizedQuery = ArabicNormalizer.normalize(queryText);
             if (normalizedQuery.isEmpty()) {
                 mainHandler.post(() -> callback.onResult(results));
                 return;
@@ -177,8 +178,8 @@ public class QuranRepository {
             if (cursor != null) {
                 while (cursor.moveToNext()) {
                     Ayah ayah = mapAyah(cursor);
-                    String normalizedVerse = normalizeArabic(ayah.getArabicUthmanic());
-                    if (normalizedVerse.contains(normalizedQuery)) {
+                    if (ArabicNormalizer.matches(ayah.getArabicUthmanic(), queryText) ||
+                            ArabicNormalizer.matches(ayah.getSuraName(), queryText)) {
                         results.add(ayah);
                         if (results.size() >= 100) {
                             break;
@@ -240,14 +241,6 @@ public class QuranRepository {
     }
 
     public static String normalizeArabic(String input) {
-        if (input == null) return "";
-        String text = input.replaceAll("[\\u0610-\\u061A\\u064B-\\u065F\\u0670\\u06D6-\\u06DC\\u06DF-\\u06E8\\u06EA-\\u06ED]", "");
-        text = text.replace('أ', 'ا')
-                .replace('إ', 'ا')
-                .replace('آ', 'ا')
-                .replace('ٱ', 'ا')
-                .replace('ى', 'ي')
-                .replace('ة', 'ه');
-        return text.trim().toLowerCase();
+        return ArabicNormalizer.normalize(input);
     }
 }

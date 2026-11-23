@@ -15,6 +15,7 @@ import com.appwalied.quran.databinding.ItemListeningSurahBinding;
 import com.appwalied.quran.quran_listening.download.DownloadStatus;
 import com.appwalied.quran.quran_listening.download.DownloadedSurahEntity;
 import com.appwalied.quran.quran_listening.model.SurahModel;
+import com.appwalied.quran.utils.ArabicNormalizer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -221,7 +222,7 @@ public class ListeningSurahAdapter extends RecyclerView.Adapter<ListeningSurahAd
                     filtered.addAll(baseList);
                 } else {
                     for (SurahModel s : baseList) {
-                        if (s.getName().contains(query) || String.valueOf(s.getId()).equals(query)) {
+                        if (ArabicNormalizer.matches(s.getName(), query) || String.valueOf(s.getId()).equals(query)) {
                             filtered.add(s);
                         }
                     }

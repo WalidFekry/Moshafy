@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.appwalied.quran.R;
 import com.appwalied.quran.base.BaseActivity;
 import com.appwalied.quran.databinding.ActivityTadabburAyahDetailBinding;
+import com.appwalied.quran.quran.utils.SajdahHelper;
 import com.appwalied.quran.tadabbur.db.QuranV2Repository;
 import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
 import com.appwalied.quran.tadabbur.db.room.TadabburLocalRepository;
@@ -235,6 +236,16 @@ public class TadabburAyahDetailActivity extends BaseActivity {
         binding.tvDetailSurahInfo.setText("سورة " + currentAyah.getSoraNameAr() + " - الآية " + currentAyah.getAyaNo());
         binding.tvDetailJuzPage.setText("الجزء " + currentAyah.getJozz() + " • الصفحة " + currentAyah.getPage());
         binding.tvDetailAyahText.setText(currentAyah.getAyaText());
+
+        boolean isSajdah = SajdahHelper.isSajdahAyah(currentAyah.getSora(), currentAyah.getAyaNo());
+        if (isSajdah) {
+            binding.tvDetailSajdahBadge.setVisibility(View.VISIBLE);
+            binding.tvDetailSajdahBadge.setOnClickListener(v ->
+                    Toast.makeText(this, "موضع سجدة تلاوة", Toast.LENGTH_SHORT).show()
+            );
+        } else {
+            binding.tvDetailSajdahBadge.setVisibility(View.GONE);
+        }
 
         binding.tvAyahNavIndicator.setText("آية " + currentAyah.getAyaNo() + " (" + currentAyah.getSoraNameAr() + ")");
         binding.btnPrevAyah.setEnabled(currentAyah.getId() > 1);

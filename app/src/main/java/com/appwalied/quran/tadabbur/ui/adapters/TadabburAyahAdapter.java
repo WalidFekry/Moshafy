@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appwalied.quran.R;
+import com.appwalied.quran.quran.utils.SajdahHelper;
 import com.appwalied.quran.tadabbur.db.room.TadabburBookmarkEntity;
 import com.appwalied.quran.tadabbur.db.room.TadabburLocalRepository;
 import com.appwalied.quran.tadabbur.model.QuranV2Ayah;
@@ -82,6 +83,17 @@ public class TadabburAyahAdapter extends RecyclerView.Adapter<TadabburAyahAdapte
         // Info Badge
         String badge = "آية " + ayah.getAyaNo() + " • ص " + ayah.getPage();
         holder.tvAyahBadge.setText(badge);
+
+        // Sajdah Badge
+        boolean isSajdah = SajdahHelper.isSajdahAyah(ayah.getSora(), ayah.getAyaNo());
+        if (isSajdah) {
+            holder.tvSajdahBadge.setVisibility(View.VISIBLE);
+            holder.tvSajdahBadge.setOnClickListener(v ->
+                    Toast.makeText(context, "موضع سجدة تلاوة", Toast.LENGTH_SHORT).show()
+            );
+        } else {
+            holder.tvSajdahBadge.setVisibility(View.GONE);
+        }
 
         // Bookmark state
         String key = ayah.getSora() + "_" + ayah.getAyaNo();
@@ -151,7 +163,7 @@ public class TadabburAyahAdapter extends RecyclerView.Adapter<TadabburAyahAdapte
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         View cardAyah;
-        TextView tvAyahText, tvAyahBadge;
+        TextView tvAyahText, tvAyahBadge, tvSajdahBadge;
         MaterialButton btnOpenDetails;
         ImageView btnBookmark, btnCopy, btnShare;
 
@@ -160,6 +172,7 @@ public class TadabburAyahAdapter extends RecyclerView.Adapter<TadabburAyahAdapte
             cardAyah = itemView.findViewById(R.id.card_ayah);
             tvAyahText = itemView.findViewById(R.id.tv_ayah_text);
             tvAyahBadge = itemView.findViewById(R.id.tv_ayah_info_badge);
+            tvSajdahBadge = itemView.findViewById(R.id.tv_sajdah_badge);
             btnOpenDetails = itemView.findViewById(R.id.btn_open_details);
             btnBookmark = itemView.findViewById(R.id.btn_bookmark);
             btnCopy = itemView.findViewById(R.id.btn_copy);
