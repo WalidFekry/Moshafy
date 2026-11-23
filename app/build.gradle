@@ -9,7 +9,7 @@ android {
         applicationId "com.appwalied.quran"
         minSdkVersion 24
         targetSdkVersion 37
-        versionCode 48
+        versionCode 49
         versionName "8.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
